@@ -4,31 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#4CAF50"
     tools:context=".MainActivity">
+
     <View
         android:id="@+id/view2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#009688" />
+        android:background="#009688"
+        tools:ignore="MissingConstraints" />
+
     <LinearLayout
         android:layout_width="365dp"
         android:layout_height="70dp"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="514dp">
+        tools:layout_editor_absoluteY="514dp"
+        tools:ignore="MissingConstraints">
 
         <Button
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="New Game" />
+            android:background="#d74051"
+            android:text="New Game"
+            app:iconTint="#F44336" />
 
         <Button
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#d74051"
             android:text="LOAD SAVED" />
 
         <Button
@@ -36,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#d74051"
             android:text="QUIT" />
     </LinearLayout>
 
@@ -45,8 +54,8 @@
         android:layout_height="429dp"
         app:srcCompat="@drawable/_112968"
         tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="67dp" />
+        tools:layout_editor_absoluteY="67dp"
+        tools:ignore="MissingConstraints" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
