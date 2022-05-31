@@ -4,58 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4CAF50"
+    android:background="#009688"
     tools:context=".MainActivity">
 
-    <View
-        android:id="@+id/view2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#009688"
-        tools:ignore="MissingConstraints" />
-
     <LinearLayout
-        android:layout_width="365dp"
-        android:layout_height="70dp"
+        android:layout_width="330dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="530dp"
+        android:layout_marginEnd="55dp"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="514dp"
-        tools:ignore="MissingConstraints">
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#d74051"
-            android:text="New Game"
-            app:iconTint="#F44336" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/button5"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:background="#d74051"
-            android:text="LOAD SAVED" />
+            android:backgroundTint="#e28086"
+            android:text="Button"
+            />
 
         <Button
             android:id="@+id/button6"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:background="#d74051"
-            android:text="QUIT" />
+            android:backgroundTint="#e28086"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:backgroundTint="#e28086"
+            android:text="Button" />
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="324dp"
-        android:layout_height="429dp"
-        app:srcCompat="@drawable/_112968"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="67dp"
-        tools:ignore="MissingConstraints" />
-
-
+        android:id="@+id/imageView"
+        android:layout_width="345dp"
+        android:layout_height="365dp"
+        android:layout_marginBottom="100dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/_112968" />
 </androidx.constraintlayout.widget.ConstraintLayout>
