@@ -1,14 +1,18 @@
 package com.example.uw_life_simulator;
 
-public abstract class GameEvent {
+/**
+ * General events structure
+ **/
+abstract class GameEvent implements Visitor {
     protected String description = "";
     protected int Id = 0;
 
-
-    // Getter & Setters
-    public String getDescription(){ return description; }
-    public int getId(){ return Id; }
-    public abstract void visit(Player player);
-
+    // Getters & Setters
+    public int getId() {
+        return Id;
+    }
+    public String getDescription() {
+        return description;
+    }
 }
 

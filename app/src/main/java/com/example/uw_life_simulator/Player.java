@@ -57,9 +57,23 @@ public class Player { // Implementation needed
     public void setSixMajorAbilities(int index, int val){ sixMajorAbilities.set(index, val); }
     public List<Integer> getSixMajorAbilities(){return sixMajorAbilities; }
 
+    /**
+     * Accept GameEvents' impact
+     *
+     * Input: GameEvent : gameEvent
+     * Output: void
+     **/
     public void accept(GameEvent gameEvent)
     {
         gameEvent.visit(this);
     }
+
+    /**
+     * Accept talents' impact
+     *
+     * Input: Talent : talent
+     * Output: void
+     **/
+    public void accept(Talent talent){ talent.visit(this); }
 
 }

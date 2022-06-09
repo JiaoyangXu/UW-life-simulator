@@ -1,38 +1,52 @@
 package com.example.uw_life_simulator;
 
 public class Factory {
+    /**
+     * Event generator which generates events based on the eventId
+     * Events are implemented in GameEventGenerator.Java
+     *
+     * Input: int : eventId
+     * Output: GameEvent : Generated event
+     **/
     static public GameEvent generateEvent(int eventId) // Implementation needed
     {
-        switch (eventId)
-        {
-            case 0: return new GameEventNull();
-            default: return null;
-        }
+        return GameEventGenerator.generateEvent(eventId);
     }
 
-    static public Company generateCompany(int companyId) // Implementation needed
-    {
-        return null;
-    }
-
+    /**
+     * Talent generator which generates events based on the talentId
+     * Talents are implemented in TalentGenerator.Java
+     *
+     * Input: int : talentId
+     * Output: Talent : Generated talent
+     **/
     static public Talent generateTalent(int talentId) // Implementation needed
     {
         return null;
     }
 
-    static public Course generateCourse(int CourseId) // Implementation needed
+    /**
+     * Company generator which generates events based on the companyId
+     * Company info is stored in database file
+     *
+     * Input: int : companyId
+     * Output: Company : Generated company
+     **/
+    static public Company generateCompany(int companyId) // Implementation needed
+    {
+        return null;
+    }
+
+    /**
+     * Course generator which generates events based on the courseId
+     * Course info is stored in database file
+     *
+     * Input: int : courseId
+     * Output: Course : Generated course
+     **/
+    static public Course generateCourse(int courseId) // Implementation needed
     {
         return null;
     }
 }
 
-class GameEventNull extends GameEvent{
-    public GameEventNull(){
-        this.Id = 0;
-        this.description = "This is a null event\n";
-    }
-    @Override
-    public void visit(Player player) {
-        //doing nothing
-    }
-}

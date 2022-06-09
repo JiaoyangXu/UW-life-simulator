@@ -22,18 +22,28 @@ public class TalentManager {
 
 
     //public functions
-    /*Trigger the talent effect of all talents*/
+    /**
+     * Trigger the talent effect of all talents
+     *
+     * Input: void
+     * Output: void
+     **/
     public void triggerAllTalents() {
         for(int id : talents) {
-            Factory.generateTalent(id).talentEffect(owner);
+            Factory.generateTalent(id).visit(owner);
         }
     }
 
-    /*Trigger the talent effect of the talent if it exists*/
+    /**
+     * Trigger the talent effect of the talent if it exists
+     *
+     * Input: int : talentId
+     * Output: void
+     **/
     public void triggerTalent(int talentId){
         if(talents.contains(talentId))
         {
-            Factory.generateTalent(talentId).talentEffect(owner);
+            Factory.generateTalent(talentId).visit(owner);
         }
     }
 

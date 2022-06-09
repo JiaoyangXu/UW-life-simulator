@@ -30,7 +30,13 @@ public class Course {
 
 
     // public functions
-    /* Check if the given list of taken courses can satisfy this course's requirement*/
+    /**
+     * Check if the given list of taken courses can satisfy this
+     * course's requirement
+     *
+     * Input: List<Integer> : takenCourses
+     * Output: bool : whether the course is valid to be taken
+     **/
     public boolean checkValidity(List<Integer> takenCourses)
     {
         for(int course : requiredCourses)

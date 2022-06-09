@@ -25,7 +25,13 @@ public class Company {
 
 
     //public functions
-    /* Check if the given Major ability can satisfy this company's requirement*/
+    /**
+     * Check if the given Major ability can satisfy the company's
+     * requirement
+     *
+     * Input: List<Integer> : skillsLevel
+     * Output: bool : whether the company's requirement is met
+     **/
     public boolean checkValidity(List<Integer> skillsLevel)
     {
         for (int i = 0; i < requiredSkillLevel.size(); i ++)
