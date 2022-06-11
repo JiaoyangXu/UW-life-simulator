@@ -24,7 +24,7 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:backgroundTint="#e28086"
-            android:text="Button"
+            android:text="LOAD"
             />
 
         <Button
@@ -33,7 +33,7 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:backgroundTint="#e28086"
-            android:text="Button" />
+            android:text="NEW" />
 
         <Button
             android:id="@+id/button7"
@@ -41,7 +41,7 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:backgroundTint="#e28086"
-            android:text="Button" />
+            android:text="QUIT" />
     </LinearLayout>
 
     <ImageView
