@@ -31,7 +31,7 @@
                 android:layout_weight=".8"
                 android:gravity="center"
                 android:text="Available Talent Points:"
-                android:textSize="21dp" />
+                android:textSize="19dp" />
 
 
             <TextView
@@ -41,7 +41,8 @@
                 android:layout_gravity="center"
                 android:layout_weight=".25"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="10" />
+                android:text="10"
+                android:textSize="30dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -81,6 +82,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:clickable="true"
                 app:srcCompat="@android:drawable/arrow_up_float" />
 
@@ -98,7 +101,8 @@
                 android:layout_gravity="center"
                 android:layout_weight=".6"
                 android:gravity="center"
-                android:text="Luck" />
+                android:text="Luck"
+                android:textSize="25dp"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/minusLuck"
@@ -122,6 +126,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:clickable="true"
                 app:srcCompat="@android:drawable/arrow_up_float" />
 
@@ -139,7 +145,8 @@
                 android:layout_gravity="center"
                 android:layout_weight=".6"
                 android:gravity="center"
-                android:text="Wealth" />
+                android:text="Wealth"
+                android:textSize="25dp"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/minusWealth"
@@ -163,6 +170,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
                 android:clickable="true"
                 app:srcCompat="@android:drawable/arrow_up_float" />
         </LinearLayout>
@@ -179,7 +189,8 @@
                 android:layout_gravity="center"
                 android:layout_weight=".6"
                 android:gravity="center"
-                android:text="Health" />
+                android:text="Health"
+                android:textSize="25dp"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/minusHealth"
@@ -204,15 +215,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:clickable="true"
                 app:srcCompat="@android:drawable/arrow_up_float" />
 
         </LinearLayout>
+
         <Button
             android:id="@+id/button8"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:text="Button" />
     </LinearLayout>
 </LinearLayout>
