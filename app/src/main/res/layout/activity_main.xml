@@ -33,7 +33,8 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:backgroundTint="#e28086"
-            android:text="NEW" />
+            android:text="NEW"
+            android:onClick="createTalent" />
 
         <Button
             android:id="@+id/button7"

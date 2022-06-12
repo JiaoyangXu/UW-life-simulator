@@ -1,7 +1,9 @@
 package com.example.uw_life_simulator;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.uw_life_simulator.activities.TalentActivities;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -72,5 +74,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void createTalent(View view) {
+        Intent intent = new Intent(MainActivity.this, TalentActivities.class);
+        startActivity(intent);
     }
 }

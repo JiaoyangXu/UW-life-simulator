@@ -5,6 +5,7 @@ public class Talent {
     private int luck;
     private int wealth;
     private int health;
+    private int availablePoint;
 
     // Constructor
     public Talent() {
@@ -12,14 +13,20 @@ public class Talent {
         this.luck = 0;
         this.wealth = 0;
         this.health = 0;
+        this.availablePoint = 0;
+    }
+
+    public Talent(int availablePoint) {
+        this.availablePoint = availablePoint;
     }
 
     // Constructor
-    public Talent(int iq, int luck, int wealth, int health) {
+    public Talent(int iq, int luck, int wealth, int health, int availablePoint) {
         this.iq = iq;
         this.luck = luck;
         this.wealth = wealth;
         this.health = health;
+        this.availablePoint = availablePoint;
     }
 
     @Override
@@ -32,6 +39,13 @@ public class Talent {
                 '}';
     }
 
+    public int getAvailablePoint() {
+        return availablePoint;
+    }
+
+    public void setAvailablePoint(int availablePoint) {
+        this.availablePoint = availablePoint;
+    }
 
     public int getIq() {
         return iq;
