@@ -25,18 +25,22 @@
 
             <TextView
                 android:id="@+id/availableTalentLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_weight=".75"
-                android:text="Available Talent Points:" />
+                android:layout_weight=".8"
+                android:gravity="center"
+                android:text="Available Talent Points:"
+                android:textSize="21dp" />
 
 
             <TextView
                 android:id="@+id/availableTalentAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:layout_weight=".25"
+                android:gravity="center_horizontal|center_vertical"
                 android:text="10" />
         </LinearLayout>
 
@@ -47,31 +51,36 @@
 
             <TextView
                 android:id="@+id/talentIQLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="IQ" />
+                android:layout_gravity="center"
+                android:layout_weight=".6"
+                android:gravity="center"
+                android:text="IQ"
+                android:textSize="25dp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/minusIQ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
                 android:clickable="true"
                 app:srcCompat="@android:drawable/arrow_down_float" />
 
             <TextView
                 android:id="@+id/talentIQAmount"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:layout_weight=".2"
+                android:gravity="center"
                 android:text="0" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/addIQ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
                 android:clickable="true"
                 app:srcCompat="@android:drawable/arrow_up_float" />
 
@@ -84,31 +93,35 @@
 
             <TextView
                 android:id="@+id/talentLuckLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_weight=".6"
+                android:gravity="center"
                 android:text="Luck" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/minusLuck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
                 android:clickable="true"
                 app:srcCompat="@android:drawable/arrow_down_float" />
 
             <TextView
                 android:id="@+id/talentLuckAmount"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_weight=".2"
+                android:gravity="center"
                 android:text="0" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/addLuck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
                 android:clickable="true"
                 app:srcCompat="@android:drawable/arrow_up_float" />
 
@@ -121,31 +134,35 @@
 
             <TextView
                 android:id="@+id/talentWealthLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_weight=".6"
+                android:gravity="center"
                 android:text="Wealth" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/minusWealth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
                 android:clickable="true"
                 app:srcCompat="@android:drawable/arrow_down_float" />
 
             <TextView
                 android:id="@+id/talentWealthAmount"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_weight=".2"
+                android:gravity="center"
                 android:text="0" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/addWealth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
                 android:clickable="true"
                 app:srcCompat="@android:drawable/arrow_up_float" />
         </LinearLayout>
@@ -157,24 +174,28 @@
 
             <TextView
                 android:id="@+id/talentHealthLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_weight=".6"
+                android:gravity="center"
                 android:text="Health" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/minusHealth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
                 android:clickable="true"
                 app:srcCompat="@android:drawable/arrow_down_float" />
 
             <TextView
                 android:id="@+id/talentHealthAmount"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_weight=".2"
+                android:gravity="center"
                 android:text="0" />
 
 
@@ -182,7 +203,7 @@
                 android:id="@+id/addHealth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="center"
                 android:clickable="true"
                 app:srcCompat="@android:drawable/arrow_up_float" />
 
