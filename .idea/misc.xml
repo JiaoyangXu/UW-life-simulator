@@ -7,7 +7,9 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28919677734375" />
         <entry key="app/src/main/res/layout/border.xml" value="0.15353260869565216" />
         <entry key="app/src/main/res/layout/border2.xml" value="0.15353260869565216" />
-        <entry key="app/src/main/res/layout/event_list_page.xml" value="0.46746673583984377" />
+        <entry key="app/src/main/res/layout/event_list_page.xml" value="0.2611797134769004" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.15353260869565216" />
+        <entry key="app/src/main/res/layout/talent_selection.xml" value="0.37557698125424605" />
       </map>
     </option>
   </component>
