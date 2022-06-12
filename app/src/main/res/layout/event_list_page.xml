@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/border"
+            android:background="@drawable/border3"
             android:orientation="vertical">
 
             <TextView
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/border"
+            android:background="@drawable/border3"
             android:orientation="vertical">
 
             <TextView
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/border"
+            android:background="@drawable/border3"
             android:orientation="vertical">
 
             <TextView
@@ -91,7 +91,7 @@
             android:id="@+id/imageView3"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:background="@drawable/border2"
+            android:background="@drawable/border4"
             app:srcCompat="@android:drawable/ic_lock_silent_mode_off" />
 
         <TextView
@@ -99,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/border2"
+            android:background="@drawable/border4"
             android:text="TextView" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
@@ -108,13 +108,16 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:background="#F0F8FF"/>
+        android:background="@drawable/page"
+        android:paddingTop="40dp"
+        android:paddingBottom="40dp"
+        android:paddingLeft="170dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_weight="0"
         android:orientation="horizontal"
-        android:background="@drawable/border2">
+        android:background="@drawable/border4">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -175,7 +178,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/border"
+            android:background="@drawable/border3"
             android:text="Button" />
 
         <Button
@@ -183,7 +186,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/border"
+            android:background="@drawable/border3"
             android:text="Button" />
 
         <Button
@@ -191,7 +194,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/border"
+            android:background="@drawable/border3"
             android:text="Button" />
 
         <Button
@@ -199,7 +202,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/border"
+            android:background="@drawable/border3"
             android:text="Button" />
     </LinearLayout>
 
