@@ -102,16 +102,29 @@
             android:background="@drawable/border4"
             android:text="TextView" />
     </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal"
         android:background="@drawable/page"
-        android:paddingTop="40dp"
-        android:paddingBottom="40dp"
-        android:paddingLeft="170dp"/>
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="400dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/event_padding"
+            android:paddingBottom="@dimen/event_padding"
+            android:paddingStart="@dimen/event_padding"
+            android:paddingEnd="@dimen/event_padding"
+            android:background="@drawable/border5"/>
+
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
