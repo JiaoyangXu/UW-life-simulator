@@ -1,15 +1,17 @@
 package com.example.uw_life_simulator.model;
 
-public class UserAttribute {
+public class UserAttribute implements Subject {
     private int iq;
     private int luck;
     private int wealth;
     private int health;
     private int availablePoint;
+    private int pressure;
     private int totalPoint;
 
     // Constructor
     public UserAttribute() {
+        this.pressure = 0;
         this.iq = 0;
         this.luck = 0;
         this.wealth = 0;
@@ -24,13 +26,14 @@ public class UserAttribute {
     }
 
     // Constructor
-    public UserAttribute(int iq, int luck, int wealth, int health, int availablePoint, int totalPoint) {
+    public UserAttribute(int iq, int luck, int wealth, int health, int availablePoint, int pressure, int totalPoint) {
         this.iq = iq;
         this.luck = luck;
         this.wealth = wealth;
         this.health = health;
         this.availablePoint = availablePoint;
         this.totalPoint = totalPoint;
+        this.pressure = pressure;
     }
 
     @Override
@@ -40,6 +43,7 @@ public class UserAttribute {
                 ", luck=" + luck +
                 ", wealth=" + wealth +
                 ", health=" + health +
+                ", pressure=" + pressure +
                 '}';
     }
 
@@ -89,5 +93,14 @@ public class UserAttribute {
 
     public void setTotalPoint(int totalPoint) {
         this.totalPoint = totalPoint;
+    }
+
+    public int getPressure() { return pressure; }
+
+    public void setPressure(int pressure) {this.pressure = pressure; }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

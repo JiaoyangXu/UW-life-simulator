@@ -1,4 +1,4 @@
-package com.example.uw_life_simulator;
+package com.example.uw_life_simulator.model;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -6,6 +6,8 @@ import android.widget.TextView;
 import android.util.Log;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.uw_life_simulator.R;
 
 
 public class event_list_adapter extends RecyclerView.Adapter<event_list_adapter.ViewHolder> {

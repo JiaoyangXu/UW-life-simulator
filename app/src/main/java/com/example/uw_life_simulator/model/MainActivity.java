@@ -1,8 +1,9 @@
-package com.example.uw_life_simulator;
+package com.example.uw_life_simulator.model;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.uw_life_simulator.R;
 import com.example.uw_life_simulator.activities.EventActivity;
 import com.example.uw_life_simulator.activities.AttributeActivities;
 
