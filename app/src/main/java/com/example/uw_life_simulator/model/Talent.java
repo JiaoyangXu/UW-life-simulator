@@ -6,6 +6,7 @@ public class Talent {
     private int wealth;
     private int health;
     private int availablePoint;
+    private int totalPoint;
 
     // Constructor
     public Talent() {
@@ -14,10 +15,12 @@ public class Talent {
         this.wealth = 0;
         this.health = 0;
         this.availablePoint = 0;
+        this.totalPoint = 0;
     }
 
     public Talent(int availablePoint) {
         this.availablePoint = availablePoint;
+        this.totalPoint = availablePoint;
     }
 
     // Constructor
@@ -27,6 +30,7 @@ public class Talent {
         this.wealth = wealth;
         this.health = health;
         this.availablePoint = availablePoint;
+        this.totalPoint = availablePoint;
     }
 
     @Override
@@ -77,5 +81,13 @@ public class Talent {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public int getTotalPoint() {
+        return totalPoint;
+    }
+
+    public void setTotalPoint(int totalPoint) {
+        this.totalPoint = totalPoint;
     }
 }
