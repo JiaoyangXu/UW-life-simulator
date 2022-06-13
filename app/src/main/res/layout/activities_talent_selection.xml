@@ -206,7 +206,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="true"
-                app:srcCompat="@android:drawable/arrow_down_float" />
+                app:srcCompat="@android:drawable/arrow_down_float"
+                android:onClick="minusHealth"/>
 
             <TextView
                 android:id="@+id/talentHealthAmount"

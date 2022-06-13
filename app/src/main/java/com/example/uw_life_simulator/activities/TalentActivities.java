@@ -105,7 +105,7 @@ public class TalentActivities extends AppCompatActivity {
         hitAddButton(totalAvailablePoint, currentLuckPoint);
     }
 
-    // Increment Wealth if the addLuck button is hit
+    // Increment Wealth if the addWealth button is hit
     public void addWealth(View view) {
         // get available point
         TextView totalAvailablePoint = findViewById(R.id.availableTalentAmount);
@@ -114,13 +114,31 @@ public class TalentActivities extends AppCompatActivity {
         hitAddButton(totalAvailablePoint, currentWealthPoint);
     }
 
-    // decrease wealth if the minusLuck button is hit
+    // decrease wealth if the minusWealth button is hit
     public void minusWealth(View view) {
         // get available point
         TextView totalAvailablePoint = findViewById(R.id.availableTalentAmount);
         // get current point for Luck
         TextView currentWealthPoint = findViewById(R.id.talentWealthAmount);
         hitMinusButton(totalAvailablePoint, currentWealthPoint);
+    }
+
+    // Increment Health if the addHealth button is hit
+    public void addHealth(View view) {
+        // get available point
+        TextView totalAvailablePoint = findViewById(R.id.availableTalentAmount);
+        // get current point for IQ
+        TextView currentHealthPoint = findViewById(R.id.talentHealthAmount);
+        hitAddButton(totalAvailablePoint, currentHealthPoint);
+    }
+
+    // decrease wealth if the minusWealth button is hit
+    public void minusHealth(View view) {
+        // get available point
+        TextView totalAvailablePoint = findViewById(R.id.availableTalentAmount);
+        // get current point for Luck
+        TextView currentHealthPoint = findViewById(R.id.talentHealthAmount);
+        hitMinusButton(totalAvailablePoint, currentHealthPoint);
     }
 
 
