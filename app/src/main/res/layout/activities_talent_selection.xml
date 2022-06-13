@@ -160,7 +160,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="true"
-                app:srcCompat="@android:drawable/arrow_down_float" />
+                app:srcCompat="@android:drawable/arrow_down_float"
+                android:onClick="minusWealth"/>
 
             <TextView
                 android:id="@+id/talentWealthAmount"
@@ -179,9 +180,9 @@
                 android:layout_gravity="center"
                 android:layout_marginEnd="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
-
                 android:clickable="true"
-                app:srcCompat="@android:drawable/arrow_up_float" />
+                app:srcCompat="@android:drawable/arrow_up_float"
+                android:onClick="addWealth"/>
         </LinearLayout>
 
         <LinearLayout
@@ -226,7 +227,8 @@
                 android:layout_marginEnd="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:clickable="true"
-                app:srcCompat="@android:drawable/arrow_up_float" />
+                app:srcCompat="@android:drawable/arrow_up_float"
+                android:onClick="addHealth"/>
 
         </LinearLayout>
 

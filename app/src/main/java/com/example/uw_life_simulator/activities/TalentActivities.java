@@ -105,6 +105,25 @@ public class TalentActivities extends AppCompatActivity {
         hitAddButton(totalAvailablePoint, currentLuckPoint);
     }
 
+    // Increment Wealth if the addLuck button is hit
+    public void addWealth(View view) {
+        // get available point
+        TextView totalAvailablePoint = findViewById(R.id.availableTalentAmount);
+        // get current point for IQ
+        TextView currentWealthPoint = findViewById(R.id.talentWealthAmount);
+        hitAddButton(totalAvailablePoint, currentWealthPoint);
+    }
+
+    // decrease wealth if the minusLuck button is hit
+    public void minusWealth(View view) {
+        // get available point
+        TextView totalAvailablePoint = findViewById(R.id.availableTalentAmount);
+        // get current point for Luck
+        TextView currentWealthPoint = findViewById(R.id.talentWealthAmount);
+        hitMinusButton(totalAvailablePoint, currentWealthPoint);
+    }
+
+
 
 
 
