@@ -80,4 +80,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, TalentActivities.class);
         startActivity(intent);
     }
+    public void createEvent(View view) {
+        Intent intent = new Intent(MainActivity.this, EventActivity.class);
+        startActivity(intent);
+    }
 }

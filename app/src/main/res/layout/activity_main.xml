@@ -25,6 +25,7 @@
             android:layout_weight="1"
             android:backgroundTint="#e28086"
             android:text="LOAD"
+            android:onClick="createEvent"
             />
 
         <Button
