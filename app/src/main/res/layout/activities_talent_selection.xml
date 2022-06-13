@@ -66,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:clickable="true"
-                app:srcCompat="@android:drawable/arrow_down_float" />
+                app:srcCompat="@android:drawable/arrow_down_float"
+                android:onClick="minusIQ"/>
 
             <TextView
                 android:id="@+id/talentIQAmount"
@@ -86,7 +87,8 @@
                 android:layout_marginEnd="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:clickable="true"
-                app:srcCompat="@android:drawable/arrow_up_float" />
+                app:srcCompat="@android:drawable/arrow_up_float"
+                android:onClick="addIQ"/>
 
         </LinearLayout>
 
