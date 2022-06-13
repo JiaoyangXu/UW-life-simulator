@@ -3,7 +3,7 @@ package com.example.uw_life_simulator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TalentManager {
+public class BuffManager {
     private Player owner;
     private List<Integer> talents = new ArrayList<Integer>();
 
@@ -15,7 +15,7 @@ public class TalentManager {
 
 
     //Constructors
-    public TalentManager(Player owner)
+    public BuffManager(Player owner)
     {
         this.owner = owner;
     }
@@ -30,7 +30,7 @@ public class TalentManager {
      **/
     public void triggerAllTalents() {
         for(int id : talents) {
-            Factory.generateTalent(id).visit(owner);
+            Factory.generateBuff(id).visit(owner);
         }
     }
 
@@ -43,7 +43,7 @@ public class TalentManager {
     public void triggerTalent(int talentId){
         if(talents.contains(talentId))
         {
-            Factory.generateTalent(talentId).visit(owner);
+            Factory.generateBuff(talentId).visit(owner);
         }
     }
 

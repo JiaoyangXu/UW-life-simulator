@@ -1,11 +1,11 @@
 package com.example.uw_life_simulator;
 
-public class TalentGenerator {
-    public static Talent generateTalent(int talentId)
+public class BuffGenerator {
+    public static Buff generateBuff(int buffId)
     {
-        switch (talentId)
+        switch (buffId)
         {
-            case 0: return new TalentNull();
+            case 0: return new BuffNull();
 
             default: return null;
         }
@@ -15,9 +15,9 @@ public class TalentGenerator {
 /**
  * NULL talent which does nothing
  **/
-class TalentNull extends Talent {
+class BuffNull extends Buff {
     //Constructor
-    public TalentNull(){
+    public BuffNull(){
         this.description = "This is a null Talent\n";
         this.Id = 0;
     }

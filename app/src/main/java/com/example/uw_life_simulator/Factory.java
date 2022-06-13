@@ -20,9 +20,9 @@ public class Factory {
      * Input: int : talentId
      * Output: Talent : Generated talent
      **/
-    static public Talent generateTalent(int talentId) // Implementation needed
+    static public Buff generateBuff(int buffId) // Implementation needed
     {
-        return null;
+        return BuffGenerator.generateBuff(buffId);
     }
 
     /**

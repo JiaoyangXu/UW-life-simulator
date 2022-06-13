@@ -3,7 +3,7 @@ package com.example.uw_life_simulator;
 /**
  * general structure of Talents
  **/
-public abstract class Talent implements Visitor {
+public abstract class Buff implements Visitor {
     String description = "";
     int Id = 0;
 

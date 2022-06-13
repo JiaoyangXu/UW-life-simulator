@@ -1,7 +1,5 @@
 package com.example.uw_life_simulator;
 
-import android.graphics.CornerPathEffect;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +18,7 @@ public class Player { // Implementation needed
     private boolean employeed = false;
     private int resumeScore = 0;
     private int workTermScore = 0;
-    private TalentManager talentManager = new TalentManager(this);
+    private BuffManager buffManager = new BuffManager(this);
     private CourseManager courseManager = new CourseManager(this);
     //Math, CS, Econ, Languages, Science, Arts
     private List<Integer> sixMajorAbilities = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0,0));
@@ -53,7 +51,7 @@ public class Player { // Implementation needed
     public void setResumeScore(int n){ resumeScore = n;}
     public int getWorkTermScore(){ return workTermScore;}
     public void setWorkTermScore(int n){ workTermScore = n;}
-    public TalentManager getTalentManager(){ return talentManager; }
+    public BuffManager getTalentManager(){ return buffManager; }
     public void setSixMajorAbilities(int index, int val){ sixMajorAbilities.set(index, val); }
     public List<Integer> getSixMajorAbilities(){return sixMajorAbilities; }
 
@@ -74,6 +72,6 @@ public class Player { // Implementation needed
      * Input: Talent : talent
      * Output: void
      **/
-    public void accept(Talent talent){ talent.visit(this); }
+    public void accept(Buff buff){ buff.visit(this); }
 
 }
