@@ -71,16 +71,6 @@ public class TalentActivities extends AppCompatActivity {
 
     // Increment IQ if the addIQ button is hit
     public void addIQ(View view) {
-        /*
-        // get current IQ amount
-        TextView textView = findViewById(R.id.talentIQAmount);
-        String IQString = textView.getText().toString();
-        int IQAmount = Integer.parseInt(IQString);
-        // increment IQ amount
-        IQAmount++;
-        textView.setText(String.valueOf(IQAmount));
-        */
-        System.out.println("PLUS IQ reached");
         // get available point
         TextView totalAvailablePoint = findViewById(R.id.availableTalentAmount);
         // get current point for IQ
@@ -90,21 +80,31 @@ public class TalentActivities extends AppCompatActivity {
 
     // decrease IQ if the minusIQ button is hit
     public void minusIQ(View view) {
-        /*
-        // get current IQ amount
-        TextView textView = findViewById(R.id.talentIQAmount);
-        String IQString = textView.getText().toString();
-        int IQAmount = Integer.parseInt(IQString);
-        // decrease IQ amount
-        IQAmount = Math.max(--IQAmount,0);
-        textView.setText(String.valueOf(IQAmount));
-         */
         // get available point
         TextView totalAvailablePoint = findViewById(R.id.availableTalentAmount);
         // get current point for IQ
         TextView currentIQPoint = findViewById(R.id.talentIQAmount);
         hitMinusButton(totalAvailablePoint, currentIQPoint);
     }
+
+    // decrease Luck if the minusLuck button is hit
+    public void minusLuck(View view) {
+        // get available point
+        TextView totalAvailablePoint = findViewById(R.id.availableTalentAmount);
+        // get current point for Luck
+        TextView currentLuckPoint = findViewById(R.id.talentLuckAmount);
+        hitMinusButton(totalAvailablePoint, currentLuckPoint);
+    }
+
+    // Increment Luck if the addLuck button is hit
+    public void addLuck(View view) {
+        // get available point
+        TextView totalAvailablePoint = findViewById(R.id.availableTalentAmount);
+        // get current point for IQ
+        TextView currentLuckPoint = findViewById(R.id.talentLuckAmount);
+        hitAddButton(totalAvailablePoint, currentLuckPoint);
+    }
+
 
 
 
