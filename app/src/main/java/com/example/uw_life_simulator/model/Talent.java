@@ -24,13 +24,13 @@ public class Talent {
     }
 
     // Constructor
-    public Talent(int iq, int luck, int wealth, int health, int availablePoint) {
+    public Talent(int iq, int luck, int wealth, int health, int availablePoint, int totalPoint) {
         this.iq = iq;
         this.luck = luck;
         this.wealth = wealth;
         this.health = health;
         this.availablePoint = availablePoint;
-        this.totalPoint = availablePoint;
+        this.totalPoint = totalPoint;
     }
 
     @Override
