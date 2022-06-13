@@ -1,4 +1,5 @@
-package com.example.uw_life_simulator;
+package com.example.uw_life_simulator.activities;
+import com.example.uw_life_simulator.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;

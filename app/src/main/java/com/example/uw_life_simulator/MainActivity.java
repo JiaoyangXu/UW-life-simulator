@@ -3,8 +3,8 @@ package com.example.uw_life_simulator;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.uw_life_simulator.activities.EventActivity;
 import com.example.uw_life_simulator.activities.TalentActivities;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
