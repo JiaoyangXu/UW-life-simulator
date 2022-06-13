@@ -1,4 +1,4 @@
-package com.example.uw_life_simulator;
+package com.example.uw_life_simulator.model;
 
 /**
  * Event generator which generates events based on the eventId
@@ -31,7 +31,7 @@ class GameEventNull extends GameEvent{
      * Output: void
      **/
     @Override
-    public void visit(Player player) {
+    public void visit(Subject subject) {
         //doing nothing
     }
 }

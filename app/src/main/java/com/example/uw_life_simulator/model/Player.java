@@ -1,4 +1,4 @@
-package com.example.uw_life_simulator;
+package com.example.uw_life_simulator.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,12 +6,6 @@ import java.util.List;
 
 public class Player { // Implementation needed
     private String name = "";
-    private int money = 0;
-    private float gpa = 0;
-    private float pressure = 0;
-    private int iq = 0;
-    private int energy = 0;
-    private int luck = 0;
     private int programId = 0;
     private int numTerm = 2;
     private int numFailedCourses = 0;
@@ -22,23 +16,12 @@ public class Player { // Implementation needed
     private CourseManager courseManager = new CourseManager(this);
     //Math, CS, Econ, Languages, Science, Arts
     private List<Integer> sixMajorAbilities = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0,0));
+    private UserAttribute userAttribute = new UserAttribute();
 
 
     //Getter & Setters
     public String getName(){ return name;}
     public void setName(String n){ name = n;}
-    public int getMoney(){ return money;}
-    public void setMoney(int n){ money = n;}
-    public float getGpa(){ return gpa; }
-    public void setGpa(float n){ gpa = n; }
-    public float getPressure(){ return pressure; }
-    public void setPressure(float n){ pressure = n; }
-    public int getIq(){ return iq;}
-    public void setIq(int n){ iq = n;}
-    public int getEnergy(){ return energy;}
-    public void setEnergy(int n){ energy = n;}
-    public int getLuck(){ return luck;}
-    public void setLuck(int n){ luck = n;}
     public int getProgramId(){ return programId;}
     public void setProgramId(int n){ programId = n;}
     public int getNumTerm(){ return numTerm;}
@@ -54,6 +37,7 @@ public class Player { // Implementation needed
     public BuffManager getTalentManager(){ return buffManager; }
     public void setSixMajorAbilities(int index, int val){ sixMajorAbilities.set(index, val); }
     public List<Integer> getSixMajorAbilities(){return sixMajorAbilities; }
+    public UserAttribute getUserAttribute(){ return userAttribute; }
 
     /**
      * Accept GameEvents' impact
@@ -63,7 +47,7 @@ public class Player { // Implementation needed
      **/
     public void accept(GameEvent gameEvent)
     {
-        gameEvent.visit(this);
+        gameEvent.visit(userAttribute);
     }
 
     /**
@@ -72,6 +56,6 @@ public class Player { // Implementation needed
      * Input: Talent : talent
      * Output: void
      **/
-    public void accept(Buff buff){ buff.visit(this); }
+    public void accept(Buff buff){ buff.visit(userAttribute); }
 
 }

@@ -1,4 +1,4 @@
-package com.example.uw_life_simulator;
+package com.example.uw_life_simulator.model;
 
 /**
  * general structure of Talents

@@ -1,4 +1,4 @@
-package com.example.uw_life_simulator;
+package com.example.uw_life_simulator.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class BuffManager {
      **/
     public void triggerAllTalents() {
         for(int id : talents) {
-            Factory.generateBuff(id).visit(owner);
+            Factory.generateBuff(id).visit(owner.getUserAttribute());
         }
     }
 
@@ -43,7 +43,7 @@ public class BuffManager {
     public void triggerTalent(int talentId){
         if(talents.contains(talentId))
         {
-            Factory.generateBuff(talentId).visit(owner);
+            Factory.generateBuff(talentId).visit(owner.getUserAttribute());
         }
     }
 

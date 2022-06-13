@@ -1,4 +1,4 @@
-package com.example.uw_life_simulator;
+package com.example.uw_life_simulator.model;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.uw_life_simulator.R;
 import com.example.uw_life_simulator.databinding.FragmentSecondBinding;
 
 public class SecondFragment extends Fragment {

@@ -1,4 +1,4 @@
-package com.example.uw_life_simulator;
+package com.example.uw_life_simulator.model;
 
 public class BuffGenerator {
     public static Buff generateBuff(int buffId)
@@ -29,7 +29,7 @@ class BuffNull extends Buff {
      * Output: void
      **/
     @Override
-    public void visit(Player player) {
+    public void visit(Subject subject) {
         //doing nothing
     }
 };
