@@ -14,7 +14,7 @@
         android:theme="@style/Theme.UWLifeSimulator"
         tools:targetApi="31">
         <activity
-            android:name=".activities.TalentActivities"
+            android:name=".activities.AttributeActivities"
             android:exported="false" />
         <activity
             android:name=".activities.EventActivity"

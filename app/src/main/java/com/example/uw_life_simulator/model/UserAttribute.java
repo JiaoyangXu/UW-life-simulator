@@ -1,6 +1,6 @@
 package com.example.uw_life_simulator.model;
 
-public class Talent {
+public class UserAttribute {
     private int iq;
     private int luck;
     private int wealth;
@@ -9,7 +9,7 @@ public class Talent {
     private int totalPoint;
 
     // Constructor
-    public Talent() {
+    public UserAttribute() {
         this.iq = 0;
         this.luck = 0;
         this.wealth = 0;
@@ -18,13 +18,13 @@ public class Talent {
         this.totalPoint = 0;
     }
 
-    public Talent(int availablePoint) {
+    public UserAttribute(int availablePoint) {
         this.availablePoint = availablePoint;
         this.totalPoint = availablePoint;
     }
 
     // Constructor
-    public Talent(int iq, int luck, int wealth, int health, int availablePoint, int totalPoint) {
+    public UserAttribute(int iq, int luck, int wealth, int health, int availablePoint, int totalPoint) {
         this.iq = iq;
         this.luck = luck;
         this.wealth = wealth;

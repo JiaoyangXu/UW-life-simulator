@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.uw_life_simulator.activities.EventActivity;
-import com.example.uw_life_simulator.activities.TalentActivities;
+import com.example.uw_life_simulator.activities.AttributeActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createTalent(View view) {
-        Intent intent = new Intent(MainActivity.this, TalentActivities.class);
+        Intent intent = new Intent(MainActivity.this, AttributeActivities.class);
         startActivity(intent);
     }
     public void createEvent(View view) {

@@ -2,23 +2,19 @@ package com.example.uw_life_simulator.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.uw_life_simulator.MainActivity;
 import com.example.uw_life_simulator.R;
-import com.example.uw_life_simulator.model.Talent;
+import com.example.uw_life_simulator.model.UserAttribute;
 
-import org.w3c.dom.Text;
-
-public class TalentActivities extends AppCompatActivity {
-    Talent talent;
+public class AttributeActivities extends AppCompatActivity {
+    UserAttribute talent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        talent = new Talent(10);
+        talent = new UserAttribute(10);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activities_talent_selection);
     }
