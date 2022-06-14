@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
 import android.util.Log;
+import android.view.MotionEvent;
 
 public class EventActivity extends AppCompatActivity implements event_list_adapter.ItemClickListener {
 
@@ -43,6 +44,50 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     ArrayList<String> mEventset;
     //protected String[] mDataset;
 
+    public class RVClickHandler implements View.OnTouchListener {
+
+        private RecyclerView mRecyclerView;
+        private float mStartX;
+        private float mStartY;
+
+        public RVClickHandler(RecyclerView recyclerView) {
+            mRecyclerView = recyclerView;
+        }
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            boolean isConsumed = false;
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN: {
+                    mStartX = event.getX();
+                    mStartY = event.getY();
+                    break;
+                }
+                case MotionEvent.ACTION_UP: {
+                    float endX = event.getX();
+                    float endY = event.getY();
+                    if(detectClick(mStartX, mStartY, endX, endY)) {
+                        //Ideally it would never be called when a child View is clicked.
+                        //I am not so sure about this.
+                        View itemView = mRecyclerView.findChildViewUnder(endX, endY);
+                        if(itemView == null) {
+                            //RecyclerView clicked
+                            mRecyclerView.performClick();
+                            isConsumed = true;
+                        }
+                    }
+                    break;
+                }
+            }
+            return isConsumed;
+        }
+
+        private boolean detectClick(float startX, float startY, float endX, float endY) {
+            return Math.abs(startX-endX) < 3.0 && Math.abs(startY-endY) < 3.0;
+        }
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +98,24 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mAdapter = new event_list_adapter(mEventset);
         mAdapter.setClickListener(this);
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setOnClickListener(new View.OnClickListener() {
+        mRecyclerView.setOnTouchListener(new RVClickHandler(mRecyclerView));
+        /*mRecyclerView.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                Log.d(TAG, "clicked on recyclerview, generate new event");
+                String s = String.valueOf(mAdapter.getItemCount());
+                String event = "Event called in onClick." + s;
+                mAdapter.addEvent(event);
+                return false;
+            }
+        });*/
+        mRecyclerView.setOnClickListener((v) -> {
+            Log.d(TAG, "clicked on recyclerview, generate new event");
+            String s = String.valueOf(mAdapter.getItemCount());
+            String event = "Event called in onClick." + s;
+            mAdapter.addEvent(event);
+        });
+        /*mRecyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "clicked on recyclerview, generate new event");
@@ -61,7 +123,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 String event = "Event called in onClick." + s;
                 mAdapter.addEvent(event);
             }
-        });
+        });*/
     }
     @Override
     public void onItemClick(View view, int position) {

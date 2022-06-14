@@ -82,6 +82,7 @@ public class event_list_adapter extends RecyclerView.Adapter<event_list_adapter.
     }
     public void addEvent(String event){
         localEventSet.add(event);
+        notifyDataSetChanged();
     }
     public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
