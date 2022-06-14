@@ -9,13 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uw_life_simulator.R;
 import java.util.ArrayList;
+import android.content.Context;
 
 
 public class event_list_adapter extends RecyclerView.Adapter<event_list_adapter.ViewHolder> {
     private static final String TAG = "event_list_adapter";
     //private String[] localEventSet;
+    private LayoutInflater mInflater;
+    private ItemClickListener mClickListener;
     private ArrayList<String> localEventSet;
-
+    event_list_adapter(Context context, ArrayList<String> data) {
+        this.mInflater = LayoutInflater.from(context);
+        localEventSet = data;
+    }
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
@@ -76,5 +82,13 @@ public class event_list_adapter extends RecyclerView.Adapter<event_list_adapter.
     }
     public void addEvent(String event){
         localEventSet.add(event);
+    }
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
+
+    // parent activity will implement this method to respond to click events
+    public interface ItemClickListener {
+        void onItemClick(View view, int position);
     }
 }
