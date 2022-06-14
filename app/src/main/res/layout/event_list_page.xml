@@ -111,7 +111,7 @@
         android:background="@drawable/page"
         >
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/EventRecyclerView"
             android:layout_width="0dp"
             android:layout_height="400dp"
             android:layout_marginStart="50dp"
