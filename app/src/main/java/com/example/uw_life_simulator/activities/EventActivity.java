@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.widget.Button;
 
 public class EventActivity extends AppCompatActivity implements event_list_adapter.ItemClickListener {
 
@@ -109,11 +110,13 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 return false;
             }
         });*/
-        mRecyclerView.setOnClickListener((v) -> {
+        Button mNewEventButton = findViewById(R.id.Eventbutton);
+        mNewEventButton.setOnClickListener((v) -> {
             Log.d(TAG, "clicked on recyclerview, generate new event");
             String s = String.valueOf(mAdapter.getItemCount());
             String event = "Event called in onClick." + s;
             mAdapter.addEvent(event);
+            mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
         });
         /*mRecyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
