@@ -105,7 +105,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
                 Log.d(TAG, "clicked on recyclerview, generate new event");
                 String s = String.valueOf(mAdapter.getItemCount());
-                String event = "Event called in onClick." + s;
+                String event = "NewEvent called in onClick." + s;
                 mAdapter.addEvent(event);
                 return false;
             }
@@ -114,7 +114,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mNewEventButton.setOnClickListener((v) -> {
             Log.d(TAG, "clicked on recyclerview, generate new event");
             String s = String.valueOf(mAdapter.getItemCount());
-            String event = "Event called in onClick." + s;
+            String event = "NewEvent called in onClick." + s;
             mAdapter.addEvent(event);
             mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
         });
@@ -123,7 +123,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             public void onClick(View v) {
                 Log.d(TAG, "clicked on recyclerview, generate new event");
                 String s = String.valueOf(mAdapter.getItemCount());
-                String event = "Event called in onClick." + s;
+                String event = "NewEvent called in onClick." + s;
                 mAdapter.addEvent(event);
             }
         });*/
@@ -132,7 +132,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     public void onItemClick(View view, int position) {
         Log.d(TAG, "onItemClick called");
         String s = String.valueOf(mAdapter.getItemCount());
-        String event = "Event called in onItemClick" + s;
+        String event = "NewEvent called in onItemClick" + s;
         addEvent2(event);
     }
 

@@ -73,7 +73,7 @@ public class EventFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String s = String.valueOf(mAdapter.getItemCount());
-                String event = "Event " + s;
+                String event = "NewEvent " + s;
                 mAdapter.addEvent(event);
             }
         });
