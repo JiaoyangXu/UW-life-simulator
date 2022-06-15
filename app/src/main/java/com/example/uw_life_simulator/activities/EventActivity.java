@@ -15,23 +15,16 @@ import java.util.ArrayList;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Button;
+import com.example.uw_life_simulator.model.*;
 
 public class EventActivity extends AppCompatActivity implements event_list_adapter.ItemClickListener {
 
-    /*public static final String TAG = "EventActivity";
-    EventFragment mFragment;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.event_list_page);
-        if (savedInstanceState == null) {
-            mFragment = new EventFragment();
-        }
 
-    }*/
     private static final String TAG = "EventActivity";
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private static final int EVENTSET_COUNT = 0;
+    Player mPlayer;
+    NewEvent mNewEvent;
 
     private enum LayoutManagerType {
         LINEAR_LAYOUT_MANAGER
@@ -97,6 +90,8 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mRecyclerView = findViewById(R.id.EventRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapter = new event_list_adapter(mEventset);
+        mPlayer = new Player();
+        mNewEvent = new NewEvent();
         mAdapter.setClickListener(this);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setOnTouchListener(new RVClickHandler(mRecyclerView));
@@ -115,6 +110,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             Log.d(TAG, "clicked on recyclerview, generate new event");
             String s = String.valueOf(mAdapter.getItemCount());
             String event = "NewEvent called in onClick." + s;
+            event = mNewEvent.generateNewEvent(mPlayer,mAdapter.getItemCount());
             mAdapter.addEvent(event);
             mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
         });
