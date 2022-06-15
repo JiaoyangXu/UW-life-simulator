@@ -9,7 +9,7 @@ public class Player { // Implementation needed
     private int programId = 0;
     private int numTerm = 2;
     private int numFailedCourses = 0;
-    private boolean employeed = false;
+    private boolean employed = false;
     private int resumeScore = 0;
     private int workTermScore = 0;
     private BuffManager buffManager = new BuffManager(this);
@@ -28,8 +28,8 @@ public class Player { // Implementation needed
     public void setNumTerm(int n){ numTerm = n;}
     public int getNumFailedCourses(){ return numFailedCourses;}
     public void setNumFailedCourses(int n){ numFailedCourses = n;}
-    public boolean getEmployeed(){ return employeed; }
-    public void setEmployeed(boolean n){ employeed = n; }
+    public boolean getEmployed(){ return employed; }
+    public void setEmployed(boolean n){ employed = n; }
     public int getResumeScore(){ return resumeScore;}
     public void setResumeScore(int n){ resumeScore = n;}
     public int getWorkTermScore(){ return workTermScore;}
