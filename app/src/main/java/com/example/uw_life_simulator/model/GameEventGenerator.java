@@ -1,7 +1,7 @@
 package com.example.uw_life_simulator.model;
 
 /**
- * Event generator which generates events based on the eventId
+ * NewEvent generator which generates events based on the eventId
  **/
 public class GameEventGenerator {
     public static GameEvent generateEvent(int eventId)
@@ -29,7 +29,7 @@ class GameEventNull extends GameEvent{
     }
 
     /**
-     * Event's effect on the player
+     * NewEvent's effect on the player
      *
      * Input: UserAttribute : attribute
      * Output: void

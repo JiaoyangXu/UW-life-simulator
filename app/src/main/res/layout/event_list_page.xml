@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -24,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_weight="0"
-                android:text="TextView" />
+                android:text="Pressure:"/>
 
             <TextView
                 android:id="@+id/textView10"
@@ -32,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="TextView" />
+                android:text="Pressure" />
         </LinearLayout>
 
         <LinearLayout
@@ -47,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_weight="0"
-                android:text="TextView" />
+                android:text="Budget:"/>
 
             <TextView
                 android:id="@+id/textView12"
@@ -55,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="TextView" />
+                android:text="Budget" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_weight="0"
-                android:text="TextView" />
+                android:text="GPA:"/>
 
             <TextView
                 android:id="@+id/textView14"
@@ -78,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="TextView" />
+                android:text="GPA" />
         </LinearLayout>
     </LinearLayout>
 
@@ -103,29 +104,48 @@
             android:background="@drawable/border4"
             android:text="TextView" />
     </LinearLayout>
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:background="@drawable/page"
-        >
+        android:background="#385c8c"
+        android:orientation="vertical">
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/EventRecyclerView"
             android:layout_width="0dp"
-            android:layout_height="400dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
+            android:layout_height="0dp"
+            android:background="@drawable/border5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
+            app:layout_constraintHeight_percent="0.8"
+            app:layout_constraintWidth_percent="0.8"
+            app:layout_constraintBottom_toTopOf="@id/Eventbutton"
             android:paddingTop="@dimen/event_padding"
             android:paddingBottom="@dimen/event_padding"
             android:paddingStart="@dimen/event_padding"
-            android:paddingEnd="@dimen/event_padding"
-            android:background="@drawable/border5"/>
+            android:paddingEnd="@dimen/event_padding"/>
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/Eventbutton"
+            android:background="@drawable/round_button_responsive"
+            app:cornerRadius="500dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/EventRecyclerView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text=" NEW EVENT "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHeight_percent="0.12"
+            app:layout_constraintWidth_percent="0.3"  />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -193,7 +213,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/border3"
-            android:text="Button" />
+            android:text="PROFILE" />
 
         <Button
             android:id="@+id/button2"
@@ -201,7 +221,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/border3"
-            android:text="Button" />
+            android:text="ACTION" />
 
         <Button
             android:id="@+id/button3"
@@ -209,7 +229,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/border3"
-            android:text="Button" />
+            android:text="QUIT" />
 
         <Button
             android:id="@+id/button4"
@@ -217,7 +237,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/border3"
-            android:text="Button" />
+            android:text="SETTINGS" />
     </LinearLayout>
 
 </LinearLayout>

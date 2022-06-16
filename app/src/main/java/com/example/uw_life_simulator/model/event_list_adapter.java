@@ -8,12 +8,20 @@ import android.util.Log;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uw_life_simulator.R;
+import java.util.ArrayList;
+import android.content.Context;
 
 
 public class event_list_adapter extends RecyclerView.Adapter<event_list_adapter.ViewHolder> {
     private static final String TAG = "event_list_adapter";
-    private String[] localDataSet;
-
+    //private String[] localEventSet;
+    private LayoutInflater mInflater;
+    private ItemClickListener mClickListener;
+    private ArrayList<String> localEventSet;
+    event_list_adapter(Context context, ArrayList<String> data) {
+        this.mInflater = LayoutInflater.from(context);
+        localEventSet = data;
+    }
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
@@ -41,11 +49,11 @@ public class event_list_adapter extends RecyclerView.Adapter<event_list_adapter.
     /**
      * Initialize the dataset of the Adapter.
      *
-     * @param dataSet String[] containing the data to populate views to be used
+     * @param eventSet String[] containing the data to populate views to be used
      * by RecyclerView.
      */
-    public event_list_adapter(String[] dataSet) {
-        localDataSet = dataSet;
+    public event_list_adapter(ArrayList<String> eventSet) {
+        localEventSet = eventSet;
     }
 
     // Create new views (invoked by the layout manager)
@@ -64,12 +72,24 @@ public class event_list_adapter extends RecyclerView.Adapter<event_list_adapter.
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getTextView().setText(localDataSet[position]);
+        viewHolder.getTextView().setText(localEventSet.get(position));
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return localDataSet.length;
+        return localEventSet.size();
+    }
+    public void addEvent(String event){
+        localEventSet.add(event);
+        notifyDataSetChanged();
+    }
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
+
+    // parent activity will implement this method to respond to click events
+    public interface ItemClickListener {
+        void onItemClick(View view, int position);
     }
 }

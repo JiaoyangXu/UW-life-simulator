@@ -2,7 +2,7 @@ package com.example.uw_life_simulator.model;
 
 public class Factory {
     /**
-     * Event generator which generates events based on the eventId
+     * NewEvent generator which generates events based on the eventId
      * Events are implemented in GameEventGenerator.Java
      *
      * Input: int : eventId
