@@ -17,7 +17,7 @@ public class Player { // Implementation needed
     //Math, CS, Econ, Languages, Science, Arts
     private List<Integer> sixMajorAbilities = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0,0));
     private UserAttribute userAttribute = new UserAttribute();
-
+    private List<String> Classtaken = new ArrayList<>();
 
     //Getter & Setters
     public String getName(){ return name;}
@@ -38,7 +38,7 @@ public class Player { // Implementation needed
     public void setSixMajorAbilities(int index, int val){ sixMajorAbilities.set(index, val); }
     public List<Integer> getSixMajorAbilities(){return sixMajorAbilities; }
     public UserAttribute getUserAttribute(){ return userAttribute; }
-
+    public List<String> getClasstaken(){return Classtaken; }
     /**
      * Accept GameEvents' impact
      *
