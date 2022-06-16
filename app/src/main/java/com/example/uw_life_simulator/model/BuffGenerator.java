@@ -6,6 +6,8 @@ public class BuffGenerator {
         switch (buffId)
         {
             case 0: return new BuffNull();
+            case 1: return new BuffIQ();
+            case 2: return new BuffIQ2();
 
             default: return null;
         }
@@ -13,7 +15,7 @@ public class BuffGenerator {
 };
 
 /**
- * NULL talent which does nothing
+ * NULL buff which does nothing
  **/
 class BuffNull extends Buff {
     //Constructor
@@ -23,15 +25,65 @@ class BuffNull extends Buff {
     }
 
     /**
-     * Talent's effect on the player
+     * Buff's effect on the player
      *
-     * Input: Player : player
+     * Input: UserAttribute : attribute
      * Output: void
      **/
     @Override
-    public void visit(Subject subject) {
+    public void visit(UserAttribute attribute) {
         //doing nothing
     }
 };
+
+/**
+ * BuffID: 1
+ * Effect: iq+1
+ */
+class BuffIQ extends Buff {
+    //Constructor
+    public BuffIQ(){
+        this.description = "You figured out a better way for yourself " +
+                "to understand the course content\n";
+        this.Id = 1;
+    }
+
+    /**
+     * Buff's effect on the player(iq + 1)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(UserAttribute attribute) {
+        attribute.setIq(attribute.getIq() + 1);
+    }
+};
+
+/**
+ * BuffID: 2
+ * Effect: iq-1
+ */
+class BuffIQ2 extends Buff {
+    //Constructor
+    public BuffIQ2(){
+        this.description = "You figured out a new way for yourself " +
+                "to understand the course content, but it seems is not working as good" +
+                "as the previous one...\n";
+        this.Id = 2;
+    }
+
+    /**
+     * Buff's effect on the player(iq - 1)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(UserAttribute attribute) {
+        attribute.setIq(attribute.getIq() - 1);
+    }
+};
+
 
 
