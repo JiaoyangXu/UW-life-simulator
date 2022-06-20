@@ -3,6 +3,7 @@
 ## Finished
 - [X] Talent Selection - Conrad, Jason
 - [X] Vistor and Factory Design Pattern - Hunter
+- [X] Backend Code main structure - Hunter
 
 ## TO-DO For Demo
 - [ ] Entrance Page (New/Load)  (90% done)  - Karen

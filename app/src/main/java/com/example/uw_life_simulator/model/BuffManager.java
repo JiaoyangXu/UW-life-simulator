@@ -5,13 +5,14 @@ import java.util.List;
 
 public class BuffManager {
     private Player owner;
-    private List<Integer> talents = new ArrayList<Integer>();
+    private List<Integer> buffs = new ArrayList<Integer>();
+
 
 
     // Getter & Setters
-    public List<Integer> getTalent(){ return talents; }
-    public void setTalent(List<Integer> n){ talents = n; }
-    public void insertTalent(Integer talentId){ talents.add(talentId); }
+    public List<Integer> getBuffs(){ return buffs; }
+    public void setTalent(List<Integer> n){ buffs = n; }
+    public void insertTalent(Integer talentId){ buffs.add(talentId); }
 
 
     //Constructors
@@ -29,7 +30,7 @@ public class BuffManager {
      * Output: void
      **/
     public void triggerAllTalents() {
-        for(int id : talents) {
+        for(int id : buffs) {
             Factory.generateBuff(id).visit(owner.getUserAttribute());
         }
     }
@@ -41,7 +42,7 @@ public class BuffManager {
      * Output: void
      **/
     public void triggerTalent(int talentId){
-        if(talents.contains(talentId))
+        if(buffs.contains(talentId))
         {
             Factory.generateBuff(talentId).visit(owner.getUserAttribute());
         }

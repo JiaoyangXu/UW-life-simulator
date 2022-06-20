@@ -11,8 +11,14 @@ public class Player { // Implementation needed
 
     private BuffManager buffManager = new BuffManager(this);
     private CourseManager courseManager = new CourseManager(this);
+<<<<<<< HEAD
+=======
+    //Math, CS, Econ, Languages, Science, Arts
+    private List<Integer> sixMajorAbilities = new ArrayList<
+            Integer>(Arrays.asList(0,0,0,0,0,0));
+>>>>>>> 8d60a2696d5f4a7bb2484d05df2bc48de8175f1c
     private UserAttribute userAttribute = new UserAttribute();
-
+    private List<String> Classtaken = new ArrayList<>();
 
     //Getter & Setters
     public String getName(){ return name;}
@@ -23,7 +29,8 @@ public class Player { // Implementation needed
     public void setNumTerm(int n){ numTerm = n;}
     public BuffManager getTalentManager(){ return buffManager; }
     public UserAttribute getUserAttribute(){ return userAttribute; }
-
+    public List<String> getClasstaken(){return Classtaken; }
+    public CourseManager getCourseManager(){return courseManager; }
     /**
      * Accept GameEvents' impact
      *
