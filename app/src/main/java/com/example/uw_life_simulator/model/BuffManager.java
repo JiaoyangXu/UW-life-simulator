@@ -11,8 +11,8 @@ public class BuffManager {
 
     // Getter & Setters
     public List<Integer> getBuffs(){ return buffs; }
-    public void setTalent(List<Integer> n){ buffs = n; }
-    public void insertTalent(Integer talentId){ buffs.add(talentId); }
+    public void setBuffs(List<Integer> n){ buffs = n; }
+    public void insertBuff(Integer talentId){ buffs.add(talentId); }
 
 
     //Constructors
