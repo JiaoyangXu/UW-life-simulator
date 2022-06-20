@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.uw_life_simulator.R;
 
+import java.util.List;
+
 public class Summarypage extends AppCompatActivity {
     private String state = null;
     private Player play = null;
@@ -18,6 +20,7 @@ public class Summarypage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(state == "study") {
+            List<Integer> list = this.play.getCourseManager().getCurrentCourses();
 
             setContentView(R.layout.summary_page_study);
         }
