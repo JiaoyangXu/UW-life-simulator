@@ -1,5 +1,9 @@
 package com.example.uw_life_simulator.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class UserAttribute implements Subject {
     private int iq;
     private int luck;
@@ -8,6 +12,14 @@ public class UserAttribute implements Subject {
     private int availablePoint;
     private int pressure;
     private int totalPoint;
+
+    private int numFailedCourses = 0;
+    private boolean employed = false;
+    private int resumeScore = 0;
+    private int workTermScore = 0;
+
+    //Math, CS, Econ, Languages, Science, Arts
+    private List<Integer> sixMajorAbilities = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0,0));
 
     // Constructor
     public UserAttribute() {
@@ -98,6 +110,26 @@ public class UserAttribute implements Subject {
     public int getPressure() { return pressure; }
 
     public void setPressure(int pressure) {this.pressure = pressure; }
+
+    public int getNumFailedCourses(){ return numFailedCourses;}
+
+    public void setNumFailedCourses(int n){ numFailedCourses = n;}
+
+    public boolean getEmployed(){ return employed; }
+
+    public void setEmployed(boolean n){ employed = n; }
+
+    public int getResumeScore(){ return resumeScore;}
+
+    public void setResumeScore(int n){ resumeScore = n;}
+
+    public int getWorkTermScore(){ return workTermScore;}
+
+    public void setWorkTermScore(int n){ workTermScore = n;}
+
+    public void setSixMajorAbilities(int index, int val){ sixMajorAbilities.set(index, val); }
+
+    public List<Integer> getSixMajorAbilities(){return sixMajorAbilities; }
 
     @Override
     public void accept(Visitor visitor) {
