@@ -30,63 +30,69 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintWidth_percent="0.8"
             >
+
             <LinearLayout
+                android:id="@+id/course_layout_1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight=".1">
+                android:layout_weight=".1"
+                android:orientation="horizontal">
+
                 <CheckBox
                     android:id="@+id/checkbox_meat1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
                     android:layout_gravity="center"
+                    android:layout_weight=".25"
                     android:text="CS100" />
 
                 <TextView
                     android:id="@+id/textView1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight=".7"
                     android:gravity="center"
-                    android:layout_gravity="center"
                     android:text="TextView" />
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_weight=".05">
-                </LinearLayout>
+                    android:layout_weight=".05"
+                    android:orientation="horizontal"></LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/course_layout_2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:orientation="horizontal"
-                android:layout_weight=".1">
+                android:layout_weight=".1"
+                android:orientation="horizontal">
+
                 <CheckBox
                     android:id="@+id/checkbox_meat2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".25"
                     android:layout_gravity="center"
+                    android:layout_weight=".25"
                     android:text="CS100" />
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight=".7"
                     android:gravity="center"
-                    android:layout_gravity="center"
                     android:text="TextView" />
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_weight=".05">
-                </LinearLayout>
+                    android:layout_weight=".05"
+                    android:orientation="horizontal"></LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/course_layout_3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
@@ -115,6 +121,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/course_layout_4"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
@@ -143,6 +150,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/course_layout_5"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
@@ -171,6 +179,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/course_layout_6"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
@@ -199,6 +208,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/course_layout_7"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
@@ -227,6 +237,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/course_layout_8"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
@@ -255,6 +266,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/course_layout_9"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
@@ -283,6 +295,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/course_layout_10"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
