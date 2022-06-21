@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.uw_life_simulator.R;
+
 public class CourseSelectionActivity extends AppCompatActivity {
 
     @Override
