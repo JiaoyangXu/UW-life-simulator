@@ -14,7 +14,7 @@
         android:theme="@style/Theme.UWLifeSimulator"
         tools:targetApi="31">
         <activity
-            android:name=".CourseSelectionActivity"
+            android:name=".activities.CourseSelectionActivity"
             android:exported="false" />
         <activity
             android:name=".activities.AttributeActivities"

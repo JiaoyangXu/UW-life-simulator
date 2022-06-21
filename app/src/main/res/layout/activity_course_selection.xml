@@ -25,15 +25,51 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:background="@drawable/border6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintWidth_percent="0.8">
+            app:layout_constraintWidth_percent="0.8"
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="vertical"
                 android:layout_weight=".25">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    android:layout_weight=".35">
+                    <CheckBox
+                        android:id="@+id/checkbox_meat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".25"
+                        android:layout_gravity="center"
+                        android:text="CS100" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text="TextView" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_weight=".05">
+                    </LinearLayout>
+                </LinearLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".65">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,6 +77,10 @@
                 android:orientation="vertical"
                 android:layout_weight=".25">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"></LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,6 +88,10 @@
                 android:orientation="vertical"
                 android:layout_weight=".25">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"></LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,6 +99,10 @@
                 android:orientation="vertical"
                 android:layout_weight=".25">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"></LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
@@ -66,5 +114,9 @@
         android:orientation="vertical"
         android:layout_weight=".2">
 
+        <CheckBox android:id="@+id/checkbox_cheese"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="def" />
     </LinearLayout>
 </LinearLayout>
