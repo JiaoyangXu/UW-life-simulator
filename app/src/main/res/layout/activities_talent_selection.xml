@@ -31,7 +31,8 @@
                 android:layout_weight=".85"
                 android:gravity="center"
                 android:text="Available Talent Points:"
-                android:textSize="21dp" />
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
 
             <TextView
@@ -42,7 +43,8 @@
                 android:layout_weight=".15"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="10"
-                android:textSize="30dp"/>
+                android:textSize="34sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,7 +60,8 @@
                 android:layout_weight=".6"
                 android:gravity="center"
                 android:text="IQ"
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/minusIQ"
@@ -107,7 +110,8 @@
                 android:layout_weight=".6"
                 android:gravity="center"
                 android:text="Luck"
-                android:textSize="25dp"/>
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/minusLuck"
@@ -156,7 +160,8 @@
                 android:layout_weight=".6"
                 android:gravity="center"
                 android:text="Wealth"
-                android:textSize="25dp"/>
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/minusWealth"
@@ -204,7 +209,8 @@
                 android:layout_weight=".6"
                 android:gravity="center"
                 android:text="Health"
-                android:textSize="25dp"/>
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/minusHealth"
@@ -249,6 +255,6 @@
             android:backgroundTint="#385c8c"
             android:textColor="#ffffff"
             android:gravity="center"
-            android:text="Button" />
+            android:text="Confirm" />
     </LinearLayout>
 </LinearLayout>

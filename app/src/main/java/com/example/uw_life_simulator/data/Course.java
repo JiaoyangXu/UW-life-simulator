@@ -22,6 +22,7 @@ public class Course {
     @ColumnInfo(name = "usefulness")
     public int usefulness;
 
+
     public Course(int courseID, String courseCode, String courseName, int difficulty, int usefulness) {
         this.courseID = courseID;
         this.courseCode = courseCode;
