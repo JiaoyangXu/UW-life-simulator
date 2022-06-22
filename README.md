@@ -11,6 +11,7 @@
 - [ ] Course Selection  - database: Conrad, interaction: Jason
 - [ ] Random Event Page (a class of different possible events, pop up) - Echo
 - [ ] Summary Page - Robert
+- [ ] Player Info Database - Conrad
 
 ## TO-DO For Final Presentation
 - [ ] WaterlooWorks (Database ⇔ Backend Code ⇔ GUI)
