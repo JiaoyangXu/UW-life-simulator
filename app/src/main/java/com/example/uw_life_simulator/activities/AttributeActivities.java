@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.uw_life_simulator.R;
+import com.example.uw_life_simulator.mapper.CourseMapper;
+import com.example.uw_life_simulator.model.Course;
+import com.example.uw_life_simulator.model.MainActivity;
 import com.example.uw_life_simulator.model.UserAttribute;
 
 public class AttributeActivities extends AppCompatActivity {
@@ -17,6 +20,8 @@ public class AttributeActivities extends AppCompatActivity {
         talent = new UserAttribute(10);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activities_talent_selection);
+        CourseMapper courseMapper = new CourseMapper(AttributeActivities.this);
+        courseMapper.initializeCourseList();
     }
 
     // update current points we have, parameter
