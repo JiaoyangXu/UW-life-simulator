@@ -13,6 +13,9 @@ public interface CourseDao {
     @Query("SELECT * FROM course")
     List<Course> getAll();
 
+    @Query("SELECT code FROM course")
+    List<String> getCourseCode();
+
     @Insert
     void insertAll(Course course);
 }

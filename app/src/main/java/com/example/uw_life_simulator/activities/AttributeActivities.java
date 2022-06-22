@@ -21,33 +21,20 @@ import java.util.UUID;
 public class AttributeActivities extends AppCompatActivity {
     UserAttribute talent;
 
-    private void database_test() {
-        CourseDatabase db = Room.databaseBuilder(getApplicationContext(),
-                CourseDatabase.class, "Courses").allowMainThreadQueries().build();
-        CourseDao courseDao = db.courseDao();
-
-        UUID uuid = UUID.randomUUID();
-
-        //Course course = new Course(uuid.hashCode(), "CS136", "C",100,100);
-        //courseDao.insertAll(course);
-
-        List<Course> courses = courseDao.getAll();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         talent = new UserAttribute(10);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activities_talent_selection);
-        database_test();
-
     }
 
-    // update current points we have, parameter
-    // increaseOrDecrease = 0 when increase point,
-    // increaseOrDecrease = 1 when decrease point
-    // this function does not check for the validity of input, it assumes
-    // the button click is valid
+    /** update current points we have, parameter
+     increaseOrDecrease = 0 when increase point,
+     increaseOrDecrease = 1 when decrease point
+     this function does not check for the validity of input, it assumes
+     the button click is valid
+     **/
     private void updatePoint(int increaseOrDecrease, TextView textView1, TextView textView2) {
         int availablePoint = Integer.parseInt(textView1.getText().toString());
         int currentPoint = Integer.parseInt(textView2.getText().toString());
@@ -61,9 +48,10 @@ public class AttributeActivities extends AppCompatActivity {
             textView2.setText(String.valueOf(++currentPoint));
         }
     }
-
-    // increase available point by 1 (when the minus button is hit)
-    // this function checks for the validity of input
+    /**
+     increase available point by 1 (when the minus button is hit)
+     this function checks for the validity of input
+     **/
     private void hitMinusButton(TextView totalAvailablePoint, TextView totalCurrentPoint) {
         int availablePoint = Integer.parseInt(totalAvailablePoint.getText().toString());
         int currentPoint = Integer.parseInt(totalCurrentPoint.getText().toString());
