@@ -35,8 +35,14 @@ public class CourseSelectionActivity extends AppCompatActivity {
             deleteAllCourses(courseDao);
         }
 
+        if (courseDao.getCourseCode().size() < 19) {
+            initializeDbOption = true;
+        }
+
         if (initializeDbOption == true) {
             initializeAll(db);
+            initializeDbOption = false;
+
         }
 
         initialize_UI(db);
@@ -221,6 +227,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
     private void displayCourseCode(List<CheckBox> checkBoxes, CourseDao courseDao) {
         List<String> courses = courseDao.getCourseCode();
         int checkboxId = 0;
+
         for (CheckBox checkBox : checkBoxes) {
             String course = courses.get(checkboxId);
             checkBox.setText(course);
