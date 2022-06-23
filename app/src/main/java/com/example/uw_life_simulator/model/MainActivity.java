@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.uw_life_simulator.R;
+import com.example.uw_life_simulator.Service.DbCleanService;
 import com.example.uw_life_simulator.activities.CourseSelectionActivity;
 import com.example.uw_life_simulator.activities.EventActivity;
 import com.example.uw_life_simulator.activities.AttributeActivities;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         });*/
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -91,5 +93,11 @@ public class MainActivity extends AppCompatActivity {
     public void selectCourse(View view) {
         Intent intent = new Intent(MainActivity.this, CourseSelectionActivity.class);
         startActivity(intent);
+    }
+
+    public void quitApp(View view) {
+        DbCleanService dbCleanService = new DbCleanService(getApplicationContext());
+        dbCleanService.cleanDb();
+        //finish();
     }
 }

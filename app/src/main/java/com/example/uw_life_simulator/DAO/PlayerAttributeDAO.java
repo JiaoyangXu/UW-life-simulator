@@ -13,4 +13,7 @@ import java.util.List;
 public interface PlayerAttributeDAO {
     @Insert
     void insertAll(PlayerAttribute playerAttribute);
+
+    @Query("DELETE FROM PlayerAttribute")
+    void deleteAll();
 }
