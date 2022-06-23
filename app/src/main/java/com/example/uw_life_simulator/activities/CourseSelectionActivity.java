@@ -5,6 +5,7 @@ import androidx.room.Room;
 
 import android.os.Bundle;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import com.example.uw_life_simulator.DAO.CourseDao;
 import com.example.uw_life_simulator.Database.CourseDatabase;
@@ -39,7 +40,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
         }
 
         initialize_UI(db);
-
+        initializeCourseInfo(courseDao);
 
 
     }
@@ -52,6 +53,45 @@ public class CourseSelectionActivity extends AppCompatActivity {
 
         // Insert courses to db
         insertListOfCourses(courseDao, courses);
+
+    }
+
+    private void initializeCourseInfo(CourseDao courseDao) {
+        ArrayList<String> allCourseInfo = new ArrayList<>();
+        List<Course> courses = courseDao.getAll();
+
+        int courseCounter = 0;
+
+        for (Course course : courses) {
+            String courseInfo = "Course Name: "
+                    + course.getCourseName() + " Difficulty: "
+                    + course.getDifficulty() + " Usefulness: "
+                    + course.getUsefulness();
+            allCourseInfo.add(courseInfo);
+            courseCounter++;
+        }
+
+        TextView v1 = findViewById(R.id.textView1);
+        TextView v2 = findViewById(R.id.textView2);
+        TextView v3 = findViewById(R.id.textView3);
+        TextView v4 = findViewById(R.id.textView4);
+        TextView v5 = findViewById(R.id.textView5);
+        TextView v6 = findViewById(R.id.textView6);
+        List<TextView> textViews = new ArrayList<>();
+
+        textViews.add(v1);
+        textViews.add(v2);
+        textViews.add(v3);
+        textViews.add(v4);
+        textViews.add(v5);
+        textViews.add(v6);
+
+        courseCounter = 0;
+
+        for (TextView textView : textViews) {
+            textView.setText(allCourseInfo.get(courseCounter));
+            courseCounter++;
+        }
 
     }
     private void initialize_UI(CourseDatabase db) {
@@ -74,7 +114,6 @@ public class CourseSelectionActivity extends AppCompatActivity {
         checkBoxes.add(c6);
 
         displayCourseCode(checkBoxes,courseDao);
-
     }
 
 
