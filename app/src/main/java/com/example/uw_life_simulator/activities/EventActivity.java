@@ -12,10 +12,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
+import java.util.List;
+
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Button;
 import com.example.uw_life_simulator.model.*;
+import android.widget.TextView;
+import java.io.*;
+
+// Database import:
+import androidx.room.AutoMigration;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+
+import com.example.uw_life_simulator.DAO.PlayerAttributeDAO;
+import com.example.uw_life_simulator.data.PlayerAttribute;
+import com.example.uw_life_simulator.Database.PlayerAttributeDatabase;
 
 public class EventActivity extends AppCompatActivity implements event_list_adapter.ItemClickListener {
 
@@ -95,6 +109,16 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mAdapter.setClickListener(this);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setOnTouchListener(new RVClickHandler(mRecyclerView));
+        PlayerAttributeDatabase db = Room.databaseBuilder(getApplicationContext(),
+                PlayerAttributeDatabase.class, "PlayerAttributes").allowMainThreadQueries().build();
+        PlayerAttributeDAO playerAttributeDAO = db.playerAttributeDAO();
+        List<PlayerAttribute> tmpList = playerAttributeDAO.loadSingle();
+        PlayerAttribute curPlayer = tmpList.get(1);
+        TextView tv1 = (TextView)findViewById(R.id.textView10);
+        tv1.setText(String.valueOf(curPlayer.getHealth()));
+        TextView tv2 = (TextView)findViewById(R.id.textView12);
+        tv2.setText(String.valueOf(curPlayer.getIQ()));
+        //tv1.setText("1");
         /*mRecyclerView.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {

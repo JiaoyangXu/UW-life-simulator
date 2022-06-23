@@ -53,5 +53,11 @@ public class PlayerAttribute {
         this.wealth = wealth;
         this.health = health;
     }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getIQ() { return IQ; };
 }
 
