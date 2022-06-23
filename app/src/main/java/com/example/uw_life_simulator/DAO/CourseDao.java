@@ -1,6 +1,7 @@
 package com.example.uw_life_simulator.DAO;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -18,4 +19,7 @@ public interface CourseDao {
 
     @Insert
     void insertAll(Course course);
+
+    @Delete
+    void delete(Course course);
 }
