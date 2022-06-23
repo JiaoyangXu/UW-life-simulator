@@ -2,7 +2,10 @@ package com.example.uw_life_simulator.data;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+
+import java.util.UUID;
 
 @Entity
 public class Course {
@@ -22,9 +25,18 @@ public class Course {
     @ColumnInfo(name = "usefulness")
     public int usefulness;
 
-
+    @Ignore
     public Course(int courseID, String courseCode, String courseName, int difficulty, int usefulness) {
         this.courseID = courseID;
+        this.courseCode = courseCode;
+        this.courseName = courseName;
+        this.difficulty = difficulty;
+        this.usefulness = usefulness;
+    }
+
+    public Course(String courseCode, String courseName, int difficulty, int usefulness) {
+        UUID uuid = UUID.randomUUID();
+        this.courseID = uuid.hashCode();
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.difficulty = difficulty;

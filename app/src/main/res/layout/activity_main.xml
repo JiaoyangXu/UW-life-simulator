@@ -43,7 +43,8 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:backgroundTint="#e28086"
-            android:text="QUIT" />
+            android:text="COURSE SELECTION"
+            android:onClick="selectCourse"/>
     </LinearLayout>
 
     <ImageView
