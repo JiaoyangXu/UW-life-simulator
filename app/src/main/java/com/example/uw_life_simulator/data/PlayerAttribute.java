@@ -30,7 +30,21 @@ public class PlayerAttribute {
     @ColumnInfo
     public int health;
 
-    public PlayerAttribute(int playerID, int IQ, int luck, int wealth, int health) {
+    @Override
+    public String toString() {
+        return "PlayerAttribute{" +
+                "playerID=" + playerID +
+                ", playerName='" + playerName + '\'' +
+                ", programID=" + programID +
+                ", numTerm=" + numTerm +
+                ", IQ=" + IQ +
+                ", luck=" + luck +
+                ", wealth=" + wealth +
+                ", health=" + health +
+                '}';
+    }
+
+    public PlayerAttribute(int IQ, int luck, int wealth, int health) {
         this.programID = 1;
         this.playerName = "Mr.Goose";
         this.numTerm = 0;

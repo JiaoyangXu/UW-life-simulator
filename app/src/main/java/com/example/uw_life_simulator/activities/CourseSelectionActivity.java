@@ -18,8 +18,8 @@ import java.util.UUID;
 
 public class CourseSelectionActivity extends AppCompatActivity {
 
-    boolean DeleteOption = false;
-    boolean initializeDbOption = false;
+    public static boolean DeleteOption = false;
+    public static boolean initializeDbOption = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

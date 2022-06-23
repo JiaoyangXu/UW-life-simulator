@@ -255,6 +255,7 @@
             android:backgroundTint="#385c8c"
             android:textColor="#ffffff"
             android:gravity="center"
-            android:text="Confirm" />
+            android:text="Confirm"
+            android:onClick="confirmTalentSelection"/>
     </LinearLayout>
 </LinearLayout>
