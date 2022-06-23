@@ -35,16 +35,15 @@ public class CourseSelectionActivity extends AppCompatActivity {
             deleteAllCourses(courseDao);
         }
 
-        if (initializeDbOption == true) {
-            initializeAll(db);
-        }
-
-        initialize_UI(db);
-        initializeCourseInfo(courseDao);
+        initializeAll(db);
 
 
     }
 
+    /**
+     * Initialize Courses, put them to database and to the course selection UI
+     * @param db is the Course Database
+     */
     private void initializeAll(CourseDatabase db) {
         CourseDao courseDao = db.courseDao();
 
@@ -53,9 +52,26 @@ public class CourseSelectionActivity extends AppCompatActivity {
 
         // Insert courses to db
         insertListOfCourses(courseDao, courses);
+        if (courseDao.getCourseCode().size() < 19) {
+            initializeDbOption = true;
+        }
+
+        if (initializeDbOption == true) {
+            initializeAll(db);
+            initializeDbOption = false;
+
+        }
+
+        initialize_UI(db);
+        initializeCourseInfo(courseDao);
 
     }
 
+    /**
+     * Extract course details from database
+     * display course details to the course selection activity UI
+     * @param courseDao
+     */
     private void initializeCourseInfo(CourseDao courseDao) {
         ArrayList<String> allCourseInfo = new ArrayList<>();
         List<Course> courses = courseDao.getAll();
@@ -102,6 +118,12 @@ public class CourseSelectionActivity extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * Extract course code from database
+     * display course code to the course selection activity UI
+     * @param db
+     */
     private void initialize_UI(CourseDatabase db) {
         CourseDao courseDao = db.courseDao();
 
@@ -133,6 +155,10 @@ public class CourseSelectionActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Delete all course in our database
+     * @param courseDao
+     */
     private void deleteAllCourses(CourseDao courseDao) {
         List<Course> courses = courseDao.getAll();
 
@@ -170,6 +196,10 @@ public class CourseSelectionActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Initialize all available courses
+     * @return the list of courses
+     */
     private List<Course> initializeCourses() {
         Course course1 = new Course("CS135", "Racket", 50,50);
         Course course2 = new Course("CS136", "C", 30,90);
@@ -218,9 +248,15 @@ public class CourseSelectionActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Put course code to the Course Section UI
+     * @param checkBoxes is a list of Checkboxes
+     * @param courseDao is a list of Course DAOs
+     */
     private void displayCourseCode(List<CheckBox> checkBoxes, CourseDao courseDao) {
         List<String> courses = courseDao.getCourseCode();
         int checkboxId = 0;
+
         for (CheckBox checkBox : checkBoxes) {
             String course = courses.get(checkboxId);
             checkBox.setText(course);
