@@ -3,7 +3,9 @@ package com.example.uw_life_simulator.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ import com.example.uw_life_simulator.Service.CourseSelectionService;
 import com.example.uw_life_simulator.component.CourseSelectionComponent;
 import com.example.uw_life_simulator.data.Course;
 import com.example.uw_life_simulator.data.CourseSelectionRecord;
+import com.example.uw_life_simulator.model.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,25 +26,13 @@ import java.util.UUID;
 public class CourseSelectionActivity extends AppCompatActivity {
 
     public static boolean DeleteOption = false;
-    public static boolean initializeDbOption = false;
+    public static boolean initializeDbOption = true;
+    public static int MAX_COURSE_NUMBER = 19;
 
     public CourseSelectionComponent courseSelectionComponent;
+    private CourseSelectionService courseSelectionService;
 
-    /**
-    public List<CheckBox> checkBoxes;
-    public List<TextView> textViews;
-    public List<Course> availableCourses;
-    public List<String> availableCourseCodes;
-     **/
 
-    private CourseSelectionService courseSelectionRecords;
-
-    /**
-     *
-     *
-     *
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +51,31 @@ public class CourseSelectionActivity extends AppCompatActivity {
         initializeAll(db);
 
 
+    }
+
+    /**
+     * Save all checked courses to database and jump to main page
+     * @param view
+     */
+    public void courseReturnMain(View view) {
+        courseSelectionService.InsertCheckedCourses();
+
+        Intent intent = new Intent(CourseSelectionActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+
+
+    /**
+     * Save all checked course to database and jump to the event page
+     * @param view
+     */
+    public void submitCourseSelection(View view) {
+        courseSelectionService.InsertCheckedCourses();
+
+        // pass intent to Event Activity
+        Intent intent = new Intent(CourseSelectionActivity.this, EventActivity.class);
+        startActivity(intent);
     }
 
 
@@ -100,15 +116,17 @@ public class CourseSelectionActivity extends AppCompatActivity {
      * @param courseDao
      */
     private void initializeClass(CourseDatabase db, CourseDao courseDao) {
-        courseSelectionComponent = new CourseSelectionComponent();
-        courseSelectionRecords = new CourseSelectionService(db);
+        List<TextView> textViews = initializeTextViewsInstance();
+        List<CheckBox> checkBoxes = initializeCheckBoxesInstance();
+        List<Course> courses = initializeAvailableCourses(courseDao);
+        List<String> courseCodes = initializeCourseCode(courseDao);
+        courseSelectionComponent = new CourseSelectionComponent(checkBoxes, textViews,courses,courseCodes);
 
-        initializeTextViewsInstance();
-        initializeCheckBoxesInstance();
-        initializeCoursesInstance(courseDao);
+        courseSelectionService = new CourseSelectionService(db, courseSelectionComponent);
     }
 
-    private void initializeTextViewsInstance() {
+    private List<TextView> initializeTextViewsInstance() {
+        List<TextView> textViews = new ArrayList<>();
         TextView v1 = findViewById(R.id.textView1);
         TextView v2 = findViewById(R.id.textView2);
         TextView v3 = findViewById(R.id.textView3);
@@ -119,10 +137,12 @@ public class CourseSelectionActivity extends AppCompatActivity {
         TextView v8 = findViewById(R.id.textView8);
         TextView v9 = findViewById(R.id.textView9);
         TextView v10 = findViewById(R.id.textView10);
-        Collections.addAll(courseSelectionComponent.getTextViews(),v1,v2,v3,v4,v5,v6,v7,v8,v9,v10);
+        Collections.addAll(textViews,v1,v2,v3,v4,v5,v6,v7,v8,v9,v10);
+        return textViews;
     }
 
-    private void initializeCheckBoxesInstance() {
+    private List<CheckBox> initializeCheckBoxesInstance() {
+        List<CheckBox> checkBoxes = new ArrayList<>();
         CheckBox c1 = findViewById(R.id.checkbox_meat1);
         CheckBox c2 = findViewById(R.id.checkbox_meat2);
         CheckBox c3 = findViewById(R.id.checkbox_meat3);
@@ -133,41 +153,19 @@ public class CourseSelectionActivity extends AppCompatActivity {
         CheckBox c8 = findViewById(R.id.checkbox_meat8);
         CheckBox c9 = findViewById(R.id.checkbox_meat9);
         CheckBox c10 = findViewById(R.id.checkbox_meat10);
-        Collections.addAll(courseSelectionComponent.getCheckBoxes(),c1,c2,c3,c4,c5,c6,c7,c8,c9,c10);
+        Collections.addAll(checkBoxes,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10);
+        return checkBoxes;
     }
 
-    private void initializeCoursesInstance(CourseDao courseDao) {
-        courseSelectionComponent.setAvailableCourses(courseDao.getAll());
-        courseSelectionComponent.setAvailableCourseCodes(courseDao.getCourseCode());
+    private List<Course> initializeAvailableCourses(CourseDao courseDao) {
+        return courseDao.getAll();
+    }
+
+    private List<String> initializeCourseCode(CourseDao courseDao) {
+        return courseDao.getCourseCode();
     }
 
 
-    /**
-     * Extract course details from database
-     * display course details to the course selection activity UI
-     * @param courseDao
-     */
-    private void displayCourseInfo(CourseDao courseDao) {
-        ArrayList<String> allCourseInfo = new ArrayList<>();
-
-        int courseCounter = 0;
-
-        for (Course course : courseSelectionComponent.getAvailableCourses()) {
-            String courseInfo =
-                    course.getCourseName() + "\nDifficulty: "
-                    + course.getDifficulty() + " | Usefulness: "
-                    + course.getUsefulness();
-            allCourseInfo.add(courseInfo);
-            courseCounter++;
-        }
-
-        courseCounter = 0;
-
-        for (TextView textView : courseSelectionComponent.getTextViews()) {
-            textView.setText(allCourseInfo.get(courseCounter));
-            courseCounter++;
-        }
-    }
 
     /**
      * Extract course code from database
@@ -183,6 +181,43 @@ public class CourseSelectionActivity extends AppCompatActivity {
 
 
 
+    /**
+     * Extract course details from database
+     * display course details to the course selection activity UI
+     * @param courseDao
+     */
+    private void displayCourseInfo(CourseDao courseDao) {
+        ArrayList<String> allCourseInfo = new ArrayList<>();
+
+        int courseCounter = 0;
+
+        for (Course course : courseSelectionComponent.getAvailableCourses()) {
+            if (courseCounter >= MAX_COURSE_NUMBER) {
+                break;
+            }
+            while(courseSelectionComponent.getAvailableCourses().get(courseCounter).isChecked == 1
+            && courseCounter < MAX_COURSE_NUMBER) {
+                courseCounter++;
+            }
+
+
+
+            String courseInfo =
+                    course.getCourseName() + "\nDifficulty: "
+                            + course.getDifficulty() + " | Usefulness: "
+                            + course.getUsefulness();
+            allCourseInfo.add(courseInfo);
+            courseCounter++;
+        }
+
+        courseCounter = 0;
+
+        for (TextView textView : courseSelectionComponent.getTextViews()) {
+            textView.setText(allCourseInfo.get(courseCounter));
+            courseCounter++;
+        }
+    }
+
 
 
     /**
@@ -191,8 +226,19 @@ public class CourseSelectionActivity extends AppCompatActivity {
      */
     private void displayCourseCode(CourseDao courseDao) {
         int checkboxId = 0;
+        int courseId = 0;
 
         for (CheckBox checkBox : courseSelectionComponent.getCheckBoxes()) {
+
+            if (checkboxId >= MAX_COURSE_NUMBER) {
+                break;
+            }
+
+            while(courseSelectionComponent.getAvailableCourses().get(checkboxId).isChecked == 1
+                    && checkboxId < MAX_COURSE_NUMBER) {
+                checkboxId++;
+            }
+
             String course = courseSelectionComponent.getAvailableCourseCodes().get(checkboxId);
             checkBox.setText(course);
             checkboxId++;
@@ -292,6 +338,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
             insertCourse(courseDao, course);
         }
     }
+
 
 
 }

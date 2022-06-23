@@ -12,4 +12,7 @@ import java.util.List;
 public interface CourseSelectionRecordDAO {
     @Insert
     void insertAll(CourseSelectionRecord courseSelectionRecord);
+
+    @Query("DELETE FROM CourseSelectionRecord")
+    void deleteAll();
 }

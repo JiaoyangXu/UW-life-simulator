@@ -25,14 +25,9 @@ public class Course {
     @ColumnInfo(name = "usefulness")
     public int usefulness;
 
-    @Ignore
-    public Course(int courseID, String courseCode, String courseName, int difficulty, int usefulness) {
-        this.courseID = courseID;
-        this.courseCode = courseCode;
-        this.courseName = courseName;
-        this.difficulty = difficulty;
-        this.usefulness = usefulness;
-    }
+    @ColumnInfo(name = "isChecked")
+    public int isChecked;
+
 
     public Course(String courseCode, String courseName, int difficulty, int usefulness) {
         UUID uuid = UUID.randomUUID();
@@ -41,6 +36,7 @@ public class Course {
         this.courseName = courseName;
         this.difficulty = difficulty;
         this.usefulness = usefulness;
+        this.isChecked = 0;
     }
 
     public String getCourseCode() {

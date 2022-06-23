@@ -6,6 +6,7 @@ import android.widget.TextView;
 import com.example.uw_life_simulator.data.Course;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class CourseSelectionComponent {
@@ -14,18 +15,36 @@ public class CourseSelectionComponent {
     private List<Course> availableCourses;
     private List<String> availableCourseCodes;
 
-    public CourseSelectionComponent() {
-        this.checkBoxes = new ArrayList<>();
-        this.textViews = new ArrayList<>();
-        this.availableCourseCodes = new ArrayList<>();
-        this.availableCourses = new ArrayList<>();
-    }
+    private HashMap<String,Course> CourseMap = new HashMap<>();
+
+
 
     public CourseSelectionComponent(List<CheckBox> checkBoxes, List<TextView> textViews, List<Course> availableCourses, List<String> availableCourseCodes) {
         this.checkBoxes = checkBoxes;
         this.textViews = textViews;
         this.availableCourses = availableCourses;
         this.availableCourseCodes = availableCourseCodes;
+        constructCourseMap();
+    }
+
+    public void constructCourseMap() {
+        for(Course course : availableCourses) {
+            CourseMap.put(course.getCourseCode(), course);
+        }
+    }
+
+    public HashMap<String, Course> getCourseMap() {
+        return CourseMap;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseSelectionComponent{" +
+                "checkBoxes=" + checkBoxes +
+                ", textViews=" + textViews +
+                ", availableCourses=" + availableCourses +
+                ", availableCourseCodes=" + availableCourseCodes +
+                '}';
     }
 
     public List<CheckBox> getCheckBoxes() {
