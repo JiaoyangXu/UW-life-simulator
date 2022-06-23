@@ -11,6 +11,7 @@ import com.example.uw_life_simulator.DAO.CourseDao;
 import com.example.uw_life_simulator.Database.CourseDatabase;
 import com.example.uw_life_simulator.R;
 import com.example.uw_life_simulator.data.Course;
+import com.example.uw_life_simulator.data.CourseSelectionRecord;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,9 +26,10 @@ public class CourseSelectionActivity extends AppCompatActivity {
     public List<TextView> textViews;
     public List<Course> availableCourses;
     public List<String> availableCourseCodes;
+    public List<CourseSelectionRecord> courseSelectionRecords;
 
     /**
-     * checkbox, textView, 数据库的所有东西 先存成attribute，最后点submit的时候再update数据库
+     *
      *
      *
      * @param savedInstanceState
