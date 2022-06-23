@@ -3,20 +3,46 @@ package com.example.uw_life_simulator.model;
 import java.util.List;
 
 public class Course {
+    private String courseId;
     private String name;
     private String description;
+    private int difficulty;
+    private int usefulness;
     //prerequisite for the current course
     private List<Integer> requiredCourses;
     private int inSubject;
     private int award;
 
+    public Course(String courseId, String name, int difficulty, int usefulness) {
+        this.courseId = courseId;
+        this.name = name;
+        this.difficulty = difficulty;
+        this.usefulness = usefulness;
+    }
 
     // Getter & Setter
     public int getAward() {return award;}
     public int getInSubject() { return inSubject; }
     public String getName() {return name;}
     public String getDescription() {return description;}
-
+    public String getCourseId() {
+        return courseId;
+    }
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
+    public int getDifficulty() {
+        return difficulty;
+    }
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+    public int getUsefulness() {
+        return usefulness;
+    }
+    public void setUsefulness(int usefulness) {
+        this.usefulness = usefulness;
+    }
 
     //Constructors
     public Course(String course_name, String course_description, int subject,

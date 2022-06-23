@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.uw_life_simulator.R;
+import com.example.uw_life_simulator.activities.CourseSelectionActivity;
 import com.example.uw_life_simulator.activities.EventActivity;
 import com.example.uw_life_simulator.activities.AttributeActivities;
 
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         /*binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -83,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void createEvent(View view) {
         Intent intent = new Intent(MainActivity.this, EventActivity.class);
+        startActivity(intent);
+    }
+
+    public void selectCourse(View view) {
+        Intent intent = new Intent(MainActivity.this, CourseSelectionActivity.class);
         startActivity(intent);
     }
 }
