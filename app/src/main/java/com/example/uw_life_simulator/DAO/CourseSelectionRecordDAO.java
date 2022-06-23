@@ -8,6 +8,7 @@ import com.example.uw_life_simulator.data.CourseSelectionRecord;
 
 import java.util.List;
 
+@Dao
 public interface CourseSelectionRecordDAO {
     @Insert
     void insertAll(CourseSelectionRecord courseSelectionRecord);
