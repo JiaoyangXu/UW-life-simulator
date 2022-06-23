@@ -126,6 +126,16 @@ public class CourseSelectionActivity extends AppCompatActivity {
         Course course8 = new Course("Math 136", "Linear Algebra", 30, 80);
         Course course9 = new Course("Econ 101", "Microeconomics", 0, 10);
         Course course10 = new Course("Game100", "League of Legends", 0, 100);
+        Course CS245 = new Course("CS245", "Logic", 43, 24);
+        Course CS251 = new Course("CS251", "Computer Design", 15, 71);
+        Course CS341 = new Course("CS341", "Algorithms", 46, 99);
+        Course CS343 = new Course("CS343", "Concurrent Programming", 67, 59);
+        Course CS348 = new Course("CS348", "Intro to Database", 30, 63);
+        Course CS349 = new Course("CS349", "User Interfaces", 25, 75);
+        Course CS350 = new Course("CS350", "Operating Systems", 54, 94);
+        Course CS370 = new Course("CS370", "Numerical Computing", 40, 86);
+        Course CS444 = new Course("CS444", "Compiler Construction", 20, 99);
+        Course CS446 = new Course("CS446", "Software Design", 30, 101);
 
         List<Course> courses = new ArrayList<>();
         courses.add(course1);
@@ -138,6 +148,16 @@ public class CourseSelectionActivity extends AppCompatActivity {
         courses.add(course8);
         courses.add(course9);
         courses.add(course10);
+        courses.add(CS245);
+        courses.add(CS251);
+        courses.add(CS341);
+        courses.add(CS343);
+        courses.add(CS348);
+        courses.add(CS349);
+        courses.add(CS350);
+        courses.add(CS370);
+        courses.add(CS444);
+        courses.add(CS446);
 
         return courses;
     }
