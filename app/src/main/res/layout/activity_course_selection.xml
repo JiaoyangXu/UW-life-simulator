@@ -46,7 +46,7 @@
             android:background="@drawable/border6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintWidth_percent="0.8"
+            app:layout_constraintWidth_percent="0.86"
             >
 
             <LinearLayout

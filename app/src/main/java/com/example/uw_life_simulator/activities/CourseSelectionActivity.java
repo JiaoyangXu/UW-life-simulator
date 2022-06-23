@@ -63,9 +63,9 @@ public class CourseSelectionActivity extends AppCompatActivity {
         int courseCounter = 0;
 
         for (Course course : courses) {
-            String courseInfo = "Course Name: "
-                    + course.getCourseName() + " Difficulty: "
-                    + course.getDifficulty() + " Usefulness: "
+            String courseInfo =
+                    course.getCourseName() + "\nDifficulty: "
+                    + course.getDifficulty() + " | Usefulness: "
                     + course.getUsefulness();
             allCourseInfo.add(courseInfo);
             courseCounter++;
@@ -77,6 +77,10 @@ public class CourseSelectionActivity extends AppCompatActivity {
         TextView v4 = findViewById(R.id.textView4);
         TextView v5 = findViewById(R.id.textView5);
         TextView v6 = findViewById(R.id.textView6);
+        TextView v7 = findViewById(R.id.textView7);
+        TextView v8 = findViewById(R.id.textView8);
+        TextView v9 = findViewById(R.id.textView9);
+        TextView v10 = findViewById(R.id.textView10);
         List<TextView> textViews = new ArrayList<>();
 
         textViews.add(v1);
@@ -85,6 +89,10 @@ public class CourseSelectionActivity extends AppCompatActivity {
         textViews.add(v4);
         textViews.add(v5);
         textViews.add(v6);
+        textViews.add(v7);
+        textViews.add(v8);
+        textViews.add(v9);
+        textViews.add(v10);
 
         courseCounter = 0;
 
@@ -104,6 +112,10 @@ public class CourseSelectionActivity extends AppCompatActivity {
         CheckBox c4 = findViewById(R.id.checkbox_meat4);
         CheckBox c5 = findViewById(R.id.checkbox_meat5);
         CheckBox c6 = findViewById(R.id.checkbox_meat6);
+        CheckBox c7 = findViewById(R.id.checkbox_meat7);
+        CheckBox c8 = findViewById(R.id.checkbox_meat8);
+        CheckBox c9 = findViewById(R.id.checkbox_meat9);
+        CheckBox c10 = findViewById(R.id.checkbox_meat10);
 
         List<CheckBox> checkBoxes = new ArrayList<>();
         checkBoxes.add(c1);
@@ -112,6 +124,10 @@ public class CourseSelectionActivity extends AppCompatActivity {
         checkBoxes.add(c4);
         checkBoxes.add(c5);
         checkBoxes.add(c6);
+        checkBoxes.add(c7);
+        checkBoxes.add(c8);
+        checkBoxes.add(c9);
+        checkBoxes.add(c10);
 
         displayCourseCode(checkBoxes,courseDao);
     }
