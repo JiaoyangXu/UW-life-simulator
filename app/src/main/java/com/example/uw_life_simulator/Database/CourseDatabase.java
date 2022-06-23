@@ -11,7 +11,7 @@ import com.example.uw_life_simulator.data.CourseSelectionRecord;
 
 
 @Database(entities = {Course.class, CourseSelectionRecord.class},
-        version = 1)
+        version = 2)
 public abstract class CourseDatabase  extends RoomDatabase {
 
     public abstract CourseDao courseDao();
