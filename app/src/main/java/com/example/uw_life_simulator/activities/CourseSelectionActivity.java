@@ -24,6 +24,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
     public List<CheckBox> checkBoxes;
     public List<TextView> textViews;
     public List<Course> availableCourses;
+    public List<String> availableCourseCodes;
 
     /**
      * checkbox, textView, 数据库的所有东西 先存成attribute，最后点submit的时候再update数据库
@@ -76,7 +77,6 @@ public class CourseSelectionActivity extends AppCompatActivity {
         initializeClass(courseDao);
 
         initialize_UI(db);
-        initializeCourseInfo(courseDao);
 
     }
 
@@ -92,6 +92,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
         checkBoxes = new ArrayList<>();
         textViews = new ArrayList<>();
         availableCourses = new ArrayList<>();
+        availableCourseCodes = new ArrayList<>();
 
         initializeTextViewsInstance();
         initializeCheckBoxesInstance();
@@ -128,6 +129,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
 
     private void initializeCoursesInstance(CourseDao courseDao) {
         availableCourses = courseDao.getAll();
+        availableCourseCodes = courseDao.getCourseCode();
     }
 
 
@@ -136,13 +138,12 @@ public class CourseSelectionActivity extends AppCompatActivity {
      * display course details to the course selection activity UI
      * @param courseDao
      */
-    private void initializeCourseInfo(CourseDao courseDao) {
+    private void displayCourseInfo(CourseDao courseDao) {
         ArrayList<String> allCourseInfo = new ArrayList<>();
-        List<Course> courses = courseDao.getAll();
 
         int courseCounter = 0;
 
-        for (Course course : courses) {
+        for (Course course : availableCourses) {
             String courseInfo =
                     course.getCourseName() + "\nDifficulty: "
                     + course.getDifficulty() + " | Usefulness: "
@@ -151,36 +152,12 @@ public class CourseSelectionActivity extends AppCompatActivity {
             courseCounter++;
         }
 
-        TextView v1 = findViewById(R.id.textView1);
-        TextView v2 = findViewById(R.id.textView2);
-        TextView v3 = findViewById(R.id.textView3);
-        TextView v4 = findViewById(R.id.textView4);
-        TextView v5 = findViewById(R.id.textView5);
-        TextView v6 = findViewById(R.id.textView6);
-        TextView v7 = findViewById(R.id.textView7);
-        TextView v8 = findViewById(R.id.textView8);
-        TextView v9 = findViewById(R.id.textView9);
-        TextView v10 = findViewById(R.id.textView10);
-        List<TextView> textViews = new ArrayList<>();
-
-        textViews.add(v1);
-        textViews.add(v2);
-        textViews.add(v3);
-        textViews.add(v4);
-        textViews.add(v5);
-        textViews.add(v6);
-        textViews.add(v7);
-        textViews.add(v8);
-        textViews.add(v9);
-        textViews.add(v10);
-
         courseCounter = 0;
 
         for (TextView textView : textViews) {
             textView.setText(allCourseInfo.get(courseCounter));
             courseCounter++;
         }
-
     }
 
     /**
@@ -191,31 +168,27 @@ public class CourseSelectionActivity extends AppCompatActivity {
     private void initialize_UI(CourseDatabase db) {
         CourseDao courseDao = db.courseDao();
 
-        // display Course code
-        CheckBox c1 = findViewById(R.id.checkbox_meat1);
-        CheckBox c2 = findViewById(R.id.checkbox_meat2);
-        CheckBox c3 = findViewById(R.id.checkbox_meat3);
-        CheckBox c4 = findViewById(R.id.checkbox_meat4);
-        CheckBox c5 = findViewById(R.id.checkbox_meat5);
-        CheckBox c6 = findViewById(R.id.checkbox_meat6);
-        CheckBox c7 = findViewById(R.id.checkbox_meat7);
-        CheckBox c8 = findViewById(R.id.checkbox_meat8);
-        CheckBox c9 = findViewById(R.id.checkbox_meat9);
-        CheckBox c10 = findViewById(R.id.checkbox_meat10);
+        displayCourseInfo(courseDao);
+        displayCourseCode(courseDao);
+    }
 
-        List<CheckBox> checkBoxes = new ArrayList<>();
-        checkBoxes.add(c1);
-        checkBoxes.add(c2);
-        checkBoxes.add(c3);
-        checkBoxes.add(c4);
-        checkBoxes.add(c5);
-        checkBoxes.add(c6);
-        checkBoxes.add(c7);
-        checkBoxes.add(c8);
-        checkBoxes.add(c9);
-        checkBoxes.add(c10);
 
-        displayCourseCode(checkBoxes,courseDao);
+
+
+
+    /**
+     * Put course code to the Course Section UI
+     * @param checkBoxes is a list of Checkboxes
+     * @param courseDao is a list of Course DAOs
+     */
+    private void displayCourseCode(CourseDao courseDao) {
+        int checkboxId = 0;
+
+        for (CheckBox checkBox : checkBoxes) {
+            String course = availableCourseCodes.get(checkboxId);
+            checkBox.setText(course);
+            checkboxId++;
+        }
     }
 
     /**
@@ -312,22 +285,5 @@ public class CourseSelectionActivity extends AppCompatActivity {
         }
     }
 
-
-
-    /**
-     * Put course code to the Course Section UI
-     * @param checkBoxes is a list of Checkboxes
-     * @param courseDao is a list of Course DAOs
-     */
-    private void displayCourseCode(List<CheckBox> checkBoxes, CourseDao courseDao) {
-        List<String> courses = courseDao.getCourseCode();
-        int checkboxId = 0;
-
-        for (CheckBox checkBox : checkBoxes) {
-            String course = courses.get(checkboxId);
-            checkBox.setText(course);
-            checkboxId++;
-        }
-    }
 
 }
