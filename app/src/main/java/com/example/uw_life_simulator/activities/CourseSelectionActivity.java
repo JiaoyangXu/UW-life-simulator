@@ -233,9 +233,9 @@ public class CourseSelectionActivity extends AppCompatActivity {
                 break;
             }
 
-            while(courseSelectionComponent.getAvailableCourses().get(checkboxId).isChecked == 1
-                    && checkboxId < MAX_COURSE_NUMBER) {
+            while(courseSelectionComponent.getAvailableCourses().get(checkboxId).isChecked == 1) {
                 checkboxId++;
+                if (checkboxId >= 19) return;
             }
 
             String course = courseSelectionComponent.getAvailableCourseCodes().get(checkboxId);
