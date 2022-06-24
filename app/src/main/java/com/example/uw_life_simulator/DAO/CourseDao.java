@@ -38,5 +38,10 @@ public interface CourseDao {
     @Query("UPDATE Course SET isChecked = 0 WHERE isChecked = 1")
     void update_uncheckAll();
 
+    @Query("SELECT courseID FROM course")
+    List<Integer> selectAllUUID();
+
+    @Query("SELECT * FROM course WHERE courseID =:givenID")
+    Course selectCourseFromUUID(Integer givenID);
 
 }

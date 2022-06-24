@@ -2,7 +2,7 @@ package com.example.uw_life_simulator.model;
 
 import java.util.List;
 
-public class Course {
+public class Course_deprived {
     private String courseId;
     private String name;
     private String description;
@@ -13,7 +13,7 @@ public class Course {
     private int inSubject;
     private int award;
 
-    public Course(String courseId, String name, int difficulty, int usefulness) {
+    public Course_deprived(String courseId, String name, int difficulty, int usefulness) {
         this.courseId = courseId;
         this.name = name;
         this.difficulty = difficulty;
@@ -45,8 +45,8 @@ public class Course {
     }
 
     //Constructors
-    public Course(String course_name, String course_description, int subject,
-                  List<Integer> requirements, int finish_award){
+    public Course_deprived(String course_name, String course_description, int subject,
+                           List<Integer> requirements, int finish_award){
         this.name = course_name;
         this.description = course_description;
         this.requiredCourses = requirements;

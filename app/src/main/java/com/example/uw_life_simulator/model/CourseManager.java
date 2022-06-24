@@ -45,6 +45,11 @@ public class CourseManager {
      * Output: bool : whether the adding is successful
      **/
     public boolean addCourse(int courseId){
+        if (Factory.generateCourse(courseId) == null)
+        {
+            return false;
+        }
+        
         if (Factory.generateCourse(courseId).checkValidity(takenCourses))
         {
             currentCourses.add(courseId);
