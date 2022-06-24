@@ -23,17 +23,22 @@
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="0"
-                android:text="Pressure:"/>
+                android:layout_height="0dp"
+                android:layout_weight=".3"
+                android:text=" Pressure:"
+                android:textSize="20dp"
+                android:textColor="#000000"/>
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:layout_weight=".7"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:text="Pressure" />
+                android:text="Pressure"
+                android:textColor="#000000"
+                android:textSize="30dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -46,17 +51,22 @@
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="0"
-                android:text="Budget:"/>
+                android:layout_height="0dp"
+                android:layout_weight=".3"
+                android:text=" Budget:"
+                android:textSize="20dp"
+                android:textColor="#000000"/>
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:layout_weight=".7"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:text="Budget" />
+                android:text="Budget"
+                android:textColor="#000000"
+                android:textSize="30dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -69,17 +79,22 @@
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_weight="0"
-                android:text="GPA:"/>
+                android:layout_height="0dp"
+                android:layout_weight=".3"
+                android:text=" GPA:"
+                android:textSize="20dp"
+                android:textColor="#000000"/>
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="0dp"
+                android:layout_weight=".7"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:text="GPA" />
+                android:text="GPA"
+                android:textColor="#000000"
+                android:textSize="30dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -165,7 +180,9 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight=".125"
-                android:text="TextView" />
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#000000"/>
 
             <TextView
                 android:id="@+id/textView25"
@@ -173,7 +190,9 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight=".125"
-                android:text="TextView" />
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#000000"/>
 
             <TextView
                 android:id="@+id/textView26"
@@ -181,7 +200,9 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight=".125"
-                android:text="TextView" />
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#000000"/>
 
             <TextView
                 android:id="@+id/textView27"
@@ -189,7 +210,9 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight=".125"
-                android:text="TextView" />
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="#000000"/>
         </LinearLayout>
         <TextView
             android:id="@+id/textView28"

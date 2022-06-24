@@ -8,6 +8,7 @@
     tools:context=".model.MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="330dp"
         android:layout_height="80dp"
         android:layout_marginStart="55dp"
@@ -24,9 +25,8 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:backgroundTint="#e28086"
-            android:text="LOAD"
             android:onClick="createEvent"
-            />
+            android:text="LOAD" />
 
         <Button
             android:id="@+id/button6"
@@ -34,8 +34,8 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:backgroundTint="#e28086"
-            android:text="NEW"
-            android:onClick="createTalent" />
+            android:onClick="createTalent"
+            android:text="NEW" />
 
         <Button
             android:id="@+id/button7"
@@ -43,7 +43,8 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:backgroundTint="#e28086"
-            android:text="QUIT" />
+            android:onClick="quitApp"
+            android:text="Quit" />
     </LinearLayout>
 
     <ImageView
@@ -57,4 +58,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/_112968" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Course selection"
+        android:onClick="selectCourse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
