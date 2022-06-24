@@ -119,7 +119,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         PlayerAttributeDAO playerAttributeDAO = db.playerAttributeDAO();
 
         CourseDatabase db2 = Room.databaseBuilder(getApplicationContext(),
-                CourseDatabase.class, "CourseSelectionRecords").allowMainThreadQueries().build();
+                CourseDatabase.class, "Courses").allowMainThreadQueries().build();
         CourseSelectionRecordDAO courseSelectionRecordDAO = db2.courseSelectionRecordDAO();
 
         // Get a player instance (a line of data) from Room database.
@@ -135,7 +135,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         tv3.setText(String.valueOf(curPlayer.getGPA()));
 
         // Select current courses (grade = -1)
-        List<CourseSelectionRecord> curSelection = courseSelectionRecordDAO.selectCurrent();
+        List<CourseSelectionRecord> curSelection = courseSelectionRecordDAO.selectAll();
 
         // Select TextViews for displaying current course selection
         TextView curCourseTV1 = (TextView)findViewById(R.id.textView23);
