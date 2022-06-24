@@ -192,15 +192,9 @@ public class CourseSelectionActivity extends AppCompatActivity {
         int courseCounter = 0;
 
         for (Course course : courseSelectionComponent.getAvailableCourses()) {
-            if (courseCounter >= MAX_COURSE_NUMBER) {
-                break;
+            if(course.isChecked == 1) {
+                continue;
             }
-            while(courseSelectionComponent.getAvailableCourses().get(courseCounter).isChecked == 1
-            && courseCounter < MAX_COURSE_NUMBER) {
-                courseCounter++;
-            }
-
-
 
             String courseInfo =
                     course.getCourseName() + "\nDifficulty: "
@@ -211,10 +205,15 @@ public class CourseSelectionActivity extends AppCompatActivity {
         }
 
         courseCounter = 0;
+        int maxCourses = allCourseInfo.size();
 
         for (TextView textView : courseSelectionComponent.getTextViews()) {
-            textView.setText(allCourseInfo.get(courseCounter));
-            courseCounter++;
+            if (maxCourses > courseCounter) {
+                textView.setText(allCourseInfo.get(courseCounter));
+                courseCounter++;
+            } else {
+                break;
+            }
         }
     }
 
