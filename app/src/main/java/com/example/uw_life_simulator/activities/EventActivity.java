@@ -12,10 +12,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
+import java.util.List;
+
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.Button;
 import com.example.uw_life_simulator.model.*;
+import android.widget.TextView;
+import java.io.*;
+
+// Room framework import:
+import androidx.room.AutoMigration;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+
+import com.example.uw_life_simulator.DAO.PlayerAttributeDAO;
+import com.example.uw_life_simulator.data.PlayerAttribute;
+import com.example.uw_life_simulator.Database.PlayerAttributeDatabase;
+
+import com.example.uw_life_simulator.DAO.CourseSelectionRecordDAO;
+import com.example.uw_life_simulator.data.CourseSelectionRecord;
+import com.example.uw_life_simulator.Database.CourseDatabase;
 
 public class EventActivity extends AppCompatActivity implements event_list_adapter.ItemClickListener {
 
@@ -95,6 +113,41 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mAdapter.setClickListener(this);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setOnTouchListener(new RVClickHandler(mRecyclerView));
+
+        PlayerAttributeDatabase db = Room.databaseBuilder(getApplicationContext(),
+                PlayerAttributeDatabase.class, "PlayerAttributes").allowMainThreadQueries().fallbackToDestructiveMigration().build();
+        PlayerAttributeDAO playerAttributeDAO = db.playerAttributeDAO();
+
+        CourseDatabase db2 = Room.databaseBuilder(getApplicationContext(),
+                CourseDatabase.class, "Courses").allowMainThreadQueries().build();
+        CourseSelectionRecordDAO courseSelectionRecordDAO = db2.courseSelectionRecordDAO();
+
+        // Get a player instance (a line of data) from Room database.
+        List<PlayerAttribute> tmpList = playerAttributeDAO.loadSingle();
+        PlayerAttribute curPlayer = tmpList.get(0);
+
+        // Display the player attributes from database to front-end.
+        TextView tv1 = (TextView)findViewById(R.id.textView10); // Pressure
+        tv1.setText(String.valueOf(curPlayer.getPressure()));
+        TextView tv2 = (TextView)findViewById(R.id.textView12); // Wealth
+        tv2.setText(String.valueOf(curPlayer.getWealth()));
+        TextView tv3 = (TextView)findViewById(R.id.textView14); // GPA
+        tv3.setText(String.valueOf(curPlayer.getGPA()));
+
+        // Select current courses (grade = -1)
+        List<CourseSelectionRecord> curSelection = courseSelectionRecordDAO.selectCurrent();
+
+        // Select TextViews for displaying current course selection
+        TextView curCourseTV1 = (TextView)findViewById(R.id.textView23);
+        TextView curCourseTV2 = (TextView)findViewById(R.id.textView25);
+        TextView curCourseTV3 = (TextView)findViewById(R.id.textView26);
+        TextView curCourseTV4 = (TextView)findViewById(R.id.textView27);
+
+        if (curSelection.size() > 0) {
+            CourseSelectionRecord curCourse1 = curSelection.get(0);
+            curCourseTV1.setText(curCourse1.getCourseCode());
+        }
+
         /*mRecyclerView.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {

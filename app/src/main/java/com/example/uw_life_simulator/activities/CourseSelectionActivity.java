@@ -3,23 +3,35 @@ package com.example.uw_life_simulator.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.example.uw_life_simulator.DAO.CourseDao;
 import com.example.uw_life_simulator.Database.CourseDatabase;
 import com.example.uw_life_simulator.R;
+import com.example.uw_life_simulator.Service.CourseSelectionService;
+import com.example.uw_life_simulator.component.CourseSelectionComponent;
 import com.example.uw_life_simulator.data.Course;
+import com.example.uw_life_simulator.data.CourseSelectionRecord;
+import com.example.uw_life_simulator.model.MainActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
 public class CourseSelectionActivity extends AppCompatActivity {
 
     public static boolean DeleteOption = false;
-    public static boolean initializeDbOption = false;
+    public static boolean initializeDbOption = true;
+    public static int MAX_COURSE_NUMBER = 19;
+
+    public CourseSelectionComponent courseSelectionComponent;
+    private CourseSelectionService courseSelectionService;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +40,8 @@ public class CourseSelectionActivity extends AppCompatActivity {
 
 
         CourseDatabase db = Room.databaseBuilder(getApplicationContext(),
-                CourseDatabase.class, "Courses").allowMainThreadQueries().build();
+                CourseDatabase.class, "Courses").allowMainThreadQueries().
+                fallbackToDestructiveMigration().build();
         CourseDao courseDao = db.courseDao();
 
         if (DeleteOption == true) {
@@ -41,6 +54,32 @@ public class CourseSelectionActivity extends AppCompatActivity {
     }
 
     /**
+     * Save all checked courses to database and jump to main page
+     * @param view
+     */
+    public void courseReturnMain(View view) {
+        courseSelectionService.InsertCheckedCourses();
+
+        Intent intent = new Intent(CourseSelectionActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+
+
+    /**
+     * Save all checked course to database and jump to the event page
+     * @param view
+     */
+    public void submitCourseSelection(View view) {
+        courseSelectionService.InsertCheckedCourses();
+
+        // pass intent to Event Activity
+        Intent intent = new Intent(CourseSelectionActivity.this, EventActivity.class);
+        startActivity(intent);
+    }
+
+
+    /**
      * Initialize Courses, put them to database and to the course selection UI
      * @param db is the Course Database
      */
@@ -50,43 +89,44 @@ public class CourseSelectionActivity extends AppCompatActivity {
         // initialize Courses
         List<Course> courses = initializeCourses();
 
-        // Insert courses to db
-        insertListOfCourses(courseDao, courses);
+
         if (courseDao.getCourseCode().size() < 19) {
             initializeDbOption = true;
         }
 
+        // ensure the Course table in database Courses to contain all courses
         if (initializeDbOption == true) {
-            initializeAll(db);
+            // Insert courses to db
+            insertListOfCourses(courseDao, courses);
             initializeDbOption = false;
-
         }
 
+        initializeClass(db,courseDao);
+
         initialize_UI(db);
-        initializeCourseInfo(courseDao);
 
     }
 
+
     /**
-     * Extract course details from database
-     * display course details to the course selection activity UI
+     * Initialize 3 attributes in this activity
+     * 1. checkBoxes -> List that contains 10 checkboxes
+     * 2. textViews -> List that contains 10 textViews
+     * 3. availableCourses -> List that contain all courses
      * @param courseDao
      */
-    private void initializeCourseInfo(CourseDao courseDao) {
-        ArrayList<String> allCourseInfo = new ArrayList<>();
-        List<Course> courses = courseDao.getAll();
+    private void initializeClass(CourseDatabase db, CourseDao courseDao) {
+        List<TextView> textViews = initializeTextViewsInstance();
+        List<CheckBox> checkBoxes = initializeCheckBoxesInstance();
+        List<Course> courses = initializeAvailableCourses(courseDao);
+        List<String> courseCodes = initializeCourseCode(courseDao);
+        courseSelectionComponent = new CourseSelectionComponent(checkBoxes, textViews,courses,courseCodes);
 
-        int courseCounter = 0;
+        courseSelectionService = new CourseSelectionService(db, courseSelectionComponent);
+    }
 
-        for (Course course : courses) {
-            String courseInfo =
-                    course.getCourseName() + "\nDifficulty: "
-                    + course.getDifficulty() + " | Usefulness: "
-                    + course.getUsefulness();
-            allCourseInfo.add(courseInfo);
-            courseCounter++;
-        }
-
+    private List<TextView> initializeTextViewsInstance() {
+        List<TextView> textViews = new ArrayList<>();
         TextView v1 = findViewById(R.id.textView1);
         TextView v2 = findViewById(R.id.textView2);
         TextView v3 = findViewById(R.id.textView3);
@@ -97,37 +137,12 @@ public class CourseSelectionActivity extends AppCompatActivity {
         TextView v8 = findViewById(R.id.textView8);
         TextView v9 = findViewById(R.id.textView9);
         TextView v10 = findViewById(R.id.textView10);
-        List<TextView> textViews = new ArrayList<>();
-
-        textViews.add(v1);
-        textViews.add(v2);
-        textViews.add(v3);
-        textViews.add(v4);
-        textViews.add(v5);
-        textViews.add(v6);
-        textViews.add(v7);
-        textViews.add(v8);
-        textViews.add(v9);
-        textViews.add(v10);
-
-        courseCounter = 0;
-
-        for (TextView textView : textViews) {
-            textView.setText(allCourseInfo.get(courseCounter));
-            courseCounter++;
-        }
-
+        Collections.addAll(textViews,v1,v2,v3,v4,v5,v6,v7,v8,v9,v10);
+        return textViews;
     }
 
-    /**
-     * Extract course code from database
-     * display course code to the course selection activity UI
-     * @param db
-     */
-    private void initialize_UI(CourseDatabase db) {
-        CourseDao courseDao = db.courseDao();
-
-        // display Course code
+    private List<CheckBox> initializeCheckBoxesInstance() {
+        List<CheckBox> checkBoxes = new ArrayList<>();
         CheckBox c1 = findViewById(R.id.checkbox_meat1);
         CheckBox c2 = findViewById(R.id.checkbox_meat2);
         CheckBox c3 = findViewById(R.id.checkbox_meat3);
@@ -138,61 +153,94 @@ public class CourseSelectionActivity extends AppCompatActivity {
         CheckBox c8 = findViewById(R.id.checkbox_meat8);
         CheckBox c9 = findViewById(R.id.checkbox_meat9);
         CheckBox c10 = findViewById(R.id.checkbox_meat10);
+        Collections.addAll(checkBoxes,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10);
+        return checkBoxes;
+    }
 
-        List<CheckBox> checkBoxes = new ArrayList<>();
-        checkBoxes.add(c1);
-        checkBoxes.add(c2);
-        checkBoxes.add(c3);
-        checkBoxes.add(c4);
-        checkBoxes.add(c5);
-        checkBoxes.add(c6);
-        checkBoxes.add(c7);
-        checkBoxes.add(c8);
-        checkBoxes.add(c9);
-        checkBoxes.add(c10);
+    private List<Course> initializeAvailableCourses(CourseDao courseDao) {
+        return courseDao.getAll();
+    }
 
-        displayCourseCode(checkBoxes,courseDao);
+    private List<String> initializeCourseCode(CourseDao courseDao) {
+        return courseDao.getCourseCode();
     }
 
 
+
     /**
-     * Delete all course in our database
+     * Extract course code from database
+     * display course code to the course selection activity UI
+     * @param db
+     */
+    private void initialize_UI(CourseDatabase db) {
+        CourseDao courseDao = db.courseDao();
+
+        displayCourseInfo(courseDao);
+        displayCourseCode(courseDao);
+    }
+
+
+
+    /**
+     * Extract course details from database
+     * display course details to the course selection activity UI
      * @param courseDao
      */
-    private void deleteAllCourses(CourseDao courseDao) {
-        List<Course> courses = courseDao.getAll();
+    private void displayCourseInfo(CourseDao courseDao) {
+        ArrayList<String> allCourseInfo = new ArrayList<>();
 
-        for (Course course : courses) {
-            courseDao.delete(course);
+        int courseCounter = 0;
+
+        for (Course course : courseSelectionComponent.getAvailableCourses()) {
+            if(course.isChecked == 1) {
+                continue;
+            }
+
+            String courseInfo =
+                    course.getCourseName() + "\nDifficulty: "
+                            + course.getDifficulty() + " | Usefulness: "
+                            + course.getUsefulness();
+            allCourseInfo.add(courseInfo);
+            courseCounter++;
+        }
+
+        courseCounter = 0;
+        int maxCourses = allCourseInfo.size();
+
+        for (TextView textView : courseSelectionComponent.getTextViews()) {
+            if (maxCourses > courseCounter) {
+                textView.setText(allCourseInfo.get(courseCounter));
+                courseCounter++;
+            } else {
+                break;
+            }
         }
     }
 
 
-    /**
-     * Insert a course to the Course table in Courses Database
-     * Return true if the insertion is valid
-     * Return false if the code code is duplicate and print to log
-     **/
-    private boolean insertCourse(CourseDao dao, Course course) {
-        List<String> courses = dao.getCourseCode();
-        String currentCourseCode = course.getCourseCode();
-
-        // if course name isn't already exist in our table, insert it
-        if(!courses.contains(currentCourseCode)) {
-            dao.insertAll(course);
-            return true;
-        }
-        return false;
-    }
-
 
     /**
-     * Insert a list of courses to the Course table in Courses Database
-     *
-     **/
-    private void insertListOfCourses(CourseDao courseDao, List<Course> courses) {
-        for (Course course : courses) {
-            insertCourse(courseDao, course);
+     * Put course code to the Course Section UI
+     * @param courseDao is a list of Course DAOs
+     */
+    private void displayCourseCode(CourseDao courseDao) {
+        int checkboxId = 0;
+        int courseId = 0;
+
+        for (CheckBox checkBox : courseSelectionComponent.getCheckBoxes()) {
+
+            if (checkboxId >= MAX_COURSE_NUMBER) {
+                break;
+            }
+
+            while(courseSelectionComponent.getAvailableCourses().get(checkboxId).isChecked == 1) {
+                checkboxId++;
+                if (checkboxId >= 19) return;
+            }
+
+            String course = courseSelectionComponent.getAvailableCourseCodes().get(checkboxId);
+            checkBox.setText(course);
+            checkboxId++;
         }
     }
 
@@ -248,20 +296,48 @@ public class CourseSelectionActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * Put course code to the Course Section UI
-     * @param checkBoxes is a list of Checkboxes
-     * @param courseDao is a list of Course DAOs
-     */
-    private void displayCourseCode(List<CheckBox> checkBoxes, CourseDao courseDao) {
-        List<String> courses = courseDao.getCourseCode();
-        int checkboxId = 0;
 
-        for (CheckBox checkBox : checkBoxes) {
-            String course = courses.get(checkboxId);
-            checkBox.setText(course);
-            checkboxId++;
+    /**
+     * Delete all course in our database
+     * @param courseDao
+     */
+    private void deleteAllCourses(CourseDao courseDao) {
+        List<Course> courses = courseDao.getAll();
+
+        for (Course course : courses) {
+            courseDao.delete(course);
         }
     }
+
+
+    /**
+     * Insert a course to the Course table in Courses Database
+     * Return true if the insertion is valid
+     * Return false if the code code is duplicate and print to log
+     **/
+    private boolean insertCourse(CourseDao dao, Course course) {
+        List<String> courses = dao.getCourseCode();
+        String currentCourseCode = course.getCourseCode();
+
+        // if course name isn't already exist in our table, insert it
+        if(!courses.contains(currentCourseCode)) {
+            dao.insertAll(course);
+            return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * Insert a list of courses to the Course table in Courses Database
+     *
+     **/
+    private void insertListOfCourses(CourseDao courseDao, List<Course> courses) {
+        for (Course course : courses) {
+            insertCourse(courseDao, course);
+        }
+    }
+
+
 
 }

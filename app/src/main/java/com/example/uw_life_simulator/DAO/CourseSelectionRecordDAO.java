@@ -12,4 +12,13 @@ import java.util.List;
 public interface CourseSelectionRecordDAO {
     @Insert
     void insertAll(CourseSelectionRecord courseSelectionRecord);
+
+    @Query("DELETE FROM CourseSelectionRecord")
+    void deleteAll();
+
+    @Query("SELECT * FROM CourseSelectionRecord WHERE completionGrade = -1")
+    List<CourseSelectionRecord> selectCurrent();
+
+    @Query("SELECT * FROM CourseSelectionRecord")
+    List<CourseSelectionRecord> selectAll();
 }
