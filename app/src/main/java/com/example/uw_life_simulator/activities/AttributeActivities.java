@@ -45,7 +45,9 @@ public class AttributeActivities extends AppCompatActivity {
      */
     public void confirmTalentSelection (View view) {
         PlayerAttributeDatabase db = Room.databaseBuilder(getApplicationContext(),
-                PlayerAttributeDatabase.class, "PlayerAttributes").allowMainThreadQueries().build();
+                PlayerAttributeDatabase.class, "PlayerAttributes").
+                allowMainThreadQueries().
+                fallbackToDestructiveMigration().build();
         PlayerAttributeDAO playerAttributeDAO = db.playerAttributeDAO();
         playerAttributeDAO.insertAll(playerAttribute);
 
