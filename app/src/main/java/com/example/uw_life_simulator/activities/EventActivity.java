@@ -135,7 +135,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         tv3.setText(String.valueOf(curPlayer.getGPA()));
 
         // Select current courses (grade = -1)
-        List<CourseSelectionRecord> curSelection = courseSelectionRecordDAO.selectAll();
+        List<CourseSelectionRecord> curSelection = courseSelectionRecordDAO.selectCurrent();
 
         // Select TextViews for displaying current course selection
         TextView curCourseTV1 = (TextView)findViewById(R.id.textView23);
