@@ -16,6 +16,9 @@ public interface CourseSelectionRecordDAO {
     @Query("DELETE FROM CourseSelectionRecord")
     void deleteAll();
 
+    @Query("SELECT * FROM CourseSelectionRecord")
+    List<CourseSelectionRecord> selectAll();
+
     @Query("SELECT * FROM CourseSelectionRecord WHERE completionGrade = -1")
     List<CourseSelectionRecord> selectCurrent();
 }

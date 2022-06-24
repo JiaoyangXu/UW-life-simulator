@@ -119,7 +119,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         PlayerAttributeDAO playerAttributeDAO = db.playerAttributeDAO();
 
         CourseDatabase db2 = Room.databaseBuilder(getApplicationContext(),
-                CourseDatabase.class, "CourseSelectionRecords").allowMainThreadQueries().build();
+                CourseDatabase.class, "Courses").allowMainThreadQueries().build();
         CourseSelectionRecordDAO courseSelectionRecordDAO = db2.courseSelectionRecordDAO();
 
         // Get a player instance (a line of data) from Room database.
@@ -135,7 +135,14 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         tv3.setText(String.valueOf(curPlayer.getGPA()));
 
         // Select current courses (grade = -1)
-        List<CourseSelectionRecord> curSelection = courseSelectionRecordDAO.selectCurrent();
+        List<CourseSelectionRecord> allRecord = courseSelectionRecordDAO.selectAll();
+        //List<CourseSelectionRecord> curSelection = new ArrayList<>();
+
+        /*for (int i = 0; i < allRecord.size(); i++) {
+            if (allRecord.get(i).completionGrade == -1) {
+                curSelection.add(allRecord.get(i));
+            }
+        }*/
 
         // Select TextViews for displaying current course selection
         TextView curCourseTV1 = (TextView)findViewById(R.id.textView23);
@@ -143,8 +150,8 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         TextView curCourseTV3 = (TextView)findViewById(R.id.textView26);
         TextView curCourseTV4 = (TextView)findViewById(R.id.textView27);
 
-        if (curSelection.size() > 0) {
-            CourseSelectionRecord curCourse1 = curSelection.get(0);
+        if (allRecord.size() > 0) {
+            CourseSelectionRecord curCourse1 = allRecord.get(0);
             curCourseTV1.setText(curCourse1.getCourseCode());
         }
 
