@@ -23,4 +23,6 @@ public class CourseSelectionRecord {
         this.courseCode = courseCode;
         this.completionGrade = -1;
     }
+
+    public String getCourseCode() { return courseCode;}
 }

@@ -129,7 +129,7 @@ public class PlayerAttribute {
     public int getLuck() { return luck; }
     public int getHealth() { return health; }
     public int getWealth() { return wealth; }
-    public int pressure() { return pressure; }
+    public int getPressure() { return pressure; }
     public int getGPA() { return GPA; }
 
     // Getters for extra academic and career indicators
