@@ -12,6 +12,7 @@ import java.util.List;
 
 @Dao
 public interface PlayerAttributeDAO {
+    // Define your queries here.
     @Insert
     void insertAll(PlayerAttribute playerAttribute);
 
