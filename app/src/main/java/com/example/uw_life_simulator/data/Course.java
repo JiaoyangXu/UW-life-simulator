@@ -70,7 +70,7 @@ public class Course {
 
     public boolean checkValidity(List<Integer> takenCourses)
     {
-        if (!takenCourses.contains(prereq) && prereq == -1)
+        if (!takenCourses.contains(prereq) && prereq != -1)
         {
             return false;
         }
@@ -116,24 +116,4 @@ public class Course {
     public void setUsefulness(int usefulness) {
         this.usefulness = usefulness;
     }
-
-    // public functions
-    /**
-     * Check if the given list of taken courses can satisfy this
-     * course's requirement
-     *
-     * Input: List<Integer> : takenCourses
-     * Output: bool : whether the course is valid to be taken
-     **/
-    /*public boolean checkValidity(List<Integer> takenCourses)
-    {
-        for(int course : requiredCourses)
-        {
-            if (!takenCourses.contains(course))
-            {
-                return false;
-            }
-        }
-        return true;
-    }*/
 }

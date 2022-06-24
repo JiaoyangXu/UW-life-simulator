@@ -1,4 +1,5 @@
 package com.example.uw_life_simulator.model;
+import com.example.uw_life_simulator.data.Course;
 
 public class Factory {
     /**
