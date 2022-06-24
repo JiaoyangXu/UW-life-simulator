@@ -6,6 +6,9 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class PlayerAttribute {
+    // Define all the columns here.
+    // autoGenerate = True means Room will automatically set the next inserted instance to max+1 for
+    // this column.
     @PrimaryKey(autoGenerate = true)
     public int playerID;
 
@@ -96,6 +99,7 @@ public class PlayerAttribute {
                 '}';
     }
 
+    // Constructor.
     public PlayerAttribute(int IQ, int luck, int wealth, int health) {
         this.programID = 1;
         this.playerName = "Mr.Goose";
