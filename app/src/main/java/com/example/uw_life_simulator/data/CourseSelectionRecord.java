@@ -24,5 +24,15 @@ public class CourseSelectionRecord {
         this.completionGrade = -1;
     }
 
+    @Override
+    public String toString() {
+        return "CourseSelectionRecord{" +
+                "recordID=" + recordID +
+                ", playerID=" + playerID +
+                ", courseCode='" + courseCode + '\'' +
+                ", completionGrade=" + completionGrade +
+                '}';
+    }
+
     public String getCourseCode() { return courseCode;}
 }

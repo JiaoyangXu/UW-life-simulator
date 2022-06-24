@@ -21,4 +21,7 @@ public interface CourseSelectionRecordDAO {
 
     @Query("SELECT * FROM CourseSelectionRecord WHERE completionGrade = -1")
     List<CourseSelectionRecord> selectCurrent();
+
+    @Query("SELECT * FROM CourseSelectionRecord")
+    List<CourseSelectionRecord> selectAll();
 }
