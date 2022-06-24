@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="80dp"
         android:layout_weight="0"
         android:orientation="horizontal">
 
@@ -24,7 +24,7 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".3"
+                android:layout_weight=".35"
                 android:text=" Pressure:"
                 android:textSize="20dp"
                 android:textColor="#000000"/>
@@ -33,7 +33,7 @@
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".7"
+                android:layout_weight=".65"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:text="Pressure"
@@ -52,7 +52,7 @@
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".3"
+                android:layout_weight=".35"
                 android:text=" Budget:"
                 android:textSize="20dp"
                 android:textColor="#000000"/>
@@ -61,7 +61,7 @@
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".7"
+                android:layout_weight=".65"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:text="Budget"
@@ -80,7 +80,7 @@
                 android:id="@+id/textView13"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".3"
+                android:layout_weight=".35"
                 android:text=" GPA:"
                 android:textSize="20dp"
                 android:textColor="#000000"/>
@@ -89,7 +89,7 @@
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight=".7"
+                android:layout_weight=".65"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:text="GPA"
@@ -100,7 +100,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_weight="0"
         android:orientation="horizontal">
 
@@ -108,7 +108,7 @@
             android:id="@+id/imageView3"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:background="@drawable/border4"
+            android:background="@drawable/border3"
             app:srcCompat="@android:drawable/ic_lock_silent_mode_off" />
 
         <TextView
@@ -116,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/border4"
+            android:background="@drawable/border3"
             android:text="TextView" />
     </LinearLayout>
 
@@ -166,7 +166,7 @@
         android:layout_height="40dp"
         android:layout_weight="0"
         android:orientation="horizontal"
-        android:background="@drawable/border4">
+        android:background="@drawable/border3">
 
         <LinearLayout
             android:layout_width="0dp"
