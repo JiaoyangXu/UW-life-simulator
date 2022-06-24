@@ -145,7 +145,13 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
 
         if (curSelection.size() > 0) {
             CourseSelectionRecord curCourse1 = curSelection.get(0);
+            CourseSelectionRecord curCourse2 = curSelection.get(1);
+            CourseSelectionRecord curCourse3 = curSelection.get(2);
+            CourseSelectionRecord curCourse4 = curSelection.get(3);
             curCourseTV1.setText(curCourse1.getCourseCode());
+            curCourseTV2.setText(curCourse2.getCourseCode());
+            curCourseTV3.setText(curCourse3.getCourseCode());
+            curCourseTV4.setText(curCourse4.getCourseCode());
         }
 
         /*mRecyclerView.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener() {
