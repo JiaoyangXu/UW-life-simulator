@@ -5,6 +5,8 @@
 - [X] Vistor and Factory Design Pattern - Hunter
 - [X] Backend Code main structure - Hunter
 - [X] Course Selection  - database: Jason, Conrad; interaction: Jason
+- [X] Clean database when game terminated (press quit button for now)
+
 
 ## TO-DO For Demo
 - [ ] Entrance Page (New/Load)  (90% done)  - Karen
