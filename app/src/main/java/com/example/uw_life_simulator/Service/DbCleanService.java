@@ -7,7 +7,6 @@ import androidx.room.Room;
 import com.example.uw_life_simulator.DAO.CourseDao;
 import com.example.uw_life_simulator.DAO.CourseSelectionRecordDAO;
 import com.example.uw_life_simulator.DAO.PlayerAttributeDAO;
-import com.example.uw_life_simulator.DAO.PlayerAttributeDAO_Impl;
 import com.example.uw_life_simulator.Database.CourseDatabase;
 import com.example.uw_life_simulator.Database.PlayerAttributeDatabase;
 import com.example.uw_life_simulator.data.CourseSelectionRecord;

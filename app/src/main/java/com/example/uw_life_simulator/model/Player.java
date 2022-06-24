@@ -1,5 +1,7 @@
 package com.example.uw_life_simulator.model;
 
+import com.example.uw_life_simulator.data.PlayerAttribute;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +14,7 @@ public class Player { // Implementation needed
     private BuffManager buffManager = new BuffManager(this);
     private CourseManager courseManager = new CourseManager(this);
     private UserAttribute userAttribute = new UserAttribute();
+    private PlayerAttribute playerAttribute = new PlayerAttribute(0,0,0,0);
 
     //Getter & Setters
     public String getName(){ return name;}
@@ -22,6 +25,7 @@ public class Player { // Implementation needed
     public void setNumTerm(int n){ numTerm = n;}
     public BuffManager getTalentManager(){ return buffManager; }
     public UserAttribute getUserAttribute(){ return userAttribute; }
+    public PlayerAttribute getPlayerAttribute(){ return playerAttribute; }
     public CourseManager getCourseManager(){return courseManager; }
     /**
      * Accept GameEvents' impact
@@ -31,7 +35,7 @@ public class Player { // Implementation needed
      **/
     public void accept(GameEvent gameEvent)
     {
-        gameEvent.visit(userAttribute);
+        gameEvent.visit(playerAttribute);
     }
 
     /**
@@ -40,6 +44,6 @@ public class Player { // Implementation needed
      * Input: Talent : talent
      * Output: void
      **/
-    public void accept(Buff buff){ buff.visit(userAttribute); }
+    public void accept(Buff buff){ buff.visit(playerAttribute); }
 
 }

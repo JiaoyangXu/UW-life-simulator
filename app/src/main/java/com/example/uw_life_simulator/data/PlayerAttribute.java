@@ -4,8 +4,14 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.uw_life_simulator.model.Subject;
+import com.example.uw_life_simulator.model.Visitor;
+
 @Entity
-public class PlayerAttribute {
+public class PlayerAttribute implements Subject {
+    // Define all the columns here.
+    // autoGenerate = True means Room will automatically set the next inserted instance to max+1 for
+    // this column.
     @PrimaryKey(autoGenerate = true)
     public int playerID;
 
@@ -96,6 +102,7 @@ public class PlayerAttribute {
                 '}';
     }
 
+    // Constructor.
     public PlayerAttribute(int IQ, int luck, int wealth, int health) {
         this.programID = 1;
         this.playerName = "Mr.Goose";
@@ -146,5 +153,10 @@ public class PlayerAttribute {
     public int getLangSkill() { return LangSkill; }
     public int getSciSkill() { return SciSkill; }
     public int getArtsSkill() { return ArtsSkill; }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 }
 
