@@ -1,5 +1,7 @@
 package com.example.uw_life_simulator.model;
 
+import com.example.uw_life_simulator.data.PlayerAttribute;
+
 /**
  * NewEvent generator which generates events based on the eventId
  **/
@@ -35,7 +37,7 @@ class GameEventNull extends GameEvent{
      * Output: void
      **/
     @Override
-    public void visit(UserAttribute attribute) {
+    public void visit(PlayerAttribute attribute) {
         //doing nothing
     }
 }
@@ -57,8 +59,8 @@ class GameEventMoney extends GameEvent{
      * Output: void
      **/
     @Override
-    public void visit(UserAttribute attribute) {
-        attribute.setWealth(attribute.getWealth() + 10);
+    public void visit(PlayerAttribute attribute) {
+        attribute.wealth += 10.0;
     }
 }
 
@@ -79,8 +81,8 @@ class GameEventMoney2 extends GameEvent{
      * Output: void
      **/
     @Override
-    public void visit(UserAttribute attribute) {
-        attribute.setWealth(attribute.getWealth() - 10);
+    public void visit(PlayerAttribute attribute) {
+        attribute.wealth -= 10.0;
     }
 }
 
@@ -101,8 +103,8 @@ class GameEventGoose extends GameEvent{
      * Output: void
      **/
     @Override
-    public void visit(UserAttribute attribute) {
-        attribute.setWealth(attribute.getPressure() + 10);
+    public void visit(PlayerAttribute attribute) {
+        attribute.pressure += 10.0;
     }
 }
 
@@ -123,7 +125,7 @@ class GameEventGoose2 extends GameEvent{
      * Output: void
      **/
     @Override
-    public void visit(UserAttribute attribute) {
-        attribute.setWealth(attribute.getPressure() + 100);
+    public void visit(PlayerAttribute attribute) {
+        attribute.pressure += 100.0;
     }
 }

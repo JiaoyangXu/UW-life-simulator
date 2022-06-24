@@ -1,5 +1,7 @@
 package com.example.uw_life_simulator.model;
 
+import com.example.uw_life_simulator.data.PlayerAttribute;
+
 public class BuffGenerator {
     public static Buff generateBuff(int buffId)
     {
@@ -31,7 +33,7 @@ class BuffNull extends Buff {
      * Output: void
      **/
     @Override
-    public void visit(UserAttribute attribute) {
+    public void visit(PlayerAttribute attribute) {
         //doing nothing
     }
 };
@@ -55,8 +57,9 @@ class BuffIQ extends Buff {
      * Output: void
      **/
     @Override
-    public void visit(UserAttribute attribute) {
-        attribute.setIq(attribute.getIq() + 1);
+    public void visit(PlayerAttribute attribute)
+    {
+        attribute.IQ ++;
     }
 };
 
@@ -80,8 +83,9 @@ class BuffIQ2 extends Buff {
      * Output: void
      **/
     @Override
-    public void visit(UserAttribute attribute) {
-        attribute.setIq(attribute.getIq() - 1);
+    public void visit(PlayerAttribute attribute)
+    {
+        attribute.IQ --;
     }
 };
 

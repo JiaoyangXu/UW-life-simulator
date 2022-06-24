@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class UserAttribute implements Subject {
+public class UserAttribute{
     private int iq;
     private int luck;
     private int wealth;
@@ -130,9 +130,4 @@ public class UserAttribute implements Subject {
     public void setSixMajorAbilities(int index, int val){ sixMajorAbilities.set(index, val); }
 
     public List<Integer> getSixMajorAbilities(){return sixMajorAbilities; }
-
-    @Override
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
-    }
 }
