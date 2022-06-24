@@ -31,7 +31,7 @@ public class BuffManager {
      **/
     public void triggerAllTalents() {
         for(int id : buffs) {
-            Factory.generateBuff(id).visit(owner.getUserAttribute());
+            Factory.generateBuff(id).visit(owner.getPlayerAttribute());
         }
     }
 
@@ -44,7 +44,7 @@ public class BuffManager {
     public void triggerTalent(int talentId){
         if(buffs.contains(talentId))
         {
-            Factory.generateBuff(talentId).visit(owner.getUserAttribute());
+            Factory.generateBuff(talentId).visit(owner.getPlayerAttribute());
         }
     }
 

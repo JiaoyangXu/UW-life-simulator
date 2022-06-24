@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -78,4 +79,24 @@ public class Course {
     public void setUsefulness(int usefulness) {
         this.usefulness = usefulness;
     }
+
+    // public functions
+    /**
+     * Check if the given list of taken courses can satisfy this
+     * course's requirement
+     *
+     * Input: List<Integer> : takenCourses
+     * Output: bool : whether the course is valid to be taken
+     **/
+    /*public boolean checkValidity(List<Integer> takenCourses)
+    {
+        for(int course : requiredCourses)
+        {
+            if (!takenCourses.contains(course))
+            {
+                return false;
+            }
+        }
+        return true;
+    }*/
 }
