@@ -12,7 +12,7 @@ public class Player { // Implementation needed
     private int numTerm = 2;
 
     private BuffManager buffManager = new BuffManager(this);
-    private CourseManager courseManager = new CourseManager(this);
+    //private CourseManager courseManager = new CourseManager(this);
     private UserAttribute userAttribute = new UserAttribute();
     private PlayerAttribute playerAttribute = new PlayerAttribute(0,0,0,0);
 
@@ -26,7 +26,7 @@ public class Player { // Implementation needed
     public BuffManager getTalentManager(){ return buffManager; }
     public UserAttribute getUserAttribute(){ return userAttribute; }
     public PlayerAttribute getPlayerAttribute(){ return playerAttribute; }
-    public CourseManager getCourseManager(){return courseManager; }
+    //public CourseManager getCourseManager(){return courseManager; }
     /**
      * Accept GameEvents' impact
      *

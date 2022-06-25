@@ -23,7 +23,7 @@ public class Summarypage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(state == "study") {
-            List<Integer> list = this.play.getCourseManager().getCurrentCourses();
+            //List<Integer> list = this.play.getCourseManager().getCurrentCourses();
 
             setContentView(R.layout.summary_page_study);
         }
