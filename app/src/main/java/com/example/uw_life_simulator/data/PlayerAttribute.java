@@ -12,8 +12,10 @@ public class PlayerAttribute implements Subject {
     // Define all the columns here.
     // autoGenerate = True means Room will automatically set the next inserted instance to max+1 for
     // this column.
+<<<<<<< HEAD
 
-
+=======
+>>>>>>> 098b5706810875ebdf635e3b62f7d4c405c6e45e
     @PrimaryKey(autoGenerate = true)
     public int playerID;
 
