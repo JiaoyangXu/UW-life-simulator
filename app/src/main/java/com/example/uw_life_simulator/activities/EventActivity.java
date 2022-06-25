@@ -135,16 +135,19 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
 
         // Get a player instance (a line of data) from Room database.
         List<PlayerAttribute> tmpList = playerAttributeDAO.loadSingle();
-        PlayerAttribute curPlayer = tmpList.get(0);
 
-        // Display the player attributes from database to front-end.
-        // Please see PlayerAttribute.java for all available attributes in the database.
-        TextView tv1 = (TextView)findViewById(R.id.textView10); // Pressure
-        tv1.setText(String.valueOf(curPlayer.getPressure()));
-        TextView tv2 = (TextView)findViewById(R.id.textView12); // Wealth
-        tv2.setText(String.valueOf(curPlayer.getWealth()));
-        TextView tv3 = (TextView)findViewById(R.id.textView14); // GPA
-        tv3.setText(String.valueOf(curPlayer.getGPA()));
+        if (tmpList.size() != 0) {
+            PlayerAttribute curPlayer = tmpList.get(0);
+
+            // Display the player attributes from database to front-end.
+            // Please see PlayerAttribute.java for all available attributes in the database.
+            TextView tv1 = (TextView)findViewById(R.id.textView10); // Pressure
+            tv1.setText(String.valueOf(curPlayer.getPressure()));
+            TextView tv2 = (TextView)findViewById(R.id.textView12); // Wealth
+            tv2.setText(String.valueOf(curPlayer.getWealth()));
+            TextView tv3 = (TextView)findViewById(R.id.textView14); // GPA
+            tv3.setText(String.valueOf(curPlayer.getGPA()));
+        }
 
         // Select current courses (grade = -1) (selectCurrent() will pick all the course selection
         // record that have completionGrade = -1, ie not received final grade yet)
