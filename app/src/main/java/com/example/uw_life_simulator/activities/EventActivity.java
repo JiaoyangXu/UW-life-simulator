@@ -5,6 +5,7 @@ import com.example.uw_life_simulator.model.event_list_adapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -193,6 +194,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             event = mNewEvent.generateNewEvent(mPlayer,mAdapter.getItemCount());
             mAdapter.addEvent(event);
             mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+        });
+        Button mSummaryButton = findViewById(R.id.SummaryButton);
+        mSummaryButton.setOnClickListener((v) -> {
+            Intent intent = new Intent(EventActivity.this, Summarypage.class);
+            startActivity(intent);
         });
         /*mRecyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
