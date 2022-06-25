@@ -18,9 +18,9 @@
 ## TO-DO For Final Presentation
 - [ ] WaterlooWorks (Database ⇔ Backend Code ⇔ GUI)
     - [ ] xml page 1: Select Company 
-    - [ ] xml page 2: mini games
+    - [ ] xml page 2: mini games 
     - [ ] xml page 3: Offer as an Event?	
 - [ ] Work Term Event Set (Backend Code)
-- [ ] Mini Games - Hunter 
+- [ ] Mini Games - Hunter, Robert
 - [ ] Art Design - Karen
 
