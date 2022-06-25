@@ -36,7 +36,7 @@ public class Summarypage extends AppCompatActivity {
     }
 
 
-    private void update(TextView textView, List<Integer> list) {
+    private void update( List<Integer> list) {
         int index = 1;
         for(int i = 0; i < list.size();i++){
             if(80 >= list.get(i)){
@@ -45,8 +45,21 @@ public class Summarypage extends AppCompatActivity {
                 index = 3;
             }
         }
+        TextView edit;
+        TextView edit1;
+        edit1 = findViewById(R.id.textView1);
+        edit = findViewById(R.id.textView);
         if(index == 1){
-            
+
+            edit.append("Congratulation");
+            edit1.append("You get high GPA in this term");
+
+        } else if(index == 2){
+            edit.append("Congratulation");
+            edit1.append("You finish this term");
+        }else if(index == 3){
+            edit.append("Sorry");
+            edit1.append("You fail some class, work hard on next term!");
         }
 
     }
