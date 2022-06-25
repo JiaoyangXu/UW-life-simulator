@@ -200,6 +200,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             Intent intent = new Intent(EventActivity.this, Summarypage.class);
             startActivity(intent);
         });
+        Button mQuitButton = findViewById(R.id.QuitButton);
+        mQuitButton.setOnClickListener((v) -> {
+            Intent intent = new Intent(EventActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
         /*mRecyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

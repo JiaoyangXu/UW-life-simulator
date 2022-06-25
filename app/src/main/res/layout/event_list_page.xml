@@ -181,7 +181,6 @@
                 android:layout_gravity="center"
                 android:layout_weight=".125"
                 android:gravity="center"
-                android:text="TextView"
                 android:textColor="#000000"/>
 
             <TextView
@@ -191,7 +190,6 @@
                 android:layout_gravity="center"
                 android:layout_weight=".125"
                 android:gravity="center"
-                android:text="TextView"
                 android:textColor="#000000"/>
 
             <TextView
@@ -201,7 +199,6 @@
                 android:layout_gravity="center"
                 android:layout_weight=".125"
                 android:gravity="center"
-                android:text="TextView"
                 android:textColor="#000000"/>
 
             <TextView
@@ -211,7 +208,6 @@
                 android:layout_gravity="center"
                 android:layout_weight=".125"
                 android:gravity="center"
-                android:text="TextView"
                 android:textColor="#000000"/>
         </LinearLayout>
         <TextView
@@ -219,8 +215,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".5"
-            android:layout_gravity="center"
-            android:text="TextView" />
+            android:layout_gravity="center" />
 
 
     </LinearLayout>
@@ -247,7 +242,7 @@
             android:text="SUMMARY" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/QuitButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
