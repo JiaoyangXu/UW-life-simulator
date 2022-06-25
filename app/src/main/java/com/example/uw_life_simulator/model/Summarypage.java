@@ -19,6 +19,7 @@ public class Summarypage extends AppCompatActivity {
         state = term;
         play = play1;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
