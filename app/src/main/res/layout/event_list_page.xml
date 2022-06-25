@@ -239,12 +239,12 @@
             android:text="PROFILE" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/SummaryButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/border3"
-            android:text="ACTION" />
+            android:text="SUMMARY" />
 
         <Button
             android:id="@+id/button3"

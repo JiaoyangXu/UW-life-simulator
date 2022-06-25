@@ -15,13 +15,10 @@ public class Summarypage extends AppCompatActivity {
     private String state = null;
     private Player play = null;
 
-    public Summarypage(String term, Player play1){
-        state = term;
-        play = play1;
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.summary_page_study);
         if(state == "study") {
             //List<Integer> list = this.play.getCourseManager().getCurrentCourses();
 
