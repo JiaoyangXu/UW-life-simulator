@@ -10,6 +10,8 @@ public class BuffGenerator {
             case 0: return new BuffNull();
             case 1: return new BuffIQ();
             case 2: return new BuffIQ2();
+            case 3: return new BuffLuck3();
+            case 4: return new BuffLuck4();
 
             default: return null;
         }
@@ -89,5 +91,52 @@ class BuffIQ2 extends Buff {
     }
 };
 
+/**
+ * BuffID: 2
+ * Effect: iq-1
+ */
+class BuffLuck3 extends Buff {
+    //Constructor
+    public BuffLuck3(){
+        this.description = "Congratulation, you get a parse from professor!\n";
+        this.Id = 3;
+    }
+
+    /**
+     * Buff's effect on the player(iq - 1)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute)
+    {
+        attribute.luck ++;
+    }
+};
+
+/**
+ * BuffID: 2
+ * Effect: iq-1
+ */
+class BuffLuck4 extends Buff {
+    //Constructor
+    public BuffLuck4(){
+        this.description = "The crow is flying around your house, it is not a good sign...\n";
+        this.Id = 4;
+    }
+
+    /**
+     * Buff's effect on the player(iq - 1)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute)
+    {
+        attribute.luck --;
+    }
+};
 
 
