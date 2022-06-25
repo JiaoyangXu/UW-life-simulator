@@ -1,6 +1,9 @@
 package com.example.uw_life_simulator.model;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +30,23 @@ public class Summarypage extends AppCompatActivity {
         if(state == "coop"){
 
             setContentView(R.layout.summary_page_coop);
+        }
+
+
+    }
+
+
+    private void update(TextView textView, List<Integer> list) {
+        int index = 1;
+        for(int i = 0; i < list.size();i++){
+            if(80 >= list.get(i)){
+                index = 2;
+            } else if(60 >= list.get(i)) {
+                index = 3;
+            }
+        }
+        if(index == 1){
+            
         }
 
     }
