@@ -3,7 +3,7 @@ package com.example.uw_life_simulator.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseManager {
+public class CourseManager_deprived {
     private Player owner;
     private List<Integer> takenCourses = new ArrayList<>();
     private List<Integer> currentCourses = new ArrayList<>();
@@ -15,10 +15,10 @@ public class CourseManager {
 
 
     //Constructors
-    public CourseManager(Player owner) {
+    public CourseManager_deprived(Player owner) {
         this.owner = owner;
     }
-    public CourseManager(Player owner, List<Integer> takenCourses, List<Integer> currentCourses) {
+    public CourseManager_deprived(Player owner, List<Integer> takenCourses, List<Integer> currentCourses) {
         this.owner = owner;
         this.takenCourses = takenCourses;
         this.currentCourses = currentCourses;
@@ -44,7 +44,7 @@ public class CourseManager {
      * Input: int : courseId
      * Output: bool : whether the adding is successful
      **/
-    public boolean addCourse(int courseId){
+    /*public boolean addCourse(int courseId){
         if (Factory.generateCourse(courseId) == null)
         {
             return false;
@@ -56,5 +56,5 @@ public class CourseManager {
             return true;
         }
         return false;
-    }
+    }*/
 }

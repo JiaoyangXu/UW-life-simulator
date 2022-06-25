@@ -1,6 +1,10 @@
 package com.example.uw_life_simulator.model;
 import com.example.uw_life_simulator.data.Course;
 
+import com.example.uw_life_simulator.DAO.CourseSelectionRecordDAO;
+import com.example.uw_life_simulator.data.CourseSelectionRecord;
+import com.example.uw_life_simulator.Database.CourseDatabase;
+
 public class Factory {
     /**
      * NewEvent generator which generates events based on the eventId
@@ -45,9 +49,9 @@ public class Factory {
      * Input: int : courseId
      * Output: Course : Generated course
      **/
-    static public Course generateCourse(int courseId) // Implementation needed
+    /*static public Course generateCourse(int courseId) // Implementation needed
     {
         return null;
-    }
+    }*/
 }
 
