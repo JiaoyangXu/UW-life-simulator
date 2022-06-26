@@ -26,6 +26,7 @@ public class Player { // Implementation needed
     public BuffManager getTalentManager(){ return buffManager; }
     public UserAttribute getUserAttribute(){ return userAttribute; }
     public PlayerAttribute getPlayerAttribute(){ return playerAttribute; }
+    public void setPlayerAttribute(PlayerAttribute p){this.playerAttribute = p;}
     //public CourseManager getCourseManager(){return courseManager; }
     /**
      * Accept GameEvents' impact

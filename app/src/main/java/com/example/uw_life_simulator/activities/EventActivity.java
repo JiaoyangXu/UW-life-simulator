@@ -43,8 +43,6 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private static final int EVENTSET_COUNT = 0;
     Player mPlayer;
-    UserAttribute mUserAttribute;
-    PlayerAttribute mPlayerAttribute;
     NewEvent mNewEvent;
 
     private enum LayoutManagerType {
@@ -190,6 +188,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 return false;
             }
         });*/
+        mPlayer.setPlayerAttribute(curPlayer);
         Button mNewEventButton = findViewById(R.id.Eventbutton);
         mNewEventButton.setOnClickListener((v) -> {
             Log.d(TAG, "clicked on recyclerview, generate new event");
@@ -198,9 +197,19 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             event = mNewEvent.generateNewEvent(mPlayer,mAdapter.getItemCount());
             mAdapter.addEvent(event);
             mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+            //set player attribute after every newly generated event
+            // Pressure
+            tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
+            // Wealth
+            tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getWealth()));
+            // GPA
+            tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
         });
         Button mSummaryButton = findViewById(R.id.SummaryButton);
         mSummaryButton.setOnClickListener((v) -> {
+            //delete previous player attribute and re-insert current player attribute
+            playerAttributeDAO.deleteAll();
+            playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
             Intent intent = new Intent(EventActivity.this, Summarypage.class);
             startActivity(intent);
         });
