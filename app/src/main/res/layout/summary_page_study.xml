@@ -26,7 +26,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="66dp"
-            android:text=""
+            android:text="Congratulation"
             android:textColor="#000000"
             android:textSize="30dp" />
 
@@ -34,7 +34,7 @@
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="67dp"
-            android:text=""
+            android:text="You get high GPA in this term"
             android:textColor="#000000"
             android:textSize="20dp" />
 
