@@ -35,4 +35,6 @@ public class CourseSelectionRecord {
     }
 
     public String getCourseCode() { return courseCode;}
+
+    public int getCompletionGrade() { return completionGrade;}
 }
