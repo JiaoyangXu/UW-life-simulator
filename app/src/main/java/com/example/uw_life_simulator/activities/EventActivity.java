@@ -174,7 +174,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mNewEventButton.setOnClickListener((v) -> {
             if(mAdapter.getItemCount() >= 20){
 
-                AlertDialog alertDialog = new AlertDialog.Builder(this)
+                AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
                         .setMessage(R.string.proceed_to_summary)
                         .setCancelable(true)
                         .setTitle("END OF TERM")
