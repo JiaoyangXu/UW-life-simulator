@@ -43,6 +43,8 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private static final int EVENTSET_COUNT = 0;
     Player mPlayer;
+    UserAttribute mUserAttribute;
+    PlayerAttribute mPlayerAttribute;
     NewEvent mNewEvent;
 
     private enum LayoutManagerType {
@@ -57,7 +59,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     ArrayList<String> mEventset;
     //protected String[] mDataset;
 
-    public class RVClickHandler implements View.OnTouchListener {
+    /*public class RVClickHandler implements View.OnTouchListener {
 
         private RecyclerView mRecyclerView;
         private float mStartX;
@@ -99,7 +101,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             return Math.abs(startX-endX) < 3.0 && Math.abs(startY-endY) < 3.0;
         }
 
-    }
+    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -113,7 +115,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mNewEvent = new NewEvent();
         mAdapter.setClickListener(this);
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setOnTouchListener(new RVClickHandler(mRecyclerView));
+        //mRecyclerView.setOnTouchListener(new RVClickHandler(mRecyclerView));
 
         // ****************************************************************************************
         // The following lines of codes serve as an example for the usage of Room SQLite Database
