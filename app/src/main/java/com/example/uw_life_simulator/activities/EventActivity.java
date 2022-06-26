@@ -8,9 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,51 +59,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     protected event_list_adapter mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
     ArrayList<String> mEventset;
-    //protected String[] mDataset;
 
-    /*public class RVClickHandler implements View.OnTouchListener {
-
-        private RecyclerView mRecyclerView;
-        private float mStartX;
-        private float mStartY;
-
-        public RVClickHandler(RecyclerView recyclerView) {
-            mRecyclerView = recyclerView;
-        }
-
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            boolean isConsumed = false;
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN: {
-                    mStartX = event.getX();
-                    mStartY = event.getY();
-                    break;
-                }
-                case MotionEvent.ACTION_UP: {
-                    float endX = event.getX();
-                    float endY = event.getY();
-                    if(detectClick(mStartX, mStartY, endX, endY)) {
-                        //Ideally it would never be called when a child View is clicked.
-                        //I am not so sure about this.
-                        View itemView = mRecyclerView.findChildViewUnder(endX, endY);
-                        if(itemView == null) {
-                            //RecyclerView clicked
-                            mRecyclerView.performClick();
-                            isConsumed = true;
-                        }
-                    }
-                    break;
-                }
-            }
-            return isConsumed;
-        }
-
-        private boolean detectClick(float startX, float startY, float endX, float endY) {
-            return Math.abs(startX-endX) < 3.0 && Math.abs(startY-endY) < 3.0;
-        }
-
-    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -178,16 +138,6 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             }
         }
 
-        /*mRecyclerView.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                Log.d(TAG, "clicked on recyclerview, generate new event");
-                String s = String.valueOf(mAdapter.getItemCount());
-                String event = "NewEvent called in onClick." + s;
-                mAdapter.addEvent(event);
-                return false;
-            }
-        });*/
         mPlayer.setPlayerAttribute(curPlayer);
         Button mNewEventButton = findViewById(R.id.Eventbutton);
         mNewEventButton.setOnClickListener((v) -> {
@@ -218,15 +168,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             Intent intent = new Intent(EventActivity.this, MainActivity.class);
             startActivity(intent);
         });
-        /*mRecyclerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "clicked on recyclerview, generate new event");
-                String s = String.valueOf(mAdapter.getItemCount());
-                String event = "NewEvent called in onClick." + s;
-                mAdapter.addEvent(event);
-            }
-        });*/
+        Button mProfileButton = findViewById(R.id.ProfileButton);
+        mProfileButton.setOnClickListener((v) -> {
+            onButtonShowPopupWindowClick(v, mPlayer.getPlayerAttribute());
+        });
+
     }
     @Override
     public void onItemClick(View view, int position) {
@@ -239,20 +185,65 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     private void initEventset() {
         ArrayList<String> cars = new ArrayList<String>();
         mEventset = new ArrayList<String>();
-        /*for (int i = 0; i < EVENTSET_COUNT; i++) {
-            mDataset[i] = "This is element #" + i;
-        }*/
+
     }
-    public void onButtonClick(View view) {
-        String event = "event";
-        addEvent2(event);
-    }
+
     private void addEvent2(String event) {
         String item = "Pig";
         int insertIndex = mAdapter.getItemCount();
         mEventset.add(event);
         mAdapter.notifyItemInserted(mAdapter.getItemCount()-1);
     }
+    public void onButtonShowPopupWindowClick(View view, PlayerAttribute p) {
 
+        // inflate the layout of the popup window
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.profile_popup, null);
+
+        // create the popup window
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        // show the popup window
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        TextView ProfileText = (TextView)popupView.findViewById(R.id.ProfileText); // Pressure
+        if(p != null){
+            Log.d(TAG,"print profile: "+ toProfileString(p));
+            ProfileText.setText(toProfileString(p));
+        }
+
+        // dismiss the popup window when touched
+        popupView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                popupWindow.dismiss();
+                return true;
+            }
+        });
+    }
+
+    public String toProfileString(PlayerAttribute p) {
+        return "playerID = " + p.playerID + '\n' +
+                "playerName = " + p.playerName + '\n' +
+                "programID = " + p.programID + '\n' +
+                "numTerm = " + p.numTerm + '\n' +
+                "IQ = " + p.IQ + '\n' +
+                "luck = " + p.luck + '\n' +
+                "wealth = " + p.wealth + '\n' +
+                "health = " + p.health + '\n' +
+                "pressure = " + p.pressure + '\n' +
+                "GPA = " + p.GPA + '\n' +
+                "numFailedCourses = " + p.numFailedCourses + '\n' +
+                "employed = " + p.employed + '\n' +
+                "course1Code = " + p.course1Code + '\n' +
+                "course2Code = " + p.course2Code + '\n' +
+                "course3Code = " + p.course3Code + '\n' +
+                "course4Code = " + p.course4Code + '\n';
+    }
 
 }
+
