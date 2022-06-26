@@ -9,4 +9,5 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="proceed_to_summary">You have successfully finished a term, would you like to proceed to Summary? \n You could also click on the Summary button anytime if you dismiss this dialog.</string>
 </resources>

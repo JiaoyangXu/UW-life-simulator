@@ -5,6 +5,7 @@ import com.example.uw_life_simulator.model.event_list_adapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +25,9 @@ import android.view.MotionEvent;
 import android.widget.Button;
 import com.example.uw_life_simulator.model.*;
 import android.widget.TextView;
+import androidx.fragment.app.DialogFragment;
+import android.app.FragmentManager;
+import com.example.uw_life_simulator.model.AlertDialogFragment;
 import java.io.*;
 
 // Room framework import:
@@ -39,8 +43,13 @@ import com.example.uw_life_simulator.Database.PlayerAttributeDatabase;
 import com.example.uw_life_simulator.DAO.CourseSelectionRecordDAO;
 import com.example.uw_life_simulator.data.CourseSelectionRecord;
 import com.example.uw_life_simulator.Database.CourseDatabase;
+import androidx.fragment.app.FragmentActivity;
+import android.app.AlertDialog;
 
-public class EventActivity extends AppCompatActivity implements event_list_adapter.ItemClickListener {
+import android.app.Dialog;
+import com.example.uw_life_simulator.R;
+
+public class EventActivity extends AppCompatActivity implements event_list_adapter.ItemClickListener,AlertDialogFragment.AlertDialogListener {
 
 
     private static final String TAG = "EventActivity";
@@ -60,6 +69,28 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     protected RecyclerView.LayoutManager mLayoutManager;
     ArrayList<String> mEventset;
 
+
+    @Override
+    public void onOKClick(DialogFragment dialog) {
+        // User touched the dialog's OK button
+        Log.d(TAG,"user clicked on OK");
+        Intent intent = new Intent(EventActivity.this, Summarypage.class);
+        startActivity(intent);
+    }
+    @Override
+    public void onCancelClick(DialogFragment dialog) {
+        // User touched the dialog's Cancel button
+        dialog.dismiss();
+    }
+
+
+    public void showAlertDialog() {
+        // Create an instance of the dialog fragment and show it
+        AlertDialogFragment mAlertDialogFragment= new AlertDialogFragment();
+        mAlertDialogFragment.setListener(this);
+        mAlertDialogFragment.setCancelable(false);
+        FragmentManager fragMan = getFragmentManager();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -141,19 +172,42 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mPlayer.setPlayerAttribute(curPlayer);
         Button mNewEventButton = findViewById(R.id.Eventbutton);
         mNewEventButton.setOnClickListener((v) -> {
-            Log.d(TAG, "clicked on recyclerview, generate new event");
-            String s = String.valueOf(mAdapter.getItemCount());
-            String event = "NewEvent called in onClick." + s;
-            event = mNewEvent.generateNewEvent(mPlayer,mAdapter.getItemCount());
-            mAdapter.addEvent(event);
-            mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
-            //set player attribute after every newly generated event
-            // Pressure
-            tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
-            // Wealth
-            tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getWealth()));
-            // GPA
-            tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
+            if(mAdapter.getItemCount() >= 20){
+
+                AlertDialog alertDialog = new AlertDialog.Builder(this)
+                        .setMessage(R.string.proceed_to_summary)
+                        .setCancelable(true)
+                        .setTitle("END OF TERM")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Send the TryAgain button event back to the host fragment
+                                Intent intent = new Intent(EventActivity.this, Summarypage.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Log.d(TAG,"clicked on cancel");
+                            }
+                        })
+                        .show();
+
+            }
+            else{
+                Log.d(TAG, "clicked on recyclerview, generate new event");
+                String s = String.valueOf(mAdapter.getItemCount());
+                String event = "NewEvent called in onClick." + s;
+                event = mNewEvent.generateNewEvent(mPlayer,mAdapter.getItemCount());
+                mAdapter.addEvent(event);
+                mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                //set player attribute after every newly generated event
+                // Pressure
+                tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
+                // Wealth
+                tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getWealth()));
+                // GPA
+                tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
+            }
         });
         Button mSummaryButton = findViewById(R.id.SummaryButton);
         mSummaryButton.setOnClickListener((v) -> {
