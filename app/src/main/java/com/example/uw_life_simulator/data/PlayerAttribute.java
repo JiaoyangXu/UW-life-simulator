@@ -76,6 +76,21 @@ public class PlayerAttribute implements Subject {
     @ColumnInfo
     public int ArtsSkill;
 
+    @ColumnInfo
+    public int curCourseLoad;
+
+    @ColumnInfo
+    public String course1Code;
+
+    @ColumnInfo
+    public String course2Code;
+
+    @ColumnInfo
+    public String course3Code;
+
+    @ColumnInfo
+    public String course4Code;
+
     @Override
     public String toString() {
         return "PlayerAttribute{" +
@@ -100,6 +115,11 @@ public class PlayerAttribute implements Subject {
                 ", LangSkill=" + LangSkill +
                 ", SciSkill=" + SciSkill +
                 ", ArtsSkill=" + ArtsSkill +
+                ", curCourseLoad=" + curCourseLoad +
+                ", course1Code=" + course1Code +
+                ", course2Code=" + course2Code +
+                ", course3Code=" + course3Code +
+                ", course4Code=" + course4Code +
                 '}';
     }
 
@@ -125,6 +145,11 @@ public class PlayerAttribute implements Subject {
         this.LangSkill = 0;
         this.SciSkill = 0;
         this.ArtsSkill = 0;
+        this.curCourseLoad = 0;
+        this.course1Code = "";
+        this.course2Code = "";
+        this.course3Code = "";
+        this.course4Code = "";
     }
 
     // Getters for basic identification information
@@ -154,6 +179,13 @@ public class PlayerAttribute implements Subject {
     public int getLangSkill() { return LangSkill; }
     public int getSciSkill() { return SciSkill; }
     public int getArtsSkill() { return ArtsSkill; }
+
+    // Getters for current courses
+    public int getCurCourseLoad() { return curCourseLoad; }
+    public String getCourse1Code() { return course1Code; }
+    public String getCourse2Code() { return course2Code; }
+    public String getCourse3Code() { return course3Code; }
+    public String getCourse4Code() { return course4Code; }
 
     @Override
     public void accept(Visitor visitor) {

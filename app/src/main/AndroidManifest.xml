@@ -22,6 +22,7 @@
         <activity
             android:name=".activities.EventActivity"
             android:exported="false" />
+
         <activity
             android:name=".model.Summarypage"
             android:exported="false" />
