@@ -93,7 +93,7 @@ class GameEventMoney2 extends GameEvent{
 class GameEventGoose extends GameEvent{
     public GameEventGoose(){
         this.Id = 3;
-        this.description = "You step on goose shit!\n";
+        this.description = "You step on goose waste!\n";
     }
 
     /**
@@ -115,7 +115,7 @@ class GameEventGoose extends GameEvent{
 class GameEventGoose2 extends GameEvent{
     public GameEventGoose2(){
         this.Id = 4;
-        this.description = "Goose shit step on you!\n";
+        this.description = "Goose waste step on you!\n";
     }
 
     /**
