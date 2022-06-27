@@ -50,27 +50,30 @@
             <Button
                 android:id="@+id/button5"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:backgroundTint="#cddff7"
+                android:layout_margin="3dp"
+                android:background="@drawable/button_border_1"
                 android:onClick="createEvent"
                 android:text="LOAD" />
 
             <Button
                 android:id="@+id/button6"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:backgroundTint="#cddff7"
+                android:layout_margin="3dp"
+                android:background="@drawable/button_border_1"
                 android:onClick="createTalent"
                 android:text="NEW" />
 
             <Button
                 android:id="@+id/button7"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:backgroundTint="#cddff7"
+                android:layout_margin="3dp"
+                android:background="@drawable/button_border_1"
                 android:onClick="quitApp"
                 android:text="Quit" />
         </LinearLayout>

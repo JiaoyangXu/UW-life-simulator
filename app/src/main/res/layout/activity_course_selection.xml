@@ -425,7 +425,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".2"
-                android:backgroundTint="#CDDFF7"
+                android:layout_margin="3dp"
+                android:background="@drawable/button_border_1"
                 android:text="Previous"
                 android:textSize="12dp" />
 
@@ -434,7 +435,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".2"
-                android:backgroundTint="#CDDFF7"
+                android:layout_margin="3dp"
+                android:background="@drawable/button_border_1"
                 android:text="Next"
                 android:textSize="12dp" />
 
@@ -443,7 +445,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".2"
-                android:backgroundTint="#CDDFF7"
+                android:layout_margin="3dp"
+                android:background="@drawable/button_border_1"
                 android:text="Submit"
                 android:textSize="12dp"
                 android:onClick="submitCourseSelection"/>
