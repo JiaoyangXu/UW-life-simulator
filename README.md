@@ -24,3 +24,6 @@
 - [ ] Mini Games - Hunter, Robert
 - [ ] Art Design - Karen
 
+Reference:
+Background Picture:  zeefumdajma on https://www.reddit.com/r/uwaterloo/comments/83rs5w/mr_goose_on_snapchat/
+
