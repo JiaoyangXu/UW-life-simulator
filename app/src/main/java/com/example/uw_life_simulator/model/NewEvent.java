@@ -6,7 +6,7 @@ import com.example.uw_life_simulator.model.Factory;
 public class NewEvent {
     public static String generateNewEvent(Player player, int totalnum)
     {
-        GameEvent gm = Factory.generateEvent(totalnum % 4);
+        GameEvent gm = Factory.generateEvent(totalnum % 5);
         //String s = "New Event " + totalnum + " is: " + gm.description;
         String s = gm.description;
         PlayerAttribute pa = player.getPlayerAttribute();
