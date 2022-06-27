@@ -181,6 +181,7 @@
                 android:layout_gravity="center"
                 android:layout_weight=".125"
                 android:gravity="center"
+                android:textSize="12dp"
                 android:textColor="#000000"/>
 
             <TextView
@@ -190,6 +191,7 @@
                 android:layout_gravity="center"
                 android:layout_weight=".125"
                 android:gravity="center"
+                android:textSize="12dp"
                 android:textColor="#000000"/>
 
             <TextView
@@ -199,6 +201,7 @@
                 android:layout_gravity="center"
                 android:layout_weight=".125"
                 android:gravity="center"
+                android:textSize="12dp"
                 android:textColor="#000000"/>
 
             <TextView
@@ -208,6 +211,7 @@
                 android:layout_gravity="center"
                 android:layout_weight=".125"
                 android:gravity="center"
+                android:textSize="12dp"
                 android:textColor="#000000"/>
         </LinearLayout>
         <TextView
@@ -215,6 +219,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".5"
+            android:textSize="15dp"
+            android:text="Current term: 1A"
+            android:gravity="center"
             android:layout_gravity="center" />
 
 
