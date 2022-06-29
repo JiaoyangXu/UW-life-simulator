@@ -5,7 +5,22 @@ import com.example.uw_life_simulator.DAO.CourseSelectionRecordDAO;
 import com.example.uw_life_simulator.data.CourseSelectionRecord;
 import com.example.uw_life_simulator.Database.CourseDatabase;
 
+import java.util.List;
+
 public class Factory {
+
+    /**
+     * NewEvent generator which generates events based on the eventId
+     * Events are implemented in GameEventGenerator.Java
+     *
+     * Input: int : eventId
+     * Output: GameEvent : Generated event
+     **/
+    static public GameChoiceEvent generateChoiceEvent(int eventId) // Implementation needed
+    {
+        return GameEventGenerator.generateChoiceEvent(eventId);
+    }
+
     /**
      * NewEvent generator which generates events based on the eventId
      * Events are implemented in GameEventGenerator.Java
@@ -53,5 +68,15 @@ public class Factory {
     {
         return null;
     }*/
+}
+
+class RandomEventListCommon
+{
+    List<Integer> IqList;
+}
+
+class RandomEventListWork
+{
+    List<Integer> IqList;
 }
 
