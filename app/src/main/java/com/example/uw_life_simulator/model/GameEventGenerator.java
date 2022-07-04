@@ -43,6 +43,13 @@ class GameChoiceNull extends GameChoiceEvent{
         this.Id = 0;
         return new GameEventNull();
     }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, double check_res) {
+        this.description = "Nothing happened!\n";
+        this.Id = 0;
+        return new GameEventNull();
+    }
 }
 
 /**
@@ -62,6 +69,20 @@ class GameChoiceMoney extends GameChoiceEvent{
             return new GameEventMoneyNo();
         }
     }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, double check_res) {
+        this.description = "There are 10 dollars on the ground! Do you want to pick it up?\n";
+        this.Id = 1;
+        if (playerResponse)
+        {
+            return new GameEventMoney();
+        }
+        else
+        {
+            return new GameEventMoneyNo();
+        }
+    }
 }
 
 /**
@@ -70,6 +91,20 @@ class GameChoiceMoney extends GameChoiceEvent{
 class GameChoiceGoose extends GameChoiceEvent{
     @Override
     public GameEvent generateEvent(boolean playerResponse) {
+        this.description = "There are goose on your way, do you want to go away or attack them?\n";
+        this.Id = 2;
+        if (playerResponse)
+        {
+            return new GameEventGoose();
+        }
+        else
+        {
+            return new GameEventGoose2();
+        }
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, double check_res) {
         this.description = "There are goose on your way, do you want to go away or attack them?\n";
         this.Id = 2;
         if (playerResponse)
