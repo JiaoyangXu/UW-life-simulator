@@ -91,6 +91,18 @@ public class PlayerAttribute implements Subject {
     @ColumnInfo
     public String course4Code;
 
+    @ColumnInfo
+    public int eventChain1Status;
+
+    @ColumnInfo
+    public int eventChain2Status;
+
+    @ColumnInfo
+    public int eventChain3Status;
+
+    @ColumnInfo
+    public int eventChain4Status;
+
     @Override
     public String toString() {
         return "PlayerAttribute{" +
@@ -120,6 +132,10 @@ public class PlayerAttribute implements Subject {
                 ", course2Code=" + course2Code +
                 ", course3Code=" + course3Code +
                 ", course4Code=" + course4Code +
+                ", eventChain1Status=" + eventChain1Status +
+                ", eventChain2Status=" + eventChain2Status +
+                ", eventChain3Status=" + eventChain3Status +
+                ", eventChain4Status=" + eventChain4Status +
                 '}';
     }
 
@@ -150,6 +166,10 @@ public class PlayerAttribute implements Subject {
         this.course2Code = "";
         this.course3Code = "";
         this.course4Code = "";
+        this.eventChain1Status = 0;
+        this.eventChain2Status = 0;
+        this.eventChain3Status = 0;
+        this.eventChain4Status = 0;
     }
 
     // Getters for basic identification information
@@ -186,6 +206,11 @@ public class PlayerAttribute implements Subject {
     public String getCourse2Code() { return course2Code; }
     public String getCourse3Code() { return course3Code; }
     public String getCourse4Code() { return course4Code; }
+
+    public int getEventChain1Status() { return eventChain1Status; }
+    public int getEventChain2Status() { return eventChain2Status; }
+    public int getEventChain3Status() { return eventChain3Status; }
+    public int getEventChain4Status() { return eventChain4Status; }
 
     @Override
     public void accept(Visitor visitor) {
