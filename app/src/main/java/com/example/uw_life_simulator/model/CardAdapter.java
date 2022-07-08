@@ -14,6 +14,7 @@ import java.util.List;
 
 import com.example.uw_life_simulator.R;
 
+
 public class CardAdapter extends BaseAdapter {
 
     private Context context;
@@ -31,20 +32,20 @@ public class CardAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return position;
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.activity_draw_spell_card, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_card, parent, false);
         }
-        convertView.setBackgroundColor(card_list.get(0));
+        convertView.setBackgroundResource(card_list.get(position));
         return convertView;
     }
 }

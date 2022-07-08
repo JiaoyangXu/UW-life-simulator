@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.example.uw_life_simulator.R;
 import com.example.uw_life_simulator.Service.DbCleanService;
 import com.example.uw_life_simulator.activities.CourseSelectionActivity;
+import com.example.uw_life_simulator.activities.DrawSpellCardActivity;
 import com.example.uw_life_simulator.activities.EventActivity;
 import com.example.uw_life_simulator.activities.AttributeActivities;
 
@@ -96,8 +97,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void quitApp(View view) {
-        DbCleanService dbCleanService = new DbCleanService(getApplicationContext());
-        dbCleanService.cleanDb();
+        /*DbCleanService dbCleanService = new DbCleanService(getApplicationContext());
+        dbCleanService.cleanDb();*/
+
+        Intent intent = new Intent(MainActivity.this, DrawSpellCardActivity.class);
+        startActivity(intent);
         //finish();
     }
 }

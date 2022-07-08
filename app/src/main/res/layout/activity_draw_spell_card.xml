@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <com.bakerj.infinitecards.InfiniteCardView
-        android:id="@+id/cardStack"
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/img_3"
+        android:padding="50dp"
         app:animDuration="500"
         app:cardRatio="1">
     </com.bakerj.infinitecards.InfiniteCardView>
