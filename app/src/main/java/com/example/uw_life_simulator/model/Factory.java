@@ -19,7 +19,7 @@ public class Factory {
      * Input: int : eventId
      * Output: GameEvent : Generated event
      **/
-    public GameChoiceEvent generateRandomChoiceEvent(PlayerAttribute playerAttribute) // Implementation needed
+    static public GameChoiceEvent generateRandomChoiceEvent(PlayerAttribute playerAttribute) // Implementation needed
     {
         RandomEventListCommon eventListCommon = new RandomEventListCommon();
         int iq = playerAttribute.IQ;
