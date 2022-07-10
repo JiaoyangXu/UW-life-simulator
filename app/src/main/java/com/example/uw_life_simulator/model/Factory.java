@@ -6,6 +6,7 @@ import com.example.uw_life_simulator.data.CourseSelectionRecord;
 import com.example.uw_life_simulator.Database.CourseDatabase;
 import com.example.uw_life_simulator.data.PlayerAttribute;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -29,6 +30,25 @@ public class Factory {
         int gpa = playerAttribute.GPA;
 
         Random random = new Random();
+        if (playerAttribute.eventChain1Status != -1 || playerAttribute.eventChain2Status != -1 ||
+                playerAttribute.eventChain3Status != -1 || playerAttribute.eventChain4Status != -1)
+        {
+            if (random.nextInt(2) == 1)
+            {
+                List<Integer> chainAvaliable = new ArrayList<>();
+                chainAvaliable.add(playerAttribute.eventChain1Status);
+                chainAvaliable.add(playerAttribute.eventChain2Status);
+                chainAvaliable.add(playerAttribute.eventChain3Status);
+                chainAvaliable.add(playerAttribute.eventChain4Status);
+
+                int rand = chainAvaliable.get(random.nextInt(4));
+                if (rand != 0)
+                {
+                    return generateChoiceEvent(rand);
+                }
+            }
+        }
+
         int rand = random.nextInt(2 * (iq + wealth + luck + health));
 
         if (rand < iq)
@@ -128,13 +148,11 @@ class RandomEventListCommon
     List<Integer> GeneralList;
     RandomEventListCommon()
     {
+        IqList.add(3);
         WealthList.add(1);
+        HealthList.add(4);
         LuckList.add(2);
+        GeneralList.add(0);
     }
-}
-
-class RandomEventListWork
-{
-    List<Integer> IqList;
 }
 
