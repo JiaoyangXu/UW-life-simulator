@@ -19,7 +19,7 @@ public class Factory {
      * Input: int : eventId
      * Output: GameEvent : Generated event
      **/
-    static public GameChoiceEvent generateRandomChoiceEvent(PlayerAttribute playerAttribute) // Implementation needed
+    static public GameChoiceEvent generateRandomChoiceEvent(PlayerAttribute playerAttribute)
     {
         RandomEventListCommon eventListCommon = new RandomEventListCommon();
         int iq = playerAttribute.IQ;
@@ -30,8 +30,8 @@ public class Factory {
         int gpa = playerAttribute.GPA;
 
         Random random = new Random();
-        if (playerAttribute.eventChain1Status != -1 || playerAttribute.eventChain2Status != -1 ||
-                playerAttribute.eventChain3Status != -1 || playerAttribute.eventChain4Status != -1)
+        if (playerAttribute.eventChain1Status > 0 || playerAttribute.eventChain2Status > 0 ||
+                playerAttribute.eventChain3Status > 0 || playerAttribute.eventChain4Status > 0)
         {
             if (random.nextInt(2) == 1)
             {
@@ -50,6 +50,11 @@ public class Factory {
         }
 
         int rand = random.nextInt(2 * (iq + wealth + luck + health));
+        //Event has been triggered
+        if (rand == 6 && playerAttribute.eventChain1Status < -1)
+        {
+            rand = 0;
+        }
 
         if (rand < iq)
         {
@@ -153,6 +158,7 @@ class RandomEventListCommon
         HealthList.add(4);
         LuckList.add(2);
         GeneralList.add(0);
+        IqList.add(6);
     }
 }
 

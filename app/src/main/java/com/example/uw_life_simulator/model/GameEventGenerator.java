@@ -2,6 +2,8 @@ package com.example.uw_life_simulator.model;
 
 import com.example.uw_life_simulator.data.PlayerAttribute;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -36,6 +38,7 @@ public class GameEventGenerator {
             case 6: return new GameChoiceLostCityBegin();
 
             case 1600: return new GameChoiceLostCity01();
+            case 1601: return new GameChoiceLostCity02();
             default: return null;
         }
     }
@@ -227,6 +230,7 @@ class GameChoiceLostCityBegin extends GameChoiceEvent {
         if (playerResponse) {
             return new GameEventLostCity1();
         }
+        playerAttribute.eventChain1Status = -2;
         return new GameEventInspireYesGood();
 
     }
@@ -382,6 +386,49 @@ class GameEventInspireYesGood extends GameEvent{
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
+        List<String> takenCouses = new ArrayList<>();
+        if (!attribute.course1Code.equals(""))
+        {
+            takenCouses.add(attribute.course1Code.split(" ")[0]);
+        }
+        if (!attribute.course2Code.equals(""))
+        {
+            takenCouses.add(attribute.course2Code.split(" ")[0]);
+        }
+        if (!attribute.course3Code.equals(""))
+        {
+            takenCouses.add(attribute.course3Code.split(" ")[0]);
+        }
+        if (!attribute.course4Code.equals(""))
+        {
+            takenCouses.add(attribute.course4Code.split(" ")[0]);
+        }
+
+        for (String course : takenCouses)
+        {
+            switch (course) {
+                case "MANA":
+                    attribute.ManaSkill += 1;
+                    break;
+                case "HERB":
+                    attribute.HerbSkill++;
+                    break;
+                case "SPEL":
+                    attribute.SpelSkill++;
+                    break;
+                case "ATRO":
+                    attribute.AtroSkill++;
+                    break;
+                case "MEDI":
+                    attribute.MediSkill++;
+                    break;
+                case "HIST":
+                    attribute.HistSkill++;
+                    break;
+                default:
+                    break;
+            }
+        }
         attribute.pressure -= 5;
     }
 }
@@ -558,6 +605,50 @@ class GameEventLostCity2 extends GameEvent{
     public void visit(PlayerAttribute attribute) {
         attribute.pressure += 10;
         attribute.eventChain1Status = 1601;
+    }
+}
+
+/**
+ * EventID: 1601 Implementing...
+ **/
+class GameChoiceLostCity02 extends GameChoiceEvent {
+    GameChoiceLostCity02() {
+        this.description = "The portal has been lasted for a while, do you want to get in and " +
+                "look what's inside?";
+        this.Id = 1601;
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            playerAttribute.eventChain1Status = -2;
+            return new GameEventNull();
+        }
+        return new GameEventLostCity2Finish();
+
+    }
+}
+
+/**
+ * EventID: 1601
+ * Effect: finish event (IQ + 1, mana_skill += 1)
+ */
+class GameEventLostCity2Finish extends GameEvent{
+    public GameEventLostCity2Finish(){
+        this.description = "The portal disappeared after a few days, you returned the book back to the library\n" +
+                "But you found your mana sensitivity increased";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.IQ += 1;
+        attribute.ManaSkill += 2;
     }
 }
 
