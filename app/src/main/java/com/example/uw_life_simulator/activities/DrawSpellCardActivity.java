@@ -8,10 +8,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.bakerj.infinitecards.AnimationTransformer;
 import com.bakerj.infinitecards.InfiniteCardView;
 import com.bakerj.infinitecards.transformer.DefaultTransformerToBack;
 import com.bakerj.infinitecards.transformer.DefaultTransformerToFront;
@@ -28,23 +30,29 @@ import java.util.Collections;
 import java.util.List;
 
 public class DrawSpellCardActivity extends AppCompatActivity {
-    Button nextCard, prevCard;
+    Button nextCard, prevCard, buyCard;
     InfiniteCardView cardStack;
     CardAdapter cardAdapter;
     List<Integer> card_list = new ArrayList<>();
+    int picCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw_spell_card);
 
+        picCounter = 0;
+
         nextCard = (Button) findViewById(R.id.nextCard);
         prevCard = (Button) findViewById(R.id.prevCard);
+        buyCard = (Button) findViewById(R.id.BuyCard);
 
         card_list.add(R.drawable.img);
         card_list.add(R.drawable.img_1);
         card_list.add(R.drawable.img_2);
         card_list.add(R.drawable.img_3);
+
+        System.out.println("card_list first: " + card_list.get(0));
 
         cardAdapter = new CardAdapter(this, card_list);
 
@@ -52,6 +60,8 @@ public class DrawSpellCardActivity extends AppCompatActivity {
 
         cardStack.setClickable(true);
 
+
+        cardStack.setClickable(true);
         cardStack.setAnimType(InfiniteCardView.ANIM_TYPE_FRONT);
         cardStack.setAnimInterpolator(new LinearInterpolator());
         cardStack.setTransformerToFront(new DefaultTransformerToFront());
@@ -74,7 +84,18 @@ public class DrawSpellCardActivity extends AppCompatActivity {
             }
         });
 
-        //prevCard.callOnClick();
+        buyCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                card_list.remove(0);
+
+                cardStack.setAdapter(cardAdapter);
+
+                System.out.println("onClick first: " + card_list.get(0));
+
+            }
+        });
     }
 
 }

@@ -25,6 +25,10 @@ public class CardAdapter extends BaseAdapter {
         this.card_list = card_list;
     }
 
+    public void removeElement(int index) {
+        card_list.remove(index);
+    }
+
     @Override
     public int getCount() {
         return card_list.size();
