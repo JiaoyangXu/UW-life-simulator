@@ -260,7 +260,7 @@ class GameEventNull extends GameEvent{
 
 /**
  * EventID: 1
- * Effect: Wealth+10
+ * Effect: Money+10
  */
 class GameEventMoney extends GameEvent{
     public GameEventMoney(){
@@ -276,7 +276,7 @@ class GameEventMoney extends GameEvent{
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
-        attribute.wealth += 10.0;
+        attribute.money += 10.0;
     }
 }
 
@@ -304,7 +304,7 @@ class GameEventMoneyNo extends GameEvent{
 
 /**
  * EventID: 3
- * Effect: Wealth-10
+ * Effect: Money-10
  */
 class GameEventMoneyLose extends GameEvent{
     public GameEventMoneyLose(){
@@ -320,7 +320,7 @@ class GameEventMoneyLose extends GameEvent{
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
-        attribute.wealth -= 10.0;
+        attribute.money -= 10.0;
     }
 }
 
@@ -477,7 +477,7 @@ class GameEventInspireNo extends GameEvent{
 
 /**
  * EventID: 9
- * Effect: Wealth -= 10
+ * Effect: Money -= 10
  */
 class GameEventHotDayYes extends GameEvent{
     public GameEventHotDayYes(){
@@ -486,14 +486,14 @@ class GameEventHotDayYes extends GameEvent{
     }
 
     /**
-     * Event's effect on the player(Wealth -= 10)
+     * Event's effect on the player(Money -= 10)
      *
      * Input: UserAttribute : attribute
      * Output: void
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
-        attribute.wealth -= 10;
+        attribute.money -= 10;
     }
 }
 
