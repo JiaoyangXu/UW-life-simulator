@@ -35,6 +35,9 @@ public class PlayerAttribute implements Subject {
     public int wealth;
 
     @ColumnInfo
+    public int money;
+
+    @ColumnInfo
     public int health;
 
     @ColumnInfo
@@ -113,6 +116,7 @@ public class PlayerAttribute implements Subject {
                 ", IQ=" + IQ +
                 ", luck=" + luck +
                 ", wealth=" + wealth +
+                ", money=" + money +
                 ", health=" + health +
                 ", pressure=" + pressure +
                 ", GPA=" + GPA +
@@ -146,7 +150,8 @@ public class PlayerAttribute implements Subject {
         this.numTerm = 0;
         this.IQ = IQ;
         this.luck = luck;
-        this.wealth = wealth * 1000;
+        this.wealth = wealth;
+        this.money = wealth * 1000;
         this.health = health;
         this.pressure = 0;
         this.GPA = 100;
@@ -182,6 +187,7 @@ public class PlayerAttribute implements Subject {
     public int getLuck() { return luck; }
     public int getHealth() { return health; }
     public int getWealth() { return wealth; }
+    public int getMoney() { return money; }
     public int getPressure() { return pressure; }
     public int getGPA() { return GPA; }
 
