@@ -19,6 +19,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.uw_life_simulator.activities.SwipeSpellCardActivity;
 import com.example.uw_life_simulator.databinding.ActivityMainBinding;
 
 import android.view.Menu;
@@ -102,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(MainActivity.this, DrawSpellCardActivity.class);
         startActivity(intent);
-        //finish();
+    }
+
+    public void SwipeCard(View view) {
+        Intent intent = new Intent(MainActivity.this, SwipeSpellCardActivity.class);
+        startActivity(intent);
     }
 }

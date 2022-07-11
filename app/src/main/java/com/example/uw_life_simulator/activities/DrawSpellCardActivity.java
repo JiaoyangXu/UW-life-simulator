@@ -182,5 +182,7 @@ public class DrawSpellCardActivity extends AppCompatActivity {
         mySnackbar.show();
     }
 
+    
+
 }
 
