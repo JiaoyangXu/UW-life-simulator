@@ -104,7 +104,6 @@ public class CourseSelectionActivity extends AppCompatActivity {
         initializeClass(db,courseDao);
 
         initialize_UI(db);
-
     }
 
 
@@ -337,7 +336,4 @@ public class CourseSelectionActivity extends AppCompatActivity {
             insertCourse(courseDao, course);
         }
     }
-
-
-
 }
