@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
 import com.example.uw_life_simulator.R;
+import com.example.uw_life_simulator.model.CardAdapter;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
@@ -14,8 +15,8 @@ import java.util.List;
 
 public class SwipeSpellCardActivity extends AppCompatActivity {
 
-    ArrayList<String> s;
-    ArrayAdapter arrayAdapter;
+    ArrayList<Integer> card_list;
+    CardAdapter cardAdapter;
     int n = 0;
 
     @Override
@@ -23,25 +24,25 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_spell_card);
 
-        s = new ArrayList<>();
-        s.add("ONE");
-        s.add("TWO");
-        s.add("THREE");
-        s.add("FIVE");
-        s.add("SIX");
-        s.add("SEVEN");
+        card_list = new ArrayList<>();
+
+        card_list.add(R.drawable.img);
+        card_list.add(R.drawable.img_1);
+        card_list.add(R.drawable.img_2);
+        card_list.add(R.drawable.img_3);
 
 
 
         SwipeFlingAdapterView swipeFlingAdapterView = (SwipeFlingAdapterView) findViewById(R.id.card);
-        arrayAdapter = new ArrayAdapter(this, R.layout.swipe_card, R.id.cardTextView,s);
-        swipeFlingAdapterView.setAdapter(arrayAdapter);
+
+        cardAdapter = new CardAdapter(this,card_list);
+        swipeFlingAdapterView.setAdapter(cardAdapter);
 
         swipeFlingAdapterView.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
-                s.remove(0);
-                arrayAdapter.notifyDataSetChanged();
+                card_list.remove(0);
+                cardAdapter.notifyDataSetChanged();
             }
 
             @Override
