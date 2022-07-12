@@ -101,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
         DbCleanService dbCleanService = new DbCleanService(getApplicationContext());
         dbCleanService.cleanDb();
 
-        Intent intent = new Intent(MainActivity.this, DrawSpellCardActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(MainActivity.this, DrawSpellCardActivity.class);
+        //startActivity(intent);
     }
 
     public void SwipeCard(View view) {

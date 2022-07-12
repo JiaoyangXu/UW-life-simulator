@@ -1,11 +1,15 @@
 package com.example.uw_life_simulator.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
+import com.example.uw_life_simulator.DAO.SpellCardDAO;
+import com.example.uw_life_simulator.Database.SpellCardDatabase;
 import com.example.uw_life_simulator.R;
+import com.example.uw_life_simulator.data.SpellCard;
 import com.example.uw_life_simulator.model.CardAdapter;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
@@ -17,6 +21,10 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
 
     ArrayList<Integer> card_list;
     CardAdapter cardAdapter;
+    SpellCardDatabase spellCardDatabase;
+    SpellCardDAO spellCardDAO;
+
+
     int n = 0;
 
     @Override
@@ -24,12 +32,8 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_spell_card);
 
-        card_list = new ArrayList<>();
-
-        card_list.add(R.drawable.img);
-        card_list.add(R.drawable.img_1);
-        card_list.add(R.drawable.img_2);
-        card_list.add(R.drawable.img_3);
+        initializeData();
+        initializeDb();
 
 
 
@@ -66,5 +70,24 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void initializeDb() {
+         spellCardDatabase = Room.databaseBuilder(getApplicationContext(),
+                        SpellCardDatabase.class, "SpellCard").allowMainThreadQueries().
+                fallbackToDestructiveMigration().build();
+         spellCardDAO = spellCardDatabase.spellCardDAO();
+
+         List<SpellCard> cards = spellCardDAO.getSelectedSpellCard();
+
+         for (SpellCard card : cards) {
+             if (card == null) break;
+             card_list.add(card.address);
+         }
+
+    }
+
+    private void initializeData() {
+        card_list = new ArrayList<>();
     }
 }

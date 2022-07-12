@@ -6,6 +6,7 @@ import androidx.room.Query;
 
 import com.example.uw_life_simulator.data.SpellCard;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -28,4 +29,7 @@ public interface SpellCardDAO {
 
     @Query("SELECT * FROM spellcard WHERE address =:addr")
     SpellCard getSpellCard(Integer addr);
+
+    @Query("SELECT * FROM spellcard WHERE selected = 1")
+    List<SpellCard> getSelectedSpellCard();
 }

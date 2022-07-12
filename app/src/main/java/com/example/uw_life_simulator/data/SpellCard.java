@@ -20,9 +20,13 @@ public class SpellCard {
     @ColumnInfo
     public int selected;
 
+    @ColumnInfo
+    public int used;
+
     public SpellCard(int address, String name) {
         this.address = address;
         this.name = name;
         this.selected = 0;
+        this.used = 0;
     }
 }
