@@ -304,5 +304,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 "course4Code = " + p.course4Code + '\n';
     }
 
+    public void useSpellCard(View view){
+        Intent intent = new Intent(EventActivity.this, SwipeSpellCardActivity.class);
+        startActivity(intent);
+    }
+
 }
 

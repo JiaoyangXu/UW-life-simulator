@@ -35,7 +35,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class DrawSpellCardActivity extends AppCompatActivity {
-    Button nextCard, prevCard, buyCard;
+    Button nextCard, prevCard, buyCard, finishCardPurchase;
     InfiniteCardView cardStack;
     CardAdapter cardAdapter;
     List<Integer> card_list = new ArrayList<>();
@@ -114,6 +114,7 @@ public class DrawSpellCardActivity extends AppCompatActivity {
         nextCard = (Button) findViewById(R.id.nextCard);
         prevCard = (Button) findViewById(R.id.prevCard);
         buyCard = (Button) findViewById(R.id.BuyCard);
+        finishCardPurchase = (Button) findViewById(R.id.finishCardPurchase);
         nextCard.setVisibility(View.GONE);
 
         nextCard.setOnClickListener(new View.OnClickListener() {
@@ -149,10 +150,20 @@ public class DrawSpellCardActivity extends AppCompatActivity {
                 cardStack.setAdapter(cardAdapter);
 
                 picCounter = 0;
-
-
             }
         });
+
+        finishCardPurchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // pass intent to Event Activity
+                Intent intent = new Intent(DrawSpellCardActivity.this, CourseSelectionActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void updateSelected(int index) {
