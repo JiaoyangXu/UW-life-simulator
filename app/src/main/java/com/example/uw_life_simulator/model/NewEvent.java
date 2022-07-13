@@ -28,4 +28,9 @@ public class NewEvent {
         return ge.description;
 
     }
+
+    public boolean isFinished()
+    {
+        return gce.repeated();
+    }
 }
