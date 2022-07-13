@@ -201,9 +201,9 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 //event= mNewEvent.generateNewEvent(mPlayer,mAdapter.getItemCount());
                 event_list = mNewEvent.generateNewChoice(mPlayer,mAdapter.getItemCount());
                 //2022 0713
-                String event_description = event_list[0];
-                String event_choice1 = event_list[1];
-                String event_choice2 = event_list[2];
+                String event_description = event_list.get(0);
+                String event_choice1 = event_list.get(1);
+                String event_choice2 = event_list.get(2);
 
                 //pop up window dialog
                 AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
