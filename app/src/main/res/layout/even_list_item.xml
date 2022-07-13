@@ -5,12 +5,14 @@
     android:layout_height="72dp"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    android:background="@drawable/border4"
+    android:background="@drawable/panel"
     android:gravity="center_vertical">
 
     <TextView
         android:id="@+id/event_list_item_textView"
         android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Element"/>
