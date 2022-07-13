@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase;
 import com.example.uw_life_simulator.DAO.PlayerAttributeDAO;
 import com.example.uw_life_simulator.data.PlayerAttribute;
 
-@Database(entities = {PlayerAttribute.class}, version = 4, exportSchema = false)
+@Database(entities = {PlayerAttribute.class}, version = 6, exportSchema = false)
 public abstract class PlayerAttributeDatabase extends RoomDatabase {
     public abstract PlayerAttributeDAO playerAttributeDAO();
 }

@@ -35,6 +35,9 @@ public class PlayerAttribute implements Subject {
     public int wealth;
 
     @ColumnInfo
+    public int money;
+
+    @ColumnInfo
     public int health;
 
     @ColumnInfo
@@ -59,22 +62,22 @@ public class PlayerAttribute implements Subject {
     public int availablePts;
 
     @ColumnInfo
-    public int MathSkill;
+    public int ManaSkill;
 
     @ColumnInfo
-    public int CSSkill;
+    public int SpelSkill;
 
     @ColumnInfo
-    public int EconSkill;
+    public int HerbSkill;
 
     @ColumnInfo
-    public int LangSkill;
+    public int HistSkill;
 
     @ColumnInfo
-    public int SciSkill;
+    public int MediSkill;
 
     @ColumnInfo
-    public int ArtsSkill;
+    public int AtroSkill;
 
     @ColumnInfo
     public int curCourseLoad;
@@ -113,6 +116,7 @@ public class PlayerAttribute implements Subject {
                 ", IQ=" + IQ +
                 ", luck=" + luck +
                 ", wealth=" + wealth +
+                ", money=" + money +
                 ", health=" + health +
                 ", pressure=" + pressure +
                 ", GPA=" + GPA +
@@ -121,17 +125,17 @@ public class PlayerAttribute implements Subject {
                 ", resumeScore=" + resumeScore +
                 ", workTermEvalAvg=" + workTermEvalAvg +
                 ", availablePts=" + availablePts +
-                ", MathSkill=" + MathSkill +
-                ", CSSkill=" + CSSkill +
-                ", EconSkill=" + EconSkill +
-                ", LangSkill=" + LangSkill +
-                ", SciSkill=" + SciSkill +
-                ", ArtsSkill=" + ArtsSkill +
+                ", ManaSkill=" + ManaSkill +
+                ", SpelSkill=" + SpelSkill +
+                ", HerbSkill=" + HerbSkill +
+                ", HistSkill=" + HistSkill +
+                ", MediSkill=" + MediSkill +
+                ", AtroSkill=" + AtroSkill +
                 ", curCourseLoad=" + curCourseLoad +
-                ", course1Code=" + course1Code +
-                ", course2Code=" + course2Code +
-                ", course3Code=" + course3Code +
-                ", course4Code=" + course4Code +
+                ", course1Code='" + course1Code + '\'' +
+                ", course2Code='" + course2Code + '\'' +
+                ", course3Code='" + course3Code + '\'' +
+                ", course4Code='" + course4Code + '\'' +
                 ", eventChain1Status=" + eventChain1Status +
                 ", eventChain2Status=" + eventChain2Status +
                 ", eventChain3Status=" + eventChain3Status +
@@ -146,7 +150,8 @@ public class PlayerAttribute implements Subject {
         this.numTerm = 0;
         this.IQ = IQ;
         this.luck = luck;
-        this.wealth = wealth * 1000;
+        this.wealth = wealth;
+        this.money = wealth * 1000;
         this.health = health;
         this.pressure = 0;
         this.GPA = 100;
@@ -155,12 +160,12 @@ public class PlayerAttribute implements Subject {
         this.resumeScore = 0;
         this.workTermEvalAvg = -1;
         this.availablePts = 0;
-        this.MathSkill = 0;
-        this.CSSkill = 0;
-        this.EconSkill = 0;
-        this.LangSkill = 0;
-        this.SciSkill = 0;
-        this.ArtsSkill = 0;
+        this.ManaSkill = 0;
+        this.SpelSkill = 0;
+        this.HerbSkill = 0;
+        this.HistSkill = 0;
+        this.MediSkill = 0;
+        this.AtroSkill = 0;
         this.curCourseLoad = 0;
         this.course1Code = "";
         this.course2Code = "";
@@ -182,6 +187,7 @@ public class PlayerAttribute implements Subject {
     public int getLuck() { return luck; }
     public int getHealth() { return health; }
     public int getWealth() { return wealth; }
+    public int getMoney() { return money; }
     public int getPressure() { return pressure; }
     public int getGPA() { return GPA; }
 
@@ -192,13 +198,37 @@ public class PlayerAttribute implements Subject {
     public int getWorkTermEvalAvg() { return workTermEvalAvg; }
     public int getAvailablePts() { return availablePts; }
 
-    // Getters for skills attribute
-    public int getMathSkill() { return MathSkill; }
-    public int getCSSkill() { return CSSkill; }
-    public int getEconSkill() { return EconSkill; }
-    public int getLangSkill() { return LangSkill; }
-    public int getSciSkill() { return SciSkill; }
-    public int getArtsSkill() { return ArtsSkill; }
+    public int getPlayerID() {
+        return playerID;
+    }
+
+    public boolean isEmployed() {
+        return employed;
+    }
+
+    public int getManaSkill() {
+        return ManaSkill;
+    }
+
+    public int getSpelSkill() {
+        return SpelSkill;
+    }
+
+    public int getHerbSkill() {
+        return HerbSkill;
+    }
+
+    public int getHistSkill() {
+        return HistSkill;
+    }
+
+    public int getMediSkill() {
+        return MediSkill;
+    }
+
+    public int getAtroSkill() {
+        return AtroSkill;
+    }
 
     // Getters for current courses
     public int getCurCourseLoad() { return curCourseLoad; }
