@@ -47,6 +47,9 @@ public class PlayerAttribute implements Subject {
     public int GPA;
 
     @ColumnInfo
+    public int money;
+
+    @ColumnInfo
     public int numFailedCourses;
 
     @ColumnInfo
@@ -120,6 +123,7 @@ public class PlayerAttribute implements Subject {
                 ", health=" + health +
                 ", pressure=" + pressure +
                 ", GPA=" + GPA +
+                ", money=" + money +
                 ", numFailedCourses=" + numFailedCourses +
                 ", employed=" + employed +
                 ", resumeScore=" + resumeScore +
@@ -153,8 +157,9 @@ public class PlayerAttribute implements Subject {
         this.wealth = wealth;
         this.money = wealth * 1000;
         this.health = health;
-        this.pressure = 0;
-        this.GPA = 100;
+        this.pressure = 30 - health * 3;
+        this.GPA = 80 + IQ * 2;
+        this.money = 1000 + wealth * 100;
         this.numFailedCourses = 0;
         this.employed = false;
         this.resumeScore = 0;
@@ -190,6 +195,7 @@ public class PlayerAttribute implements Subject {
     public int getMoney() { return money; }
     public int getPressure() { return pressure; }
     public int getGPA() { return GPA; }
+    public int getMoney() { return money; }
 
     // Getters for extra academic and career indicators
     public int getNumFailedCourses() { return numFailedCourses; }
@@ -245,6 +251,12 @@ public class PlayerAttribute implements Subject {
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
+    }
+
+    public void updateAttribute() {
+        this.money = 1000 + wealth * 100;
+        this.pressure = 30 - health * 3;
+        this.GPA = 80 + IQ * 2;
     }
 }
 

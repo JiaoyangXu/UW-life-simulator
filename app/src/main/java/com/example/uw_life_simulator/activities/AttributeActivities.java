@@ -28,7 +28,6 @@ public class AttributeActivities extends AppCompatActivity {
     UserAttribute talent;
     PlayerAttribute playerAttribute;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +43,15 @@ public class AttributeActivities extends AppCompatActivity {
      *
      */
     public void confirmTalentSelection (View view) {
+        playerAttribute.updateAttribute();
+
         PlayerAttributeDatabase db = Room.databaseBuilder(getApplicationContext(),
                 PlayerAttributeDatabase.class, "PlayerAttributes").
                 allowMainThreadQueries().
                 fallbackToDestructiveMigration().build();
         PlayerAttributeDAO playerAttributeDAO = db.playerAttributeDAO();
         playerAttributeDAO.insertAll(playerAttribute);
+
 
         // pass intent to Event Activity
         Intent intent = new Intent(AttributeActivities.this, DrawSpellCardActivity.class);
