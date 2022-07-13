@@ -233,7 +233,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 // Pressure
                 tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
                 // Wealth
-                tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getWealth()));
+                tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
                 // GPA
                 tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
                 if(mAdapter.getItemCount() % 3 == 0){
