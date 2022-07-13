@@ -40,5 +40,5 @@ abstract public class GameChoiceEvent {
      * Input: None
      * Output: boolean: will event continue repeat?
      **/
-    public boolean repeated(){return repeatCount <= 0;}
+    public boolean repeated(){return repeatCount > 0;}
 }
