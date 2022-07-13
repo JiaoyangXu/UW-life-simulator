@@ -200,48 +200,56 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 String event = "NewEvent called in onClick." + s;
                 List<String> event_list = new ArrayList<>();
                 //event= mNewEvent.generateNewEvent(mPlayer,mAdapter.getItemCount());
-                event_list = mNewEvent.generateNewChoice(mPlayer,mAdapter.getItemCount());
-                //2022 0713
-                String event_description = event_list.get(0);
-                String event_choice1 = event_list.get(1);
-                String event_choice2 = event_list.get(2);
+                boolean return_last_event = false;
+                do {
+                    event_list = mNewEvent.generateNewChoice(mPlayer,mAdapter.getItemCount());
+                    //2022 0713
+                    String event_description = event_list.get(0);
+                    String event_choice1 = event_list.get(1);
+                    String event_choice2 = event_list.get(2);
 
-                //pop up window dialog
-                AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
-                        .setMessage(event_description)
-                        .setTitle("You encountered a new event!")
-                        .setPositiveButton(event_choice1, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // Send the TryAgain button event back to the host fragment
-                                String event = mNewEvent.generateNewEvent(mPlayer,true);
-                                mAdapter.addEvent(event);
-                                mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                    //
+                    return_last_event = mNewEvent.isFinished();
 
-                            }
-                        })
-                        .setNegativeButton(event_choice2, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                String event = mNewEvent.generateNewEvent(mPlayer,false);
-                                mAdapter.addEvent(event);
-                                mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
-                            }
-                        })
-                        .show();
+                    //pop up window dialog
+                    AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                            .setMessage(event_description)
+                            .setTitle("You encountered a new event!")
+                            .setPositiveButton(event_choice1, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // Send the TryAgain button event back to the host fragment
+                                    String event = mNewEvent.generateNewEvent(mPlayer,true);
+                                    mAdapter.addEvent(event);
+                                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+
+                                }
+                            })
+                            .setNegativeButton(event_choice2, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    String event = mNewEvent.generateNewEvent(mPlayer,false);
+                                    mAdapter.addEvent(event);
+                                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                }
+                            })
+                            .show();
 
 
 
-                //set player attribute after every newly generated event
-                // Pressure
-                tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
-                // Wealth
-                tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
-                // GPA
-                tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
-                if(mAdapter.getItemCount() % 3 == 0){
-                    TextView BroadastText = findViewById(R.id.BroadCastText);
-                    String text = "        " + event;
-                    BroadastText.setText(text);
-                }
+                    //set player attribute after every newly generated event
+                    // Pressure
+                    tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
+                    // Wealth
+                    tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
+                    // GPA
+                    tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
+                    if(mAdapter.getItemCount() % 3 == 0){
+                        TextView BroadastText = findViewById(R.id.BroadCastText);
+                        String text = "        " + event;
+                        BroadastText.setText(text);
+                    }
+
+                } while (return_last_event == true);
+
             }
         });
         Button mSummaryButton = findViewById(R.id.SummaryButton);
