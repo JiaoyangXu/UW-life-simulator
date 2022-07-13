@@ -35,9 +35,6 @@ public class PlayerAttribute implements Subject {
     public int wealth;
 
     @ColumnInfo
-    public int money;
-
-    @ColumnInfo
     public int health;
 
     @ColumnInfo
@@ -190,7 +187,6 @@ public class PlayerAttribute implements Subject {
     public int getLuck() { return luck; }
     public int getHealth() { return health; }
     public int getWealth() { return wealth; }
-    public int getMoney() { return money; }
     public int getPressure() { return pressure; }
     public int getGPA() { return GPA; }
 
