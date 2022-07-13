@@ -169,10 +169,12 @@
 
         <Button
             android:id="@+id/button13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="85dp"
+            android:layout_height="75dp"
+            android:background="@drawable/backpack"
             android:onClick="useSpellCard"
-            android:text="Spell Card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="288dp"
             tools:layout_editor_absoluteY="455dp" />
 
