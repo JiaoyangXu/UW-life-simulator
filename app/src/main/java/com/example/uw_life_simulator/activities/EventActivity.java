@@ -43,6 +43,7 @@ import com.example.uw_life_simulator.Database.PlayerAttributeDatabase;
 import com.example.uw_life_simulator.DAO.CourseSelectionRecordDAO;
 import com.example.uw_life_simulator.data.CourseSelectionRecord;
 import com.example.uw_life_simulator.Database.CourseDatabase;
+import com.example.uw_life_simulator.MiniGame.CardGameActivity;
 import androidx.fragment.app.FragmentActivity;
 import android.app.AlertDialog;
 
@@ -260,6 +261,12 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mProfileButton.setOnClickListener((v) -> {
             onButtonShowPopupWindowClick(v, mPlayer.getPlayerAttribute());
         });
+        Button mSettingButton = findViewById(R.id.SettingButton);
+        mSettingButton.setOnClickListener((v) -> {
+            Intent intent = new Intent(EventActivity.this, CardGameActivity.class);
+            startActivity(intent);
+        });
+
 
     }
     @Override
