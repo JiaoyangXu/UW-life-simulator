@@ -3,6 +3,7 @@ package com.example.uw_life_simulator.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
@@ -47,6 +48,12 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
             public void removeFirstObjectInAdapter() {
                 card_list.remove(0);
                 cardAdapter.notifyDataSetChanged();
+
+                if (card_list.size() == 0) {
+                    Intent intent = new Intent(SwipeSpellCardActivity.this, EventActivity.class);
+                    startActivity(intent);
+                }
+
             }
 
             @Override
