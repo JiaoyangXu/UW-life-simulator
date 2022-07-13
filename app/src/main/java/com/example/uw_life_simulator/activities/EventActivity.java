@@ -43,6 +43,7 @@ import com.example.uw_life_simulator.Database.PlayerAttributeDatabase;
 import com.example.uw_life_simulator.DAO.CourseSelectionRecordDAO;
 import com.example.uw_life_simulator.data.CourseSelectionRecord;
 import com.example.uw_life_simulator.Database.CourseDatabase;
+import com.example.uw_life_simulator.MiniGame.CardGameActivity;
 import androidx.fragment.app.FragmentActivity;
 import android.app.AlertDialog;
 
@@ -197,14 +198,43 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 Log.d(TAG, "clicked on recyclerview, generate new event");
                 String s = String.valueOf(mAdapter.getItemCount());
                 String event = "NewEvent called in onClick." + s;
-                event = mNewEvent.generateNewEvent(mPlayer,mAdapter.getItemCount());
-                mAdapter.addEvent(event);
-                mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                List<String> event_list = new ArrayList<>();
+                //event= mNewEvent.generateNewEvent(mPlayer,mAdapter.getItemCount());
+                event_list = mNewEvent.generateNewChoice(mPlayer,mAdapter.getItemCount());
+                //2022 0713
+                String event_description = event_list.get(0);
+                String event_choice1 = event_list.get(1);
+                String event_choice2 = event_list.get(2);
+
+                //pop up window dialog
+                AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                        .setMessage(event_description)
+                        .setTitle("You encountered a new event!")
+                        .setPositiveButton(event_choice1, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Send the TryAgain button event back to the host fragment
+                                String event = mNewEvent.generateNewEvent(mPlayer,true);
+                                mAdapter.addEvent(event);
+                                mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+
+                            }
+                        })
+                        .setNegativeButton(event_choice2, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                String event = mNewEvent.generateNewEvent(mPlayer,false);
+                                mAdapter.addEvent(event);
+                                mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                            }
+                        })
+                        .show();
+
+
+
                 //set player attribute after every newly generated event
                 // Pressure
                 tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
                 // Wealth
-                tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getWealth()));
+                tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
                 // GPA
                 tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
                 if(mAdapter.getItemCount() % 3 == 0){
@@ -231,6 +261,12 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mProfileButton.setOnClickListener((v) -> {
             onButtonShowPopupWindowClick(v, mPlayer.getPlayerAttribute());
         });
+        Button mSettingButton = findViewById(R.id.SettingButton);
+        mSettingButton.setOnClickListener((v) -> {
+            Intent intent = new Intent(EventActivity.this, CardGameActivity.class);
+            startActivity(intent);
+        });
+
 
     }
     @Override
