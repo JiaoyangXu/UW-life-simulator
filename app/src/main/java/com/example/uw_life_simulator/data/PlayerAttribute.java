@@ -66,6 +66,9 @@ public class PlayerAttribute implements Subject {
     public int SpelSkill;
 
     @ColumnInfo
+    public int money;
+
+    @ColumnInfo
     public int HerbSkill;
 
     @ColumnInfo
@@ -114,7 +117,6 @@ public class PlayerAttribute implements Subject {
                 ", IQ=" + IQ +
                 ", luck=" + luck +
                 ", wealth=" + wealth +
-                ", money=" + money +
                 ", health=" + health +
                 ", pressure=" + pressure +
                 ", GPA=" + GPA +
