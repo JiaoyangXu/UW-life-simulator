@@ -128,7 +128,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         // Get a player instance (a line of data) from Room database.
         List<PlayerAttribute> tmpList = playerAttributeDAO.loadSingle();
 
-        PlayerAttribute curPlayer = tmpList.get(0);
+        PlayerAttribute curPlayer = tmpList.get(tmpList.size() -1);
 
         // Display the player attributes from database to front-end.
         // Please see PlayerAttribute.java for all available attributes in the database.

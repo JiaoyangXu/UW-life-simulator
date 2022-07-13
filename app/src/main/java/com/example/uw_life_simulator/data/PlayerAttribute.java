@@ -43,8 +43,6 @@ public class PlayerAttribute implements Subject {
     @ColumnInfo
     public int GPA;
 
-    @ColumnInfo
-    public int money;
 
     @ColumnInfo
     public int numFailedCourses;
@@ -66,6 +64,9 @@ public class PlayerAttribute implements Subject {
 
     @ColumnInfo
     public int SpelSkill;
+
+    @ColumnInfo
+    public int money;
 
     @ColumnInfo
     public int HerbSkill;
@@ -116,7 +117,6 @@ public class PlayerAttribute implements Subject {
                 ", IQ=" + IQ +
                 ", luck=" + luck +
                 ", wealth=" + wealth +
-                ", money=" + money +
                 ", health=" + health +
                 ", pressure=" + pressure +
                 ", GPA=" + GPA +
@@ -191,7 +191,6 @@ public class PlayerAttribute implements Subject {
     public int getWealth() { return wealth; }
     public int getPressure() { return pressure; }
     public int getGPA() { return GPA; }
-    public int getMoney() { return money; }
 
     // Getters for extra academic and career indicators
     public int getNumFailedCourses() { return numFailedCourses; }
