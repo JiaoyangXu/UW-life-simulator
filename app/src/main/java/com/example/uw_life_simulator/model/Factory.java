@@ -49,37 +49,41 @@ public class Factory {
             }
         }
 
-        int rand = random.nextInt(2 * (iq + wealth + luck + health));
-        //Event has been triggered
-        if (rand == 6 && playerAttribute.eventChain1Status < -1)
-        {
-            rand = 0;
-        }
+        System.out.println((iq + wealth + luck + health));
+        System.out.println((iq + wealth + luck + health) + eventListCommon.GeneralList.size());
+        int rand = random.nextInt((iq + wealth + luck + health) + eventListCommon.GeneralList.size());
+        System.out.println(rand);
 
         if (rand < iq)
         {
-            rand = random.nextInt(eventListCommon.IqList.size()-1);
-            return generateChoiceEvent(rand);
+            rand = random.nextInt(eventListCommon.IqList.size());
+            //Event has been triggered
+            int id = eventListCommon.IqList.get(rand);
+            if (id == 6 && playerAttribute.eventChain1Status != 0)
+            {
+                id = 0;
+            }
+            return generateChoiceEvent(id);
         }
         else if (rand < iq + wealth)
         {
-            rand = random.nextInt(eventListCommon.WealthList.size()-1);
-            return generateChoiceEvent(rand);
+            rand = random.nextInt(eventListCommon.WealthList.size());
+            return generateChoiceEvent(eventListCommon.WealthList.get(rand));
         }
         else if (rand < iq + wealth + luck)
         {
-            rand = random.nextInt(eventListCommon.LuckList.size()-1);
-            return generateChoiceEvent(rand);
+            rand = random.nextInt(eventListCommon.LuckList.size());
+            return generateChoiceEvent(eventListCommon.LuckList.get(rand));
         }
         else if (rand < iq + wealth + luck + health)
         {
-            rand = random.nextInt(eventListCommon.HealthList.size()-1);
-            return generateChoiceEvent(rand);
+            rand = random.nextInt(eventListCommon.HealthList.size());
+            return generateChoiceEvent(eventListCommon.HealthList.get(rand));
         }
         else
         {
-            rand = random.nextInt(eventListCommon.GeneralList.size()-1);
-            return generateChoiceEvent(rand);
+            rand = random.nextInt(eventListCommon.GeneralList.size());
+            return generateChoiceEvent(eventListCommon.GeneralList.get(rand));
         }
     }
 
@@ -146,20 +150,21 @@ public class Factory {
 
 class RandomEventListCommon
 {
-    List<Integer> IqList;
-    List<Integer> WealthList;
-    List<Integer> HealthList;
-    List<Integer> LuckList;
-    List<Integer> GeneralList;
+    List<Integer> IqList = new ArrayList<>();
+    List<Integer> WealthList = new ArrayList<>();
+    List<Integer> HealthList = new ArrayList<>();
+    List<Integer> LuckList = new ArrayList<>();
+    List<Integer> GeneralList = new ArrayList<>();
     RandomEventListCommon()
     {
         IqList.add(3);
+        IqList.add(6);
         WealthList.add(1);
         HealthList.add(4);
         LuckList.add(2);
         LuckList.add(10);
         GeneralList.add(0);
-        IqList.add(6);
+
     }
 }
 
