@@ -5,9 +5,12 @@ import com.example.uw_life_simulator.data.PlayerAttribute;
 abstract public class GameChoiceEvent {
     protected String description = "";
     protected int Id = 0;
-    protected String choice1_check = "";
-    protected String choice2_check = "";
+    public String choice1_description = "";
+    public String choice2_description = "";
+    public String choice1_check = "";
+    public String choice2_check = "";
     protected int repeatCount = 0;
+
     double lastMark = -1;
 
     // Getters & Setters
@@ -29,4 +32,13 @@ abstract public class GameChoiceEvent {
     {
         lastMark = mark;
     }
+
+
+    /**
+     * Check if the event will repeat for more times
+     *
+     * Input: None
+     * Output: boolean: will event continue repeat?
+     **/
+    public boolean repeated(){return repeatCount <= 0;}
 }

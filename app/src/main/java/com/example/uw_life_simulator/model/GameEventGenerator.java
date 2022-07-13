@@ -36,6 +36,7 @@ public class GameEventGenerator {
             case 4: return new GameChoiceHotDay();
             case 5: return new GameChoiceTest();
             case 6: return new GameChoiceLostCityBegin();
+            case 10: return new GameChoiceComet();
 
             case 1600: return new GameChoiceLostCity01();
             case 1601: return new GameChoiceLostCity02();
@@ -50,8 +51,10 @@ public class GameEventGenerator {
 class GameChoiceNull extends GameChoiceEvent{
     GameChoiceNull()
     {
-        this.description = "Today is dull and nothing happened\n";
+        this.description = "Today is a common nice day\n";
         this.Id = 0;
+        this.choice1_description = "OK";
+        this.choice2_description = "Nice day!";
     }
     @Override
     public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
@@ -67,6 +70,8 @@ class GameChoiceMoney extends GameChoiceEvent{
     {
         this.description = "There are 10 dollars on the ground! Do you want to pick it up?\n";
         this.Id = 1;
+        this.choice1_description = "OK, I will get it";
+        this.choice2_description = "No, it's not my money!";
     }
     @Override
     public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
@@ -89,6 +94,8 @@ class GameChoiceGoose extends GameChoiceEvent{
     {
         this.description = "There are goose on your way, do you want to go away or attack them?\n";
         this.Id = 2;
+        this.choice1_description = "I will go away";
+        this.choice2_description = "Attack them before they attack me!";
     }
     @Override
     public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
@@ -113,6 +120,8 @@ class GameChoiceInspire extends GameChoiceEvent{
         this.description = "You figured out a new way for yourself to understand the course content\n" +
                 "Do you want to apply it to your learning method?";
         this.Id = 3;
+        this.choice1_description = "It's worthy to try new method";
+        this.choice2_description = "It's too risky, I will use my old method";
     }
     @Override
     public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
@@ -140,6 +149,8 @@ class GameChoiceHotDay extends GameChoiceEvent{
         this.description = "Today is really hot, though your dormitory is close to school," +
                 " do you want to go to school on a bus?";
         this.Id = 4;
+        this.choice1_description = "What a hot day! I will go to school on bus";
+        this.choice2_description = "Walking is good for my health, I will still walk to school";
     }
     @Override
     public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
@@ -160,7 +171,9 @@ class GameChoiceHotDay extends GameChoiceEvent{
 class GameChoiceTest extends GameChoiceEvent{
     GameChoiceTest(){
         this.repeatCount = 4;
-        this.description = "Today is test date";
+        this.description = "Today is test date, you need to go for your test";
+        this.choice1_description = "OK";
+        this.choice2_description = "Good luck for me";
         this.Id = 5;
     }
     @Override
@@ -172,7 +185,7 @@ class GameChoiceTest extends GameChoiceEvent{
             {
                 //test1
                 repeatCount --;
-                return null;/////////////////
+                return returnTests(playerAttribute.course1Code);
             }
             repeatCount --;
         }
@@ -183,7 +196,7 @@ class GameChoiceTest extends GameChoiceEvent{
             {
                 //test2
                 repeatCount --;
-                return null;/////////////////
+                return returnTests(playerAttribute.course2Code);
             }
             repeatCount --;
         }
@@ -194,7 +207,7 @@ class GameChoiceTest extends GameChoiceEvent{
             {
                 //test3
                 repeatCount --;
-                return null;/////////////////
+                return returnTests(playerAttribute.course3Code);
             }
             repeatCount --;
         }
@@ -205,12 +218,38 @@ class GameChoiceTest extends GameChoiceEvent{
             {
                 //test4
                 repeatCount --;
-                return null;/////////////////
+                return returnTests(playerAttribute.course4Code);
             }
             repeatCount --;
         }
 
         return new GameTestFinished();
+    }
+
+    private GameEvent returnTests(String classCode)
+    {
+        this.description = "It is till test day...";
+        classCode = classCode.split(" ")[0];
+        if (classCode == "MANA")
+        {
+            return new GameTestMana();
+        }
+        else if (classCode == "HERB")
+        {
+            return new GameTestHerb();
+        }
+        else if (classCode == "ATRO")
+        {
+            return new GameTestAtro();
+        }
+        else if (classCode == "SPEL")
+        {
+            return new GameTestSpel();
+        }
+        else
+        {
+            return new GameTestMedi();
+        }
     }
 }
 
@@ -222,6 +261,8 @@ class GameChoiceLostCityBegin extends GameChoiceEvent {
         this.description = "Today you are reading book in library, but you are attracted by a book." +
                 "The book looks really normal, but it seems it is releasing strange mana vibration," +
                 "just like... it's talking?\n Do you want to have a look?";
+        this.choice1_description = "Interesting... I will look at it...";
+        this.choice2_description = "It's dangerous! i wouldn't even touch it! But it's way of releasing mana is interesting";
         this.Id = 6;
     }
 
@@ -238,12 +279,33 @@ class GameChoiceLostCityBegin extends GameChoiceEvent {
 
 
 /**
+ * EventID: 10
+ **/
+class GameChoiceComet extends GameChoiceEvent {
+    GameChoiceComet() {
+        this.description = "A comet passed by, the rumor of world ending spread in your class...";
+        this.choice1_description = "It's an interesting topic of conversation!";
+        this.choice2_description = "I wish I lived in more enlightened times...";
+        this.Id = 10;
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventCometYes();
+        }
+        return new GameEventCometNo();
+    }
+}
+
+
+/**
  * NULL events which does nothing
 **/
 class GameEventNull extends GameEvent{
     public GameEventNull(){
         this.Id = 0;
-        this.description = "This is a null event\n";
+        this.description = "Nothing happened this day\n";
     }
 
     /**
@@ -504,7 +566,7 @@ class GameEventHotDayYes extends GameEvent{
 class GameEventHotDayNo extends GameEvent{
     public GameEventHotDayNo(){
         this.Id = 10;
-        this.description = "You decided to go to school on foot, but it's too hot and you got heat stroke\n";
+        this.description = "You decided to walk to school, but it's too hot and you got heat stroke\n";
     }
 
     /**
@@ -539,6 +601,183 @@ class GameTestFinished extends GameEvent{
     @Override
     public void visit(PlayerAttribute attribute) {
         attribute.pressure += 10;
+    }
+}
+
+/**
+ * EventID: 12
+ * Effect: inform mana test
+ */
+class GameTestMana extends GameEvent{
+    public GameTestMana(){
+        this.Id = 12;
+        this.description = "MANA";
+    }
+
+    /**
+     * Event's effect on the player(None)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+
+    }
+}
+
+/**
+ * EventID: 13
+ * Effect: inform astrology test
+ */
+class GameTestAtro extends GameEvent{
+    public GameTestAtro(){
+        this.Id = 13;
+        this.description = "ATRO";
+    }
+
+    /**
+     * Event's effect on the player(None)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+
+    }
+}
+
+/**
+ * EventID: 14
+ * Effect: inform herbology test
+ */
+class GameTestHerb extends GameEvent{
+    public GameTestHerb(){
+        this.Id = 14;
+        this.description = "HERB";
+    }
+
+    /**
+     * Event's effect on the player(None)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+
+    }
+}
+
+/**
+ * EventID: 15
+ * Effect: inform history test
+ */
+class GameTestHist extends GameEvent{
+    public GameTestHist(){
+        this.Id = 15;
+        this.description = "HIST";
+    }
+
+    /**
+     * Event's effect on the player(None)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+
+    }
+}
+
+/**
+ * EventID: 16
+ * Effect: inform spell test
+ */
+class GameTestSpel extends GameEvent{
+    public GameTestSpel(){
+        this.Id = 16;
+        this.description = "SPEL";
+    }
+
+    /**
+     * Event's effect on the player(None)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+
+    }
+}
+
+/**
+ * EventID: 17
+ * Effect: inform medicine test
+ */
+class GameTestMedi extends GameEvent{
+    public GameTestMedi(){
+        this.Id = 17;
+        this.description = "MEDI";
+    }
+
+    /**
+     * Event's effect on the player(None)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+
+    }
+}
+
+/**
+ * EventID: 18
+ * Effect: Pressure - 10
+ */
+class GameEventCometYes extends GameEvent{
+    public GameEventCometYes(){
+        this.Id = 18;
+        this.description = "You feel released when you talk with your friends about it";
+    }
+
+    /**
+     * Event's effect on the player(Pressure - 10)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.pressure -= 10;
+    }
+}
+
+/**
+ * EventID: 19
+ * Effect: Pressure + 5, ATRO + 1
+ */
+class GameEventCometNo extends GameEvent{
+    public GameEventCometNo(){
+        this.Id = 19;
+        this.description = "You feel it's a good topic of studying astrology";
+    }
+
+    /**
+     * Event's effect on the player(Pressure + 5, ATRO + 1)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.pressure += 5;
+        attribute.AtroSkill += 1;
     }
 }
 

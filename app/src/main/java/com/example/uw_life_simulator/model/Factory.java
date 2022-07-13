@@ -157,6 +157,7 @@ class RandomEventListCommon
         WealthList.add(1);
         HealthList.add(4);
         LuckList.add(2);
+        LuckList.add(10);
         GeneralList.add(0);
         IqList.add(6);
     }
