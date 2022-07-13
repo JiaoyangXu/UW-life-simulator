@@ -7,18 +7,23 @@ import androidx.room.Room;
 import com.example.uw_life_simulator.DAO.CourseDao;
 import com.example.uw_life_simulator.DAO.CourseSelectionRecordDAO;
 import com.example.uw_life_simulator.DAO.PlayerAttributeDAO;
+import com.example.uw_life_simulator.DAO.SpellCardDAO;
 import com.example.uw_life_simulator.Database.CourseDatabase;
 import com.example.uw_life_simulator.Database.PlayerAttributeDatabase;
+import com.example.uw_life_simulator.Database.SpellCardDatabase;
 import com.example.uw_life_simulator.data.CourseSelectionRecord;
 import com.example.uw_life_simulator.data.PlayerAttribute;
+import com.example.uw_life_simulator.data.SpellCard;
 
 public class DbCleanService {
     CourseDatabase courseDb;
     PlayerAttributeDatabase PlayerDb;
+    SpellCardDatabase spellCardDb;
 
     CourseDao courseDao;
     CourseSelectionRecordDAO recordDAO;
     PlayerAttributeDAO playerDAO;
+    SpellCardDAO spellCardDAO;
 
 
     public DbCleanService(Context context) {
@@ -27,9 +32,14 @@ public class DbCleanService {
         courseDb = Room.databaseBuilder(context,
                         CourseDatabase.class, "Courses").allowMainThreadQueries().
                 fallbackToDestructiveMigration().build();
+        spellCardDb = Room.databaseBuilder(context,
+                        SpellCardDatabase.class, "SpellCard").allowMainThreadQueries().
+                fallbackToDestructiveMigration().build();
+
         courseDao = courseDb.courseDao();
         recordDAO = courseDb.courseSelectionRecordDAO();
         playerDAO = PlayerDb.playerAttributeDAO();
+        spellCardDAO = spellCardDb.spellCardDAO();
 
     }
 
@@ -37,6 +47,7 @@ public class DbCleanService {
         uncheckAllCourses();
         cleanCourseRecordTable();
         cleanPlayerTable();
+        uncheckAllSpellCard();
     }
 
     public void cleanCoursesTable() {
@@ -54,4 +65,6 @@ public class DbCleanService {
     public void cleanPlayerTable() {
         playerDAO.deleteAll();
     }
+
+    public void uncheckAllSpellCard() { spellCardDAO.unselectAll(); }
 }

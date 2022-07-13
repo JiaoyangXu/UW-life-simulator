@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.SwipeSpellCardActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".10"
+        ></LinearLayout>
+    <com.lorentzos.flingswipe.SwipeFlingAdapterView
+        android:id="@+id/card"
+        android:layout_width="260dp"
+        android:layout_height="0dp"
+        android:layout_weight=".2"
+        android:layout_gravity="center"
+        app:max_visible="7"
+        app:min_adapter_stack="8"
+        app:rotation_degrees="20"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".10"
+        ></LinearLayout>
+
+</LinearLayout>

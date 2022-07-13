@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.example.uw_life_simulator.R;
 import com.example.uw_life_simulator.Service.DbCleanService;
 import com.example.uw_life_simulator.activities.CourseSelectionActivity;
+import com.example.uw_life_simulator.activities.DrawSpellCardActivity;
 import com.example.uw_life_simulator.activities.EventActivity;
 import com.example.uw_life_simulator.activities.AttributeActivities;
 
@@ -18,6 +19,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.uw_life_simulator.activities.SwipeSpellCardActivity;
 import com.example.uw_life_simulator.databinding.ActivityMainBinding;
 
 import android.view.Menu;
@@ -98,6 +100,13 @@ public class MainActivity extends AppCompatActivity {
     public void quitApp(View view) {
         DbCleanService dbCleanService = new DbCleanService(getApplicationContext());
         dbCleanService.cleanDb();
-        //finish();
+
+        //Intent intent = new Intent(MainActivity.this, DrawSpellCardActivity.class);
+        //startActivity(intent);
+    }
+
+    public void SwipeCard(View view) {
+        Intent intent = new Intent(MainActivity.this, SwipeSpellCardActivity.class);
+        startActivity(intent);
     }
 }

@@ -52,7 +52,7 @@ public class AttributeActivities extends AppCompatActivity {
         playerAttributeDAO.insertAll(playerAttribute);
 
         // pass intent to Event Activity
-        Intent intent = new Intent(AttributeActivities.this, CourseSelectionActivity.class);
+        Intent intent = new Intent(AttributeActivities.this, DrawSpellCardActivity.class);
         startActivity(intent);
     }
 
