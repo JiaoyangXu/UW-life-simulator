@@ -6,6 +6,7 @@ import com.example.uw_life_simulator.data.CourseSelectionRecord;
 import com.example.uw_life_simulator.Database.CourseDatabase;
 import com.example.uw_life_simulator.data.PlayerAttribute;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -18,7 +19,7 @@ public class Factory {
      * Input: int : eventId
      * Output: GameEvent : Generated event
      **/
-    static public GameChoiceEvent generateRandomChoiceEvent(PlayerAttribute playerAttribute) // Implementation needed
+    static public GameChoiceEvent generateRandomChoiceEvent(PlayerAttribute playerAttribute)
     {
         RandomEventListCommon eventListCommon = new RandomEventListCommon();
         int iq = playerAttribute.IQ;
@@ -29,7 +30,31 @@ public class Factory {
         int gpa = playerAttribute.GPA;
 
         Random random = new Random();
+        if (playerAttribute.eventChain1Status > 0 || playerAttribute.eventChain2Status > 0 ||
+                playerAttribute.eventChain3Status > 0 || playerAttribute.eventChain4Status > 0)
+        {
+            if (random.nextInt(2) == 1)
+            {
+                List<Integer> chainAvaliable = new ArrayList<>();
+                chainAvaliable.add(playerAttribute.eventChain1Status);
+                chainAvaliable.add(playerAttribute.eventChain2Status);
+                chainAvaliable.add(playerAttribute.eventChain3Status);
+                chainAvaliable.add(playerAttribute.eventChain4Status);
+
+                int rand = chainAvaliable.get(random.nextInt(4));
+                if (rand != 0)
+                {
+                    return generateChoiceEvent(rand);
+                }
+            }
+        }
+
         int rand = random.nextInt(2 * (iq + wealth + luck + health));
+        //Event has been triggered
+        if (rand == 6 && playerAttribute.eventChain1Status < -1)
+        {
+            rand = 0;
+        }
 
         if (rand < iq)
         {
@@ -128,13 +153,13 @@ class RandomEventListCommon
     List<Integer> GeneralList;
     RandomEventListCommon()
     {
+        IqList.add(3);
         WealthList.add(1);
+        HealthList.add(4);
         LuckList.add(2);
+        LuckList.add(10);
+        GeneralList.add(0);
+        IqList.add(6);
     }
-}
-
-class RandomEventListWork
-{
-    List<Integer> IqList;
 }
 

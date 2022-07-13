@@ -25,7 +25,7 @@ import java.util.UUID;
 
 public class CourseSelectionActivity extends AppCompatActivity {
 
-    public static boolean DeleteOption = false;
+    public static boolean DeleteOption = true;
     public static boolean initializeDbOption = true;
     public static int MAX_COURSE_NUMBER = 19;
 
@@ -248,48 +248,80 @@ public class CourseSelectionActivity extends AppCompatActivity {
      * @return the list of courses
      */
     private List<Course> initializeCourses() {
-        Course course1 = new Course("CS135", "Racket", 50,50,1);
-        Course course2 = new Course("CS136", "C", 30,90,1);
-        Course course3 = new Course("CS246", "C++", 60,100,2);
-        Course course4 = new Course("CS241", "Compiler", 80, 30,2);
-        Course course5 = new Course("CS348", "Database", 50,60,3);
-        Course course6 = new Course("Math 137", "Calculus I", 60, 70,1);
-        Course course7 = new Course("Math 138", "Calculus II", 60, 70,1);
-        Course course8 = new Course("Math 136", "Linear Algebra", 30, 80,1);
-        Course course9 = new Course("Econ 101", "Microeconomics", 0, 10,1);
-        Course course10 = new Course("Game100", "League of Legends", 0, 100,100);
-        Course CS245 = new Course("CS245", "Logic", 43, 24,2);
-        Course CS251 = new Course("CS251", "Computer Design", 15, 71,2);
-        Course CS341 = new Course("CS341", "Algorithms", 46, 99,3);
-        Course CS343 = new Course("CS343", "Concurrent Programming", 67, 59,3);
-        Course CS348 = new Course("CS348", "Intro to Database", 30, 63,3);
-        Course CS349 = new Course("CS349", "User Interfaces", 25, 75,3);
-        Course CS350 = new Course("CS350", "Operating Systems", 54, 94,3);
-        Course CS370 = new Course("CS370", "Numerical Computing", 40, 86,3);
-        Course CS444 = new Course("CS444", "Compiler Construction", 20, 99,4);
-        Course CS446 = new Course("CS446", "Software Design", 30, 101,4);
+//        Course course1 = new Course("CS135", "Racket", 50,50,1);
+//        Course course2 = new Course("CS136", "C", 30,90,1);
+//        Course course3 = new Course("CS246", "C++", 60,100,2);
+//        Course course4 = new Course("CS241", "Compiler", 80, 30,2);
+//        Course course5 = new Course("CS348", "Database", 50,60,3);
+//        Course course6 = new Course("Math 137", "Calculus I", 60, 70,1);
+//        Course course7 = new Course("Math 138", "Calculus II", 60, 70,1);
+//        Course course8 = new Course("Math 136", "Linear Algebra", 30, 80,1);
+//        Course course9 = new Course("Econ 101", "Microeconomics", 0, 10,1);
+//        Course course10 = new Course("Game100", "League of Legends", 0, 100,100);
+//        Course CS245 = new Course("CS245", "Logic", 43, 24,2);
+//        Course CS251 = new Course("CS251", "Computer Design", 15, 71,2);
+//        Course CS341 = new Course("CS341", "Algorithms", 46, 99,3);
+//        Course CS343 = new Course("CS343", "Concurrent Programming", 67, 59,3);
+//        Course CS348 = new Course("CS348", "Intro to Database", 30, 63,3);
+//        Course CS349 = new Course("CS349", "User Interfaces", 25, 75,3);
+//        Course CS350 = new Course("CS350", "Operating Systems", 54, 94,3);
+//        Course CS370 = new Course("CS370", "Numerical Computing", 40, 86,3);
+//        Course CS444 = new Course("CS444", "Compiler Construction", 20, 99,4);
+//        Course CS446 = new Course("CS446", "Software Design", 30, 101,4);
+
+        Course MANA100 = new Course("MANA 100", "Introduction to Magic", 20, 80,1);
+        Course HERB100 = new Course("HERB 100", "Introduction to Herbology", 50, 90,1);
+        Course HIST100 = new Course("HIST 100", "History of Magic", 20, 30,1);
+        Course MEDI100 = new Course("MEDI 100", "Introduction to Medication", 70, 80,1);
+        Course SPEL100 = new Course("SPEL 100", "Introduction to Spells", 80, 80,1);
+        Course ATRO100 = new Course("ATRO 100", "Introduction to Astronomy", 60, 30,1);
+
+        Course MANA200 = new Course("MANA 200", "Flying", 70, 90,2);
+        Course HERB200 = new Course("HERB 200", "Wondrous Water Plants", 30, 70,2);
+        Course SPEL200 = new Course("SPEL 200", "Water-Making Spell", 90, 100,2);
+        Course HIST200 = new Course("SPEL 200", "Medieval Assembly of European Wizards", 50, 40,2);
+        Course MEDI200 = new Course("MEDI 200", "Potions", 70, 80,2);
+        Course ATRO200 = new Course("ATRO 200", "Star charts", 60, 30,2);
 
         List<Course> courses = new ArrayList<>();
-        courses.add(course1);
-        courses.add(course2);
-        courses.add(course3);
-        courses.add(course4);
-        courses.add(course5);
-        courses.add(course6);
-        courses.add(course7);
-        courses.add(course8);
-        courses.add(course9);
-        courses.add(course10);
-        courses.add(CS245);
-        courses.add(CS251);
-        courses.add(CS341);
-        courses.add(CS343);
-        courses.add(CS348);
-        courses.add(CS349);
-        courses.add(CS350);
-        courses.add(CS370);
-        courses.add(CS444);
-        courses.add(CS446);
+
+
+        courses.add(MANA100);
+        courses.add(HERB100);
+        courses.add(HIST100);
+        courses.add(MEDI100);
+        courses.add(SPEL100);
+        courses.add(ATRO100);
+        courses.add(HERB200);
+        courses.add(MANA200);
+        courses.add(SPEL200);
+        courses.add(HIST200);
+        courses.add(MEDI200);
+        courses.add(ATRO200);
+
+
+
+//        courses.add(course1);
+//        courses.add(course2);
+//        courses.add(course3);
+//        courses.add(course4);
+//        courses.add(course5);
+//        courses.add(course6);
+//        courses.add(course7);
+//        courses.add(course8);
+//        courses.add(course9);
+//        courses.add(course10);
+//        courses.add(CS245);
+//        courses.add(CS251);
+//        courses.add(CS341);
+//        courses.add(CS343);
+//        courses.add(CS348);
+//        courses.add(CS349);
+//        courses.add(CS350);
+//        courses.add(CS370);
+//        courses.add(CS444);
+//        courses.add(CS446);
+
 
         return courses;
     }

@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+xmlns:android="http://schemas.android.com/apk/res/android">
+<ImageView
+    android:src="@drawable/panel2"
+    android:scaleType="fitXY"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_alignTop="@id/profile_layout"
+    android:layout_alignBottom="@id/profile_layout"
+    android:layout_alignLeft="@id/profile_layout"
+    android:layout_alignRight="@id/profile_layout"
+    android:contentDescription="@id/profile_layout" />
+<LinearLayout
+    android:id="@+id/profile_layout"
+    android:clipToPadding="true"
+    android:padding="25dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/border7">
-
+    android:orientation="vertical" >
     <TextView
         android:id="@+id/ProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         android:textSize="22sp"
         android:text="This is a popup window."/>
-
+    <!-- LinearLayout wraps a bunch of smallish views here -->
+</LinearLayout>
 </RelativeLayout>
