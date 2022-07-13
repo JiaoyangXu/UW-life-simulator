@@ -197,5 +197,11 @@ public class PlayerAttribute implements Subject {
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
+
+    public void updateAttribute() {
+        this.money = 1000 + wealth * 100;
+        this.pressure = 30 - health * 3;
+        this.GPA = 80 + IQ * 2;
+    }
 }
 
