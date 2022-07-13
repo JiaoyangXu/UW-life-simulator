@@ -28,7 +28,6 @@ public class AttributeActivities extends AppCompatActivity {
     UserAttribute talent;
     PlayerAttribute playerAttribute;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
