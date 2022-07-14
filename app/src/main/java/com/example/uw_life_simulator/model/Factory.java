@@ -49,11 +49,7 @@ public class Factory {
             }
         }
 
-        System.out.println((iq + wealth + luck + health));
-        System.out.println((iq + wealth + luck + health) + eventListCommon.GeneralList.size());
         int rand = random.nextInt((iq + wealth + luck + health) + eventListCommon.GeneralList.size());
-        System.out.println(rand);
-
         if (rand < iq)
         {
             rand = random.nextInt(eventListCommon.IqList.size());
