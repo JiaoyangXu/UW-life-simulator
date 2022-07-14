@@ -337,12 +337,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 "health = " + p.health + '\n' +
                 "pressure = " + p.pressure + '\n' +
                 "GPA = " + p.GPA + '\n' +
-                "numFailedCourses = " + p.numFailedCourses + '\n' +
-                "employed = " + p.employed + '\n' +
-                "course1Code = " + p.course1Code + '\n' +
-                "course2Code = " + p.course2Code + '\n' +
-                "course3Code = " + p.course3Code + '\n' +
-                "course4Code = " + p.course4Code + '\n';
+                "employed = " + p.employed + '\n';
     }
 
     public void useSpellCard(View view){
