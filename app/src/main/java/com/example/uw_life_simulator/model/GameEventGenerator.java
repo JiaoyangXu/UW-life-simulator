@@ -232,7 +232,6 @@ class GameChoiceTest extends GameChoiceEvent{
 
     private GameEvent returnTests(String classCode)
     {
-
         this.description = "It is till test day...";
         classCode = classCode.split(" ")[0];
         switch (classCode) {
@@ -244,6 +243,8 @@ class GameChoiceTest extends GameChoiceEvent{
                 return new GameTestAtro();
             case "SPEL":
                 return new GameTestSpel();
+            case "HIST":
+                return new GameTestHist();
             default:
                 return new GameTestMedi();
         }
