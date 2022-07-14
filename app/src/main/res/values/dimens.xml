@@ -1,5 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="event_padding">160dp</dimen>
-    <dimen name="event_padding2">120dp</dimen>
+    <dimen name="event_padding">80dp</dimen>
+    <dimen name="event_padding2">40dp</dimen>
 </resources>
