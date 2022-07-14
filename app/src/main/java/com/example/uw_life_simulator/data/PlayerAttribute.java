@@ -190,6 +190,7 @@ public class PlayerAttribute implements Subject {
     public int getHealth() { return health; }
     public int getWealth() { return wealth; }
     public int getPressure() { return pressure; }
+    public int getMoney() {return money;}
     public int getGPA() { return GPA; }
 
     // Getters for extra academic and career indicators

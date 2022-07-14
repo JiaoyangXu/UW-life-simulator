@@ -3,15 +3,29 @@ package com.example.uw_life_simulator.model;
 import com.example.uw_life_simulator.data.PlayerAttribute;
 import com.example.uw_life_simulator.model.Factory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NewEvent {
-    public static String generateNewEvent(Player player, int totalnum)
+    static GameChoiceEvent gce = null;
+    public static List<String> generateNewChoice(Player player, int totalnum)
     {
-        GameEvent gm = Factory.generateEvent(totalnum % 5);
-        //String s = "New Event " + totalnum + " is: " + gm.description;
-        String s = gm.description;
         PlayerAttribute pa = player.getPlayerAttribute();
-        pa.GPA -= 1;
-        player.setPlayerAttribute(pa);
-        return s;
+        gce = Factory.generateRandomChoiceEvent(pa);
+        List<String> ret = new ArrayList<>();
+        ret.add(gce.description);
+        ret.add(gce.choice1_description);
+        ret.add(gce.choice2_description);
+        return ret;
+    }
+
+    // response is True for choice1 and False for choice2
+    public String generateNewEvent(Player player, boolean response)
+    {
+        PlayerAttribute pa = player.getPlayerAttribute();
+        GameEvent ge = gce.generateEvent(response, pa);
+        ge.visit(pa);
+        return ge.description;
+
     }
 }
