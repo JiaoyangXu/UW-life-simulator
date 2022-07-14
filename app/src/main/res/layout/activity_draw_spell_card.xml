@@ -7,46 +7,97 @@
     android:layout_height="match_parent"
     android:background="@drawable/wallpap1">
 
-    <com.bakerj.infinitecards.InfiniteCardView
-        android:id="@+id/view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".8"
-        android:background="@drawable/img_3"
-        android:padding="50dp"
-        app:animDuration="500"
-        app:cardRatio="1">
-    </com.bakerj.infinitecards.InfiniteCardView>
+        android:layout_weight=".2"></LinearLayout>
 
-    <Button
-        android:id="@+id/nextCard"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".2"
-        android:text="nextCard" />
+        android:layout_weight=".55"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".2"></LinearLayout>
+        <com.bakerj.infinitecards.InfiniteCardView
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".6"
+            app:animDuration="500"
+            app:cardRatio="1.681">
+        </com.bakerj.infinitecards.InfiniteCardView>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".2"></LinearLayout>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/prevCard"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".2"
-        android:text="prevCard" />
-
-    <Button
-        android:id="@+id/BuyCard"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight=".2"
-        android:text="BuyCard" />
-
-    <Button
-        android:id="@+id/finishCardPurchase"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight=".2"
-        android:text="Finish " />
-
-
-
-
+        android:orientation="vertical"
+        android:layout_weight=".35">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".1"></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight=".2">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".15"></LinearLayout>
+            <Button
+                android:id="@+id/nextCard"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:text="nextCard"
+                android:visibility="gone"/>
+            <Button
+                android:id="@+id/prevCard"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".28"
+                android:background="@drawable/dark_grey_button"
+                android:text="nextCard" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".02"></LinearLayout>
+            <Button
+                android:id="@+id/BuyCard"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".28"
+                android:background="@drawable/dark_grey_button"
+                android:text="BuyCard" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".02"></LinearLayout>
+            <Button
+                android:id="@+id/finishCardPurchase"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".28"
+                android:background="@drawable/dark_grey_button"
+                android:text="Finish " />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".15"></LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight=".7"></LinearLayout>
+    </LinearLayout>
 </LinearLayout>
