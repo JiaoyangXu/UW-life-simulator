@@ -13,11 +13,23 @@ import java.util.Random;
 public class Factory {
 
     /**
-     * NewEvent generator which generates events based on the eventId
-     * Events are implemented in GameEventGenerator.Java
+     * Test Event generator which generates midterm/final test events
      *
-     * Input: int : eventId
-     * Output: GameEvent : Generated event
+     * Input: None
+     * Output: GameEvent : Generated test event
+     **/
+    static public GameChoiceEvent generateTestEvent()
+    {
+        return generateChoiceEvent(5);
+    }
+
+
+    /**
+     * New Event generator which generates events with choices based on the player attribute
+     * ChoiceEvents are implemented in GameEventGenerator.Java
+     *
+     * Input: PlayerAttribute : playerAttribute
+     * Output: GameChoiceEvent : Generated event with choices
      **/
     static public GameChoiceEvent generateRandomChoiceEvent(PlayerAttribute playerAttribute)
     {
@@ -49,11 +61,7 @@ public class Factory {
             }
         }
 
-        System.out.println((iq + wealth + luck + health));
-        System.out.println((iq + wealth + luck + health) + eventListCommon.GeneralList.size());
         int rand = random.nextInt((iq + wealth + luck + health) + eventListCommon.GeneralList.size());
-        System.out.println(rand);
-
         if (rand < iq)
         {
             rand = random.nextInt(eventListCommon.IqList.size());

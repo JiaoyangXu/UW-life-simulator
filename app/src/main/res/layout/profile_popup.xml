@@ -25,10 +25,10 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="30dp"
+        android:layout_margin="15dp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:text="This is a popup window."/>
     <!-- LinearLayout wraps a bunch of smallish views here -->
 </LinearLayout>

@@ -200,11 +200,15 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 String event = "NewEvent called in onClick." + s;
                 List<String> event_list = new ArrayList<>();
                 //event= mNewEvent.generateNewEvent(mPlayer,mAdapter.getItemCount());
+                boolean return_last_event = false;
                 event_list = mNewEvent.generateNewChoice(mPlayer,mAdapter.getItemCount());
                 //2022 0713
                 String event_description = event_list.get(0);
                 String event_choice1 = event_list.get(1);
                 String event_choice2 = event_list.get(2);
+
+                //
+                return_last_event = mNewEvent.isFinished();
 
                 //pop up window dialog
                 AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
@@ -242,6 +246,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                     String text = "        " + event;
                     BroadastText.setText(text);
                 }
+
             }
         });
         Button mSummaryButton = findViewById(R.id.SummaryButton);
@@ -332,12 +337,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 "health = " + p.health + '\n' +
                 "pressure = " + p.pressure + '\n' +
                 "GPA = " + p.GPA + '\n' +
-                "numFailedCourses = " + p.numFailedCourses + '\n' +
-                "employed = " + p.employed + '\n' +
-                "course1Code = " + p.course1Code + '\n' +
-                "course2Code = " + p.course2Code + '\n' +
-                "course3Code = " + p.course3Code + '\n' +
-                "course4Code = " + p.course4Code + '\n';
+                "employed = " + p.employed + '\n';
     }
 
     public void useSpellCard(View view){

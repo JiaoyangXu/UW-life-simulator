@@ -11,7 +11,19 @@ public class NewEvent {
     public static List<String> generateNewChoice(Player player, int totalnum)
     {
         PlayerAttribute pa = player.getPlayerAttribute();
-        gce = Factory.generateRandomChoiceEvent(pa);
+        if (gce != null)
+        {
+            if (!gce.repeated())
+            {
+                //gce = Factory.generateRandomChoiceEvent(pa);
+                gce = Factory.generateChoiceEvent(5);
+            }
+        }
+        else
+        {
+            //gce = Factory.generateRandomChoiceEvent(pa);
+            gce = Factory.generateChoiceEvent(5);
+        }
         List<String> ret = new ArrayList<>();
         ret.add(gce.description);
         ret.add(gce.choice1_description);
@@ -27,5 +39,10 @@ public class NewEvent {
         ge.visit(pa);
         return ge.description;
 
+    }
+
+    public boolean isFinished()
+    {
+        return gce.repeated();
     }
 }

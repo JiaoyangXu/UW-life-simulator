@@ -170,7 +170,7 @@ class GameChoiceHotDay extends GameChoiceEvent{
  **/
 class GameChoiceTest extends GameChoiceEvent{
     GameChoiceTest(){
-        this.repeatCount = 4;
+        this.repeatCount = 5;
         this.description = "Today is test date, you need to go for your test";
         this.choice1_description = "OK";
         this.choice2_description = "Good luck for me";
@@ -179,7 +179,7 @@ class GameChoiceTest extends GameChoiceEvent{
     @Override
     public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
 
-        if (repeatCount == 4)
+        if (repeatCount == 5)
         {
             if (playerAttribute.course1Code != "")
             {
@@ -190,7 +190,7 @@ class GameChoiceTest extends GameChoiceEvent{
             repeatCount --;
         }
 
-        if (repeatCount == 3)
+        if (repeatCount == 4)
         {
             if (playerAttribute.course2Code != "")
             {
@@ -201,7 +201,7 @@ class GameChoiceTest extends GameChoiceEvent{
             repeatCount --;
         }
 
-        if (repeatCount == 2)
+        if (repeatCount == 3)
         {
             if (playerAttribute.course2Code != "")
             {
@@ -212,7 +212,7 @@ class GameChoiceTest extends GameChoiceEvent{
             repeatCount --;
         }
 
-        if (repeatCount == 1)
+        if (repeatCount == 2)
         {
             if (playerAttribute.course2Code != "")
             {
@@ -223,6 +223,10 @@ class GameChoiceTest extends GameChoiceEvent{
             repeatCount --;
         }
 
+        if (repeatCount <= 1)
+        {
+            repeatCount = 0;
+        }
         return new GameTestFinished();
     }
 
@@ -230,25 +234,19 @@ class GameChoiceTest extends GameChoiceEvent{
     {
         this.description = "It is till test day...";
         classCode = classCode.split(" ")[0];
-        if (classCode == "MANA")
-        {
-            return new GameTestMana();
-        }
-        else if (classCode == "HERB")
-        {
-            return new GameTestHerb();
-        }
-        else if (classCode == "ATRO")
-        {
-            return new GameTestAtro();
-        }
-        else if (classCode == "SPEL")
-        {
-            return new GameTestSpel();
-        }
-        else
-        {
-            return new GameTestMedi();
+        switch (classCode) {
+            case "MANA":
+                return new GameTestMana();
+            case "HERB":
+                return new GameTestHerb();
+            case "ATRO":
+                return new GameTestAtro();
+            case "SPEL":
+                return new GameTestSpel();
+            case "HIST":
+                return new GameTestHist();
+            default:
+                return new GameTestMedi();
         }
     }
 }
