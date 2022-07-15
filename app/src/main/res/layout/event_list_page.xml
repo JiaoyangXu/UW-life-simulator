@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#aea79c">
+    android:background="#B4B4B9"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_weight="0"
-        android:orientation="horizontal"
-        android:background="#000000">
+        android:background="#000000"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,9 +26,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight=".35"
-                android:text="  Pressure:"
                 android:fontFamily="sans-serif-black"
-                android:textColor="#B2F8F7F5"
+                android:shadowColor="#000000"
+                android:shadowRadius="5"
+                android:text="  Pressure:"
+                android:textColor="#FFB4B4B9"
                 android:textSize="20dp" />
 
             <TextView
@@ -38,8 +40,10 @@
                 android:layout_weight=".65"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
+                android:shadowColor="#000000"
+                android:shadowRadius="5"
                 android:text="Pressure"
-                android:textColor="#B2F8F7F5"
+                android:textColor="#FFB4B4B9"
                 android:textSize="30dp" />
         </LinearLayout>
 
@@ -55,9 +59,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight=".35"
-                android:text="  Budget:"
-                android:textColor="#B2F8F7F5"
                 android:fontFamily="sans-serif-black"
+                android:shadowColor="#000000"
+                android:shadowRadius="5"
+                android:text="  Budget:"
+                android:textColor="#FFB4B4B9"
                 android:textSize="20dp" />
 
             <TextView
@@ -67,8 +73,10 @@
                 android:layout_weight=".65"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
+                android:shadowColor="#000000"
+                android:shadowRadius="5"
                 android:text="Budget"
-                android:textColor="#B2F8F7F5"
+                android:textColor="#FFB4B4B9"
                 android:textSize="30dp" />
         </LinearLayout>
 
@@ -84,9 +92,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight=".35"
-                android:text="  GPA:"
-                android:textColor="#B2F8F7F5"
                 android:fontFamily="sans-serif-black"
+                android:shadowColor="#000000"
+                android:shadowRadius="5"
+                android:text="  GPA:"
+                android:textColor="#FFB4B4B9"
                 android:textSize="20dp" />
 
             <TextView
@@ -96,8 +106,10 @@
                 android:layout_weight=".65"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
+                android:shadowColor="#000000"
+                android:shadowRadius="5"
                 android:text="GPA"
-                android:textColor="#B2F8F7F5"
+                android:textColor="#FFB4B4B9"
                 android:textSize="30dp" />
         </LinearLayout>
     </LinearLayout>
@@ -106,8 +118,8 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_weight="0"
-        android:orientation="horizontal"
-        android:background="#000000">
+        android:background="#000000"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imageView3"
@@ -120,8 +132,8 @@
             android:id="@+id/BroadCastText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_gravity="center"
+            android:layout_weight="1"
             android:background="@drawable/dark_grey_button" />
     </LinearLayout>
 
@@ -150,7 +162,6 @@
             app:layout_constraintWidth_percent="0.98" />
 
 
-
         <Button
             android:id="@+id/Eventbutton"
             android:layout_width="0dp"
@@ -173,8 +184,8 @@
             android:layout_height="75dp"
             android:background="@drawable/backpack"
             android:onClick="useSpellCard"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:layout_editor_absoluteX="288dp"
             tools:layout_editor_absoluteY="455dp" />
 
@@ -185,14 +196,14 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_weight="0"
-        android:orientation="horizontal"
-        android:background="#000000">
+        android:background="#000000"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight=".50">
+            android:layout_weight=".50"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView23"
@@ -200,11 +211,11 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight=".125"
-                android:gravity="center"
-                android:textSize="12dp"
-                android:textColor="#B2F8F7F5"
+                android:background="@drawable/dark_grey_button"
                 android:fontFamily="sans-serif-black"
-                android:background="@drawable/dark_grey_button"/>
+                android:gravity="center"
+                android:textColor="#B2F8F7F5"
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/textView25"
@@ -212,11 +223,11 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight=".125"
-                android:gravity="center"
-                android:textSize="12dp"
-                android:textColor="#B2F8F7F5"
+                android:background="@drawable/dark_grey_button"
                 android:fontFamily="sans-serif-black"
-                android:background="@drawable/dark_grey_button"/>
+                android:gravity="center"
+                android:textColor="#B2F8F7F5"
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/textView26"
@@ -224,11 +235,11 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight=".125"
-                android:gravity="center"
-                android:textSize="12dp"
-                android:textColor="#B2F8F7F5"
+                android:background="@drawable/dark_grey_button"
                 android:fontFamily="sans-serif-black"
-                android:background="@drawable/dark_grey_button"/>
+                android:gravity="center"
+                android:textColor="#B2F8F7F5"
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/textView27"
@@ -236,33 +247,35 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight=".125"
-                android:gravity="center"
-                android:textSize="12dp"
-                android:textColor="#B2F8F7F5"
+                android:background="@drawable/dark_grey_button"
                 android:fontFamily="sans-serif-black"
-                android:background="@drawable/dark_grey_button"/>
+                android:gravity="center"
+                android:textColor="#B2F8F7F5"
+                android:textSize="12dp" />
         </LinearLayout>
+
         <TextView
             android:id="@+id/textView28"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight=".5"
-            android:textSize="15dp"
-            android:text="Current term: 1A"
-            android:gravity="center"
             android:layout_gravity="center"
-            android:textColor="#B2F8F7F5"
+            android:layout_weight=".5"
+            android:background="@drawable/dark_grey_button"
             android:fontFamily="sans-serif-black"
-            android:background="@drawable/dark_grey_button"/>
+            android:gravity="center"
+            android:text="Current term: 1A"
+            android:textColor="#B2F8F7F5"
+            android:textSize="15dp" />
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="0"
-        android:orientation="horizontal"
-        android:background="#000000">
+        android:background="#000000"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/ProfileButton"
@@ -270,9 +283,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/dark_grey_button"
+            android:fontFamily="sans-serif-black"
             android:text="PROFILE"
-            android:textColor="#B2F8F7F5"
-            android:fontFamily="sans-serif-black"/>
+            android:textColor="#B2F8F7F5" />
 
         <Button
             android:id="@+id/SummaryButton"
@@ -280,9 +293,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/dark_grey_button"
+            android:fontFamily="sans-serif-black"
             android:text="SUMMARY"
-            android:textColor="#B2F8F7F5"
-            android:fontFamily="sans-serif-black"/>
+            android:textColor="#B2F8F7F5" />
 
         <Button
             android:id="@+id/QuitButton"
@@ -290,9 +303,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/dark_grey_button"
+            android:fontFamily="sans-serif-black"
             android:text="QUIT"
-            android:textColor="#B2F8F7F5"
-            android:fontFamily="sans-serif-black"/>
+            android:textColor="#B2F8F7F5" />
 
         <Button
             android:id="@+id/SettingButton"
@@ -300,9 +313,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/dark_grey_button"
+            android:fontFamily="sans-serif-black"
             android:text="SETTINGS"
-            android:textColor="#B2F8F7F5"
-            android:fontFamily="sans-serif-black"/>
+            android:textColor="#B2F8F7F5" />
     </LinearLayout>
 
 </LinearLayout>

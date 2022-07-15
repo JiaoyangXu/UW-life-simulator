@@ -66,7 +66,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight=".28"
                 android:background="@drawable/dark_grey_button"
-                android:text="nextCard" />
+                android:text="NEXT CARD"
+                android:textColor="#B2F8F7F5"
+                android:shadowColor="#000000"
+                android:shadowRadius="5"
+                android:fontFamily="sans-serif-black"/>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -77,7 +81,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight=".28"
                 android:background="@drawable/dark_grey_button"
-                android:text="BuyCard" />
+                android:text="BUY CARD"
+                android:textColor="#B2F8F7F5"
+                android:shadowColor="#000000"
+                android:shadowRadius="5"
+                android:fontFamily="sans-serif-black"/>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -88,7 +96,11 @@
                 android:layout_height="match_parent"
                 android:layout_weight=".28"
                 android:background="@drawable/dark_grey_button"
-                android:text="Finish " />
+                android:text="FINISH"
+                android:textColor="#B2F8F7F5"
+                android:shadowColor="#000000"
+                android:shadowRadius="5"
+                android:fontFamily="sans-serif-black"/>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
