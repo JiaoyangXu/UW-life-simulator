@@ -1,4 +1,5 @@
 package com.example.uw_life_simulator.activities;
+import com.example.uw_life_simulator.MiniGame.ManaTestMainAct;
 import com.example.uw_life_simulator.R;
 import com.example.uw_life_simulator.model.EventFragment;
 import com.example.uw_life_simulator.model.event_list_adapter;
@@ -221,9 +222,8 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                 //鉴定
                                 String game_type = mNewEvent.getTestClassName(true);
                                 if(game_type.equals("")){
-                                    Intent intent = new Intent(EventActivity.this, ManaInstructionPg.class);
+                                    Intent intent = new Intent(EventActivity.this, ManaTestMainAct.class);
                                     intent.putExtra("Diff", 2);
-                                    startActivity(intent);
                                     startActivityForResult(intent, 0);
                                     double score = intent.getDoubleExtra("Result",0.0);
                                     String event = "you received a score of" + score;
