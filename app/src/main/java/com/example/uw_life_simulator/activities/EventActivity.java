@@ -4,6 +4,7 @@ import com.example.uw_life_simulator.R;
 import com.example.uw_life_simulator.model.EventFragment;
 import com.example.uw_life_simulator.model.event_list_adapter;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
@@ -93,6 +94,21 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mAlertDialogFragment.setListener(this);
         mAlertDialogFragment.setCancelable(false);
         FragmentManager fragMan = getFragmentManager();
+    }
+    double result = 0.0;
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0)
+        {
+            if (resultCode == RESULT_OK)
+            {
+                 result = data.getDoubleExtra("Result", 0.0);
+                System.out.println(result);
+            }
+        }
     }
 
     @Override

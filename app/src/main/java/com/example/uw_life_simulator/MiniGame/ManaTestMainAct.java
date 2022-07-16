@@ -126,7 +126,6 @@ public class ManaTestMainAct extends AppCompatActivity {
                         if (hit(player, manaList.get(i)))
                         {
                             score ++;
-                            System.out.println(score);
                             manaCounting.set(i, false);
                             manaList.get(i).setY(-60);
                         }
