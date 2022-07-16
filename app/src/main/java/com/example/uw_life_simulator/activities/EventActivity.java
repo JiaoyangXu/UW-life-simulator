@@ -62,6 +62,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     int result = -1;
     Player mPlayer;
     NewEvent mNewEvent;
+    boolean called_by_event = false;
 
     private enum LayoutManagerType {
         LINEAR_LAYOUT_MANAGER
@@ -105,15 +106,19 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         {
             if (resultCode == RESULT_OK)
             {
-                 result = (int)data.getDoubleExtra("Result", 0.0);
+                if(called_by_event == true){
+                    result = (int)data.getDoubleExtra("Result", 0.0);
 
-                System.out.println(result);
-                String event = "you received a score of " + result;
-                mAdapter.addEvent(event);
-                mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
-                event = mNewEvent.generateNewEvent(mPlayer,true);
-                mAdapter.addEvent(event);
-                mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                    System.out.println(result);
+                    String event = "you received a score of " + result;
+                    mAdapter.addEvent(event);
+                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                    event = mNewEvent.generateNewEvent(mPlayer,true);
+                    mAdapter.addEvent(event);
+                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                    called_by_event = false;
+                }
+
             }
         }
     }
@@ -245,6 +250,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                 //鉴定
                                 String game_type = mNewEvent.getTestClassName(true);
                                 if(game_type.equals("")){
+                                    called_by_event = true;
                                     Intent intent = new Intent(EventActivity.this, ManaTestMainAct.class);
                                     intent.putExtra("Diff", 2);
                                     startActivityForResult(intent, 0);
@@ -332,10 +338,26 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mProfileButton.setOnClickListener((v) -> {
             onButtonShowPopupWindowClick(v, mPlayer.getPlayerAttribute());
         });
-        Button mSettingButton = findViewById(R.id.SettingButton);
-        mSettingButton.setOnClickListener((v) -> {
-            Intent intent = new Intent(EventActivity.this, CardGameActivity.class);
-            startActivity(intent);
+        Button mGameButton = findViewById(R.id.SettingButton);
+        mGameButton.setOnClickListener((v) -> {
+            AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                    .setMessage("Which game would you like to play?")
+                    .setCancelable(true)
+                    .setTitle("Mini Games")
+                    .setPositiveButton("MANA", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // Send the TryAgain button event back to the host fragment
+                            Intent intent = new Intent(EventActivity.this, ManaTestMainAct.class);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNegativeButton("ARTO", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(EventActivity.this, CardGameActivity.class);
+                            startActivity(intent);
+                        }
+                    })
+                    .show();
         });
 
 
