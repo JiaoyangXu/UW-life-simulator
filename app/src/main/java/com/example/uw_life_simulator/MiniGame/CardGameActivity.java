@@ -712,15 +712,17 @@ public class CardGameActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         // Send the TryAgain button event back to the host fragment
                         Intent intent1 = new Intent();
-                        intent1.putExtra("Result", score);
+                        double ret = score;
+                        intent1.putExtra("Result", ret);
                         setResult(RESULT_OK, intent1);
                         finish();
                     }
                 })
                 .setNegativeButton("End the game", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        double ret = score;
                         Intent intent1 = new Intent();
-                        intent1.putExtra("Result", score);
+                        intent1.putExtra("Result", ret);
                         setResult(RESULT_OK, intent1);
                         finish();
                     }
