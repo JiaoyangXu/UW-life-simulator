@@ -32,6 +32,9 @@
             android:name=".MiniGame.CardGameActivity"
             android:exported="false" />
         <activity
+            android:name=".MiniGame.ManaInstructionPg"
+            android:exported="false" />
+        <activity
             android:name=".model.Summarypage"
             android:exported="false" />
         <activity
