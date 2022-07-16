@@ -11,20 +11,19 @@
         android:layout_height="30dp"
         android:text="60"
         android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
     </TextView>
 
     <Button
         android:id="@+id/countdownbutton"
-        android:layout_width="91dp"
-        android:layout_height="43dp"
+        android:layout_width="260dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="2dp"
+        android:text="Please find the constellation that are the same"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout9"
@@ -57,9 +56,11 @@
         android:layout_width="74dp"
         android:layout_height="121dp"
         android:layout_marginStart="85dp"
-        android:layout_marginBottom="66dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="51dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout6"
         tools:ignore="MissingConstraints">
 
         <ImageView
@@ -84,9 +85,9 @@
         android:layout_width="74dp"
         android:layout_height="121dp"
         android:layout_marginStart="85dp"
-        android:layout_marginBottom="47dp"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout2"
+        android:layout_marginTop="45dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
         tools:ignore="MissingConstraints">
 
         <ImageView
@@ -170,9 +171,9 @@
         android:id="@+id/relativeLayout5"
         android:layout_width="74dp"
         android:layout_height="121dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="33dp"
         android:layout_marginEnd="86dp"
-        android:layout_marginBottom="66dp"
+        android:layout_marginBottom="51dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout9"
@@ -203,9 +204,9 @@
         android:layout_width="74dp"
         android:layout_height="121dp"
         android:layout_marginStart="85dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="11dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/countdownbutton"
         tools:ignore="MissingConstraints">
 
         <ImageView
@@ -234,7 +235,7 @@
         android:layout_width="74dp"
         android:layout_height="121dp"
         android:layout_marginStart="85dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="35dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
         tools:ignore="MissingConstraints">

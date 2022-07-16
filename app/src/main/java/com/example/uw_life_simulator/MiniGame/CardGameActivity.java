@@ -17,11 +17,11 @@ public class CardGameActivity extends AppCompatActivity {
     private TextView countdowntext;
     private Button countdownbutton;
     private CountDownTimer timer;
-    private long timeleft = 6000;
+    private long timeleft = 60000;
     private boolean start_game = false;
     private boolean same = true;
     int difficulty = 1;
-
+    int sc = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -29,19 +29,18 @@ public class CardGameActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        difficulty = intent.getIntExtra("diff", 1);
+        difficulty = intent.getIntExtra("Diff", 1);
 
         if(difficulty == 1 || difficulty == 2) {
+            if(difficulty == 2){
+                timeleft = 40000;
+            }
             setContentView(R.layout.card_game1);
             countdowntext = findViewById(R.id.countdown);
             countdownbutton = findViewById(R.id.countdownbutton);
-            countdownbutton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    start();
-                    start_game = true;
-                }
-            });
+
+            start();
+
             int[] count = {0};
             ImageView im1 = (ImageView) findViewById(R.id.imageView9);
             ImageView im2 = (ImageView) findViewById(R.id.imageView10);
@@ -95,16 +94,15 @@ public class CardGameActivity extends AppCompatActivity {
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
                         score[0] += 25;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 4) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Intent intent1 = new Intent();
+                    intent1.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent1);
                     finish();
                 }
 
@@ -127,16 +125,15 @@ public class CardGameActivity extends AppCompatActivity {
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
                         score[0] += 25;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 4) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Intent intent1 = new Intent();
+                    intent1.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent1);
                     finish();
                 }
             });
@@ -158,16 +155,15 @@ public class CardGameActivity extends AppCompatActivity {
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
                         score[0] += 25;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 4) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Intent intent1 = new Intent();
+                    intent1.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent1);
                     finish();
                 }
             });
@@ -188,16 +184,15 @@ public class CardGameActivity extends AppCompatActivity {
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
                         score[0] += 25;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 4) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Intent intent1 = new Intent();
+                    intent1.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent1);
                     finish();
                 }
             });
@@ -218,16 +213,15 @@ public class CardGameActivity extends AppCompatActivity {
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
                         score[0] += 25;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 4) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Intent intent1 = new Intent();
+                    intent1.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent1);
                     finish();
                 }
             });
@@ -248,16 +242,15 @@ public class CardGameActivity extends AppCompatActivity {
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
                         score[0] += 25;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 4) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Intent intent1 = new Intent();
+                    intent1.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent1);
                     finish();
                 }
             });
@@ -278,16 +271,15 @@ public class CardGameActivity extends AppCompatActivity {
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
                         score[0] += 25;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 4) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Intent intent1 = new Intent();
+                    intent1.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent1);
                     finish();
                 }
             });
@@ -308,21 +300,23 @@ public class CardGameActivity extends AppCompatActivity {
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
                         score[0] += 25;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 4) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Intent intent1 = new Intent();
+                    intent1.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent1);
                     finish();
                 }
             });
         }else{
             setContentView(R.layout.card_game2);
+            if(difficulty == 4){
+                timeleft = 40000;
+            }
             countdowntext = findViewById(R.id.countdown);
             countdownbutton = findViewById(R.id.countdownbutton);
             countdownbutton.setOnClickListener(new View.OnClickListener() {
@@ -393,17 +387,15 @@ public class CardGameActivity extends AppCompatActivity {
                         im1.startAnimation(slow_disappear);
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
-                        score[0] += 25;
+                        score[0] += 12.5;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 6) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    intent.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
 
@@ -425,17 +417,15 @@ public class CardGameActivity extends AppCompatActivity {
                         im14.startAnimation(slow_disappear);
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
-                        score[0] += 25;
+                        score[0] += 12.5;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 6) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    intent.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             });
@@ -456,17 +446,15 @@ public class CardGameActivity extends AppCompatActivity {
                         im3.startAnimation(slow_disappear);
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
-                        score[0] += 25;
+                        score[0] += 12.5;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 6) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    intent.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             });
@@ -486,17 +474,15 @@ public class CardGameActivity extends AppCompatActivity {
                         im4.startAnimation(slow_disappear);
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
-                        score[0] += 25;
+                        score[0] += 12.5;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 6) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    intent.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             });
@@ -516,17 +502,15 @@ public class CardGameActivity extends AppCompatActivity {
                         im5.startAnimation(slow_disappear);
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
-                        score[0] += 25;
+                        score[0] += 12.5;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 6) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    intent.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             });
@@ -546,17 +530,15 @@ public class CardGameActivity extends AppCompatActivity {
                         im6.startAnimation(slow_disappear);
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
-                        score[0] += 25;
+                        score[0] += 12.5;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 6) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    intent.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             });
@@ -576,17 +558,15 @@ public class CardGameActivity extends AppCompatActivity {
                         im7.startAnimation(slow_disappear);
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
-                        score[0] += 25;
+                        score[0] += 12.5;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 6) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    intent.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             });
@@ -606,17 +586,15 @@ public class CardGameActivity extends AppCompatActivity {
                         im8.startAnimation(slow_disappear);
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
-                        score[0] += 25;
+                        score[0] += 12.5;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 6) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    intent.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             });
@@ -636,17 +614,15 @@ public class CardGameActivity extends AppCompatActivity {
                         im9.startAnimation(slow_disappear);
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
-                        score[0] += 25;
+                        score[0] += 12.5;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 6) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    intent.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             });
@@ -666,17 +642,15 @@ public class CardGameActivity extends AppCompatActivity {
                         im10.startAnimation(slow_disappear);
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
-                        score[0] += 25;
+                        score[0] += 12.5;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 6) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    intent.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             });
@@ -696,17 +670,15 @@ public class CardGameActivity extends AppCompatActivity {
                         im11.startAnimation(slow_disappear);
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
-                        score[0] += 25;
+                        score[0] += 12.5;
+                        sc = score[0];
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 6) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    intent.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             });
@@ -726,23 +698,24 @@ public class CardGameActivity extends AppCompatActivity {
                         im12.startAnimation(slow_disappear);
                         recorded1[0].startAnimation(slow_disappear);
                         finish[0]++;
-                        score[0] += 25;
+                        score[0] += 12.5;
+                        sc = score[0];
+
                     }
                     count[0] = 0;
 
                 }
                 if (finish[0] == 6) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    intent.putExtra("Result", score[0]);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }
             });
         }
 
     }
+
+
     private void start(){
         timer = new CountDownTimer(timeleft, 1000) {
             @Override
@@ -753,9 +726,10 @@ public class CardGameActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                Intent intent = new Intent(CardGameActivity.this,
-                        CardGameActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent();
+                intent.putExtra("Result", sc);
+                setResult(RESULT_OK, intent);
+                finish();
             }
         }.start();
 
