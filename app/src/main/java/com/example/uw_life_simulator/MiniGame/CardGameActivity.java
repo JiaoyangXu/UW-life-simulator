@@ -1,5 +1,7 @@
 package com.example.uw_life_simulator.MiniGame;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -104,10 +106,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 4) {
-                    Intent intent1 = new Intent();
-                    intent1.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent1);
-                    finish();
+                    onGameFinished(score[0]);
                 }
 
             });
@@ -137,10 +136,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 4) {
-                    Intent intent1 = new Intent();
-                    intent1.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent1);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
 
@@ -169,10 +165,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 4) {
-                    Intent intent1 = new Intent();
-                    intent1.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent1);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
             im4.setOnClickListener((v) -> {
@@ -200,10 +193,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 4) {
-                    Intent intent1 = new Intent();
-                    intent1.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent1);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
             im5.setOnClickListener((v) -> {
@@ -231,10 +221,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 4) {
-                    Intent intent1 = new Intent();
-                    intent1.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent1);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
             im6.setOnClickListener((v) -> {
@@ -262,10 +249,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 4) {
-                    Intent intent1 = new Intent();
-                    intent1.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent1);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
             im7.setOnClickListener((v) -> {
@@ -293,10 +277,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 4) {
-                    Intent intent1 = new Intent();
-                    intent1.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent1);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
             im8.setOnClickListener((v) -> {
@@ -324,10 +305,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 4) {
-                    Intent intent1 = new Intent();
-                    intent1.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent1);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
         }else{
@@ -414,9 +392,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 6) {
-                    intent.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    onGameFinished(score[0]);
                 }
 
             });
@@ -445,9 +421,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 6) {
-                    intent.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
 
@@ -475,9 +449,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 6) {
-                    intent.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
             im16.setOnClickListener((v) -> {
@@ -504,9 +476,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 6) {
-                    intent.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
             im17.setOnClickListener((v) -> {
@@ -533,9 +503,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 6) {
-                    intent.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
             im18.setOnClickListener((v) -> {
@@ -562,9 +530,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 6) {
-                    intent.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
             im19.setOnClickListener((v) -> {
@@ -591,9 +557,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 6) {
-                    intent.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
             im20.setOnClickListener((v) -> {
@@ -620,9 +584,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 6) {
-                    intent.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
             im21.setOnClickListener((v) -> {
@@ -649,9 +611,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 6) {
-                    intent.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
             im22.setOnClickListener((v) -> {
@@ -678,9 +638,7 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 6) {
-                    intent.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
             im23.setOnClickListener((v) -> {
@@ -737,13 +695,37 @@ public class CardGameActivity extends AppCompatActivity {
 
                 }
                 if (finish[0] == 6) {
-                    intent.putExtra("Result", score[0]);
-                    setResult(RESULT_OK, intent);
-                    finish();
+                    onGameFinished(score[0]);
                 }
             });
         }
 
+    }
+
+
+    private void onGameFinished(int score){
+        AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                .setMessage("You finished the game, would you like to go back to the previous page?")
+                .setCancelable(false)
+                .setTitle("END OF GAME")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Send the TryAgain button event back to the host fragment
+                        Intent intent1 = new Intent();
+                        intent1.putExtra("Result", score);
+                        setResult(RESULT_OK, intent1);
+                        finish();
+                    }
+                })
+                .setNegativeButton("End the game", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent1 = new Intent();
+                        intent1.putExtra("Result", score);
+                        setResult(RESULT_OK, intent1);
+                        finish();
+                    }
+                })
+                .show();
     }
 
     private boolean check(int a, int b){
