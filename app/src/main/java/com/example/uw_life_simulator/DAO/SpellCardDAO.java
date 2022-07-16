@@ -27,9 +27,17 @@ public interface SpellCardDAO {
     @Query("UPDATE spellcard SET selected = 1 WHERE address =:addr")
     void updateSelected(Integer addr);
 
+    @Query("UPDATE spellcard SET used = 1 WHERE address =:addr")
+    void updateUsed(Integer addr);
+
+
     @Query("SELECT * FROM spellcard WHERE address =:addr")
     SpellCard getSpellCard(Integer addr);
 
     @Query("SELECT * FROM spellcard WHERE selected = 1")
     List<SpellCard> getSelectedSpellCard();
+
+    @Query("SELECT * FROM spellcard WHERE used = 1")
+    List<SpellCard> getUsedSpellCard();
+
 }

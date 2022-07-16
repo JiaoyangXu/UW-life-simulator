@@ -47,6 +47,9 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
         swipeFlingAdapterView.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
+                storeUsedCard(card_list.get(0));
+
+
                 card_list.remove(0);
                 cardAdapter.notifyDataSetChanged();
 
@@ -86,11 +89,6 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
         popUpClass.showPopUp();
 
         System.out.println("switchContext: " + switchContext);
-
-
-
-
-
     }
 
     private void initializeAll () {
@@ -119,5 +117,9 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
 
     private void initializeData() {
         card_list = new ArrayList<>();
+    }
+
+    private void storeUsedCard(Integer addr) {
+        spellCardDAO.updateUsed(addr);
     }
 }
