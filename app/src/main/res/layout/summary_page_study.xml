@@ -17,7 +17,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".57"
+        android:layout_weight=".54"
         >
 
         <LinearLayout
@@ -40,10 +40,99 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintWidth_percent="0.63"
-                    ></LinearLayout>
+                    app:layout_constraintWidth_percent="0.63">
+                    <TextView
+                        android:id="@+id/course_grade_text1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".1"
+                        android:text="The grade for course1 is xx."
+                        android:textColor="#FFB4B4B9"
+                        android:fontFamily="sans-serif-black"
+                        android:shadowColor="#000000"
+                        android:shadowRadius="5"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/course_grade_text2"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".1"
+                        android:text="The grade for course1 is xx."
+                        android:textColor="#FFB4B4B9"
+                        android:fontFamily="sans-serif-black"
+                        android:shadowColor="#000000"
+                        android:shadowRadius="5"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/course_grade_text3"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".1"
+                        android:text="The grade for course1 is xx."
+                        android:textColor="#FFB4B4B9"
+                        android:fontFamily="sans-serif-black"
+                        android:shadowColor="#000000"
+                        android:shadowRadius="5"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/course_grade_text4"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".1"
+                        android:text="The grade for course1 is xx."
+                        android:textColor="#FFB4B4B9"
+                        android:fontFamily="sans-serif-black"
+                        android:shadowColor="#000000"
+                        android:shadowRadius="5"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/key_attr_text1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".1"
+                        android:text="The value for attr1 is xx."
+                        android:textColor="#FFB4B4B9"
+                        android:fontFamily="sans-serif-black"
+                        android:shadowColor="#000000"
+                        android:shadowRadius="5"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/key_attr_text2"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".1"
+                        android:text="The value for attr1 is xx."
+                        android:textColor="#FFB4B4B9"
+                        android:fontFamily="sans-serif-black"
+                        android:shadowColor="#000000"
+                        android:shadowRadius="5"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/key_attr_text3"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".1"
+                        android:text="The value for attr1 is xx."
+                        android:textColor="#FFB4B4B9"
+                        android:fontFamily="sans-serif-black"
+                        android:shadowColor="#000000"
+                        android:shadowRadius="5"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/points_gained"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".1"
+                        android:text="You got xx points this term."
+                        android:textColor="#FFB4B4B9"
+                        android:fontFamily="sans-serif-black"
+                        android:shadowColor="#000000"
+                        android:shadowRadius="5"
+                        android:gravity="center"/>
+                    </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
             <LinearLayout
@@ -75,7 +164,7 @@
                 android:textSize="27dp"
                 android:fontFamily="sans-serif-black"
                 android:shadowColor="#ffffff"
-                android:shadowRadius="5"
+                android:shadowRadius="7"
                 ></TextView>
             <LinearLayout
                 android:layout_width="0dp"
@@ -146,7 +235,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight=".2">
+        android:layout_weight=".17">
 
         <TextView
             android:id="@+id/textView17"
