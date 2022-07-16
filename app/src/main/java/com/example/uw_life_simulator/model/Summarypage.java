@@ -11,11 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.example.uw_life_simulator.DAO.CourseSelectionRecordDAO;
+import com.example.uw_life_simulator.DAO.PlayerAttributeDAO;
 import com.example.uw_life_simulator.Database.CourseDatabase;
+import com.example.uw_life_simulator.Database.PlayerAttributeDatabase;
 import com.example.uw_life_simulator.R;
 import com.example.uw_life_simulator.activities.CourseSelectionActivity;
 import com.example.uw_life_simulator.activities.EventActivity;
 import com.example.uw_life_simulator.data.CourseSelectionRecord;
+import com.example.uw_life_simulator.data.PlayerAttribute;
 
 import java.util.List;
 
@@ -27,59 +30,86 @@ public class Summarypage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.summary_page_study);
 
-        //Create database
-        CourseDatabase db2 = Room.databaseBuilder(getApplicationContext(),
-                CourseDatabase.class, "Courses").allowMainThreadQueries().build();
-        CourseSelectionRecordDAO courseSelectionRecordDAO = db2.courseSelectionRecordDAO();
-        List<CourseSelectionRecord> curSelection = courseSelectionRecordDAO.selectCurrent();
 
-        TextView curCourseTV1 = (TextView)findViewById(R.id.course_grade_text1);
-        TextView curCourseTV2 = (TextView)findViewById(R.id.course_grade_text2);
-        TextView curCourseTV3 = (TextView)findViewById(R.id.course_grade_text3);
-        TextView curCourseTV4 = (TextView)findViewById(R.id.course_grade_text4);
 
-        //display
-        if (curSelection.size() > 0) {
-            int count = curSelection.size();
-            if (count >= 1) {
-                curCourseTV1.setText(curSelection.get(0).getCourseCode() + "       " + curSelection.get(0).getCompletionGrade());
+        PlayerAttributeDatabase db = Room.databaseBuilder(getApplicationContext(),
+                PlayerAttributeDatabase.class, "PlayerAttributes").allowMainThreadQueries().fallbackToDestructiveMigration().build();
 
+        PlayerAttributeDAO playerAttributeDAO = db.playerAttributeDAO();
+        List<PlayerAttribute> tmpList = playerAttributeDAO.loadSingle();
+
+        PlayerAttribute curPlayer = tmpList.get(tmpList.size() -1);
+
+
+
+        int iq = curPlayer.getIQ();
+
+        int money = curPlayer.getWealth();
+
+        int health = curPlayer.getHealth();
+        if(money == 0 || health == 0 || iq == 0) {
+            setContentView(R.layout.summary_page_coop);
+            Button Button3 = findViewById(R.id.button3);
+            Button3.setOnClickListener((v) -> {
+                Intent intent1 = new Intent(Summarypage.this,
+                        MainActivity.class);
+                startActivity(intent1);
+            });
+        }else {
+            setContentView(R.layout.summary_page_study);
+
+            //Create database
+            CourseDatabase db2 = Room.databaseBuilder(getApplicationContext(),
+                    CourseDatabase.class, "Courses").allowMainThreadQueries().build();
+            CourseSelectionRecordDAO courseSelectionRecordDAO = db2.courseSelectionRecordDAO();
+            List<CourseSelectionRecord> curSelection = courseSelectionRecordDAO.selectCurrent();
+
+            TextView curCourseTV1 = (TextView) findViewById(R.id.course_grade_text1);
+            TextView curCourseTV2 = (TextView) findViewById(R.id.course_grade_text2);
+            TextView curCourseTV3 = (TextView) findViewById(R.id.course_grade_text3);
+            TextView curCourseTV4 = (TextView) findViewById(R.id.course_grade_text4);
+
+            //display
+            if (curSelection.size() > 0) {
+                int count = curSelection.size();
+                if (count >= 1) {
+                    curCourseTV1.setText(curSelection.get(0).getCourseCode() + "       " + curSelection.get(0).getCompletionGrade());
+
+                }
+                if (count >= 2) {
+                    curCourseTV2.setText(curSelection.get(1).getCourseCode()
+                            + "       " + curSelection.get(1).getCompletionGrade());
+
+                }
+                if (count >= 3) {
+                    curCourseTV3.setText(curSelection.get(2).getCourseCode()
+                            + "       " + curSelection.get(2).getCompletionGrade());
+
+                }
+                if (count >= 4) {
+                    curCourseTV4.setText(curSelection.get(3).getCourseCode()
+                            + "       " + curSelection.get(3).getCompletionGrade());
+
+                }
             }
-            if (count >= 2) {
-                curCourseTV2.setText(curSelection.get(1).getCourseCode()
-                        + "       " + curSelection.get(1).getCompletionGrade());
 
-            }
-            if (count >= 3) {
-                curCourseTV3.setText(curSelection.get(2).getCourseCode()
-                        + "       " + curSelection.get(2).getCompletionGrade());
+            //button
+            Button Button10 = findViewById(R.id.button10);
+            Button10.setOnClickListener((v) -> {
+                Intent intent1 = new Intent(Summarypage.this,
+                        CourseSelectionActivity.class);
+                startActivity(intent1);
+            });
 
-            }
-            if (count >= 4) {
-                curCourseTV4.setText(curSelection.get(3).getCourseCode()
-                        + "       " + curSelection.get(3).getCompletionGrade());
-
-            }
+            //button
+            Button Button2 = findViewById(R.id.button2);
+            Button2.setOnClickListener((v) -> {
+                Intent intent1 = new Intent(Summarypage.this,
+                        MainActivity.class);
+                startActivity(intent1);
+            });
         }
-
-        //button
-        Button Button10 = findViewById(R.id.button10);
-        Button10.setOnClickListener((v) -> {
-            Intent intent = new Intent(Summarypage.this,
-                    CourseSelectionActivity.class);
-            startActivity(intent);
-        });
-
-        //button
-        Button Button2 = findViewById(R.id.button2);
-        Button2.setOnClickListener((v) -> {
-            Intent intent = new Intent(Summarypage.this,
-                    MainActivity.class);
-            startActivity(intent);
-        });
-
 
     }
 

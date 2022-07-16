@@ -29,9 +29,9 @@ public class CardGameActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String first = intent.getStringExtra("et1");
-        difficulty = Integer.parseInt(first);
-        if(difficulty == 1) {
+        difficulty = intent.getIntExtra("diff", 1);
+
+        if(difficulty == 1 || difficulty == 2) {
             setContentView(R.layout.card_game1);
             countdowntext = findViewById(R.id.countdown);
             countdownbutton = findViewById(R.id.countdownbutton);
