@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/almendra_sc</item>
+        <item>@font/berkshire_swash</item>
+        <item>@font/bigshot_one</item>
+        <item>@font/fredericka_the_great</item>
+        <item>@font/miltonian_tattoo</item>
+        <item>@font/ribeye_marrow</item>
+    </array>
+</resources>
