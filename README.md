@@ -8,6 +8,8 @@
 - [X] Use Room database as mean of inter-activity communication - Conrad, Jason
 - [X] Clean database when game terminated (press quit button for now) - Jason
 - [X] Entrance Page (New/Load) - Karen, Conrad
+- [X] Collect and crop UI and other graphic materials - Conrad
+- [X] Summary Page, Course Selection Page, Event List Page UI rework - Conrad
 
 ## TO-DO For Demo
 - [ ] Main UI (event list page)  - Karen
