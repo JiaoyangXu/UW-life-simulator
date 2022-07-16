@@ -97,9 +97,13 @@ public class ManaTestMainAct extends AppCompatActivity {
                     if (!manaCounting.get(i))
                     {
                         if (totalnum > curnum)
-                        {
-                            double randX = Math.sqrt((num.nextInt(findViewById(R.id.mana_game_layout).getWidth() - 10)) *
-                                    (num.nextInt(findViewById(R.id.mana_game_layout).getWidth() - 10)));
+                        {   int bound = findViewById(R.id.mana_game_layout).getWidth() - 10;
+                            if (bound < 0)
+                            {
+                                bound = 1;
+                            }
+                            double randX = Math.sqrt((num.nextInt(bound) *
+                                    (num.nextInt(bound))));
                             manaList.get(i).setX((float) randX);
                             manaList.get(i).setY(-i * 100 -60);
 
