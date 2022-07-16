@@ -74,6 +74,7 @@ public class CardGameActivity extends AppCompatActivity {
 
             ImageView[] recorded = {null};
             ImageView[] recorded1 = {null};
+            int[] recorded2 = {0};
             int[] finish = {0};
             int[] score = {0};
 
@@ -82,9 +83,12 @@ public class CardGameActivity extends AppCompatActivity {
                 count[0]++;
                 if (count[0] == 1) {
                     recorded[0] = im1;
+                    recorded2[0] = 1;
                     recorded1[0] = im9;
                 }
                 if (count[0] == 2) {
+                    System.out.println(recorded2[0]);
+                    same = check(1, recorded2[0]);
                     if (!same) {
                         im1.startAnimation(display);
                         recorded[0].startAnimation(display);
@@ -114,8 +118,10 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im2;
                     recorded1[0] = im10;
+                    recorded2[0] = 2;
                 }
                 if (count[0] == 2) {
+                    same = check(2, recorded2[0]);
                     if (!same) {
                         im2.startAnimation(display);
                         recorded[0].startAnimation(display);
@@ -144,8 +150,10 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im3;
                     recorded1[0] = im11;
+                    recorded2[0] = 3;
                 }
                 if (count[0] == 2) {
+                    same = check(3, recorded2[0]);
                     if (!same) {
                         im3.startAnimation(display);
                         recorded[0].startAnimation(display);
@@ -173,8 +181,10 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im4;
                     recorded1[0] = im12;
+                    recorded2[0] = 4;
                 }
                 if (count[0] == 2) {
+                    same = check(4, recorded2[0]);
                     if (!same) {
                         im4.startAnimation(display);
                         recorded[0].startAnimation(display);
@@ -202,8 +212,10 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im5;
                     recorded1[0] = im13;
+                    recorded2[0] = 5;
                 }
                 if (count[0] == 2) {
+                    same = check(5, recorded2[0]);
                     if (!same) {
                         im5.startAnimation(display);
                         recorded[0].startAnimation(display);
@@ -231,8 +243,10 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im6;
                     recorded1[0] = im14;
+                    recorded2[0] = 6;
                 }
                 if (count[0] == 2) {
+                    same = check(6, recorded2[0]);
                     if (!same) {
                         im6.startAnimation(display);
                         recorded[0].startAnimation(display);
@@ -260,8 +274,10 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im7;
                     recorded1[0] = im15;
+                    recorded2[0] = 7;
                 }
                 if (count[0] == 2) {
+                    same = check(7, recorded2[0]);
                     if (!same) {
                         im7.startAnimation(display);
                         recorded[0].startAnimation(display);
@@ -289,8 +305,10 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im8;
                     recorded1[0] = im16;
+                    recorded2[0] = 8;
                 }
                 if (count[0] == 2) {
+                    same = check(8, recorded2[0]);
                     if (!same) {
                         im8.startAnimation(display);
                         recorded[0].startAnimation(display);
@@ -368,6 +386,7 @@ public class CardGameActivity extends AppCompatActivity {
 
             ImageView[] recorded = {null};
             ImageView[] recorded1 = {null};
+            int[] recorded2 = {0};
             int[] finish = {0};
             int[] score = {0};
 
@@ -377,6 +396,7 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im13;
                     recorded1[0] = im1;
+                    recorded2[0] = 13;
                 }
                 if (count[0] == 2) {
                     if (!same) {
@@ -407,6 +427,7 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im14;
                     recorded1[0] = im2;
+                    recorded2[0] = 14;
                 }
                 if (count[0] == 2) {
                     if (!same) {
@@ -436,6 +457,7 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im15;
                     recorded1[0] = im3;
+                    recorded2[0] = 15;
                 }
                 if (count[0] == 2) {
                     if (!same) {
@@ -464,6 +486,7 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im16;
                     recorded1[0] = im4;
+                    recorded2[0] = 16;
                 }
                 if (count[0] == 2) {
                     if (!same) {
@@ -492,6 +515,7 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im17;
                     recorded1[0] = im5;
+                    recorded2[0] = 17;
                 }
                 if (count[0] == 2) {
                     if (!same) {
@@ -520,6 +544,7 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im18;
                     recorded1[0] = im6;
+                    recorded2[0] = 18;
                 }
                 if (count[0] == 2) {
                     if (!same) {
@@ -548,6 +573,7 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im19;
                     recorded1[0] = im7;
+                    recorded2[0] = 19;
                 }
                 if (count[0] == 2) {
                     if (!same) {
@@ -576,6 +602,7 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im20;
                     recorded1[0] = im8;
+                    recorded2[0] = 20;
                 }
                 if (count[0] == 2) {
                     if (!same) {
@@ -604,6 +631,7 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im21;
                     recorded1[0] = im9;
+                    recorded2[0] = 21;
                 }
                 if (count[0] == 2) {
                     if (!same) {
@@ -632,6 +660,7 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im22;
                     recorded1[0] = im10;
+                    recorded2[0] = 22;
                 }
                 if (count[0] == 2) {
                     if (!same) {
@@ -660,6 +689,7 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im23;
                     recorded1[0] = im11;
+                    recorded2[0] = 23;
                 }
                 if (count[0] == 2) {
                     if (!same) {
@@ -688,6 +718,7 @@ public class CardGameActivity extends AppCompatActivity {
                 if (count[0] == 1) {
                     recorded[0] = im24;
                     recorded1[0] = im12;
+                    recorded2[0] = 24;
                 }
                 if (count[0] == 2) {
                     if (!same) {
@@ -715,6 +746,18 @@ public class CardGameActivity extends AppCompatActivity {
 
     }
 
+    private boolean check(int a, int b){
+        if(difficulty == 1|| difficulty == 2) {
+            if (a == b + 4 || a == b - 4) {
+                return true;
+            }
+        } else{
+            if (a == b + 6 || a == b - 6) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void start(){
         timer = new CountDownTimer(timeleft, 1000) {

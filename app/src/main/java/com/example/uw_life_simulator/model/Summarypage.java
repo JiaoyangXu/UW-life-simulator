@@ -43,12 +43,12 @@ public class Summarypage extends AppCompatActivity {
 
 
 
-        int iq = curPlayer.getIQ();
+        int gpa = curPlayer.getGPA();
 
         int money = curPlayer.getWealth();
 
-        int health = curPlayer.getHealth();
-        if(money == 0 || health == 0 || iq == 0) {
+        int pressure = curPlayer.getPressure();
+        if(money < 0 || pressure > 100 || gpa < 50) {
             setContentView(R.layout.summary_page_coop);
             Button Button3 = findViewById(R.id.button3);
             Button3.setOnClickListener((v) -> {
@@ -56,7 +56,7 @@ public class Summarypage extends AppCompatActivity {
                         MainActivity.class);
                 startActivity(intent1);
             });
-        }else {
+        }   else {
             setContentView(R.layout.summary_page_study);
 
             //Create database

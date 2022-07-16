@@ -59,6 +59,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     private static final String TAG = "EventActivity";
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private static final int EVENTSET_COUNT = 0;
+    int result = -1;
     Player mPlayer;
     NewEvent mNewEvent;
 
@@ -95,7 +96,6 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mAlertDialogFragment.setCancelable(false);
         FragmentManager fragMan = getFragmentManager();
     }
-    double result = 0.0;
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
@@ -105,8 +105,15 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         {
             if (resultCode == RESULT_OK)
             {
-                 result = data.getDoubleExtra("Result", 0.0);
+                 result = (int)data.getDoubleExtra("Result", 0.0);
+
                 System.out.println(result);
+                String event = "you received a score of " + result;
+                mAdapter.addEvent(event);
+                mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                event = mNewEvent.generateNewEvent(mPlayer,true);
+                mAdapter.addEvent(event);
+                mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
             }
         }
     }
@@ -242,15 +249,43 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     intent.putExtra("Diff", 2);
                                     startActivityForResult(intent, 0);
                                     double score = intent.getDoubleExtra("Result",0.0);
-                                    String event = "you received a score of" + score;
+
+                                    /*AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                                            .setMessage("Do you want to see your score to the test")
+                                            .setCancelable(true)
+                                            .setTitle("Test Finished")
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    // Send the TryAgain button event back to the host fragment
+                                                    String event = "you received a score of" + result;
+                                                    mAdapter.addEvent(event);
+                                                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                                }
+                                            })
+                                            .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    Log.d(TAG,"clicked on cancel");
+                                                    String event = "you received a score of " + result;
+                                                    mAdapter.addEvent(event);
+                                                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                                }
+                                            })
+                                            .show();
+                                            String event = mNewEvent.generateNewEvent(mPlayer,true);
+                                            mAdapter.addEvent(event);
+                                            mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                            */
+                                    String event = "You started the test";
+                                    mAdapter.addEvent(event);
+                                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+
+                                }
+                                else if(game_type.equals("MANA")){
+                                    String event = mNewEvent.generateNewEvent(mPlayer,true);
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                                 }
-                                else if(game_type.equals("MANA")){
-                                }
-                                String event = mNewEvent.generateNewEvent(mPlayer,true);
-                                mAdapter.addEvent(event);
-                                mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+
 
                             }
                         })
