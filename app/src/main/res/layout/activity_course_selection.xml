@@ -14,33 +14,6 @@
         android:layout_weight=".8">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_alignParentTop="true"
-            >
-            <TextView
-                android:id="@+id/course_selection_title"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:fontFamily="sans-serif-black"
-                android:gravity="center"
-                android:shadowColor="#000000"
-                android:shadowRadius="8"
-                android:text="COURSE SELECTION"
-                android:textColor="#CDDFF7"
-                android:textSize="22dp"
-                android:background="@drawable/banner_11"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.65"
-                app:layout_constraintWidth_percent="0.65"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
             android:layout_height="575dp"
             android:layout_alignParentBottom="true"
             android:orientation="vertical">
@@ -97,12 +70,12 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight=".67"
-                            android:fontFamily="sans-serif-black"
                             android:gravity="center"
+                            android:fontFamily="sans-serif-black"
                             android:shadowColor="#000000"
                             android:shadowRadius="5"
-                            android:text="TextView"
-                            android:textColor="#FFB4B4B9" />
+                            android:textColor="#FFB4B4B9"
+                            android:text="TextView" />
 
                     </LinearLayout>
 
@@ -435,6 +408,32 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            >
+            <TextView
+                android:id="@+id/course_selection_title"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="22dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:shadowColor="#000000"
+                android:shadowRadius="8"
+                android:text="COURSE SELECTION"
+                android:textColor="#CDDFF7"
+                android:textSize="24dp"
+                android:background="@drawable/banner_11"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.75"
+                app:layout_constraintWidth_percent="0.7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -456,32 +455,44 @@
                 android:id="@+id/button_prev_page"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".2"
                 android:layout_margin="3dp"
-                android:background="@drawable/button_border_1"
+                android:layout_weight=".2"
+                android:background="@drawable/dark_grey_button"
+                android:fontFamily="sans-serif-black"
+                android:shadowColor="#000000"
+                android:shadowRadius="5"
                 android:text="Previous"
+                android:textColor="#C8C8CD"
                 android:textSize="12dp" />
 
             <Button
                 android:id="@+id/button_nxt_page"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".2"
                 android:layout_margin="3dp"
-                android:background="@drawable/button_border_1"
+                android:layout_weight=".2"
+                android:background="@drawable/dark_grey_button"
+                android:fontFamily="sans-serif-black"
+                android:shadowColor="#000000"
+                android:shadowRadius="5"
                 android:text="Next"
+                android:textColor="#C8C8CD"
                 android:textSize="12dp" />
 
             <Button
                 android:id="@+id/button_sub_selection"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".2"
                 android:layout_margin="3dp"
-                android:background="@drawable/button_border_1"
+                android:layout_weight=".2"
+                android:background="@drawable/dark_grey_button"
+                android:fontFamily="sans-serif-black"
+                android:onClick="submitCourseSelection"
+                android:shadowColor="#000000"
+                android:shadowRadius="5"
                 android:text="Submit"
-                android:textSize="12dp"
-                android:onClick="submitCourseSelection"/>
+                android:textColor="#C8C8CD"
+                android:textSize="12dp" />
         </LinearLayout>
         <Button
             android:id="@+id/button11"
