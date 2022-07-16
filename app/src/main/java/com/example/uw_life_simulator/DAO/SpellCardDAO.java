@@ -40,4 +40,5 @@ public interface SpellCardDAO {
     @Query("SELECT * FROM spellcard WHERE used = 1")
     List<SpellCard> getUsedSpellCard();
 
+
 }

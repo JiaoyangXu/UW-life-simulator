@@ -45,6 +45,7 @@ public class CardConfirmationPopUp extends PopUpClass{
     }
 
     private String Display () {
+        return null;
     }
 
 

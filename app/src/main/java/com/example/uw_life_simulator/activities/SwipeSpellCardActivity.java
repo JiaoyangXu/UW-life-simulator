@@ -85,7 +85,7 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
     private void backEventPage() {
         PopUpClass popUpClass = new CardConfirmationPopUp(findViewById(R.id.swipe_card_view),
                 R.layout.spell_card_popup,
-                switchContext);
+                switchContext, spellCardDAO.getUsedSpellCard());
         popUpClass.showPopUp();
 
         System.out.println("switchContext: " + switchContext);
