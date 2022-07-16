@@ -95,6 +95,7 @@ public class Summarypage extends AppCompatActivity {
         }
         TextView edit;
         TextView edit1;
+        /*
         edit1 = findViewById(R.id.textView1);
         edit = findViewById(R.id.textView);
         if(index == 1){
@@ -110,5 +111,8 @@ public class Summarypage extends AppCompatActivity {
             edit1.append("You fail some class, work hard on next term!");
         }
 
+         */
     }
+
+
 }

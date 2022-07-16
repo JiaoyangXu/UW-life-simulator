@@ -47,4 +47,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.github.BakerJQ:Android-InfiniteCards:1.0.5'
     implementation 'com.lorentzos.swipecards:library:1.0.9@aar'
+    //implementation 'com.android.support:cardview'
+
 }

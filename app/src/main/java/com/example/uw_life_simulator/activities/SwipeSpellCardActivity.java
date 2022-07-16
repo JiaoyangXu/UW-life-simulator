@@ -5,11 +5,14 @@ import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.uw_life_simulator.DAO.SpellCardDAO;
 import com.example.uw_life_simulator.Database.SpellCardDatabase;
 import com.example.uw_life_simulator.R;
+import com.example.uw_life_simulator.component.CardConfirmationPopUp;
+import com.example.uw_life_simulator.component.PopUpClass;
 import com.example.uw_life_simulator.data.SpellCard;
 import com.example.uw_life_simulator.model.CardAdapter;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
@@ -24,6 +27,7 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
     CardAdapter cardAdapter;
     SpellCardDatabase spellCardDatabase;
     SpellCardDAO spellCardDAO;
+    Boolean switchContext;
 
 
     int n = 0;
@@ -33,10 +37,7 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_spell_card);
 
-        initializeData();
-        initializeDb();
-
-
+        initializeAll();
 
         SwipeFlingAdapterView swipeFlingAdapterView = (SwipeFlingAdapterView) findViewById(R.id.card);
 
@@ -50,8 +51,7 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
                 cardAdapter.notifyDataSetChanged();
 
                 if (card_list.size() == 0) {
-                    Intent intent = new Intent(SwipeSpellCardActivity.this, EventActivity.class);
-                    startActivity(intent);
+                    backEventPage();
                 }
 
             }
@@ -78,6 +78,29 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
         });
 
     }
+
+    private void backEventPage() {
+        PopUpClass popUpClass = new CardConfirmationPopUp(findViewById(R.id.swipe_card_view),
+                R.layout.spell_card_popup,
+                switchContext);
+        popUpClass.showPopUp();
+
+        System.out.println("switchContext: " + switchContext);
+
+
+
+
+
+    }
+
+    private void initializeAll () {
+        switchContext = false;
+
+        initializeData();
+        initializeDb();
+    }
+
+
 
     private void initializeDb() {
          spellCardDatabase = Room.databaseBuilder(getApplicationContext(),
