@@ -255,32 +255,6 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     intent.putExtra("Diff", 2);
                                     startActivityForResult(intent, 0);
                                     double score = intent.getDoubleExtra("Result",0.0);
-
-                                    /*AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
-                                            .setMessage("Do you want to see your score to the test")
-                                            .setCancelable(true)
-                                            .setTitle("Test Finished")
-                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                                public void onClick(DialogInterface dialog, int id) {
-                                                    // Send the TryAgain button event back to the host fragment
-                                                    String event = "you received a score of" + result;
-                                                    mAdapter.addEvent(event);
-                                                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
-                                                }
-                                            })
-                                            .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                                                public void onClick(DialogInterface dialog, int id) {
-                                                    Log.d(TAG,"clicked on cancel");
-                                                    String event = "you received a score of " + result;
-                                                    mAdapter.addEvent(event);
-                                                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
-                                                }
-                                            })
-                                            .show();
-                                            String event = mNewEvent.generateNewEvent(mPlayer,true);
-                                            mAdapter.addEvent(event);
-                                            mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
-                                            */
                                     String event = "You started the HIST test";
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
@@ -307,9 +281,36 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                         })
                         .setNegativeButton(event_choice2, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                String event = mNewEvent.generateNewEvent(mPlayer,false);
+                                /*String event = mNewEvent.generateNewEvent(mPlayer,false);
                                 mAdapter.addEvent(event);
-                                mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);*/
+                                String game_type = mNewEvent.getTestClassName(false);
+                                if(game_type.equals("HIST")){
+                                    called_by_event = true;
+                                    Intent intent = new Intent(EventActivity.this, CardGameActivity.class);
+                                    intent.putExtra("Diff", 2);
+                                    startActivityForResult(intent, 0);
+                                    double score = intent.getDoubleExtra("Result",0.0);
+                                    String event = "You started the HIST test";
+                                    mAdapter.addEvent(event);
+                                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+
+                                }
+                                else if(game_type.equals("MANA")){
+                                    called_by_event = true;
+                                    Intent intent = new Intent(EventActivity.this, ManaTestMainAct.class);
+                                    intent.putExtra("Diff", 2);
+                                    startActivityForResult(intent, 0);
+                                    double score = intent.getDoubleExtra("Result",0.0);
+                                    String event = "You started the MANA test";
+                                    mAdapter.addEvent(event);
+                                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                }
+                                else if (game_type.equals("")){
+                                    String event = mNewEvent.generateNewEvent(mPlayer,false);
+                                    mAdapter.addEvent(event);
+                                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                }
                             }
                         })
                         .show();
