@@ -10,6 +10,8 @@
 - [X] Entrance Page (New/Load) - Karen, Conrad
 - [X] Collect and crop UI and other graphic materials - Conrad
 - [X] Summary Page, Course Selection Page, Event List Page UI rework - Conrad
+- [X] Buy Spell Card - Conrad, Jason
+- [X] Swipe Spell Card to use the card - Jason
 
 ## TO-DO For Demo
 - [ ] Main UI (event list page)  - Karen
