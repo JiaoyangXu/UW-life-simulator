@@ -45,4 +45,18 @@ public class NewEvent {
     {
         return gce.repeated();
     }
+
+    public String getTestClassName(boolean playerResponse)
+    {
+        if (playerResponse)
+        {
+            return gce.choice1_check;
+        }
+        return gce.choice2_check;
+    }
+
+    public void setLastMark(double mark)
+    {
+        gce.setLastMark(mark);
+    }
 }
