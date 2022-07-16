@@ -11,11 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.example.uw_life_simulator.DAO.CourseSelectionRecordDAO;
+import com.example.uw_life_simulator.DAO.PlayerAttributeDAO;
 import com.example.uw_life_simulator.Database.CourseDatabase;
+import com.example.uw_life_simulator.Database.PlayerAttributeDatabase;
 import com.example.uw_life_simulator.R;
 import com.example.uw_life_simulator.activities.CourseSelectionActivity;
 import com.example.uw_life_simulator.activities.EventActivity;
 import com.example.uw_life_simulator.data.CourseSelectionRecord;
+import com.example.uw_life_simulator.data.PlayerAttribute;
 
 import java.util.List;
 
@@ -27,13 +30,25 @@ public class Summarypage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent =getIntent();
-        //intent.putExtra("iq", ...);
-        int iq = intent.getIntExtra("iq", 1);
-        int money = intent.getIntExtra("money", 1);
-        int health = intent.getIntExtra("health", 1);
 
-        if(play != null || money < 0 || health <0 || iq < 0){
+
+
+        PlayerAttributeDatabase db = Room.databaseBuilder(getApplicationContext(),
+                PlayerAttributeDatabase.class, "PlayerAttributes").allowMainThreadQueries().fallbackToDestructiveMigration().build();
+
+        PlayerAttributeDAO playerAttributeDAO = db.playerAttributeDAO();
+        List<PlayerAttribute> tmpList = playerAttributeDAO.loadSingle();
+
+        PlayerAttribute curPlayer = tmpList.get(tmpList.size() -1);
+
+
+
+        int iq = curPlayer.getIQ();
+
+        int money = curPlayer.getWealth();
+
+        int health = curPlayer.getHealth();
+        if(money == 0 || health == 0 || iq == 0) {
             setContentView(R.layout.summary_page_coop);
             Button Button3 = findViewById(R.id.button3);
             Button3.setOnClickListener((v) -> {
