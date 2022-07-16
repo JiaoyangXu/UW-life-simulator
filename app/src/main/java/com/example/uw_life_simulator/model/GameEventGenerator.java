@@ -40,6 +40,7 @@ public class GameEventGenerator {
 
             case 1600: return new GameChoiceLostCity01();
             case 1601: return new GameChoiceLostCity02();
+            case 1602: return new GameChoiceLostCity03();
             default: return null;
         }
     }
@@ -846,7 +847,7 @@ class GameEventLostCity2 extends GameEvent{
 }
 
 /**
- * EventID: 1601 Implementing...
+ * EventID: 1601
  **/
 class GameChoiceLostCity02 extends GameChoiceEvent {
     GameChoiceLostCity02() {
@@ -886,6 +887,125 @@ class GameEventLostCity2Finish extends GameEvent{
     public void visit(PlayerAttribute attribute) {
         attribute.IQ += 1;
         attribute.ManaSkill += 2;
+        attribute.eventChain1Status = -2;
     }
 }
 
+/**
+ * EventID: 1602
+ * Effect: continue Event
+ */
+class GameEventLostCity2Continue extends GameEvent{
+    public GameEventLostCity2Continue(){
+        this.description = "You decide to go into the portal later";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.eventChain1Status = 1602;
+    }
+}
+
+/**
+ * EventID: 1602
+ **/
+class GameChoiceLostCity03 extends GameChoiceEvent {
+    GameChoiceLostCity03() {
+        this.description = "You entered the portal, it was an ancient city, people on the street seems cannot see you" +
+                "but in the center of the city there is a huge clock tower looks really special?";
+        this.Id = 1602;
+        this.choice1_check = "HIST";
+        this.choice1_description = "Let me check which era should this city in";
+        this.choice2_check = "MANA";
+        this.choice2_description = "These are just illusions, pay attention to the flow of mana";
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            if (lastMark >= 50)
+            {
+                return new GameEventLostCity2Finish();
+            }
+            return new GameEventLostCity3Lost();
+        }
+        if (lastMark >= 50)
+        {
+            return new GameEventLostCity2Finish();
+        }
+        return new GameEventLostCity3Lost();
+
+    }
+}
+
+/**
+ * EventID: 1602
+ * Effect: continue Event
+ */
+class GameEventLostCity3Lost extends GameEvent{
+    public GameEventLostCity3Lost(){
+        this.description = "Your result has some problem, you got lost in the city. Finally, you found you are at the entrance of the portal";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.pressure += 10;
+        attribute.eventChain1Status = 1601;
+    }
+}
+
+/**
+ * EventID: 1602
+ * Effect: continue Event
+ */
+class GameEventLostCity3Mana extends GameEvent{
+    public GameEventLostCity3Mana(){
+        this.description = "The flow of mana takes you to the clock tower, but when you enter the tower, you are back to your room. It seems you can only be in the portal for a limited amount of time";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.ManaSkill += 1;
+        attribute.eventChain1Status = 1603;
+    }
+}
+
+/**
+ * EventID: 1602
+ * Effect: continue Event
+ */
+class GameEventLostCity3Hist extends GameEvent{
+    public GameEventLostCity3Hist(){
+        this.description = "The era of the surrounding buildings should be ancient magic era, but the clock tower is clearly modern. When you realize this, you are back to your room again. It seems you can only be in the portal for a limited amount of time";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.HistSkill += 1;
+        attribute.eventChain1Status = 1603;
+    }
+}

@@ -31,6 +31,7 @@ abstract public class GameChoiceEvent {
     public void setLastMark(double mark)
     {
         lastMark = mark;
+        System.out.println(lastMark);/////////////////////////////
     }
 
 
