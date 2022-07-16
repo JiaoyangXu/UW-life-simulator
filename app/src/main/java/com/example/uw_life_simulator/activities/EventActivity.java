@@ -44,6 +44,7 @@ import com.example.uw_life_simulator.DAO.CourseSelectionRecordDAO;
 import com.example.uw_life_simulator.data.CourseSelectionRecord;
 import com.example.uw_life_simulator.Database.CourseDatabase;
 import com.example.uw_life_simulator.MiniGame.CardGameActivity;
+import com.example.uw_life_simulator.MiniGame.ManaInstructionPg;
 import androidx.fragment.app.FragmentActivity;
 import android.app.AlertDialog;
 
@@ -217,6 +218,20 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                         .setPositiveButton(event_choice1, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Send the TryAgain button event back to the host fragment
+                                //鉴定
+                                String game_type = mNewEvent.getTestClassName(true);
+                                if(game_type.equals("")){
+                                    Intent intent = new Intent(EventActivity.this, ManaInstructionPg.class);
+                                    intent.putExtra("Diff", 2);
+                                    startActivity(intent);
+                                    startActivityForResult(intent, 0);
+                                    double score = intent.getDoubleExtra("Result",0.0);
+                                    String event = "you received a score of" + score;
+                                    mAdapter.addEvent(event);
+                                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                }
+                                else if(game_type.equals("MANA")){
+                                }
                                 String event = mNewEvent.generateNewEvent(mPlayer,true);
                                 mAdapter.addEvent(event);
                                 mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
