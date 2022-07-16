@@ -35,10 +35,10 @@ public class Summarypage extends AppCompatActivity {
         CourseSelectionRecordDAO courseSelectionRecordDAO = db2.courseSelectionRecordDAO();
         List<CourseSelectionRecord> curSelection = courseSelectionRecordDAO.selectCurrent();
 
-        TextView curCourseTV1 = (TextView)findViewById(R.id.textView1);
-        TextView curCourseTV2 = (TextView)findViewById(R.id.textView2);
-        TextView curCourseTV3 = (TextView)findViewById(R.id.textView3);
-        TextView curCourseTV4 = (TextView)findViewById(R.id.textView4);
+        TextView curCourseTV1 = (TextView)findViewById(R.id.course_grade_text1);
+        TextView curCourseTV2 = (TextView)findViewById(R.id.course_grade_text2);
+        TextView curCourseTV3 = (TextView)findViewById(R.id.course_grade_text3);
+        TextView curCourseTV4 = (TextView)findViewById(R.id.course_grade_text4);
 
         //display
         if (curSelection.size() > 0) {
@@ -95,8 +95,8 @@ public class Summarypage extends AppCompatActivity {
         }
         TextView edit;
         TextView edit1;
-        edit1 = findViewById(R.id.textView1);
-        edit = findViewById(R.id.textView);
+        /*edit1 = findViewById(R.id.textView1);
+        edit = findViewById(R.id.textView1);
         if(index == 1){
 
             edit.append("Congratulation");
@@ -108,7 +108,7 @@ public class Summarypage extends AppCompatActivity {
         }else if(index == 3){
             edit.append("Sorry");
             edit1.append("You fail some class, work hard on next term!");
-        }
+        }*/
 
     }
 }
