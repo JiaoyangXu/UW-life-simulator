@@ -24,6 +24,9 @@ public interface SpellCardDAO {
     @Query("UPDATE spellcard SET selected = 0 WHERE selected = 1")
     void unselectAll();
 
+    @Query("UPDATE spellcard SET used = 0 WHERE used = 1")
+    void unUsedAll();
+
     @Query("UPDATE spellcard SET selected = 1 WHERE address =:addr")
     void updateSelected(Integer addr);
 

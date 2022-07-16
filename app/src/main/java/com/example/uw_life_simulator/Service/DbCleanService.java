@@ -66,5 +66,8 @@ public class DbCleanService {
         playerDAO.deleteAll();
     }
 
-    public void uncheckAllSpellCard() { spellCardDAO.unselectAll(); }
+    public void uncheckAllSpellCard() {
+        spellCardDAO.unselectAll();
+        spellCardDAO.unUsedAll();
+    }
 }
