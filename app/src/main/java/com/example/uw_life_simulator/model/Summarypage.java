@@ -28,6 +28,7 @@ public class Summarypage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent =getIntent();
+        //intent.putExtra("iq", ...);
         int iq = intent.getIntExtra("iq", 1);
         int money = intent.getIntExtra("money", 1);
         int health = intent.getIntExtra("health", 1);
