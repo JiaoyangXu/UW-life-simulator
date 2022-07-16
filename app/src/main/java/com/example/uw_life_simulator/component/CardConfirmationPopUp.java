@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupWindow;
 
 import androidx.room.Room;
 
@@ -38,8 +39,10 @@ public class CardConfirmationPopUp extends PopUpClass{
             @Override
             public void onClick(View view) {
                 switchContext = true;
-                Intent intent = new Intent(popUpView.getContext(), EventActivity.class);
-                popUpView.getContext().startActivity(intent);
+
+                popupWindow.dismiss();
+//                Intent intent = new Intent(popUpView.getContext(), EventActivity.class);
+//                popUpView.getContext().startActivity(intent);
             }
         });
     }

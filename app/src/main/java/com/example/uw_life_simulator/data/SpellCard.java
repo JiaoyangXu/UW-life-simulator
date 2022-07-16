@@ -29,4 +29,15 @@ public class SpellCard {
         this.selected = 0;
         this.used = 0;
     }
+
+    public int getAddress() {
+        return address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+
+
 }

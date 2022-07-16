@@ -34,6 +34,9 @@ public interface SpellCardDAO {
     @Query("SELECT * FROM spellcard WHERE address =:addr")
     SpellCard getSpellCard(Integer addr);
 
+    @Query("SELECT name FROM spellcard WHERE address =:addr")
+    String getNameByAddr(Integer addr);
+
     @Query("SELECT * FROM spellcard WHERE selected = 1")
     List<SpellCard> getSelectedSpellCard();
 

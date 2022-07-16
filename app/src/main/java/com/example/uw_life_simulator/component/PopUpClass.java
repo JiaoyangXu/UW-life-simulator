@@ -32,7 +32,7 @@ public class PopUpClass {
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
         // Modify the text in TextView popup
-        modifyTextViewText(popUpView, R.id.spell_card_popup_text, "You selected card");
+        //modifyTextViewText(popUpView, R.id.spell_card_popup_text, "You selected card");
     }
 
     public void modifyTextViewText(View view, int field, String text) {

@@ -33,9 +33,6 @@ public class CardGameActivity extends AppCompatActivity {
                 start();
                 start_game = true;
             }
-
-
-
         });
         int[] count = {0};
         ImageView im1 = (ImageView) findViewById(R.id.imageView9);
