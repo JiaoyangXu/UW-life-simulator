@@ -21,4 +21,7 @@ public interface CourseSelectionRecordDAO {
 
     @Query("SELECT * FROM CourseSelectionRecord WHERE completionGrade = -1")
     List<CourseSelectionRecord> selectCurrent();
+
+    @Query("UPDATE CourseSelectionRecord SET completionGrade = :grade WHERE courseCode = :code")
+    void updateGradeByCourseCode(String code, Integer grade);
 }
