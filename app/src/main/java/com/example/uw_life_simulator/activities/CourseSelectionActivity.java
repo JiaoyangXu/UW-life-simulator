@@ -30,9 +30,14 @@ public class CourseSelectionActivity extends AppCompatActivity {
     public static boolean DeleteOption = false;
     public static boolean initializeDbOption = false;
     public static int MAX_COURSE_NUMBER = 24;
+    public static int NUMBER_COURSE_ONE_PAGE = 10;
+
+    private int pageCounter;
 
     public CourseSelectionComponent courseSelectionComponent;
     private CourseSelectionService courseSelectionService;
+
+    private CourseDatabase db;
 
 
     @Override
@@ -41,7 +46,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_course_selection);
 
 
-        CourseDatabase db = Room.databaseBuilder(getApplicationContext(),
+         db = Room.databaseBuilder(getApplicationContext(),
                 CourseDatabase.class, "Courses").allowMainThreadQueries().
                 fallbackToDestructiveMigration().build();
         CourseDao courseDao = db.courseDao();
@@ -81,12 +86,34 @@ public class CourseSelectionActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void uncheckAll() {
+        for (int checkboxId = 0; checkboxId < 10; ++checkboxId) {
+            CheckBox checkBox = courseSelectionComponent.getCheckBoxes().get(checkboxId);
+
+            checkBox.setChecked(false);
+        }
+    }
+
+    public void nextCourseSelection(View view) {
+        pageCounter++;
+        uncheckAll();
+        initialize_UI(db);
+    }
+
+    public void prevCourseSelection(View view){
+        pageCounter --;
+        uncheckAll();
+        initialize_UI(db);
+    }
+
 
     /**
      * Initialize Courses, put them to database and to the course selection UI
      * @param db is the Course Database
      */
     private void initializeAll(CourseDatabase db) {
+        pageCounter = 0;
+
         CourseDao courseDao = db.courseDao();
 
         // initialize Courses
@@ -219,6 +246,16 @@ public class CourseSelectionActivity extends AppCompatActivity {
         }
     }
 
+    private void changeToVisible() {
+        for (int checkboxId = 0; checkboxId < 10; ++checkboxId) {
+            CheckBox checkBox = courseSelectionComponent.getCheckBoxes().get(checkboxId);
+            TextView textView = courseSelectionComponent.getTextViews().get(checkboxId);
+
+            checkBox.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.VISIBLE);
+        }
+    }
+
 
 
     /**
@@ -226,9 +263,20 @@ public class CourseSelectionActivity extends AppCompatActivity {
      * @param courseDao is a list of Course DAOs
      */
     private void displayCourseCode(CourseDao courseDao) {
-        int courseId = 0;
+
+        pageCounter = Math.max(0, pageCounter);
+        changeToVisible();
 
         List<Course> uncheckedCourses = courseDao.getUnCheckedCourse();
+
+        if ( uncheckedCourses.size() > pageCounter * NUMBER_COURSE_ONE_PAGE) {
+            uncheckedCourses = uncheckedCourses.subList(pageCounter * NUMBER_COURSE_ONE_PAGE,
+                    uncheckedCourses.size());
+        } else {
+            pageCounter--;
+            uncheckedCourses = uncheckedCourses.subList(pageCounter * NUMBER_COURSE_ONE_PAGE,
+                    uncheckedCourses.size());
+        }
 
         for (int checkboxId = 0; checkboxId < 10; ++checkboxId) {
             CheckBox checkBox = courseSelectionComponent.getCheckBoxes().get(checkboxId);
@@ -252,8 +300,6 @@ public class CourseSelectionActivity extends AppCompatActivity {
 
             checkBox.setText(courseCode);
             textView.setText(courseInfo);
-            courseId++;
-
         }
     }
 
@@ -292,29 +338,6 @@ public class CourseSelectionActivity extends AppCompatActivity {
         courses.add(HIST200);
         courses.add(MEDI200);
         courses.add(ATRO200);
-
-
-
-//        courses.add(course1);
-//        courses.add(course2);
-//        courses.add(course3);
-//        courses.add(course4);
-//        courses.add(course5);
-//        courses.add(course6);
-//        courses.add(course7);
-//        courses.add(course8);
-//        courses.add(course9);
-//        courses.add(course10);
-//        courses.add(CS245);
-//        courses.add(CS251);
-//        courses.add(CS341);
-//        courses.add(CS343);
-//        courses.add(CS348);
-//        courses.add(CS349);
-//        courses.add(CS350);
-//        courses.add(CS370);
-//        courses.add(CS444);
-//        courses.add(CS446);
 
 
         return courses;
@@ -362,4 +385,5 @@ public class CourseSelectionActivity extends AppCompatActivity {
             insertCourse(courseDao, course);
         }
     }
+
 }

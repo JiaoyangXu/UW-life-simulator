@@ -477,7 +477,8 @@
                 android:shadowRadius="5"
                 android:text="Previous"
                 android:textColor="#C8C8CD"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                android:onClick="prevCourseSelection"/>
 
             <Button
                 android:id="@+id/button_nxt_page"
@@ -491,7 +492,8 @@
                 android:shadowRadius="5"
                 android:text="Next"
                 android:textColor="#C8C8CD"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                android:onClick="nextCourseSelection"/>
 
             <Button
                 android:id="@+id/button_sub_selection"
