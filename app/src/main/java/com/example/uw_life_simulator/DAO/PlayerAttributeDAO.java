@@ -34,5 +34,17 @@ public interface PlayerAttributeDAO {
     @Query("UPDATE PLAYERATTRIBUTE SET course4Code = :code")
     void updateCourse4(String code);
 
+    @Query("SELECT course1Code FROM PLAYERATTRIBUTE")
+    List<String> getCourse1();
+
+    @Query("SELECT course2Code FROM PLAYERATTRIBUTE")
+    List<String> getCourse2();
+
+    @Query("SELECT course3Code FROM PLAYERATTRIBUTE")
+    List<String> getCourse3();
+
+    @Query("SELECT course4Code FROM PLAYERATTRIBUTE")
+    List<String> getCourse4();
+
 
 }

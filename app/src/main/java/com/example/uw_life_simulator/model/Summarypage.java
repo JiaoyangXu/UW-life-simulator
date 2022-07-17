@@ -81,29 +81,35 @@ public class Summarypage extends AppCompatActivity {
             TextView curCourseTV3 = (TextView) findViewById(R.id.course_grade_text3);
             TextView curCourseTV4 = (TextView) findViewById(R.id.course_grade_text4);
 
+
+
             //display
-            if (curSelection.size() > 0) {
-                int count = curSelection.size();
+                int count = 4;
                 if (count >= 1) {
-                    curCourseTV1.setText(curSelection.get(0).getCourseCode() + "       " + curSelection.get(0).getCompletionGrade());
+                    String course1 = playerAttributeDAO.getCourse1().get(0);
+                    curCourseTV1.setText(course1+ "       " +
+                            courseSelectionRecordDAO.getGradeByCode(course1));
 
                 }
                 if (count >= 2) {
-                    curCourseTV2.setText(curSelection.get(1).getCourseCode()
-                            + "       " + curSelection.get(1).getCompletionGrade());
+                    String course2 = playerAttributeDAO.getCourse2().get(0);
+                    curCourseTV2.setText(course2+ "       " +
+                            courseSelectionRecordDAO.getGradeByCode(course2));
 
                 }
                 if (count >= 3) {
-                    curCourseTV3.setText(curSelection.get(2).getCourseCode()
-                            + "       " + curSelection.get(2).getCompletionGrade());
+                    String course3 = playerAttributeDAO.getCourse3().get(0);
+                    curCourseTV3.setText(course3+ "       " +
+                            courseSelectionRecordDAO.getGradeByCode(course3));
 
                 }
                 if (count >= 4) {
-                    curCourseTV4.setText(curSelection.get(3).getCourseCode()
-                            + "       " + curSelection.get(3).getCompletionGrade());
+                    String course4 = playerAttributeDAO.getCourse4().get(0);
+                    curCourseTV4.setText(course4+ "       " +
+                            courseSelectionRecordDAO.getGradeByCode(course4));
 
                 }
-            }
+
 
             TextView curCourseTV5 = (TextView) findViewById(R.id.key_attr_text1);
             TextView curCourseTV6 = (TextView) findViewById(R.id.key_attr_text2);

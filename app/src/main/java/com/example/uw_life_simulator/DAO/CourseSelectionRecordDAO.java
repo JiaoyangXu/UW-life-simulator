@@ -19,6 +19,9 @@ public interface CourseSelectionRecordDAO {
     @Query("SELECT * FROM CourseSelectionRecord")
     List<CourseSelectionRecord> selectAll();
 
+    @Query("SELECT completionGrade FROM CourseSelectionRecord WHERE courseCode = :code")
+    Integer getGradeByCode(String code);
+
     @Query("SELECT * FROM CourseSelectionRecord WHERE completionGrade = -1")
     List<CourseSelectionRecord> selectCurrent();
 
