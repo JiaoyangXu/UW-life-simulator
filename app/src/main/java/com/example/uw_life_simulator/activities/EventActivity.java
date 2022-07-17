@@ -64,6 +64,16 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     NewEvent mNewEvent;
     boolean called_by_event = false;
     int Event_Count = 0;
+    int course1mark = 81;
+    int course2mark = 82;
+    int course3mark = 83;
+    int course4mark = 84;
+    String course1type = "";
+    String course2type = "";
+    String course3type = "";
+    String course4type = "";
+    int MANA_TEST_NUM = 0;
+    int ATRO_TEST_NUM = 0;
 
     private enum LayoutManagerType {
         LINEAR_LAYOUT_MANAGER
@@ -115,6 +125,82 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                     mAdapter.addEvent(event);
                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                     event = mNewEvent.generateNewEvent(mPlayer,true);
+                    if(event.equals("MANA")){
+                        if (course1type.equals("MANA")){
+                            if(MANA_TEST_NUM == 0){
+                                course1mark = result;
+                            }
+                            else if(MANA_TEST_NUM == 1){
+                                course1mark = (course1mark + result) / 2;
+                            }
+                            MANA_TEST_NUM += 1;
+                        }
+                        if (course2type.equals("MANA")){
+                            if(MANA_TEST_NUM == 0){
+                                course2mark = result;
+                            }
+                            else if(MANA_TEST_NUM == 1){
+                                course2mark = (course1mark + result) / 2;
+                            }
+                            MANA_TEST_NUM += 1;
+                        }
+                        if (course3type.equals("MANA")){
+                            if(MANA_TEST_NUM == 0){
+                                course3mark = result;
+                            }
+                            else if(MANA_TEST_NUM == 1){
+                                course3mark = (course1mark + result) / 2;
+                            }
+                            MANA_TEST_NUM += 1;
+                        }
+                        if (course4type.equals("MANA")){
+                            if(MANA_TEST_NUM == 0){
+                                course4mark = result;
+                            }
+                            else if(MANA_TEST_NUM == 1){
+                                course4mark = (course1mark + result) / 2;
+                            }
+                            MANA_TEST_NUM += 1;
+                        }
+                    }
+                    if(event.equals("ATRO")){
+                        if (course1type.equals("ATRO")){
+                            if(ATRO_TEST_NUM == 0){
+                                course1mark = result;
+                            }
+                            else if(ATRO_TEST_NUM == 1){
+                                course1mark = (course1mark + result) / 2;
+                            }
+                            ATRO_TEST_NUM += 1;
+                        }
+                        if (course2type.equals("ATRO")){
+                            if(ATRO_TEST_NUM == 0){
+                                course2mark = result;
+                            }
+                            else if(ATRO_TEST_NUM == 1){
+                                course2mark = (course1mark + result) / 2;
+                            }
+                            ATRO_TEST_NUM += 1;
+                        }
+                        if (course3type.equals("ATRO")){
+                            if(ATRO_TEST_NUM == 0){
+                                course3mark = result;
+                            }
+                            else if(ATRO_TEST_NUM == 1){
+                                course3mark = (course1mark + result) / 2;
+                            }
+                            ATRO_TEST_NUM += 1;
+                        }
+                        if (course4type.equals("ATRO")){
+                            if(ATRO_TEST_NUM == 0){
+                                course4mark = result;
+                            }
+                            else if(ATRO_TEST_NUM == 1){
+                                course4mark = (course1mark + result) / 2;
+                            }
+                            ATRO_TEST_NUM += 1;
+                        }
+                    }
                     //mAdapter.addEvent(event);
                     //mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                     called_by_event = false;
@@ -205,6 +291,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         curCourseTV2.setText(curPlayer.course2Code);
         curCourseTV3.setText(curPlayer.course3Code);
         curCourseTV4.setText(curPlayer.course4Code);
+
+        String course1type = curPlayer.course1Code.substring(0,4);
+        String course2type = curPlayer.course2Code.substring(0,4);
+        String course3type = curPlayer.course3Code.substring(0,4);
+        String course4type = curPlayer.course4Code.substring(0,4);
 
 
 
@@ -386,8 +477,14 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         Button mSummaryButton = findViewById(R.id.SummaryButton);
         mSummaryButton.setOnClickListener((v) -> {
             //delete previous player attribute and re-insert current player attribute
+            courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course1Code,course1mark);
+            courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course2Code,course2mark);
+            courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course3Code,course3mark);
+            courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course4Code,course4mark);
             playerAttributeDAO.deleteAll();
             playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
+            //update grade
+
             Intent intent = new Intent(EventActivity.this, Summarypage.class);
             startActivity(intent);
         });
