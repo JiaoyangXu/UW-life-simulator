@@ -343,7 +343,7 @@ class GameEventMoney extends GameEvent{
 
 /**
  * EventID: 2
- * Effect: pressure-1
+ * Effect: pressure-5
  */
 class GameEventMoneyNo extends GameEvent{
     public GameEventMoneyNo(){
@@ -359,7 +359,7 @@ class GameEventMoneyNo extends GameEvent{
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
-        attribute.pressure -= 1.0;
+        attribute.pressure -= 5.0;
     }
 }
 
@@ -576,7 +576,6 @@ class GameEventHotDayNo extends GameEvent{
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
-        attribute.health -= 5;
         attribute.pressure += 5;
     }
 }
