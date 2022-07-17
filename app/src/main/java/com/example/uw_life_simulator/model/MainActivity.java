@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.example.uw_life_simulator.R;
 import com.example.uw_life_simulator.Service.DbCleanService;
+import com.example.uw_life_simulator.Service.DbInitializeService;
 import com.example.uw_life_simulator.activities.CourseSelectionActivity;
 import com.example.uw_life_simulator.activities.DrawSpellCardActivity;
 import com.example.uw_life_simulator.activities.EventActivity;
@@ -84,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createTalent(View view) {
+        DbInitializeService dbInitializeService = new DbInitializeService(this);
+        dbInitializeService.initializeAll();
         Intent intent = new Intent(MainActivity.this, AttributeActivities.class);
         startActivity(intent);
     }
