@@ -162,8 +162,6 @@ public class DrawSpellCardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     private void updateSelected(int index) {

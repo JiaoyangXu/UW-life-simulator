@@ -128,10 +128,8 @@ public class Summarypage extends AppCompatActivity {
         /*edit1 = findViewById(R.id.textView1);
         edit = findViewById(R.id.textView1);
         if(index == 1){
-
             edit.append("Congratulation");
             edit1.append("You get high GPA in this term");
-
         } else if(index == 2){
             edit.append("Congratulation");
             edit1.append("You finish this term");
