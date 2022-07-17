@@ -228,13 +228,15 @@ public class CourseSelectionActivity extends AppCompatActivity {
 
         for (CheckBox checkBox : courseSelectionComponent.getCheckBoxes()) {
 
-            if (checkboxId >= MAX_COURSE_NUMBER) {
+            if (checkboxId >= MAX_COURSE_NUMBER ||
+                checkboxId >= courseSelectionComponent.getAvailableCourses().size()) {
                 break;
             }
 
             while(courseSelectionComponent.getAvailableCourses().get(checkboxId).isChecked == 1) {
                 checkboxId++;
-                if (checkboxId >= 19) return;
+                if (checkboxId >= 19 ||
+                        checkboxId >= courseSelectionComponent.getAvailableCourses().size() ) return;
             }
 
             String course = courseSelectionComponent.getAvailableCourseCodes().get(checkboxId);

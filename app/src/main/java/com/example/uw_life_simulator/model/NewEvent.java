@@ -15,14 +15,26 @@ public class NewEvent {
         {
             if (!gce.repeated())
             {
-                gce = Factory.generateRandomChoiceEvent(pa);
-                //gce = Factory.generateChoiceEvent(1602);
+                if (totalnum == 20 || totalnum == 40)
+                {
+                    gce = Factory.generateTestEvent();
+                }
+                else
+                {
+                    gce = Factory.generateRandomChoiceEvent(pa);
+                }
             }
         }
         else
         {
-            gce = Factory.generateRandomChoiceEvent(pa);
-            //gce = Factory.generateChoiceEvent(1602);
+            if (totalnum == 20 || totalnum == 40)
+            {
+                gce = Factory.generateTestEvent();
+            }
+            else
+            {
+                gce = Factory.generateRandomChoiceEvent(pa);
+            }
         }
         List<String> ret = new ArrayList<>();
         ret.add(gce.description);
@@ -58,16 +70,5 @@ public class NewEvent {
     public void setLastMark(double mark)
     {
         gce.setLastMark(mark);
-    }
-
-    public static List<String> generateTestChoice(Player player, int totalnum)
-    {
-        PlayerAttribute pa = player.getPlayerAttribute();
-        gce = Factory.generateTestEvent();
-        List<String> ret = new ArrayList<>();
-        ret.add(gce.description);
-        ret.add(gce.choice1_description);
-        ret.add(gce.choice2_description);
-        return ret;
     }
 }
