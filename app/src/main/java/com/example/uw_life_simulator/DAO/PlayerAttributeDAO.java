@@ -22,4 +22,17 @@ public interface PlayerAttributeDAO {
     @Query("SELECT * FROM PlayerAttribute")
     List<PlayerAttribute> loadSingle();
 
+    @Query("UPDATE PLAYERATTRIBUTE SET course1Code = :code")
+    void updateCourse1(String code);
+
+    @Query("UPDATE PLAYERATTRIBUTE SET course2Code = :code")
+    void updateCourse2(String code);
+
+    @Query("UPDATE PLAYERATTRIBUTE SET course3Code = :code")
+    void updateCourse3(String code);
+
+    @Query("UPDATE PLAYERATTRIBUTE SET course4Code = :code")
+    void updateCourse4(String code);
+
+
 }
