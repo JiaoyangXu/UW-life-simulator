@@ -59,4 +59,15 @@ public class NewEvent {
     {
         gce.setLastMark(mark);
     }
+
+    public static List<String> generateTestChoice(Player player, int totalnum)
+    {
+        PlayerAttribute pa = player.getPlayerAttribute();
+        gce = Factory.generateTestEvent();
+        List<String> ret = new ArrayList<>();
+        ret.add(gce.description);
+        ret.add(gce.choice1_description);
+        ret.add(gce.choice2_description);
+        return ret;
+    }
 }
