@@ -5,15 +5,19 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 import java.util.UUID;
 
 @Entity
 public class Course {
 
-    @PrimaryKey
+    @ColumnInfo
     public int courseID;
 
+    @NotNull
+    @PrimaryKey
     @ColumnInfo(name = "code")
     public String courseCode;
 

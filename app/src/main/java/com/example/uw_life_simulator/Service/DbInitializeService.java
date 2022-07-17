@@ -44,9 +44,28 @@ public class DbInitializeService extends DbCleanService{;
         Course MANA200 = new Course("MANA 200", "Flying", 70, 90,2);
         Course HERB200 = new Course("HERB 200", "Wondrous Water Plants", 30, 70,2);
         Course SPEL200 = new Course("SPEL 200", "Water-Making Spell", 90, 100,2);
-        Course HIST200 = new Course("SPEL 200", "Medieval Assembly of European Wizards", 50, 40,2);
+        Course HIST200 = new Course("HIST 200", "Medieval Assembly of European Wizards", 50, 40,2);
         Course MEDI200 = new Course("MEDI 200", "Potions", 70, 80,2);
         Course ATRO200 = new Course("ATRO 200", "Star charts", 60, 30,2);
+
+        Course MANA300 = new Course("MANA 300", "Diving", 70, 90,3);
+        Course HERB300 = new Course("HERB 300", "Asphodel root", 30, 70,3);
+        Course SPEL300 = new Course("SPEL 300", "Fire-Making Spell", 90, 100,3);
+        Course HIST300 = new Course("HIST 300", "Ancient Assembly of Asian Wizards", 50, 40,3);
+        Course MEDI300 = new Course("MEDI 300", "Surgery", 70, 80,3);
+        Course ATRO300 = new Course("ATRO 300", "The Solar System", 60, 30,3);
+
+
+        Course MANA400 = new Course("MANA 400", "Stealth", 70, 90,4);
+        Course HERB400 = new Course("HERB 400", "Wormwood", 30, 70,4);
+        Course SPEL400 = new Course("SPEL 400", "Unlocking Charm", 90, 100,4);
+        Course HIST400 = new Course("HIST 400", "Gargoyle Strike of 1911", 50, 40,4);
+        Course MEDI400 = new Course("MEDI 400", "Comparative Health Systems", 70, 80,4);
+        Course ATRO400 = new Course("ATRO 400", "The Universe", 60, 30,4);
+
+
+
+
 
         List<Course> courses = new ArrayList<>();
 
@@ -63,6 +82,20 @@ public class DbInitializeService extends DbCleanService{;
         courses.add(HIST200);
         courses.add(MEDI200);
         courses.add(ATRO200);
+
+        courses.add(HERB300);
+        courses.add(MANA300);
+        courses.add(SPEL300);
+        courses.add(HIST300);
+        courses.add(MEDI300);
+        courses.add(ATRO300);
+
+        courses.add(HERB400);
+        courses.add(MANA400);
+        courses.add(SPEL400);
+        courses.add(HIST400);
+        courses.add(MEDI400);
+        courses.add(ATRO400);
 
 
         return courses;

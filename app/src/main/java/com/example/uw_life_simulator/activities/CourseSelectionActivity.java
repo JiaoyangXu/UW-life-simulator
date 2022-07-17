@@ -18,6 +18,8 @@ import com.example.uw_life_simulator.data.Course;
 import com.example.uw_life_simulator.data.CourseSelectionRecord;
 import com.example.uw_life_simulator.model.MainActivity;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,7 +29,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
 
     public static boolean DeleteOption = false;
     public static boolean initializeDbOption = false;
-    public static int MAX_COURSE_NUMBER = 19;
+    public static int MAX_COURSE_NUMBER = 24;
 
     public CourseSelectionComponent courseSelectionComponent;
     private CourseSelectionService courseSelectionService;
@@ -91,7 +93,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
         List<Course> courses = initializeCourses();
 
 
-        if (courseDao.getCourseCode().size() < 19) {
+        if (courseDao.getCourseCode().size() < MAX_COURSE_NUMBER) {
             initializeDbOption = true;
         }
 
@@ -175,7 +177,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
     private void initialize_UI(CourseDatabase db) {
         CourseDao courseDao = db.courseDao();
 
-        displayCourseInfo(courseDao);
+        //displayCourseInfo(courseDao);
         displayCourseCode(courseDao);
     }
 
@@ -224,25 +226,34 @@ public class CourseSelectionActivity extends AppCompatActivity {
      * @param courseDao is a list of Course DAOs
      */
     private void displayCourseCode(CourseDao courseDao) {
-        int checkboxId = 0;
         int courseId = 0;
 
-        for (CheckBox checkBox : courseSelectionComponent.getCheckBoxes()) {
+        List<Course> uncheckedCourses = courseDao.getUnCheckedCourse();
 
-            if (checkboxId >= MAX_COURSE_NUMBER ||
-                checkboxId >= courseSelectionComponent.getAvailableCourses().size()) {
-                break;
+        for (int checkboxId = 0; checkboxId < 10; ++checkboxId) {
+            CheckBox checkBox = courseSelectionComponent.getCheckBoxes().get(checkboxId);
+            TextView textView = courseSelectionComponent.getTextViews().get(checkboxId);
+
+
+            if (checkboxId >= uncheckedCourses.size()) {
+                checkBox.setVisibility(View.INVISIBLE);
+                textView.setVisibility(View.INVISIBLE);
+                continue;
             }
 
-            while(courseSelectionComponent.getAvailableCourses().get(checkboxId).isChecked == 1) {
-                checkboxId++;
-                if (checkboxId >= 19 ||
-                        checkboxId >= courseSelectionComponent.getAvailableCourses().size() ) return;
-            }
+            Course course = uncheckedCourses.get(checkboxId);
 
-            String course = courseSelectionComponent.getAvailableCourseCodes().get(checkboxId);
-            checkBox.setText(course);
-            checkboxId++;
+            String courseCode = uncheckedCourses.get(checkboxId).courseCode;
+
+            String courseInfo =
+                    course.getCourseName() + "\nDifficulty: "
+                            + course.getDifficulty() + " | Usefulness: "
+                            + course.getUsefulness();
+
+            checkBox.setText(courseCode);
+            textView.setText(courseInfo);
+            courseId++;
+
         }
     }
 
@@ -251,26 +262,6 @@ public class CourseSelectionActivity extends AppCompatActivity {
      * @return the list of courses
      */
     private List<Course> initializeCourses() {
-//        Course course1 = new Course("CS135", "Racket", 50,50,1);
-//        Course course2 = new Course("CS136", "C", 30,90,1);
-//        Course course3 = new Course("CS246", "C++", 60,100,2);
-//        Course course4 = new Course("CS241", "Compiler", 80, 30,2);
-//        Course course5 = new Course("CS348", "Database", 50,60,3);
-//        Course course6 = new Course("Math 137", "Calculus I", 60, 70,1);
-//        Course course7 = new Course("Math 138", "Calculus II", 60, 70,1);
-//        Course course8 = new Course("Math 136", "Linear Algebra", 30, 80,1);
-//        Course course9 = new Course("Econ 101", "Microeconomics", 0, 10,1);
-//        Course course10 = new Course("Game100", "League of Legends", 0, 100,100);
-//        Course CS245 = new Course("CS245", "Logic", 43, 24,2);
-//        Course CS251 = new Course("CS251", "Computer Design", 15, 71,2);
-//        Course CS341 = new Course("CS341", "Algorithms", 46, 99,3);
-//        Course CS343 = new Course("CS343", "Concurrent Programming", 67, 59,3);
-//        Course CS348 = new Course("CS348", "Intro to Database", 30, 63,3);
-//        Course CS349 = new Course("CS349", "User Interfaces", 25, 75,3);
-//        Course CS350 = new Course("CS350", "Operating Systems", 54, 94,3);
-//        Course CS370 = new Course("CS370", "Numerical Computing", 40, 86,3);
-//        Course CS444 = new Course("CS444", "Compiler Construction", 20, 99,4);
-//        Course CS446 = new Course("CS446", "Software Design", 30, 101,4);
 
         Course MANA100 = new Course("MANA 100", "Introduction to Magic", 20, 80,1);
         Course HERB100 = new Course("HERB 100", "Introduction to Herbology", 50, 90,1);
