@@ -45,14 +45,20 @@ public class Summarypage extends AppCompatActivity {
 
         int gpa = curPlayer.getGPA();
 
-        int money = curPlayer.getWealth();
+        int money = curPlayer.getMoney();
 
         int pressure = curPlayer.getPressure();
 
         int term = curPlayer.getNumTerm();
         int next_term = term + 1;
         if(term == 6){
-
+            setContentView(R.layout.finish);
+            Button Button3 = findViewById(R.id.button3);
+            Button3.setOnClickListener((v) -> {
+                Intent intent1 = new Intent(Summarypage.this,
+                        MainActivity.class);
+                startActivity(intent1);
+            });
         } else if(money < 0 || pressure > 100 || gpa < 50) {
             setContentView(R.layout.summary_page_coop);
             Button Button3 = findViewById(R.id.button3);
@@ -102,9 +108,9 @@ public class Summarypage extends AppCompatActivity {
             TextView curCourseTV5 = (TextView) findViewById(R.id.key_attr_text1);
             TextView curCourseTV6 = (TextView) findViewById(R.id.key_attr_text2);
             TextView curCourseTV7 = (TextView) findViewById(R.id.key_attr_text3);
-            curCourseTV5.setText("Your total GPA is" + gpa);
-            curCourseTV6.setText("You currently have" + money + "$");
-            curCourseTV7.setText("Your Pressure is" + pressure);
+            curCourseTV5.setText("Your total GPA is " + gpa);
+            curCourseTV6.setText("You currently have " + money + " $");
+            curCourseTV7.setText("Your Pressure is " + pressure);
             //button
             Button Button10 = findViewById(R.id.button10);
             Button10.setOnClickListener((v) -> {
