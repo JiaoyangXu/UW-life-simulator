@@ -175,6 +175,8 @@ class GameChoiceTest extends GameChoiceEvent{
         this.description = "Today is test date, you need to go for your test";
         this.choice1_description = "OK";
         this.choice2_description = "Good luck for me";
+        this.choice1_check="MANA";
+        this.choice2_check="MANA";
         this.Id = 5;
     }
     @Override
@@ -204,26 +206,22 @@ class GameChoiceTest extends GameChoiceEvent{
 
         if (repeatCount == 3)
         {
-            if (playerAttribute.course2Code != "")
-            {
-                //test3
-                repeatCount --;
-                //return returnTests(playerAttribute.course3Code);
-                return returnTests("MANA");
-            }
+            //test3
             repeatCount --;
+            //return returnTests(playerAttribute.course3Code);
+            this.choice1_check="HIST";
+            this.choice2_check="HIST";
+            return returnTests("MANA");
         }
 
         if (repeatCount == 2)
         {
-            if (playerAttribute.course2Code != "")
-            {
-                //test4
-                repeatCount --;
-                //return returnTests(playerAttribute.course4Code);
-                return returnTests("ATRO");
-            }
+            //test4
             repeatCount --;
+            this.choice1_check="";
+            this.choice2_check="";
+            //return returnTests(playerAttribute.course4Code);
+            return returnTests("ATRO");
         }
 
         if (repeatCount <= 1)
