@@ -15,7 +15,7 @@ public class NewEvent {
         {
             if (!gce.repeated())
             {
-                if (totalnum == 20 || totalnum == 40)
+                if (totalnum == 9 || totalnum == 19)
                 {
                     gce = Factory.generateTestEvent();
                 }
@@ -27,7 +27,7 @@ public class NewEvent {
         }
         else
         {
-            if (totalnum == 20 || totalnum == 40)
+            if (totalnum == 9 || totalnum == 19)
             {
                 gce = Factory.generateTestEvent();
             }

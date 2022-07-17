@@ -63,6 +63,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     Player mPlayer;
     NewEvent mNewEvent;
     boolean called_by_event = false;
+    int Event_Count = 0;
 
     private enum LayoutManagerType {
         LINEAR_LAYOUT_MANAGER
@@ -200,10 +201,16 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             }
         }
 
+        //update numTerm
+        if (curPlayer.numTerm == 0){
+            curPlayer.numTerm = 1;
+        }
+
         mPlayer.setPlayerAttribute(curPlayer);
         Button mNewEventButton = findViewById(R.id.Eventbutton);
         mNewEventButton.setOnClickListener((v) -> {
-            if(mAdapter.getItemCount() >= 20){
+            Event_Count += 1;
+            if(Event_Count >= 20){
 
                 AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
                         .setMessage(R.string.proceed_to_summary)
@@ -231,7 +238,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 List<String> event_list = new ArrayList<>();
                 //event= mNewEvent.generateNewEvent(mPlayer,mAdapter.getItemCount());
                 boolean return_last_event = false;
-                event_list = mNewEvent.generateNewChoice(mPlayer,mAdapter.getItemCount());
+                event_list = mNewEvent.generateNewChoice(mPlayer,Event_Count);
                 //2022 0713
                 String event_description = event_list.get(0);
                 String event_choice1 = event_list.get(1);
@@ -436,7 +443,8 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 "health = " + p.health + '\n' +
                 "pressure = " + p.pressure + '\n' +
                 "GPA = " + p.GPA + '\n' +
-                "employed = " + p.employed + '\n';
+                "employed = " + p.employed + '\n'
+                + "event_count = "+ Event_Count;
     }
 
     public void useSpellCard(View view){
