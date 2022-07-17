@@ -25,8 +25,8 @@ import java.util.UUID;
 
 public class CourseSelectionActivity extends AppCompatActivity {
 
-    public static boolean DeleteOption = true;
-    public static boolean initializeDbOption = true;
+    public static boolean DeleteOption = false;
+    public static boolean initializeDbOption = false;
     public static int MAX_COURSE_NUMBER = 19;
 
     public CourseSelectionComponent courseSelectionComponent;

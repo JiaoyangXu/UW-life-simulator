@@ -16,14 +16,15 @@ import com.example.uw_life_simulator.data.PlayerAttribute;
 import com.example.uw_life_simulator.data.SpellCard;
 
 public class DbCleanService {
-    CourseDatabase courseDb;
-    PlayerAttributeDatabase PlayerDb;
-    SpellCardDatabase spellCardDb;
+    protected CourseDatabase courseDb;
 
-    CourseDao courseDao;
-    CourseSelectionRecordDAO recordDAO;
-    PlayerAttributeDAO playerDAO;
-    SpellCardDAO spellCardDAO;
+    protected PlayerAttributeDatabase PlayerDb;
+    protected SpellCardDatabase spellCardDb;
+
+    protected CourseDao courseDao;
+    protected CourseSelectionRecordDAO recordDAO;
+    protected PlayerAttributeDAO playerDAO;
+    protected SpellCardDAO spellCardDAO;
 
 
     public DbCleanService(Context context) {
