@@ -127,14 +127,30 @@
             android:layout_height="match_parent"
             android:background="@drawable/dark_grey_button"
             app:srcCompat="@android:drawable/ic_lock_silent_mode_off" />
-
-        <TextView
-            android:id="@+id/BroadCastText"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@drawable/dark_grey_button" />
+            android:orientation="horizontal"
+            android:background="@drawable/dark_grey_button"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".04"></LinearLayout>
+            <TextView
+                android:id="@+id/BroadCastText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:layout_weight=".96"
+                android:fontFamily="sans-serif-black"
+                android:text="Display a recent event here"
+                android:textColor="#B2F8F7F5" />
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
