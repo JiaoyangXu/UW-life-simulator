@@ -114,7 +114,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                     String event = "you received a score of " + result;
                     mAdapter.addEvent(event);
                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
-                    //event = mNewEvent.generateNewEvent(mPlayer,true);
+                    event = mNewEvent.generateNewEvent(mPlayer,true);
                     //mAdapter.addEvent(event);
                     //mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                     called_by_event = false;
