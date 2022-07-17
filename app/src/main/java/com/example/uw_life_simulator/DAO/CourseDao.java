@@ -20,6 +20,9 @@ public interface CourseDao {
     @Query("SELECT * FROM course WHERE code = :courseCode")
     List<Course> getCourseWithCode(String courseCode);
 
+    @Query("SELECT * FROM course WHERE isChecked = 0")
+    List<Course> getUnCheckedCourse();
+
     @Insert
     void insertAll(Course course);
 

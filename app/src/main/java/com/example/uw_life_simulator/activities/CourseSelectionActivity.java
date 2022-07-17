@@ -71,7 +71,8 @@ public class CourseSelectionActivity extends AppCompatActivity {
      * @param view
      */
     public void submitCourseSelection(View view) {
-        courseSelectionService.InsertCheckedCourses();
+        if (!courseSelectionService.InsertCheckedCourses()) return;
+
 
         // pass intent to Event Activity
         Intent intent = new Intent(CourseSelectionActivity.this, EventActivity.class);
@@ -121,7 +122,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
         List<String> courseCodes = initializeCourseCode(courseDao);
         courseSelectionComponent = new CourseSelectionComponent(checkBoxes, textViews,courses,courseCodes);
 
-        courseSelectionService = new CourseSelectionService(db, courseSelectionComponent);
+        courseSelectionService = new CourseSelectionService(db, courseSelectionComponent, this);
     }
 
     private List<TextView> initializeTextViewsInstance() {
