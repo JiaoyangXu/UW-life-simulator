@@ -114,9 +114,9 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                     String event = "you received a score of " + result;
                     mAdapter.addEvent(event);
                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
-                    event = mNewEvent.generateNewEvent(mPlayer,true);
-                    mAdapter.addEvent(event);
-                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                    //event = mNewEvent.generateNewEvent(mPlayer,true);
+                    //mAdapter.addEvent(event);
+                    //mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                     called_by_event = false;
                 }
 
@@ -181,10 +181,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         TextView curCourseTV3 = (TextView)findViewById(R.id.textView26);
         TextView curCourseTV4 = (TextView)findViewById(R.id.textView27);
 
-        if (curSelection.size() > 0) {
+        /*if (curSelection.size() > 0) {
             int count = curSelection.size();
             if (count >= 1) {
-                curCourseTV1.setText(curSelection.get(0).getCourseCode());
+                //curCourseTV1.setText(curSelection.get(0).getCourseCode());
                 curPlayer.course1Code = curSelection.get(0).getCourseCode();
             }
             if (count >= 2) {
@@ -199,7 +199,15 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 curCourseTV4.setText(curSelection.get(3).getCourseCode());
                 curPlayer.course4Code = curSelection.get(3).getCourseCode();
             }
-        }
+        }*/
+
+        curCourseTV1.setText(curPlayer.course1Code);
+        curCourseTV2.setText(curPlayer.course2Code);
+        curCourseTV3.setText(curPlayer.course3Code);
+        curCourseTV4.setText(curPlayer.course4Code);
+
+
+
 
         //update numTerm
         if (curPlayer.numTerm == 0){
@@ -279,6 +287,24 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                 }
                                 else if (game_type.equals("")){
                                     String event = mNewEvent.generateNewEvent(mPlayer,true);
+                                    /*if (event == "MANA"){
+                                        Intent intent = new Intent(EventActivity.this, ManaTestMainAct.class);
+                                        intent.putExtra("Diff", 2);
+                                        startActivityForResult(intent, 0);
+                                        double score = intent.getDoubleExtra("Result",0.0);
+                                        //event = "You started the MANA test";
+                                       // mAdapter.addEvent(event);
+                                        //mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    }
+                                    if(event == "ATRO"){
+                                        Intent intent = new Intent(EventActivity.this, CardGameActivity.class);
+                                        intent.putExtra("Diff", 2);
+                                        startActivityForResult(intent, 0);
+                                        double score = intent.getDoubleExtra("Result",0.0);
+                                        event = "You started the HIST test";
+                                        mAdapter.addEvent(event);
+                                        mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    }*/
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                                 }
@@ -309,12 +335,30 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     intent.putExtra("Diff", 2);
                                     startActivityForResult(intent, 0);
                                     double score = intent.getDoubleExtra("Result",0.0);
-                                    String event = "You started the MANA test";
-                                    mAdapter.addEvent(event);
-                                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    //String event = "You started the MANA test";
+                                    //mAdapter.addEvent(event);
+                                    //mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                                 }
                                 else if (game_type.equals("")){
                                     String event = mNewEvent.generateNewEvent(mPlayer,false);
+                                    /*if (event == "MANA"){
+                                        Intent intent = new Intent(EventActivity.this, ManaTestMainAct.class);
+                                        intent.putExtra("Diff", 2);
+                                        startActivityForResult(intent, 0);
+                                        double score = intent.getDoubleExtra("Result",0.0);
+                                        event = "You started the MANA test";
+                                        mAdapter.addEvent(event);
+                                        mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    }
+                                    if(event == "ATRO"){
+                                        Intent intent = new Intent(EventActivity.this, CardGameActivity.class);
+                                        intent.putExtra("Diff", 2);
+                                        startActivityForResult(intent, 0);
+                                        double score = intent.getDoubleExtra("Result",0.0);
+                                        event = "You started the HIST test";
+                                        mAdapter.addEvent(event);
+                                        mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    }*/
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                                 }
