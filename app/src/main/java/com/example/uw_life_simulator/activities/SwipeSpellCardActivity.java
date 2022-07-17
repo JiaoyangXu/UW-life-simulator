@@ -70,7 +70,7 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
 
             @Override
             public void onLeftCardExit(Object o) {
-                cardInfo_list.remove(card_list.size()-1);
+                cardInfo_list.remove(cardInfo_list.size()-1);
             }
 
             @Override
