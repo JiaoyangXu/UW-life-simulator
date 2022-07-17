@@ -171,7 +171,7 @@ class GameChoiceHotDay extends GameChoiceEvent{
  **/
 class GameChoiceTest extends GameChoiceEvent{
     GameChoiceTest(){
-        this.repeatCount = 5;
+        this.repeatCount = 3;
         this.description = "Today is test date, you need to go for your test";
         this.choice1_description = "OK";
         this.choice2_description = "Good luck for me";
