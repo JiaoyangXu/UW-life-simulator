@@ -200,6 +200,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             }
         }
 
+        //update numTerm
+        if (curPlayer.numTerm == 0){
+            curPlayer.numTerm = 1;
+        }
+
         mPlayer.setPlayerAttribute(curPlayer);
         Button mNewEventButton = findViewById(R.id.Eventbutton);
         mNewEventButton.setOnClickListener((v) -> {
