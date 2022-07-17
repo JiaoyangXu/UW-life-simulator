@@ -218,7 +218,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         Button mNewEventButton = findViewById(R.id.Eventbutton);
         mNewEventButton.setOnClickListener((v) -> {
             Event_Count += 1;
-            if(Event_Count >= 20){
+            if(Event_Count >= 21){
 
                 AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
                         .setMessage(R.string.proceed_to_summary)
