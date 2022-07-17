@@ -180,7 +180,7 @@ class GameChoiceTest extends GameChoiceEvent{
     @Override
     public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
 
-        if (repeatCount == 5)
+        /*if (repeatCount == 5)
         {
             if (playerAttribute.course1Code != "")
             {
@@ -200,7 +200,7 @@ class GameChoiceTest extends GameChoiceEvent{
                 return returnTests(playerAttribute.course2Code);
             }
             repeatCount --;
-        }
+        }*/
 
         if (repeatCount == 3)
         {
@@ -208,7 +208,8 @@ class GameChoiceTest extends GameChoiceEvent{
             {
                 //test3
                 repeatCount --;
-                return returnTests(playerAttribute.course3Code);
+                //return returnTests(playerAttribute.course3Code);
+                return returnTests("MANA");
             }
             repeatCount --;
         }
@@ -219,7 +220,8 @@ class GameChoiceTest extends GameChoiceEvent{
             {
                 //test4
                 repeatCount --;
-                return returnTests(playerAttribute.course4Code);
+                //return returnTests(playerAttribute.course4Code);
+                return returnTests("ATRO");
             }
             repeatCount --;
         }
@@ -239,15 +241,15 @@ class GameChoiceTest extends GameChoiceEvent{
             case "MANA":
                 return new GameTestMana();
             case "HERB":
-                return new GameTestHerb();
+                return new GameTestMana();
             case "ATRO":
                 return new GameTestAtro();
             case "SPEL":
-                return new GameTestSpel();
+                return new GameTestAtro();
             case "HIST":
-                return new GameTestHist();
+                return new GameTestAtro();
             default:
-                return new GameTestMedi();
+                return new GameTestMana();
         }
     }
 }
