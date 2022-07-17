@@ -15,14 +15,14 @@ public class NewEvent {
         {
             if (!gce.repeated())
             {
-                //gce = Factory.generateRandomChoiceEvent(pa);
-                gce = Factory.generateChoiceEvent(1602);
+                gce = Factory.generateRandomChoiceEvent(pa);
+                //gce = Factory.generateChoiceEvent(1602);
             }
         }
         else
         {
-            //gce = Factory.generateRandomChoiceEvent(pa);
-            gce = Factory.generateChoiceEvent(1602);
+            gce = Factory.generateRandomChoiceEvent(pa);
+            //gce = Factory.generateChoiceEvent(1602);
         }
         List<String> ret = new ArrayList<>();
         ret.add(gce.description);
