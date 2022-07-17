@@ -809,6 +809,8 @@ class GameChoiceLostCity01 extends GameChoiceEvent {
     GameChoiceLostCity01() {
         this.description = "This day, when you come home, you find the mana vibration of book become more fierce" +
                 "Do you want to open it and have a look?";
+        this.choice1_description = "Yes, I will have a look";
+        this.choice2_description = "No, it's too weird";
         this.Id = 1600;
     }
 
@@ -854,13 +856,14 @@ class GameChoiceLostCity02 extends GameChoiceEvent {
         this.description = "The portal has been lasted for a while, do you want to get in and " +
                 "look what's inside?";
         this.Id = 1601;
+        this.choice1_description = "Yes, I will have a look";
+        this.choice2_description = "No, it's too weird";
     }
 
     @Override
     public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
         if (playerResponse) {
-            playerAttribute.eventChain1Status = -2;
-            return new GameEventNull();
+            return new GameEventLostCity2Continue();
         }
         return new GameEventLostCity2Finish();
 
@@ -931,13 +934,13 @@ class GameChoiceLostCity03 extends GameChoiceEvent {
         if (playerResponse) {
             if (lastMark >= 50)
             {
-                return new GameEventLostCity2Finish();
+                return new GameEventLostCity3Hist();
             }
             return new GameEventLostCity3Lost();
         }
         if (lastMark >= 50)
         {
-            return new GameEventLostCity2Finish();
+            return new GameEventLostCity3Mana();
         }
         return new GameEventLostCity3Lost();
 
