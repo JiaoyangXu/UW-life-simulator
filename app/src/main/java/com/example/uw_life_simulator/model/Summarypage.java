@@ -48,7 +48,12 @@ public class Summarypage extends AppCompatActivity {
         int money = curPlayer.getWealth();
 
         int pressure = curPlayer.getPressure();
-        if(money < 0 || pressure > 100 || gpa < 50) {
+
+        int term = curPlayer.getNumTerm();
+        int next_term = term + 1;
+        if(term == 6){
+
+        } else if(money < 0 || pressure > 100 || gpa < 50) {
             setContentView(R.layout.summary_page_coop);
             Button Button3 = findViewById(R.id.button3);
             Button3.setOnClickListener((v) -> {
@@ -94,6 +99,12 @@ public class Summarypage extends AppCompatActivity {
                 }
             }
 
+            TextView curCourseTV5 = (TextView) findViewById(R.id.key_attr_text1);
+            TextView curCourseTV6 = (TextView) findViewById(R.id.key_attr_text2);
+            TextView curCourseTV7 = (TextView) findViewById(R.id.key_attr_text3);
+            curCourseTV5.setText("Your total GPA is" + gpa);
+            curCourseTV6.setText("You currently have" + money + "$");
+            curCourseTV7.setText("Your Pressure is" + pressure);
             //button
             Button Button10 = findViewById(R.id.button10);
             Button10.setOnClickListener((v) -> {
@@ -114,29 +125,5 @@ public class Summarypage extends AppCompatActivity {
     }
 
 
-    private void update( List<Integer> list) {
-        int index = 1;
-        for(int i = 0; i < list.size();i++){
-            if(80 >= list.get(i)){
-                index = 2;
-            } else if(60 >= list.get(i)) {
-                index = 3;
-            }
-        }
-        TextView edit;
-        TextView edit1;
-        /*edit1 = findViewById(R.id.textView1);
-        edit = findViewById(R.id.textView1);
-        if(index == 1){
-            edit.append("Congratulation");
-            edit1.append("You get high GPA in this term");
-        } else if(index == 2){
-            edit.append("Congratulation");
-            edit1.append("You finish this term");
-        }else if(index == 3){
-            edit.append("Sorry");
-            edit1.append("You fail some class, work hard on next term!");
-        }*/
 
-    }
 }
