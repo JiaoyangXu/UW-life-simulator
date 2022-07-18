@@ -9,22 +9,27 @@
     <TextView
         android:id="@+id/countdown"
         android:layout_width="80dp"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:text="60"
-        android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textColor="#FFC107"
+        android:textSize="30dp"
+        android:fontFamily="@font/almendra_sc"
         tools:ignore="MissingConstraints">
 
     </TextView>
 
-    <Button
+    <TextView
         android:id="@+id/countdownbutton"
-        android:layout_width="260dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="2dp"
-        android:text="Please find the constellation that are the same"
+        android:layout_width="310dp"
+        android:layout_height="57dp"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:text="\n\nPlease find the constellation that are the same:"
+        android:textColor="#FFC107"
+        android:fontFamily="@font/almendra_sc"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     <RelativeLayout
@@ -216,7 +221,7 @@
             android:layout_width="81dp"
             android:layout_height="121dp"
             app:srcCompat="@drawable/image_star2"
-            tools:ignore="MissingConstraints"
+            tools:ignore="MissingConstraints g"
             tools:layout_editor_absoluteX="41dp"
             tools:layout_editor_absoluteY="52dp" />
 
@@ -248,15 +253,12 @@
             android:layout_height="121dp"
             app:srcCompat="@drawable/image_star3"
             tools:ignore="MissingConstraints" />
-
         <ImageView
             android:id="@+id/imageView11"
             android:layout_width="76dp"
             android:layout_height="123dp"
             app:srcCompat="@drawable/images"
             tools:ignore="MissingConstraints" />
-
-
     </RelativeLayout>
 
 
