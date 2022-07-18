@@ -37,6 +37,10 @@ public class GameEventGenerator {
             case 5: return new GameChoiceTest();
             case 6: return new GameChoiceLostCityBegin();
             case 10: return new GameChoiceComet();
+            case 11: return new GameChoiceHair();
+            case 12: return new GameChoiceUnicorn();
+            case 13: return new GameChoiceSpell();
+            case 14: return new GameChoiceFight();
 
             case 1600: return new GameChoiceLostCity01();
             case 1601: return new GameChoiceLostCity02();
@@ -294,6 +298,86 @@ class GameChoiceComet extends GameChoiceEvent {
             return new GameEventCometYes();
         }
         return new GameEventCometNo();
+    }
+}
+
+/**
+ * EventID: 11
+ **/
+class GameChoiceHair extends GameChoiceEvent {
+    GameChoiceHair() {
+        this.description = "You accidentally dropped your hair into the potion";
+        this.choice1_description = "Pick it up";
+        this.choice2_description = "Just let it go";
+        this.Id = 11;
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventHairYes();
+        }
+        return new GameEventHairNo();
+    }
+}
+
+/**
+ * EventID: 12
+ **/
+class GameChoiceUnicorn extends GameChoiceEvent {
+    GameChoiceUnicorn() {
+        this.description = "You found a unicorn near SLC!";
+        this.choice1_description = "Take a ride on the unicorn";
+        this.choice2_description = "Watch and pray";
+        this.Id = 12;
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventUnicornYes();
+        }
+        return new GameEventUnicornNo();
+    }
+}
+
+/**
+ * EventID: 13
+ **/
+class GameChoiceSpell extends GameChoiceEvent {
+    GameChoiceSpell() {
+        this.description = "You have an upcoming spell test!";
+        this.choice1_description = "Take one week to review";
+        this.choice2_description = "Give up and play";
+        this.Id = 13;
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventSpellYes();
+        }
+        return new GameEventSpellNo();
+    }
+}
+
+/**
+ * EventID: 14
+ **/
+class GameChoiceFight extends GameChoiceEvent {
+    GameChoiceFight() {
+        this.description = "You witnessed a fight in front of the library";
+        this.choice1_description = "Run away quickly";
+        this.choice2_description = "Interfere both sides";
+        this.Id = 14;
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventFightYes();
+        }
+        return new GameEventFightNo();
     }
 }
 
@@ -776,6 +860,188 @@ class GameEventCometNo extends GameEvent{
     public void visit(PlayerAttribute attribute) {
         attribute.pressure += 5;
         attribute.AtroSkill += 1;
+    }
+}
+
+/**
+ * EventID: 20
+ * Effect: Pressure - 5, HERB + 1
+ */
+class GameEventHairYes extends GameEvent{
+    public GameEventHairYes(){
+        this.Id = 20;
+        this.description = "You now have a clone of yourself!";
+    }
+
+    /**
+     * Event's effect on the player(Pressure - 5, HERB + 1)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.pressure -= 5;
+        attribute.HerbSkill += 1;
+    }
+}
+
+/**
+ * EventID: 21
+ * Effect: Health - 5, GPA + 1
+ */
+class GameEventHairNo extends GameEvent{
+    public GameEventHairNo(){
+        this.Id = 21;
+        this.description = "You are bald and stronger.";
+    }
+
+    /**
+     * Event's effect on the player(Health - 5, GPA + 1)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.health -= 5;
+        attribute.GPA += 1;
+    }
+}
+
+/**
+ * EventID: 22
+ * Effect: Money - 1000
+ */
+class GameEventUnicornYes extends GameEvent{
+    public GameEventUnicornYes(){
+        this.Id = 22;
+        this.description = "You are a warrior.";
+    }
+
+    /**
+     * Event's effect on the player(Money - 1000)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.money -= 1000;
+    }
+}
+
+/**
+ * EventID: 23
+ * Effect: Luck + 10
+ */
+class GameEventUnicornNo extends GameEvent{
+    public GameEventUnicornNo(){
+        this.Id = 23;
+        this.description = "Go and buy lottery tickets";
+    }
+
+    /**
+     * Event's effect on the player(Luck + 10)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.luck += 10;
+    }
+}
+
+
+/**
+ * EventID: 24
+ * Effect: SpelSkill + 20
+ */
+class GameEventSpellYes extends GameEvent{
+    public GameEventSpellYes(){
+        this.Id = 24;
+        this.description = "You reach mid-level on Spell";
+    }
+
+    /**
+     * Event's effect on the player(SpelSkill + 20)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.SpelSkill += 20;
+    }
+}
+
+/**
+ * EventID: 25
+ * Effect: Health + 10, SpelSkill - 5
+ */
+class GameEventSpellNo extends GameEvent{
+    public GameEventSpellNo(){
+        this.Id = 25;
+        this.description = "You gain happiness but failed the spell test.";
+    }
+
+    /**
+     * Event's effect on the player(Health + 10, SpelSkill - 5)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.health += 10;
+        attribute.SpelSkill -= 5;
+    }
+}
+
+
+/**
+ * EventID: 26
+ * Effect: Money - 500
+ */
+class GameEventFightYes extends GameEvent{
+    public GameEventFightYes(){
+        this.Id = 26;
+        this.description = "They destroyed the front door and all students are penalized";
+    }
+
+    /**
+     * Event's effect on the player(Money - 500)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.money -= 500;
+    }
+}
+
+/**
+ * EventID: 27
+ * Effect: IQ - 5, Money + 500
+ */
+class GameEventFightNo extends GameEvent{
+    public GameEventFightNo(){
+        this.Id = 27;
+        this.description = "They hit your brain but you are awarded because of doing boldly what is righteous.";
+    }
+
+    /**
+     * Event's effect on the player(IQ - 5, Money + 500)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.IQ -= 5;
+        attribute.money += 500;
     }
 }
 

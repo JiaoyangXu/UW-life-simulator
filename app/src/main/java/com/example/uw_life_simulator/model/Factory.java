@@ -184,10 +184,14 @@ class RandomEventListCommon
     {
         IqList.add(3);
         IqList.add(6);
+        IqList.add(14);
         WealthList.add(1);
         HealthList.add(4);
+        HealthList.add(11);
+        HealthList.add(13);
         LuckList.add(2);
         LuckList.add(10);
+        LuckList.add(12);
         GeneralList.add(0);
 
     }

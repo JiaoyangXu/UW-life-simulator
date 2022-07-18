@@ -13,10 +13,11 @@
 - [X] Buy Spell Card - Conrad, Jason
 - [X] Swipe Spell Card to use the card - Jason
 - [X] Talent selection page, entrance page UI rework - Conrad
+- [X] Random Event Page connects frontend and backend - Echo
+>>>>>>> x263yu
 
 ## TO-DO For Demo
 - [ ] Main UI (event list page)  - Karen
-- [ ] Random Event Page (a class of different possible events, pop up) - Echo
 - [ ] Summary Page - Robert
 - [ ] Player Info Database - Conrad
 
@@ -28,6 +29,7 @@
 - [ ] Work Term Event Set (Backend Code)
 - [ ] Mini Games - Hunter, Robert
 - [ ] Art Design - Karen
+- [ ] Create more event cases - Echo
 
 Reference:
 Background Picture:  zeefumdajma on https://www.reddit.com/r/uwaterloo/comments/83rs5w/mr_goose_on_snapchat/

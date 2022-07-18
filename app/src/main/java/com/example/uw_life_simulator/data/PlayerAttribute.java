@@ -152,7 +152,7 @@ public class PlayerAttribute implements Subject {
         this.IQ = IQ;
         this.luck = luck;
         this.wealth = wealth;
-        this.money = wealth * 1000;
+        // this.money = wealth * 1000;
         this.health = health;
         this.pressure = 30 - health * 3;
         this.GPA = 80 + IQ * 2;
