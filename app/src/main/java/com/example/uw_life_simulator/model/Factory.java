@@ -186,6 +186,8 @@ class RandomEventListCommon
         IqList.add(6);
         IqList.add(14);
         WealthList.add(1);
+        WealthList.add(12);
+        WealthList.add(13);
         HealthList.add(4);
         HealthList.add(11);
         HealthList.add(13);

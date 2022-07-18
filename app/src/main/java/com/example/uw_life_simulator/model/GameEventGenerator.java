@@ -381,6 +381,26 @@ class GameChoiceFight extends GameChoiceEvent {
     }
 }
 
+/**
+ * EventID: 15
+ **/
+class GameChoiceIcecream extends GameChoiceEvent {
+    GameChoiceIcecream() {
+        this.description = "There is a new ice cream shop on campus.";
+        this.choice1_description = "Go to buy one";
+        this.choice2_description = "I don't like dessert";
+        this.Id = 14;
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventFightYes();
+        }
+        return new GameEventFightNo();
+    }
+}
+
 
 /**
  * NULL events which does nothing
