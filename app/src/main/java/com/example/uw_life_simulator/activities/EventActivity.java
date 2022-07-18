@@ -310,6 +310,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mNewEventButton.setOnClickListener((v) -> {
             Event_Count += 1;
             if(Event_Count >= 21){
+                courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course1Code,course1mark);
+                courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course2Code,course2mark);
+                courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course3Code,course3mark);
+                courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course4Code,course4mark);
                 playerAttributeDAO.deleteAll();
                 playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
 
@@ -492,6 +496,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         });
         Button mQuitButton = findViewById(R.id.QuitButton);
         mQuitButton.setOnClickListener((v) -> {
+            courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course1Code,course1mark);
+            courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course2Code,course2mark);
+            courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course3Code,course3mark);
+            courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course4Code,course4mark);
             playerAttributeDAO.deleteAll();
             playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
             Intent intent = new Intent(EventActivity.this, MainActivity.class);
