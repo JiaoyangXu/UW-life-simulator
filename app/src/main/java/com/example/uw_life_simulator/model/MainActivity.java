@@ -101,8 +101,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void quitApp(View view) {
-        DbCleanService dbCleanService = new DbCleanService(getApplicationContext());
-        dbCleanService.cleanDb();
+        System.exit(0);
+//        DbCleanService dbCleanService = new DbCleanService(getApplicationContext());
+//        dbCleanService.cleanDb();
 
         //Intent intent = new Intent(MainActivity.this, DrawSpellCardActivity.class);
         //startActivity(intent);
