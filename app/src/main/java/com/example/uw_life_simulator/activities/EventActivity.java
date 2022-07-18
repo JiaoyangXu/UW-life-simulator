@@ -312,6 +312,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         curCourseTV3.setText(curPlayer.course3Code);
         curCourseTV4.setText(curPlayer.course4Code);
 
+        //update numTerm
+        if (curPlayer.numTerm == 0){
+            curPlayer.numTerm = 1;
+        }
+
         String term = "Current Term :\n" + String.valueOf(curPlayer.getNumTerm());
         curTerm.setText(term);
 
@@ -323,10 +328,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
 
 
 
-        //update numTerm
-        if (curPlayer.numTerm == 0){
-            curPlayer.numTerm = 1;
-        }
+
 
         mPlayer.setPlayerAttribute(curPlayer);
         Button mNewEventButton = findViewById(R.id.Eventbutton);
