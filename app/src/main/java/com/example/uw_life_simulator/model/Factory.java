@@ -61,6 +61,23 @@ public class Factory {
             }
         }
 
+        if (iq < 0)
+        {
+            iq = 0;
+        }
+        if (wealth < 0)
+        {
+            wealth = 0;
+        }
+        if (luck < 0)
+        {
+            luck = 0;
+        }
+        if (health < 0)
+        {
+            health = 0;
+        }
+
         int rand = random.nextInt((iq + wealth + luck + health) + eventListCommon.GeneralList.size());
         if (rand < iq)
         {
