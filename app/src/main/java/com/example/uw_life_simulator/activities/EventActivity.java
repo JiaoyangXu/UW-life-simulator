@@ -64,10 +64,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     NewEvent mNewEvent;
     boolean called_by_event = false;
     int Event_Count = 0;
-    int course1mark = 81;
-    int course2mark = 82;
-    int course3mark = 83;
-    int course4mark = 84;
+    int course1mark = (int) ((Math.random() * (100 - 80)) + 80);
+    int course2mark = (int) ((Math.random() * (100 - 80)) + 80);
+    int course3mark = (int) ((Math.random() * (100 - 80)) + 80);
+    int course4mark = (int) ((Math.random() * (100 - 80)) + 80);
     String course1type = "";
     String course2type = "";
     String course3type = "";
