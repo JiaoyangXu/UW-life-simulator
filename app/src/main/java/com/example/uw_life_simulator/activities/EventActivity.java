@@ -64,10 +64,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     NewEvent mNewEvent;
     boolean called_by_event = false;
     int Event_Count = 0;
-    int course1mark = 81;
-    int course2mark = 82;
-    int course3mark = 83;
-    int course4mark = 84;
+    int course1mark = (int) ((Math.random() * (100 - 80)) + 80);
+    int course2mark = (int) ((Math.random() * (100 - 80)) + 80);
+    int course3mark = (int) ((Math.random() * (100 - 80)) + 80);
+    int course4mark = (int) ((Math.random() * (100 - 80)) + 80);
     String course1type = "";
     String course2type = "";
     String course3type = "";
@@ -219,8 +219,8 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             ATRO_TEST_NUM += 1;
                         }
                     }
-                    //mAdapter.addEvent(event);
-                    //mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                    mAdapter.addEvent(event);
+                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                     called_by_event = false;
                 }
 
@@ -285,6 +285,8 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         TextView curCourseTV3 = (TextView)findViewById(R.id.textView26);
         TextView curCourseTV4 = (TextView)findViewById(R.id.textView27);
 
+        TextView curTerm = (TextView)findViewById(R.id.textView28);
+
         /*if (curSelection.size() > 0) {
             int count = curSelection.size();
             if (count >= 1) {
@@ -310,6 +312,14 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         curCourseTV3.setText(curPlayer.course3Code);
         curCourseTV4.setText(curPlayer.course4Code);
 
+        //update numTerm
+        if (curPlayer.numTerm == 0){
+            curPlayer.numTerm = 1;
+        }
+
+        String term = "Current Term :\n" + String.valueOf(curPlayer.getNumTerm());
+        curTerm.setText(term);
+
         String course1type = curPlayer.course1Code.substring(0,4);
         String course2type = curPlayer.course2Code.substring(0,4);
         String course3type = curPlayer.course3Code.substring(0,4);
@@ -318,16 +328,13 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
 
 
 
-        //update numTerm
-        if (curPlayer.numTerm == 0){
-            curPlayer.numTerm = 1;
-        }
+
 
         mPlayer.setPlayerAttribute(curPlayer);
         Button mNewEventButton = findViewById(R.id.Eventbutton);
         mNewEventButton.setOnClickListener((v) -> {
             Event_Count += 1;
-            if(Event_Count >= 21){
+            if(Event_Count >= 22){
                 //end random generation
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course1Code,course1mark);
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course2Code,course2mark);
