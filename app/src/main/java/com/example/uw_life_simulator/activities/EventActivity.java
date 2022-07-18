@@ -340,6 +340,16 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course2Code,course2mark);
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course3Code,course3mark);
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course4Code,course4mark);
+
+                PlayerAttribute playerAttribute = mPlayer.getPlayerAttribute();
+                playerAttribute.setIQ(playerAttributeDAO.getIQ1().get(0));
+                playerAttribute.setLuck(playerAttributeDAO.getLuck1().get(0));
+                playerAttribute.setHealth(playerAttributeDAO.getHealth1().get(0));
+                playerAttribute.setWealth(playerAttributeDAO.getWealth1().get(0));
+
+                mPlayer.setPlayerAttribute(playerAttribute);
+
+
                 playerAttributeDAO.deleteAll();
                 playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
 
@@ -513,6 +523,16 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course2Code,course2mark);
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course3Code,course3mark);
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course4Code,course4mark);
+
+            PlayerAttribute playerAttribute = mPlayer.getPlayerAttribute();
+            playerAttribute.setIQ(playerAttributeDAO.getIQ1().get(0));
+            playerAttribute.setLuck(playerAttributeDAO.getLuck1().get(0));
+            playerAttribute.setHealth(playerAttributeDAO.getHealth1().get(0));
+            playerAttribute.setWealth(playerAttributeDAO.getWealth1().get(0));
+
+            mPlayer.setPlayerAttribute(playerAttribute);
+
+
             playerAttributeDAO.deleteAll();
             playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
             //update grade
@@ -526,6 +546,17 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course2Code,course2mark);
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course3Code,course3mark);
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course4Code,course4mark);
+
+
+            PlayerAttribute playerAttribute = mPlayer.getPlayerAttribute();
+            playerAttribute.setIQ(playerAttributeDAO.getIQ1().get(0));
+            playerAttribute.setLuck(playerAttributeDAO.getLuck1().get(0));
+            playerAttribute.setHealth(playerAttributeDAO.getHealth1().get(0));
+            playerAttribute.setWealth(playerAttributeDAO.getWealth1().get(0));
+
+            mPlayer.setPlayerAttribute(playerAttribute);
+
+
             playerAttributeDAO.deleteAll();
             playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
             Intent intent = new Intent(EventActivity.this, MainActivity.class);

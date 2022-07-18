@@ -69,7 +69,7 @@ public class DbCleanService {
     }
 
     public void uncheckAllSpellCard() {
-        spellCardDAO.unselectAll();
-        spellCardDAO.unUsedAll();
+
+        spellCardDAO.deleteAll();
     }
 }

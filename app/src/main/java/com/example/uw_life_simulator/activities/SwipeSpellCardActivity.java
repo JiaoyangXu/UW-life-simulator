@@ -5,14 +5,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
+import com.example.uw_life_simulator.DAO.PlayerAttributeDAO;
 import com.example.uw_life_simulator.DAO.SpellCardDAO;
+import com.example.uw_life_simulator.Database.PlayerAttributeDatabase;
 import com.example.uw_life_simulator.Database.SpellCardDatabase;
 import com.example.uw_life_simulator.R;
 import com.example.uw_life_simulator.component.CardConfirmationPopUp;
@@ -27,6 +31,8 @@ import java.util.List;
 
 
 public class SwipeSpellCardActivity extends AppCompatActivity {
+    private PlayerAttributeDatabase playerAttributeDatabase;
+    private PlayerAttributeDAO playerAttributeDAO;
 
     List<SpellCard> spellCards;
     ArrayList<Integer> card_list;
@@ -35,6 +41,7 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
     SpellCardDAO spellCardDAO;
     Boolean switchContext;
     ArrayList<String> cardInfo_list;
+    ArrayList<Integer> cardAddr_list;
 
 
     cardConfirmationAdapter cardConfirmationAdapter;
@@ -59,6 +66,8 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
                 String myString = spellCardDAO.getNameByAddr(card_list.get(0));
 
                 cardInfo_list.add(myString);
+                cardAddr_list.add(card_list.get(0));
+
                 card_list.remove(0);
                 cardAdapter.notifyDataSetChanged();
 
@@ -70,7 +79,9 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
 
             @Override
             public void onLeftCardExit(Object o) {
+
                 cardInfo_list.remove(cardInfo_list.size()-1);
+                cardAddr_list.remove(cardAddr_list.size()-1);
             }
 
             @Override
@@ -135,11 +146,19 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 switchContext = true;
+                updateUsed();
+                update_playAttribute(cardInfo_list);
                 dialog.dismiss();
                 finish();
             }
         });
 
+    }
+
+    private void updateUsed() {
+        for (Integer card : cardAddr_list) {
+            spellCardDAO.updateUsed(card);
+        }
     }
 
     private void initializeAll () {
@@ -152,12 +171,20 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
 
 
     private void initializeDb() {
+        this.playerAttributeDatabase = Room.databaseBuilder(this,
+                        PlayerAttributeDatabase.class, "PlayerAttributes").
+                allowMainThreadQueries().fallbackToDestructiveMigration().build();
+        this.playerAttributeDAO = playerAttributeDatabase.playerAttributeDAO();
+
+
          spellCardDatabase = Room.databaseBuilder(getApplicationContext(),
                         SpellCardDatabase.class, "SpellCard").allowMainThreadQueries().
                 fallbackToDestructiveMigration().build();
          spellCardDAO = spellCardDatabase.spellCardDAO();
 
-         spellCards = spellCardDAO.getSelectedSpellCard();
+         spellCards = spellCardDAO.getSelectedNotUsedSpellCard();
+
+         if (spellCards.isEmpty()) show_empty();
 
          for (SpellCard card : spellCards) {
              if (card == null) break;
@@ -166,9 +193,45 @@ public class SwipeSpellCardActivity extends AppCompatActivity {
 
     }
 
+    private void update_playAttribute(List<String> list) {
+        for (String word : list) {
+            switch (word) {
+                case "health_card":
+                    playerAttributeDAO.increaseHealth(2);
+                    break;
+                case "iq_card":
+                    playerAttributeDAO.increaseIQ(2);
+                    break;
+                case "wealth_card":
+                    playerAttributeDAO.increaseWealth(2);
+                    break;
+                case "luck_card":
+                    playerAttributeDAO.increaseLuck(2);
+                    break;
+            }
+        }
+    }
+
+    private void show_empty() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                .setMessage("You don't have any available card for use")
+                .setCancelable(true)
+                .setTitle("NO CARD")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Send the TryAgain button event back to the host fragment
+                        dialog.dismiss();
+                        finish();
+                        return;
+                    }
+                })
+                .show();
+    }
+
     private void initializeData() {
         card_list = new ArrayList<>();
         cardInfo_list = new ArrayList<>();
+        cardAddr_list = new ArrayList<>();
     }
 
     private void storeUsedCard(Integer addr) {
