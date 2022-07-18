@@ -37,21 +37,12 @@ public class Course {
     public int award;
 
     @ColumnInfo(name = "prereq")
-    public int prereq;
+    public String prereq;
 
-    @Ignore
-    public Course(String courseCode, String courseName, int difficulty, int usefulness) {
-        UUID uuid = UUID.randomUUID();
-        this.courseID = uuid.hashCode();
-        this.courseCode = courseCode;
-        this.courseName = courseName;
-        this.difficulty = difficulty;
-        this.usefulness = usefulness;
-        this.isChecked = 0;
-        this.award = 0;
-    }
 
-    public Course(String courseCode, String courseName, int difficulty, int usefulness, int award) {
+
+    public Course(String courseCode, String courseName, int difficulty, int usefulness, int award,
+                  String prereq) {
         UUID uuid = UUID.randomUUID();
         this.courseID = uuid.hashCode();
         this.courseCode = courseCode;
@@ -60,7 +51,7 @@ public class Course {
         this.usefulness = usefulness;
         this.isChecked = 0;
         this.award = award;
-        this.prereq = -1;
+        this.prereq = prereq;
     }
 
 
@@ -74,7 +65,7 @@ public class Course {
 
     public boolean checkValidity(List<Integer> takenCourses)
     {
-        if (!takenCourses.contains(prereq) && prereq != -1)
+        if (!takenCourses.contains(prereq) && prereq != "")
         {
             return false;
         }

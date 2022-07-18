@@ -23,6 +23,7 @@ import com.example.uw_life_simulator.data.CourseSelectionRecord;
 import com.example.uw_life_simulator.data.PlayerAttribute;
 import com.example.uw_life_simulator.model.Summarypage;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -79,7 +80,25 @@ public class CourseSelectionService {
             return false;
         }
 
+        if (!checkPre()) {
+            AlertDialog alertDialog = new AlertDialog.Builder(context,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                    .setMessage("You have to take lower year courses before taking upper year course")
+                    .setCancelable(true)
+                    .setTitle("PREREQUISITE NOT SATISFIED")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // Send the TryAgain button event back to the host fragment
+                            dialog.dismiss();
+                            return;
+                        }
+                    })
+                    .show();
+            uncheckAllBoxes();
+            return false;
+        }
 
+
+        // insert course selection info to database
         for (String code : courseCode) {
             CourseSelectionRecord record = new CourseSelectionRecord(1, code);
             courseSelectionRecordDAO.insertAll(record);
@@ -89,6 +108,25 @@ public class CourseSelectionService {
         updatePlayerAttribute();
         return true;
     }
+
+    private boolean checkPre() {
+        for (String code : courseCode) {
+
+            String courseLevel = code.substring(code.length() - 3);
+
+
+            if ( courseLevel.equals("100")) continue;
+
+            String pre = courseDao.getPreqByName(code);
+            List<Course> taken = courseDao.getTakenPreCourse(pre);
+
+            if (taken == null || taken.size() == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     private void updatePlayerAttribute() {
 

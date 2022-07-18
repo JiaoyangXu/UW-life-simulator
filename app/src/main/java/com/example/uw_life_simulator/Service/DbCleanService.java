@@ -45,7 +45,8 @@ public class DbCleanService {
     }
 
     public void cleanDb() {
-        uncheckAllCourses();
+        //uncheckAllCourses();
+        cleanCoursesTable();
         cleanCourseRecordTable();
         cleanPlayerTable();
         uncheckAllSpellCard();

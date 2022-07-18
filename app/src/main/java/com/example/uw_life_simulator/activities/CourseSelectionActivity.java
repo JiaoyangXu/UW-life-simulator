@@ -308,36 +308,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
      * @return the list of courses
      */
     private List<Course> initializeCourses() {
-
-        Course MANA100 = new Course("MANA 100", "Introduction to Magic", 20, 80,1);
-        Course HERB100 = new Course("HERB 100", "Introduction to Herbology", 50, 90,1);
-        Course HIST100 = new Course("HIST 100", "History of Magic", 20, 30,1);
-        Course MEDI100 = new Course("MEDI 100", "Introduction to Medication", 70, 80,1);
-        Course SPEL100 = new Course("SPEL 100", "Introduction to Spells", 80, 80,1);
-        Course ATRO100 = new Course("ATRO 100", "Introduction to Astronomy", 60, 30,1);
-
-        Course MANA200 = new Course("MANA 200", "Flying", 70, 90,2);
-        Course HERB200 = new Course("HERB 200", "Wondrous Water Plants", 30, 70,2);
-        Course SPEL200 = new Course("SPEL 200", "Water-Making Spell", 90, 100,2);
-        Course HIST200 = new Course("SPEL 200", "Medieval Assembly of European Wizards", 50, 40,2);
-        Course MEDI200 = new Course("MEDI 200", "Potions", 70, 80,2);
-        Course ATRO200 = new Course("ATRO 200", "Star charts", 60, 30,2);
-
         List<Course> courses = new ArrayList<>();
-
-
-        courses.add(MANA100);
-        courses.add(HERB100);
-        courses.add(HIST100);
-        courses.add(MEDI100);
-        courses.add(SPEL100);
-        courses.add(ATRO100);
-        courses.add(HERB200);
-        courses.add(MANA200);
-        courses.add(SPEL200);
-        courses.add(HIST200);
-        courses.add(MEDI200);
-        courses.add(ATRO200);
 
 
         return courses;

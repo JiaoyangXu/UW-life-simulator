@@ -23,6 +23,11 @@ public interface CourseDao {
     @Query("SELECT * FROM course WHERE isChecked = 0")
     List<Course> getUnCheckedCourse();
 
+    @Query("SELECT * FROM course WHERE code = :pre AND isChecked = 1")
+    List<Course> getTakenPreCourse(String pre);
+
+    @Query("SELECT prereq FROM course WHERE code = :name")
+    String getPreqByName(String name);
 
     @Insert
     void insertAll(Course course);
