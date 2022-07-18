@@ -63,15 +63,15 @@ public class CardGameActivity extends AppCompatActivity {
             ImageView im16 = (ImageView) findViewById(R.id.imageView8);
 
             AlphaAnimation slow_disappear = new AlphaAnimation(1f, 0);
-            slow_disappear.setDuration(3000);
+            slow_disappear.setDuration(1000);
             slow_disappear.setFillAfter(true);
 
             AlphaAnimation quick_disappear = new AlphaAnimation(1f, 0);
-            quick_disappear.setDuration(1000);
+            quick_disappear.setDuration(500);
             quick_disappear.setFillAfter(true);
 
             AlphaAnimation display = new AlphaAnimation(0, 1f);
-            display.setDuration(1000);
+            display.setDuration(500);
             display.setFillAfter(true);
 
             ImageView[] recorded = {null};

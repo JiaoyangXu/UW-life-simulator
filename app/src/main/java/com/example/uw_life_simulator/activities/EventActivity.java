@@ -253,7 +253,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         TextView tv1 = (TextView)findViewById(R.id.textView10); // Pressure
         tv1.setText(String.valueOf(curPlayer.getPressure()));
         TextView tv2 = (TextView)findViewById(R.id.textView12); // Wealth
-        tv2.setText(String.valueOf(curPlayer.getWealth()));
+        tv2.setText(String.valueOf(curPlayer.getMoney()));
         TextView tv3 = (TextView)findViewById(R.id.textView14); // GPA
         tv3.setText(String.valueOf(curPlayer.getGPA()));
 

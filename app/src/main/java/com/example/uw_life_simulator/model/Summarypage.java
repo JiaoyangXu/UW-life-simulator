@@ -50,8 +50,8 @@ public class Summarypage extends AppCompatActivity {
         int pressure = curPlayer.getPressure();
 
         int term = curPlayer.getNumTerm();
-        int next_term = term + 1;
-        if(term == 6){
+
+        if(term == 7){
             setContentView(R.layout.finish);
             Button Button3 = findViewById(R.id.button3);
             Button3.setOnClickListener((v) -> {
