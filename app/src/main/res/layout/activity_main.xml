@@ -15,127 +15,154 @@
         android:orientation="vertical">
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".7"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/panel_4"
-            android:orientation="vertical"
-            app:layout_constraintWidth_percent="0.95"
-            app:layout_constraintHeight_percent="0.85"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+        android:layout_weight=".8">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight=".32"></LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".54"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/button5"
-                    android:layout_width="200dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_weight=".1"
-                    android:background="@drawable/button_2"
-                    android:fontFamily="@font/bigshot_one"
-                    android:onClick="createEvent"
-                    android:shadowColor="#ffffff"
-                    android:shadowRadius="2"
-                    android:text="LOAD"
-                    android:textColor="#000000"
-                    android:textSize="23dp" />
+                android:background="@drawable/panel_4"
+                android:orientation="vertical"
+                app:layout_constraintWidth_percent="0.95"
+                app:layout_constraintHeight_percent="0.85"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".01"></LinearLayout>
-
-                <Button
-                    android:id="@+id/button6"
-                    android:layout_width="200dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_weight=".1"
-                    android:background="@drawable/button_2"
-                    android:fontFamily="@font/bigshot_one"
-                    android:onClick="createTalent"
-                    android:shadowColor="#ffffff"
-                    android:shadowRadius="5"
-                    android:text="NEW"
-                    android:textColor="#000000"
-                    android:textSize="23dp" />
+                    android:layout_weight=".32"></LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".01"></LinearLayout>
+                    android:layout_weight=".54"
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/button7"
-                    android:layout_width="200dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_weight=".1"
-                    android:background="@drawable/button_2"
-                    android:fontFamily="@font/bigshot_one"
-                    android:onClick="quitApp"
-                    android:shadowColor="#ffffff"
-                    android:shadowRadius="5"
-                    android:text="Quit"
-                    android:textColor="#000000"
-                    android:textSize="23dp" />
+                    <Button
+                        android:id="@+id/button5"
+                        android:layout_width="200dp"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight=".1"
+                        android:background="@drawable/button_2"
+                        android:fontFamily="@font/bigshot_one"
+                        android:onClick="createEvent"
+                        android:shadowColor="#ffffff"
+                        android:shadowRadius="2"
+                        android:text="LOAD"
+                        android:textColor="#000000"
+                        android:textSize="23dp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".01"></LinearLayout>
+
+                    <Button
+                        android:id="@+id/button6"
+                        android:layout_width="200dp"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight=".1"
+                        android:background="@drawable/button_2"
+                        android:fontFamily="@font/bigshot_one"
+                        android:onClick="createTalent"
+                        android:shadowColor="#ffffff"
+                        android:shadowRadius="5"
+                        android:text="NEW"
+                        android:textColor="#000000"
+                        android:textSize="23dp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".01"></LinearLayout>
+
+                    <Button
+                        android:id="@+id/button7"
+                        android:layout_width="200dp"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight=".1"
+                        android:background="@drawable/button_2"
+                        android:fontFamily="@font/bigshot_one"
+                        android:onClick="quitApp"
+                        android:shadowColor="#ffffff"
+                        android:shadowRadius="5"
+                        android:text="Quit"
+                        android:textColor="#000000"
+                        android:textSize="23dp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".01"></LinearLayout>
+
+                    <Button
+                        android:id="@+id/button8"
+                        android:layout_width="200dp"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight=".1"
+                        android:background="@drawable/button_2"
+                        android:fontFamily="@font/bigshot_one"
+                        android:shadowColor="#ffffff"
+                        android:shadowRadius="5"
+                        android:text="Help"
+                        android:textColor="#000000"
+                        android:textSize="23dp" />
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight=".01"></LinearLayout>
-
-                <Button
-                    android:id="@+id/button8"
-                    android:layout_width="200dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_weight=".1"
-                    android:background="@drawable/button_2"
-                    android:fontFamily="@font/bigshot_one"
-                    android:shadowColor="#ffffff"
-                    android:shadowRadius="5"
-                    android:text="Help"
-                    android:textColor="#000000"
-                    android:textSize="23dp" />
+                    android:layout_weight=".14"></LinearLayout>
             </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="27dp"
+            android:gravity="center_horizontal">
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".14"></LinearLayout>
-        </LinearLayout>
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/banner_11"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.6">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".9"
+                    android:fontFamily="@font/bigshot_one"
+                    android:gravity="center"
+                    android:shadowColor="#000000"
+                    android:shadowRadius="8"
+                    android:text="UW SIMS"
+                    android:textColor="#FFC107"
+                    android:textStyle="bold"
+                    android:textSize="28dp"></TextView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        >
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintWidth_percent="0.65">
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".1"></LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

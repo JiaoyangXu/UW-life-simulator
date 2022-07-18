@@ -39,7 +39,7 @@ public class CardGameActivity extends AppCompatActivity {
             }
             setContentView(R.layout.card_game1);
             countdowntext = findViewById(R.id.countdown);
-            countdownbutton = findViewById(R.id.countdownbutton);
+
 
             start();
 

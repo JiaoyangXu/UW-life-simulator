@@ -39,6 +39,14 @@ public class Summarypage extends AppCompatActivity {
         PlayerAttributeDAO playerAttributeDAO = db.playerAttributeDAO();
         List<PlayerAttribute> tmpList = playerAttributeDAO.loadSingle();
 
+        //Create database
+        CourseDatabase db2 = Room.databaseBuilder(getApplicationContext(),
+                CourseDatabase.class, "Courses").allowMainThreadQueries().build();
+        CourseSelectionRecordDAO courseSelectionRecordDAO = db2.courseSelectionRecordDAO();
+        List<CourseSelectionRecord> curSelection = courseSelectionRecordDAO.selectCurrent();
+
+
+
         PlayerAttribute curPlayer = tmpList.get(tmpList.size() -1);
 
 
@@ -50,8 +58,17 @@ public class Summarypage extends AppCompatActivity {
         int pressure = curPlayer.getPressure();
 
         int term = curPlayer.getNumTerm();
+        String course1 = playerAttributeDAO.getCourse1().get(0);
+        int score1 = courseSelectionRecordDAO.getGradeByCode(course1);
+        String course2 = playerAttributeDAO.getCourse2().get(0);
+        int score2 = courseSelectionRecordDAO.getGradeByCode(course2);
+        String course3 = playerAttributeDAO.getCourse3().get(0);
+        int score3 = courseSelectionRecordDAO.getGradeByCode(course3);
+        String course4 = playerAttributeDAO.getCourse4().get(0);
+        int score4 = courseSelectionRecordDAO.getGradeByCode(course4);
 
-        if(term == 7){
+        gpa = (gpa + (score1 + score2 + score3 + score4) / 4) /2;
+        if(term == 6){
             setContentView(R.layout.finish);
             Button Button3 = findViewById(R.id.button3);
             Button3.setOnClickListener((v) -> {
@@ -70,12 +87,6 @@ public class Summarypage extends AppCompatActivity {
         }   else {
             setContentView(R.layout.summary_page_study);
 
-            //Create database
-            CourseDatabase db2 = Room.databaseBuilder(getApplicationContext(),
-                    CourseDatabase.class, "Courses").allowMainThreadQueries().build();
-            CourseSelectionRecordDAO courseSelectionRecordDAO = db2.courseSelectionRecordDAO();
-            List<CourseSelectionRecord> curSelection = courseSelectionRecordDAO.selectCurrent();
-
             TextView curCourseTV1 = (TextView) findViewById(R.id.course_grade_text1);
             TextView curCourseTV2 = (TextView) findViewById(R.id.course_grade_text2);
             TextView curCourseTV3 = (TextView) findViewById(R.id.course_grade_text3);
@@ -86,25 +97,25 @@ public class Summarypage extends AppCompatActivity {
             //display
                 int count = 4;
                 if (count >= 1) {
-                    String course1 = playerAttributeDAO.getCourse1().get(0);
+                    course1 = playerAttributeDAO.getCourse1().get(0);
                     curCourseTV1.setText(course1+ "       " +
                             courseSelectionRecordDAO.getGradeByCode(course1));
 
                 }
                 if (count >= 2) {
-                    String course2 = playerAttributeDAO.getCourse2().get(0);
+                    course2 = playerAttributeDAO.getCourse2().get(0);
                     curCourseTV2.setText(course2+ "       " +
                             courseSelectionRecordDAO.getGradeByCode(course2));
 
                 }
                 if (count >= 3) {
-                    String course3 = playerAttributeDAO.getCourse3().get(0);
+                    course3 = playerAttributeDAO.getCourse3().get(0);
                     curCourseTV3.setText(course3+ "       " +
                             courseSelectionRecordDAO.getGradeByCode(course3));
 
                 }
                 if (count >= 4) {
-                    String course4 = playerAttributeDAO.getCourse4().get(0);
+                    course4 = playerAttributeDAO.getCourse4().get(0);
                     curCourseTV4.setText(course4+ "       " +
                             courseSelectionRecordDAO.getGradeByCode(course4));
 
@@ -119,7 +130,17 @@ public class Summarypage extends AppCompatActivity {
             curCourseTV7.setText("Your Pressure is " + pressure);
             //button
             Button Button10 = findViewById(R.id.button10);
+            int finalGpa1 = gpa;
             Button10.setOnClickListener((v) -> {
+                Player mPlayer = new Player();
+                mPlayer.setPlayerAttribute(curPlayer);
+                PlayerAttribute mAttribute = mPlayer.getPlayerAttribute();
+                mAttribute.numTerm =  mAttribute.numTerm + 1;
+                mAttribute.GPA = finalGpa1;
+                mPlayer.setPlayerAttribute(mAttribute);
+
+                playerAttributeDAO.deleteAll();
+                playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
                 Intent intent1 = new Intent(Summarypage.this,
                         CourseSelectionActivity.class);
                 startActivity(intent1);
