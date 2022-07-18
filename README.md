@@ -14,7 +14,6 @@
 - [X] Swipe Spell Card to use the card - Jason
 - [X] Talent selection page, entrance page UI rework - Conrad
 - [X] Random Event Page connects frontend and backend - Echo
->>>>>>> x263yu
 
 ## TO-DO For Demo
 - [ ] Main UI (event list page)  - Karen
