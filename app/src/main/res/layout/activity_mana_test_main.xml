@@ -5,29 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/mana_game_layout"
+    android:background="@drawable/img_4"
     tools:context=".MiniGame.ManaTestMainAct">
 
     <Button
         android:id="@+id/buttonLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="106dp"
+        android:layout_height="64dp"
+        android:background="@drawable/button_3"
         android:text="left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/ball"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonRight"
-        app:srcCompat="@drawable/ball"
+        app:srcCompat="@drawable/remove"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="333dp" />
+        tools:layout_editor_absoluteX="331dp" />
 
     <Button
         android:id="@+id/buttonRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="106dp"
+        android:layout_height="64dp"
+        android:background="@drawable/button_3"
         android:text="right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
