@@ -104,10 +104,10 @@ public class DrawSpellCardActivity extends AppCompatActivity {
     }
 
     private void initializeCardList() {
-        card_list.add(R.drawable.img);
-        card_list.add(R.drawable.img_1);
-        card_list.add(R.drawable.img_2);
-        card_list.add(R.drawable.img_3);
+        card_list.add(R.drawable.health_card);
+        card_list.add(R.drawable.iq_card);
+        card_list.add(R.drawable.wealth_card);
+        card_list.add(R.drawable.luck_card);
     }
 
     private void initializeButton() {
