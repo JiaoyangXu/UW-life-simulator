@@ -310,6 +310,8 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mNewEventButton.setOnClickListener((v) -> {
             Event_Count += 1;
             if(Event_Count >= 21){
+                playerAttributeDAO.deleteAll();
+                playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
 
                 AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
                         .setMessage(R.string.proceed_to_summary)
@@ -490,6 +492,8 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         });
         Button mQuitButton = findViewById(R.id.QuitButton);
         mQuitButton.setOnClickListener((v) -> {
+            playerAttributeDAO.deleteAll();
+            playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
             Intent intent = new Intent(EventActivity.this, MainActivity.class);
             startActivity(intent);
         });
