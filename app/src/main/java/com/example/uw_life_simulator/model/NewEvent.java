@@ -15,8 +15,8 @@ public class NewEvent {
         {
             if (!gce.repeated())
             {
-                //gce = Factory.generateRandomChoiceEvent(pa);
-                gce = Factory.generateChoiceEvent(5);
+                gce = Factory.generateRandomChoiceEvent(pa);
+                //gce = Factory.generateChoiceEvent(5);
             }
         }
         else

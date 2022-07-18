@@ -10,10 +10,10 @@
 - [X] Entrance Page (New/Load) - Karen, Conrad
 - [X] Collect and crop UI and other graphic materials - Conrad
 - [X] Summary Page, Course Selection Page, Event List Page UI rework - Conrad
+- [X] Random Event Page connects frontend and backend - Echo
 
 ## TO-DO For Demo
 - [ ] Main UI (event list page)  - Karen
-- [ ] Random Event Page (a class of different possible events, pop up) - Echo
 - [ ] Summary Page - Robert
 - [ ] Player Info Database - Conrad
 
@@ -25,6 +25,7 @@
 - [ ] Work Term Event Set (Backend Code)
 - [ ] Mini Games - Hunter, Robert
 - [ ] Art Design - Karen
+- [ ] Create more event cases - Echo
 
 Reference:
 Background Picture:  zeefumdajma on https://www.reddit.com/r/uwaterloo/comments/83rs5w/mr_goose_on_snapchat/
