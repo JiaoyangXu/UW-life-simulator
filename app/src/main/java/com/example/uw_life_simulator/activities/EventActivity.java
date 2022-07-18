@@ -285,6 +285,8 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         TextView curCourseTV3 = (TextView)findViewById(R.id.textView26);
         TextView curCourseTV4 = (TextView)findViewById(R.id.textView27);
 
+        TextView curTerm = (TextView)findViewById(R.id.textView28);
+
         /*if (curSelection.size() > 0) {
             int count = curSelection.size();
             if (count >= 1) {
@@ -309,6 +311,9 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         curCourseTV2.setText(curPlayer.course2Code);
         curCourseTV3.setText(curPlayer.course3Code);
         curCourseTV4.setText(curPlayer.course4Code);
+
+        String term = "Current Term :\n" + String.valueOf(curPlayer.getNumTerm());
+        curTerm.setText(term);
 
         String course1type = curPlayer.course1Code.substring(0,4);
         String course2type = curPlayer.course2Code.substring(0,4);
