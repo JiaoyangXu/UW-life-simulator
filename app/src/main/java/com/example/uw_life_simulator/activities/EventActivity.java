@@ -219,8 +219,8 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             ATRO_TEST_NUM += 1;
                         }
                     }
-                    //mAdapter.addEvent(event);
-                    //mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                    mAdapter.addEvent(event);
+                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                     called_by_event = false;
                 }
 
