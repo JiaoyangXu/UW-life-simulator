@@ -72,8 +72,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     String course2type = "";
     String course3type = "";
     String course4type = "";
-    int MANA_TEST_NUM = 0;
-    int ATRO_TEST_NUM = 0;
+    int MANA_mark = 0;
+    int ATRO_mark = 0;
+    int MANA_TEST_NUM = 80;
+    int ATRO_TEST_NUM = 80;
 
     private enum LayoutManagerType {
         LINEAR_LAYOUT_MANAGER
@@ -126,77 +128,93 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                     event = mNewEvent.generateNewEvent(mPlayer,true);
                     if(event.equals("MANA")){
-                        if (course1type.equals("MANA")){
+                        if (course1type.equals("MANA") || course1type.equals("HERB") || course1type.equals("MEDI")){
                             if(MANA_TEST_NUM == 0){
                                 course1mark = result;
+                                MANA_mark = course1mark;
                             }
                             else if(MANA_TEST_NUM == 1){
                                 course1mark = (course1mark + result) / 2;
+                                MANA_mark = course1mark;
                             }
                             MANA_TEST_NUM += 1;
                         }
-                        if (course2type.equals("MANA")){
+                        if (course2type.equals("MANA")|| course2type.equals("HERB") || course2type.equals("MEDI")){
                             if(MANA_TEST_NUM == 0){
                                 course2mark = result;
+                                MANA_mark = course2mark;
                             }
                             else if(MANA_TEST_NUM == 1){
                                 course2mark = (course1mark + result) / 2;
+                                MANA_mark = course2mark;
                             }
                             MANA_TEST_NUM += 1;
                         }
-                        if (course3type.equals("MANA")){
+                        if (course3type.equals("MANA")|| course3type.equals("HERB") || course3type.equals("MEDI")){
                             if(MANA_TEST_NUM == 0){
                                 course3mark = result;
+                                MANA_mark = course3mark;
                             }
                             else if(MANA_TEST_NUM == 1){
                                 course3mark = (course1mark + result) / 2;
+                                MANA_mark = course3mark;
                             }
                             MANA_TEST_NUM += 1;
                         }
-                        if (course4type.equals("MANA")){
+                        if (course4type.equals("MANA")|| course4type.equals("HERB") || course4type.equals("MEDI")){
                             if(MANA_TEST_NUM == 0){
                                 course4mark = result;
+                                MANA_mark = course4mark;
                             }
                             else if(MANA_TEST_NUM == 1){
                                 course4mark = (course1mark + result) / 2;
+                                MANA_mark = course4mark;
                             }
                             MANA_TEST_NUM += 1;
                         }
                     }
                     if(event.equals("ATRO")){
-                        if (course1type.equals("ATRO")){
+                        if (course1type.equals("ATRO") || course1type.equals("HIST")|| course1type.equals("SPEL")){
                             if(ATRO_TEST_NUM == 0){
                                 course1mark = result;
+                                ATRO_mark = course1mark;
                             }
                             else if(ATRO_TEST_NUM == 1){
                                 course1mark = (course1mark + result) / 2;
+                                ATRO_mark = course1mark;
                             }
                             ATRO_TEST_NUM += 1;
                         }
-                        if (course2type.equals("ATRO")){
+                        if (course2type.equals("ATRO") || course2type.equals("HIST")|| course2type.equals("SPEL")){
                             if(ATRO_TEST_NUM == 0){
                                 course2mark = result;
+                                ATRO_mark = course2mark;
                             }
                             else if(ATRO_TEST_NUM == 1){
                                 course2mark = (course1mark + result) / 2;
+                                ATRO_mark = course2mark;
                             }
                             ATRO_TEST_NUM += 1;
                         }
-                        if (course3type.equals("ATRO")){
+                        if (course3type.equals("ATRO") || course3type.equals("HIST")|| course3type.equals("SPEL")){
                             if(ATRO_TEST_NUM == 0){
                                 course3mark = result;
+                                ATRO_mark = course3mark;
                             }
                             else if(ATRO_TEST_NUM == 1){
                                 course3mark = (course1mark + result) / 2;
+                                ATRO_mark = course3mark;
                             }
                             ATRO_TEST_NUM += 1;
                         }
-                        if (course4type.equals("ATRO")){
+                        if (course4type.equals("ATRO")|| course4type.equals("HIST")|| course4type.equals("SPEL")){
                             if(ATRO_TEST_NUM == 0){
                                 course4mark = result;
+                                ATRO_mark = course4mark;
                             }
                             else if(ATRO_TEST_NUM == 1){
                                 course4mark = (course1mark + result) / 2;
+                                ATRO_mark = course4mark;
                             }
                             ATRO_TEST_NUM += 1;
                         }
@@ -310,6 +328,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         mNewEventButton.setOnClickListener((v) -> {
             Event_Count += 1;
             if(Event_Count >= 21){
+                //end random generation
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course1Code,course1mark);
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course2Code,course2mark);
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course3Code,course3mark);
@@ -552,6 +571,38 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         int insertIndex = mAdapter.getItemCount();
         mEventset.add(event);
         mAdapter.notifyItemInserted(mAdapter.getItemCount()-1);
+    }
+
+    //generate course mark
+    public void MarkAutoGeneration() {
+        if (!course1type.equals("MANA")) {
+            course1mark =  (int) ((Math.random() * (100 - MANA_mark)) + MANA_mark);
+        }
+        if (!course2type.equals("MANA")) {
+            course2mark =  (int) ((Math.random() * (100 - MANA_mark)) + MANA_mark);
+        }
+        if (!course3type.equals("MANA")) {
+            course3mark =  (int) ((Math.random() * (100 - MANA_mark)) + MANA_mark);
+        }
+        if (!course4type.equals("MANA")){
+            course4mark =  (int) ((Math.random() * (100 - MANA_mark)) + MANA_mark);
+        }
+        if (!course1type.equals("ATRO")) {
+            course1mark =  (int) ((Math.random() * (100 - ATRO_mark)) + ATRO_mark);
+            return;
+        }
+        if (!course2type.equals("ATRO")) {
+            course2mark =  (int) ((Math.random() * (100 - ATRO_mark)) + ATRO_mark);
+            return;
+        }
+        if (!course3type.equals("ATRO")) {
+            course3mark =  (int) ((Math.random() * (100 - ATRO_mark)) + ATRO_mark);
+            return;
+        }
+        if (!course4type.equals("ATRO")){
+            course4mark =  (int) ((Math.random() * (100 - ATRO_mark)) + ATRO_mark);
+            return;
+        }
     }
     public void onButtonShowPopupWindowClick(View view, PlayerAttribute p) {
 
