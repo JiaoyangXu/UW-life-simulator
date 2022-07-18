@@ -41,10 +41,22 @@ public class GameEventGenerator {
             case 12: return new GameChoiceUnicorn();
             case 13: return new GameChoiceSpell();
             case 14: return new GameChoiceFight();
+            case 15: return new GameChoiceIcecream();
+            case 16: return new GameChoiceNovel();
+            case 17: return new GameChoiceRobe();
+            case 18: return new GameChoiceJob();
+            case 19: return new GameChoiceClean();
+            case 20: return new GameChoiceDrug();
 
             case 1600: return new GameChoiceLostCity01();
             case 1601: return new GameChoiceLostCity02();
             case 1602: return new GameChoiceLostCity03();
+            case 1603: return new GameChoiceLostCity04();
+            case 1604: return new GameChoiceLostCity05_1();
+            case 1605: return new GameChoiceLostCity05_2();
+            case 1606: return new GameChoiceLostCity06();
+            case 1607: return new GameChoiceLostCity07();
+            case 1608: return new GameChoiceLostCity08();
             default: return null;
         }
     }
@@ -378,6 +390,126 @@ class GameChoiceFight extends GameChoiceEvent {
             return new GameEventFightYes();
         }
         return new GameEventFightNo();
+    }
+}
+
+/**
+ * EventID: 15
+ **/
+class GameChoiceIcecream extends GameChoiceEvent {
+    GameChoiceIcecream() {
+        this.description = "There is a new ice cream shop on campus.";
+        this.choice1_description = "Go to buy one";
+        this.choice2_description = "I don't like dessert";
+        this.Id = 15;
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventIcecreamYes();
+        }
+        return new GameEventIcecreamNo();
+    }
+}
+
+/**
+ * EventID: 16
+ **/
+class GameChoiceNovel extends GameChoiceEvent {
+    GameChoiceNovel() {
+        this.description = "You found Fischer’s lost novel.";
+        this.choice1_description = "Return to Lost and Found.";
+        this.choice2_description = "Read and discuss with Fisher.";
+        this.Id = 16;
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventNovelYes();
+        }
+        return new GameEventNovelNo();
+    }
+}
+
+
+/**
+ * EventID: 17
+ **/
+class GameChoiceRobe extends GameChoiceEvent {
+    GameChoiceRobe() {
+        this.description = "You want to buy a new wizard robe, you are deciding the color you want:";
+        this.choice1_description = "Green";
+        this.choice2_description = "Orange";
+        this.Id = 17;
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventRobeYes();
+        }
+        return new GameEventRobeNo();
+    }
+}
+
+/**
+ * EventID: 18
+ **/
+class GameChoiceJob extends GameChoiceEvent {
+    GameChoiceJob() {
+        this.description = "You want to get a part time job, which job would you like?";
+        this.choice1_description = "Clerk at a wand store.";
+        this.choice2_description = "Clerk at a crystal ball store.";
+        this.Id = 18;
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventJobYes();
+        }
+        return new GameEventJobNo();
+    }
+}
+
+/**
+ * EventID: 19
+ **/
+class GameChoiceClean extends GameChoiceEvent {
+    GameChoiceClean() {
+        this.description = "You want to clean your room in the fastest way possible.";
+        this.choice1_description = "Use a broom";
+        this.choice2_description = "Use wind magic";
+        this.Id = 19;
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventCleanYes();
+        }
+        return new GameEventCleanNo();
+    }
+}
+/**
+ * EventID: 20
+ **/
+class GameChoiceDrug extends GameChoiceEvent {
+    GameChoiceDrug() {
+        this.description = "Smart drugs are selling in a secluded store.";
+        this.choice1_description = "You bought some and used one for Herb test.";
+        this.choice2_description = "You passed away because you cannot believe its effect.";
+        this.Id = 20;
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventDrugYes();
+        }
+        return new GameEventDrugNo();
     }
 }
 
@@ -1045,6 +1177,277 @@ class GameEventFightNo extends GameEvent{
     }
 }
 
+
+/**
+ * EventID: 28
+ * Effect: Pressure - 5, Money - 10
+ */
+class GameEventIcecreamYes extends GameEvent{
+    public GameEventIcecreamYes(){
+        this.Id = 28;
+        this.description = "Your cream turn into a TORNADO";
+    }
+
+    /**
+     * Event's effect on the player(Pressure - 5, Money - 10)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.pressure -= 5;
+        attribute.money -= 10;
+    }
+}
+
+/**
+ * EventID: 29
+ * Effect: Pressure + 5
+ */
+class GameEventIcecreamNo extends GameEvent{
+    public GameEventIcecreamNo(){
+        this.Id = 29;
+        this.description = "You save money but are depressed.";
+    }
+
+    /**
+     * Event's effect on the player(Pressure + 5)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.pressure += 5;
+    }
+}
+
+
+/**
+ * EventID: 30
+ * Effect: Luck + 5
+ */
+class GameEventNovelYes extends GameEvent{
+    public GameEventNovelYes(){
+        this.Id = 30;
+        this.description = "After several days, you find a crow doll in your locker.";
+    }
+
+    /**
+     * Event's effect on the player(Luck + 5)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.luck += 5;
+    }
+}
+
+/**
+ * EventID: 31
+ * Effect: Pressure + 5, Health - 5
+ */
+class GameEventNovelNo extends GameEvent{
+    public GameEventNovelNo(){
+        this.Id = 31;
+        this.description = "Fisher became angry from embarrassment and you are beaten up by Auz.";
+    }
+
+    /**
+     * Event's effect on the player(Pressure + 5, Health - 5)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.pressure += 5;
+        attribute.health -= 5;
+    }
+}
+
+/**
+ * EventID: 32
+ * Effect: Money - 20
+ */
+class GameEventRobeYes extends GameEvent{
+    public GameEventRobeYes(){
+        this.Id = 32;
+        this.description = "You got a green robe.";
+    }
+
+    /**
+     * Event's effect on the player(Money - 20)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.money -= 20;
+    }
+}
+
+/**
+ * EventID: 33
+ * Effect: Money - 20
+ */
+class GameEventRobeNo extends GameEvent{
+    public GameEventRobeNo(){
+        this.Id = 33;
+        this.description = "You got an orange robe.";
+    }
+
+    /**
+     * Event's effect on the player(Money - 20)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.money -= 20;
+    }
+}
+
+
+/**
+ * EventID: 34
+ * Effect: Money + 700
+ */
+class GameEventJobYes extends GameEvent{
+    public GameEventJobYes(){
+        this.Id = 34;
+        this.description = "You got a job and earn $700 coins";
+    }
+
+    /**
+     * Event's effect on the player(Money + 700)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.money += 700;
+    }
+}
+
+/**
+ * EventID: 35
+ * Effect: Money + 700
+ */
+class GameEventJobNo extends GameEvent{
+    public GameEventJobNo(){
+        this.Id = 35;
+        this.description = "You got a job and earn $700 coins";
+    }
+
+    /**
+     * Event's effect on the player(Money + 700)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.money += 700;
+    }
+}
+
+/**
+ * EventID: 36
+ * Effect: Health + 5
+ */
+class GameEventCleanYes extends GameEvent{
+    public GameEventCleanYes(){
+        this.Id = 36;
+        this.description = "You cleaned your room successfully!";
+    }
+
+    /**
+     * Event's effect on the player(Health + 5)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.health += 5;
+    }
+}
+
+/**
+ * EventID: 37
+ * Effect: Health - 5
+ */
+class GameEventCleanNo extends GameEvent{
+    public GameEventCleanNo(){
+        this.Id = 37;
+        this.description = "You’ve blown up your room and it is a mess now";
+    }
+
+    /**
+     * Event's effect on the player(Health - 5)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.health -= 5;
+    }
+}
+
+/**
+ * EventID: 38
+ * Effect: Money - 500, IQ - 5
+ */
+class GameEventDrugYes extends GameEvent{
+    public GameEventDrugYes(){
+        this.Id = 38;
+        this.description = "You have a splitting headache and found at the bottom of the drug which showed it had passed expiry date.";
+    }
+
+    /**
+     * Event's effect on the player(Money - 500, IQ - 5)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.money -= 500;
+        attribute.IQ -= 5;
+
+    }
+}
+
+/**
+ * EventID: 39
+ * Effect: GPA + 1
+ */
+class GameEventDrugNo extends GameEvent{
+    public GameEventDrugNo(){
+        this.Id = 39;
+        this.description = "You got 100 on the test all by your own.";
+    }
+
+    /**
+     * Event's effect on the player(GPA + 1)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.GPA += 1;
+    }
+}
+
 /**
  * EventID: 1600
  * Effect: continue event
@@ -1189,9 +1592,9 @@ class GameChoiceLostCity03 extends GameChoiceEvent {
                 "but in the center of the city there is a huge clock tower looks really special?";
         this.Id = 1602;
         this.choice1_check = "HIST";
-        this.choice1_description = "Let me check which era should this city in";
+        this.choice1_description = "Let me check which era should this city in\n(Require history test)";
         this.choice2_check = "MANA";
-        this.choice2_description = "These are just illusions, pay attention to the flow of mana";
+        this.choice2_description = "These are just illusions, pay attention to the flow of mana\n(Require mana test)";
     }
 
     @Override
@@ -1275,5 +1678,451 @@ class GameEventLostCity3Hist extends GameEvent{
     public void visit(PlayerAttribute attribute) {
         attribute.HistSkill += 1;
         attribute.eventChain1Status = 1603;
+    }
+}
+
+/**
+ * EventID: 1603
+ **/
+class GameChoiceLostCity04 extends GameChoiceEvent {
+    GameChoiceLostCity04() {
+        this.description = "Next day, you entered the portal again, this time you found you are inside the clock tower, the giant clock is in front of you, there is a button seems can control the time of the clock";
+        this.Id = 1603;
+        this.choice1_description = "I will try this button...";
+        this.choice2_description = "It's really dangerous, let's check other things";
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventLostCity3Switch();
+        }
+        return new GameEventLostCity3Wander();
+
+    }
+}
+
+/**
+ * EventID: 1603
+ * Effect: continue Event
+ */
+class GameEventLostCity3Switch extends GameEvent{
+    public GameEventLostCity3Switch(){
+        this.description = "You are teleported back to home, there should be something changed";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.eventChain1Status = 1604;
+    }
+}
+
+/**
+ * EventID: 1603
+ * Effect: continue Event
+ */
+class GameEventLostCity3Wander extends GameEvent{
+    public GameEventLostCity3Wander(){
+        this.description = "You decided not to touch the button until you know what is it for";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.eventChain1Status = 1605;
+    }
+}
+
+/**
+ * EventID: 1604
+ **/
+class GameChoiceLostCity05_1 extends GameChoiceEvent {
+    GameChoiceLostCity05_1() {
+        this.description = "Next day, when you went back to the portal, you found the environment changed, you are in a magic potion lab now and the city is in fire. On the sky, there was a dragon. Dragon found you, and start attack you";
+        this.Id = 1604;
+        this.choice1_description = "I will check if there are usable potions\n(Requires magical potion(mana) test)";
+        this.choice2_description = "I need to run away as fast as possible";
+        this.choice1_check="MANA";
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            if (lastMark >= 50)
+            {
+                return new GameEventLostCity5PotionGood();
+            }
+            return new GameEventLostCity5PotionBad();
+        }
+        return new GameEventLostCity5Run();
+
+    }
+}
+
+/**
+ * EventID: 1604
+ * Effect: continue Event
+ */
+class GameEventLostCity5PotionGood extends GameEvent{
+    public GameEventLostCity5PotionGood(){
+        this.description = "You found fire resistance potion and survived the dragon fire, but you are hit by the dragon's tail. When you wake up again, you found you are in your room";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.eventChain1Status = 1603;
+        attribute.MediSkill+=2;
+        attribute.health --;
+        attribute.pressure += 5;
+    }
+}
+
+/**
+ * EventID: 1604
+ * Effect: continue Event
+ */
+class GameEventLostCity5PotionBad extends GameEvent{
+    public GameEventLostCity5PotionBad(){
+        this.description = "You didn't find anything and is directly hit by dragon's breath. When you wake up again, you found you are in your room";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.eventChain1Status = 1603;
+        attribute.health -= 2;
+        attribute.pressure += 15;
+    }
+}
+
+/**
+ * EventID: 1604
+ * Effect: continue Event
+ */
+class GameEventLostCity5Run extends GameEvent{
+    public GameEventLostCity5Run(){
+        this.description = "You tried found a hidden place, and managed to reached exit before the whole city is melt down by the dragon.";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.eventChain1Status = 1603;
+        attribute.health -= 1;
+        attribute.pressure += 10;
+    }
+}
+
+/**
+ * EventID: 1605
+ **/
+class GameChoiceLostCity05_2 extends GameChoiceEvent {
+    GameChoiceLostCity05_2() {
+        this.description = "This time, you found a strange door in the tower. The door seems burned by fire.";
+        this.Id = 1605;
+        this.choice1_description = "What's inside?";
+        this.choice2_description = "I don't really care what is inside...";
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            Random random = new Random();
+            if (random.nextBoolean())
+            {
+                if (playerAttribute.health >= 7 && playerAttribute.ManaSkill >= 7 && random.nextBoolean())
+                {
+                    return new GameEventLostCity5OpenGood();
+                }
+            }
+            return new GameEventLostCity5OpenBad();
+        }
+        return new GameEventLostCity5WalkAway();
+    }
+}
+
+/**
+ * EventID: 1605
+ * Effect: continue Event
+ */
+class GameEventLostCity5OpenGood extends GameEvent{
+    public GameEventLostCity5OpenGood(){
+        this.description = "You opened the door, there is an egg in the center of the room. You took it and went out of the portal";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.eventChain1Status = 1608;
+    }
+}
+
+/**
+ * EventID: 1605
+ * Effect: continue Event
+ */
+class GameEventLostCity5OpenBad extends GameEvent{
+    public GameEventLostCity5OpenBad(){
+        this.description = "You opened the door, fire suddenly flushed out on you. When you wake up, you are in your room again";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.eventChain1Status = 1605;
+        attribute.health -= 1;
+        attribute.pressure += 5;
+    }
+}
+
+/**
+ * EventID: 1605
+ * Effect: continue Event
+ */
+class GameEventLostCity5WalkAway extends GameEvent{
+    public GameEventLostCity5WalkAway(){
+        this.description = "You decided not to open the door";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.eventChain1Status = 1606;
+    }
+}
+
+/**
+ * EventID: 1606
+ **/
+class GameChoiceLostCity06 extends GameChoiceEvent {
+    GameChoiceLostCity06() {
+        this.description = "You entered another room, the room is messy and seems people evacuated in a hurry. You also found some herbs and empty potion bottles";
+        this.Id = 1606;
+        this.choice1_check = "MANA";
+        this.choice1_description = "I will check which potions did they used before\nRequire Herb(Mana) test";
+        this.choice2_description = "Those unused potions are mine";
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            if (lastMark >= 50)
+            {
+                return new GameEventLostCity6CheckPotionGood();
+            }
+            return new GameEventLostCity6CheckPotionBad();
+        }
+        return new GameEventLostCity6Finish();
+    }
+}
+
+/**
+ * EventID: 1606
+ * Effect: continue Event
+ */
+class GameEventLostCity6Finish extends GameEvent{
+    public GameEventLostCity6Finish(){
+        this.description = "You took unused potions away, but you found the portal never opened again after that";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.eventChain1Status = -2;
+        attribute.MediSkill += 3;
+        attribute.HerbSkill += 3;
+        attribute.health += 4;
+        attribute.money += 500;
+    }
+}
+
+/**
+ * EventID: 1606
+ * Effect: continue Event
+ */
+class GameEventLostCity6CheckPotionGood extends GameEvent{
+    public GameEventLostCity6CheckPotionGood(){
+        this.description = "People seems used fire resistance potion before evacuation. You managed to make some";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.HerbSkill += 1;
+        attribute.MediSkill += 1;
+        attribute.eventChain1Status = 1607;
+    }
+}
+
+/**
+ * EventID: 1606
+ * Effect: continue Event
+ */
+class GameEventLostCity6CheckPotionBad extends GameEvent{
+    public GameEventLostCity6CheckPotionBad(){
+        this.description = "It took you a long time to check the potions, but you didn't come up any result";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.eventChain1Status = 1606;
+        attribute.pressure += 10;
+        attribute.HerbSkill += 1;
+        attribute.MediSkill += 1;
+    }
+}
+
+/**
+ * EventID: 1607
+ **/
+class GameChoiceLostCity07 extends GameChoiceEvent {
+    GameChoiceLostCity07() {
+        this.description = "You went back to the burnt door";
+        this.Id = 1607;
+        this.choice2_check = "MANA";
+        this.choice1_description = "Drink potion and go in there";
+        this.choice2_description = "Not today";
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventLostCity5OpenGood();
+        }
+        return new GameEventNull();
+    }
+}
+
+/**
+ * EventID: 1608
+ **/
+class GameChoiceLostCity08 extends GameChoiceEvent {
+    GameChoiceLostCity08() {
+        this.description = "You went back to the portal with the egg, the egg suddenly float and pressed the button and take you to a burnt city. A black dragon is staring at you";
+        this.Id = 1608;
+        this.choice1_description = "The dragon must be looking for this egg!";
+        this.choice2_description = "No way, this egg is mine!";
+    }
+
+    @Override
+    public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
+        if (playerResponse) {
+            return new GameEventLostCity8EndGood();
+        }
+        return new GameEventLostCity8EndBad();
+    }
+}
+
+/**
+ * EventID: 1608
+ * Effect: finish Event
+ */
+class GameEventLostCity8EndGood extends GameEvent{
+    public GameEventLostCity8EndGood(){
+        this.description = "The dragon flew away when you handed the egg back, and you found there is a golden scale on the ground";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.eventChain1Status = -2;
+        attribute.pressure -= 10;
+        attribute.HerbSkill += 2;
+        attribute.MediSkill += 2;
+        attribute.ManaSkill += 2;
+        attribute.HistSkill += 2;
+        attribute.SpelSkill += 2;
+        attribute.AtroSkill += 2;
+        attribute.health += 3;
+        attribute.wealth += 1;
+        attribute.money += 1000;
+    }
+}
+
+/**
+ * EventID: 1608
+ * Effect: finish Event
+ */
+class GameEventLostCity8EndBad extends GameEvent{
+    public GameEventLostCity8EndBad(){
+        this.description = "The dragon is irritate by your action and sent you back with angry breath. But you got the egg.";
+    }
+
+    /**
+     * Event's effect on the player
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.eventChain1Status = -2;
+        attribute.pressure += 20;
+        attribute.health -= 3;
+        attribute.wealth += 1;
+        attribute.money += 5000;
     }
 }

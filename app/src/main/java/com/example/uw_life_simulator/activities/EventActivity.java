@@ -508,11 +508,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
                 // GPA
                 tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
-                if(mAdapter.getItemCount() % 3 == 0){
-                    TextView BroadastText = findViewById(R.id.BroadCastText);
-                    String text = "        " + event;
-                    BroadastText.setText(text);
-                }
+
 
             }
         });
