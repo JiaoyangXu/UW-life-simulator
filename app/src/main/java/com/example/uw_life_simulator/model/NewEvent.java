@@ -15,7 +15,6 @@ public class NewEvent {
         {
             if (!gce.repeated())
             {
-<<<<<<< HEAD
                 if (totalnum == 9 || totalnum == 19)
                 {
                     gce = Factory.generateTestEvent();
@@ -24,8 +23,6 @@ public class NewEvent {
                 {
                     gce = Factory.generateRandomChoiceEvent(pa);
                 }
-=======
->>>>>>> x263yu
             }
         }
         else
