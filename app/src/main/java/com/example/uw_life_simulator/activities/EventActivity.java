@@ -334,7 +334,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         Button mNewEventButton = findViewById(R.id.Eventbutton);
         mNewEventButton.setOnClickListener((v) -> {
             Event_Count += 1;
-            if(Event_Count >= 21){
+            if(Event_Count >= 22){
                 //end random generation
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course1Code,course1mark);
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course2Code,course2mark);
