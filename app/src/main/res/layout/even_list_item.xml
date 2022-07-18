@@ -12,11 +12,11 @@
         android:id="@+id/event_list_item_textView"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="15dp"
         android:layout_width="wrap_content"
         android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Element"/>
+        android:text="I want to show a dynamic string in an textview. This textview can take over a length to a certain degree. Is it possible to let the too long string somehow run through the textview? What I mean: initially the Textview should show as much letters as it can, but lets say after 5 seconds it slowly iterates through the hole string. This would make the whole text readable. The user should not have to interact with the ui."/>
 </FrameLayout>
