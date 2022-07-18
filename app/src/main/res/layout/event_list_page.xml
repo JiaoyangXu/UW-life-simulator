@@ -183,7 +183,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/grey_sticky_button"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/bigshot_one"
             android:text=" NEW EVENT "
             android:textColor="#B2F8F7F5"
             app:cornerRadius="500dp"

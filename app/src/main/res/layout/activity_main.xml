@@ -124,20 +124,22 @@
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:gravity="center_horizontal"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="25dp">
+            android:layout_marginBottom="27dp"
+            android:gravity="center_horizontal">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:background="@drawable/banner_11"
-                app:layout_constraintWidth_percent="0.6"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.6">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -149,7 +151,9 @@
                     android:shadowRadius="8"
                     android:text="UW SIMS"
                     android:textColor="#FFC107"
+                    android:textStyle="bold"
                     android:textSize="28dp"></TextView>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
