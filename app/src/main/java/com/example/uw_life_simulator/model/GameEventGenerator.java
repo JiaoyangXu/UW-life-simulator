@@ -1543,21 +1543,21 @@ class GameChoiceLostCity06 extends GameChoiceEvent {
     GameChoiceLostCity06() {
         this.description = "You entered another room, the room is messy and seems people evacuated in a hurry. You also found some herbs and empty potion bottles";
         this.Id = 1606;
-        this.choice2_check = "MANA";
-        this.choice1_description = "Those unused potions are mine";
-        this.choice2_description = "I will check which potions did they used before\nRequire Herb(Mana) test";
+        this.choice1_check = "MANA";
+        this.choice1_description = "I will check which potions did they used before\nRequire Herb(Mana) test";
+        this.choice2_description = "Those unused potions are mine";
     }
 
     @Override
     public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
         if (playerResponse) {
-            return new GameEventLostCity6Finish();
+            if (lastMark >= 50)
+            {
+                return new GameEventLostCity6CheckPotionGood();
+            }
+            return new GameEventLostCity6CheckPotionBad();
         }
-        if (lastMark >= 50)
-        {
-            return new GameEventLostCity6CheckPotionGood();
-        }
-        return new GameEventLostCity6CheckPotionBad();
+        return new GameEventLostCity6Finish();
     }
 }
 
@@ -1567,7 +1567,7 @@ class GameChoiceLostCity06 extends GameChoiceEvent {
  */
 class GameEventLostCity6Finish extends GameEvent{
     public GameEventLostCity6Finish(){
-        this.description = "You took unused potions away, but it seems you took too many potions, the portal never opened again";
+        this.description = "You took unused potions away, but you found the portal never opened again after that";
     }
 
     /**
@@ -1592,7 +1592,7 @@ class GameEventLostCity6Finish extends GameEvent{
  */
 class GameEventLostCity6CheckPotionGood extends GameEvent{
     public GameEventLostCity6CheckPotionGood(){
-        this.description = "You found people seems used fire resistance potion before evacuation, so you managed to make some";
+        this.description = "People seems used fire resistance potion before evacuation. You managed to make some";
     }
 
     /**
@@ -1615,7 +1615,7 @@ class GameEventLostCity6CheckPotionGood extends GameEvent{
  */
 class GameEventLostCity6CheckPotionBad extends GameEvent{
     public GameEventLostCity6CheckPotionBad(){
-        this.description = "It took you a long time to check the potions, but you didn't come up any result before you are teleported back";
+        this.description = "It took you a long time to check the potions, but you didn't come up any result";
     }
 
     /**
@@ -1659,7 +1659,7 @@ class GameChoiceLostCity07 extends GameChoiceEvent {
  **/
 class GameChoiceLostCity08 extends GameChoiceEvent {
     GameChoiceLostCity08() {
-        this.description = "You went back to the portal with the egg, the egg suddenly float and fly away when you entered the portal. When you found it, it pressed the button and take you to a burnt city. A black dragon is staring at you";
+        this.description = "You went back to the portal with the egg, the egg suddenly float and pressed the button and take you to a burnt city. A black dragon is staring at you";
         this.Id = 1608;
         this.choice1_description = "The dragon must be looking for this egg!";
         this.choice2_description = "No way, this egg is mine!";
