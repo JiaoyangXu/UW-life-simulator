@@ -414,6 +414,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     String event = "You started the HIST test";
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
+                                    // Wealth
+                                    tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
+                                    // GPA
+                                    tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
 
                                 }
                                 else if(game_type.equals("MANA")){
@@ -425,6 +430,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     String event = "You started the MANA test";
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
+                                    // Wealth
+                                    tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
+                                    // GPA
+                                    tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
                                 }
                                 else if (game_type.equals("")){
                                     String event = mNewEvent.generateNewEvent(mPlayer,true);
@@ -448,6 +458,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     }*/
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
+                                    // Wealth
+                                    tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
+                                    // GPA
+                                    tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
                                 }
 
 
@@ -502,6 +517,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     }*/
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
+                                    // Wealth
+                                    tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
+                                    // GPA
+                                    tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
                                 }
                             }
                         })
