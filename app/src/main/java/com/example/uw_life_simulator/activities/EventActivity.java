@@ -52,6 +52,7 @@ import android.app.AlertDialog;
 
 import android.app.Dialog;
 import com.example.uw_life_simulator.R;
+import android.graphics.drawable.Drawable;
 
 public class EventActivity extends AppCompatActivity implements event_list_adapter.ItemClickListener,AlertDialogFragment.AlertDialogListener {
 
@@ -219,6 +220,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             ATRO_TEST_NUM += 1;
                         }
                     }
+                    if(event.equals("MANA") || event.equals("ATRO")){
+                        called_by_event = false;
+                        return;
+                    }
                     mAdapter.addEvent(event);
                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                     called_by_event = false;
@@ -370,6 +375,9 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                         })
                         .show();
+                Drawable drawable = getResources().getDrawable(R.drawable.panel);
+                alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, 450);
+                alertDialog.getWindow().setBackgroundDrawable(drawable);
 
             }
             else{
@@ -391,7 +399,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 //pop up window dialog
                 AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
                         .setMessage(event_description)
-                        .setTitle("You encountered a new event!")
+                        .setTitle("New Event!")
                         .setPositiveButton(event_choice1, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Send the TryAgain button event back to the host fragment
@@ -500,7 +508,27 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                         .show();
 
 
+                //Alert Dialog Theme
+                int stringSize = event_description.length() + event_choice1.length() + event_choice2.length();
+                int alertHeight = 650;
+                if(stringSize < 150){
+                    alertHeight = 450;
+                }
 
+                if(stringSize > 290){
+                    alertHeight = 750;
+                }
+
+                if(event_choice1.equals("Good luck for me") || event_choice2.equals("Good luck for me")){
+                    alertHeight = 400;
+                }
+
+                Drawable drawable = getResources().getDrawable(R.drawable.panel);
+                alertDialog.getWindow().setBackgroundDrawable(drawable);
+                alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, alertHeight);
+                //alertDialog.getWindow().setLayout(800, 400);
+
+                //END Alert Dialog Theme
                 //set player attribute after every newly generated event
                 // Pressure
                 tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
