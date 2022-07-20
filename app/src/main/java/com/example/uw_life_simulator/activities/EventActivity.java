@@ -80,10 +80,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     String course2type = "";
     String course3type = "";
     String course4type = "";
-    int MANA_mark = 0;
-    int ATRO_mark = 0;
-    int MANA_TEST_NUM = 80;
-    int ATRO_TEST_NUM = 80;
+    int MANA_mark = 80;
+    int ATRO_mark = 80;
+    int MANA_TEST_NUM = 0;
+    int ATRO_TEST_NUM = 0;
     int mini_game_difficulty = 1;
 
     //tmp map to store all course difficulty:
@@ -177,7 +177,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                             MANA_TEST_NUM += 1;
                         }
-                        if (course2type.equals("MANA")){
+                        else if (course2type.equals("MANA")){
                             if(MANA_TEST_NUM == 0){
                                 course2mark = result;
                                 MANA_mark = course2mark;
@@ -188,7 +188,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                             MANA_TEST_NUM += 1;
                         }
-                        if (course3type.equals("MANA")){
+                        else if (course3type.equals("MANA")){
                             if(MANA_TEST_NUM == 0){
                                 course3mark = result;
                                 MANA_mark = course3mark;
@@ -199,7 +199,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                             MANA_TEST_NUM += 1;
                         }
-                        if (course4type.equals("MANA")){
+                        else if (course4type.equals("MANA")){
                             if(MANA_TEST_NUM == 0){
                                 course4mark = result;
                                 MANA_mark = course4mark;
@@ -211,7 +211,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             MANA_TEST_NUM += 1;
                         }
                     }
-                    if(event.equals("ATRO")){
+                    else if(event.equals("ATRO")){
                         if (course1type.equals("ATRO")){
                             if(ATRO_TEST_NUM == 0){
                                 course1mark = result;
@@ -223,7 +223,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                             ATRO_TEST_NUM += 1;
                         }
-                        if (course2type.equals("ATRO")){
+                        else if (course2type.equals("ATRO")){
                             if(ATRO_TEST_NUM == 0){
                                 course2mark = result;
                                 ATRO_mark = course2mark;
@@ -234,7 +234,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                             ATRO_TEST_NUM += 1;
                         }
-                        if (course3type.equals("ATRO")){
+                        else if (course3type.equals("ATRO")){
                             if(ATRO_TEST_NUM == 0){
                                 course3mark = result;
                                 ATRO_mark = course3mark;
@@ -245,7 +245,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                             ATRO_TEST_NUM += 1;
                         }
-                        if (course4type.equals("ATRO")){
+                        else if (course4type.equals("ATRO")){
                             if(ATRO_TEST_NUM == 0){
                                 course4mark = result;
                                 ATRO_mark = course4mark;
