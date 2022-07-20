@@ -378,6 +378,14 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course3Code,course3mark);
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course4Code,course4mark);
 
+                //Remove the effect of current course load on player pressure (since the courses are over now)
+                int diff1 = myMap.get(curPlayer.course1Code);
+                int diff2 = myMap.get(curPlayer.course2Code);
+                int diff3 = myMap.get(curPlayer.course3Code);
+                int diff4 = myMap.get(curPlayer.course4Code);
+
+                curPlayer.pressure = curPlayer.pressure - diff1/10 - diff2/10 - diff3/10 - diff4/10;
+
                 PlayerAttribute playerAttribute = mPlayer.getPlayerAttribute();
                 playerAttribute.setIQ(playerAttributeDAO.getIQ1().get(0));
                 playerAttribute.setLuck(playerAttributeDAO.getLuck1().get(0));
@@ -610,6 +618,14 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course2Code,course2mark);
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course3Code,course3mark);
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course4Code,course4mark);
+
+            //Remove the effect of current course load on player pressure (since the courses are over now)
+            int diff1 = myMap.get(curPlayer.course1Code);
+            int diff2 = myMap.get(curPlayer.course2Code);
+            int diff3 = myMap.get(curPlayer.course3Code);
+            int diff4 = myMap.get(curPlayer.course4Code);
+
+            curPlayer.pressure = curPlayer.pressure - diff1/10 - diff2/10 - diff3/10 - diff4/10;
 
             PlayerAttribute playerAttribute = mPlayer.getPlayerAttribute();
             playerAttribute.setIQ(playerAttributeDAO.getIQ1().get(0));
