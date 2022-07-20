@@ -614,8 +614,9 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
 
             playerAttributeDAO.deleteAll();
             playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
-            Intent intent = new Intent(EventActivity.this, MainActivity.class);
-            startActivity(intent);
+            /*Intent intent = new Intent(EventActivity.this, MainActivity.class);
+            startActivity(intent);*/
+            finish();
         });
         Button mProfileButton = findViewById(R.id.ProfileButton);
         mProfileButton.setOnClickListener((v) -> {

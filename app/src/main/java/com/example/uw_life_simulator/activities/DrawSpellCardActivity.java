@@ -173,6 +173,7 @@ public class DrawSpellCardActivity extends AppCompatActivity {
                 // pass intent to Event Activity
                 Intent intent = new Intent(DrawSpellCardActivity.this, CourseSelectionActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
