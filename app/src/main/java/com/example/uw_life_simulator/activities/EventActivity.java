@@ -361,7 +361,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
                         .setMessage(R.string.proceed_to_summary)
                         .setCancelable(true)
-                        .setTitle("END OF TERM")
+                        .setTitle("    END OF TERM")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Send the TryAgain button event back to the host fragment
@@ -376,7 +376,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                         })
                         .show();
                 Drawable drawable = getResources().getDrawable(R.drawable.panel);
-                alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, 600);
+                alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, 550);
                 alertDialog.getWindow().setBackgroundDrawable(drawable);
 
             }
@@ -396,10 +396,13 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 //
                 return_last_event = mNewEvent.isFinished();
 
+
                 //pop up window dialog
                 AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                //AlertDialog alertDialog = new AlertDialog.Builder(this,R.style.AlertDialogCustom)
                         .setMessage(event_description)
-                        .setTitle("New Event!")
+                        .setTitle("    New Event!")
+                        .setCancelable(false)
                         .setPositiveButton(event_choice1, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Send the TryAgain button event back to the host fragment
@@ -532,11 +535,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 int stringSize = event_description.length() + event_choice1.length() + event_choice2.length();
                 int buttonSize = event_choice1.length() + event_choice2.length();
                 int alertHeight = 650;
-                if(stringSize < 150){
+                if(stringSize < 200){
                     alertHeight = 450;
                 }
 
-                if(buttonSize > 80){
+                if(buttonSize > 52){
                     alertHeight = 650;
                 }
 
@@ -551,6 +554,9 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 Drawable drawable = getResources().getDrawable(R.drawable.panel);
                 alertDialog.getWindow().setBackgroundDrawable(drawable);
                 alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, alertHeight);
+
+
+
                 //alertDialog.getWindow().setLayout(800, 400);
 
                 //END Alert Dialog Theme
@@ -727,16 +733,19 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     }
 
     public String toProfileString(PlayerAttribute p) {
-        return "playerID = " + p.playerID + '\n' +
-                "playerName = " + p.playerName + '\n' +
-                "programID = " + p.programID + '\n' +
-                "numTerm = " + p.numTerm + '\n' +
+        return "Term = " + p.numTerm + '\n' +
                 "IQ = " + p.IQ + '\n' +
                 "luck = " + p.luck + '\n' +
                 "wealth = " + p.money + '\n' +
                 "health = " + p.health + '\n' +
                 "pressure = " + p.pressure + '\n' +
-                "GPA = " + p.GPA + '\n';
+                "GPA = " + p.GPA + '\n' +
+                "MANA skill = " + p.ManaSkill + '\n' +
+                "SPELL skill = " + p.SpelSkill + '\n' +
+                "HERBOLOGY skill = " + p.getHerbSkill() + '\n' +
+                "HISTORY skill = " + p.getHistSkill() + '\n' +
+                "POTION skill = " + p.MediSkill + '\n' +
+                "ASTROLOGY skill = " + p.getAtroSkill();
     }
 
     public void useSpellCard(View view){

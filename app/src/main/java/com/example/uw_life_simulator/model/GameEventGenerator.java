@@ -520,7 +520,7 @@ class GameChoiceDrug extends GameChoiceEvent {
 class GameEventNull extends GameEvent{
     public GameEventNull(){
         this.Id = 0;
-        this.description = "Nothing happened this day\n";
+        this.description = "Nothing happened this day";
     }
 
     /**
@@ -608,7 +608,7 @@ class GameEventMoneyLose extends GameEvent{
 class GameEventGoose extends GameEvent{
     public GameEventGoose(){
         this.Id = 4;
-        this.description = "Goose attacked you!\n";
+        this.description = "Goose attacked you!";
     }
 
     /**
@@ -759,7 +759,7 @@ class GameEventInspireNo extends GameEvent{
 class GameEventHotDayYes extends GameEvent{
     public GameEventHotDayYes(){
         this.Id = 9;
-        this.description = "You decided to go to school on a bus\n";
+        this.description = "You decided to go to school on a bus";
     }
 
     /**
@@ -803,7 +803,7 @@ class GameEventHotDayNo extends GameEvent{
 class GameTestFinished extends GameEvent{
     public GameTestFinished(){
         this.Id = 11;
-        this.description = "You have finished all tests, maybe you need a break\n";
+        this.description = "You have finished all tests, maybe you need a break";
     }
 
     /**
