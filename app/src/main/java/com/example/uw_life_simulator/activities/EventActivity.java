@@ -183,7 +183,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                 MANA_mark = course2mark;
                             }
                             else if(MANA_TEST_NUM == 1){
-                                course2mark = (course1mark + result) / 2;
+                                course2mark = (course2mark + result) / 2;
                                 MANA_mark = course2mark;
                             }
                             MANA_TEST_NUM += 1;
@@ -194,7 +194,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                 MANA_mark = course3mark;
                             }
                             else if(MANA_TEST_NUM == 1){
-                                course3mark = (course1mark + result) / 2;
+                                course3mark = (course3mark + result) / 2;
                                 MANA_mark = course3mark;
                             }
                             MANA_TEST_NUM += 1;
@@ -205,7 +205,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                 MANA_mark = course4mark;
                             }
                             else if(MANA_TEST_NUM == 1){
-                                course4mark = (course1mark + result) / 2;
+                                course4mark = (course4mark + result) / 2;
                                 MANA_mark = course4mark;
                             }
                             MANA_TEST_NUM += 1;
@@ -229,7 +229,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                 ATRO_mark = course2mark;
                             }
                             else if(ATRO_TEST_NUM == 1){
-                                course2mark = (course1mark + result) / 2;
+                                course2mark = (course2mark + result) / 2;
                                 ATRO_mark = course2mark;
                             }
                             ATRO_TEST_NUM += 1;
@@ -240,7 +240,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                 ATRO_mark = course3mark;
                             }
                             else if(ATRO_TEST_NUM == 1){
-                                course3mark = (course1mark + result) / 2;
+                                course3mark = (course3mark + result) / 2;
                                 ATRO_mark = course3mark;
                             }
                             ATRO_TEST_NUM += 1;
@@ -251,7 +251,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                 ATRO_mark = course4mark;
                             }
                             else if(ATRO_TEST_NUM == 1){
-                                course4mark = (course1mark + result) / 2;
+                                course4mark = (course4mark + result) / 2;
                                 ATRO_mark = course4mark;
                             }
                             ATRO_TEST_NUM += 1;
