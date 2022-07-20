@@ -56,6 +56,7 @@ public class AttributeActivities extends AppCompatActivity {
         // pass intent to Event Activity
         Intent intent = new Intent(AttributeActivities.this, DrawSpellCardActivity.class);
         startActivity(intent);
+        finish();
     }
 
     /** update current points we have, parameter

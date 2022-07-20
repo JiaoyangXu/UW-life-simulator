@@ -54,6 +54,7 @@ import android.app.AlertDialog;
 
 import android.app.Dialog;
 import com.example.uw_life_simulator.R;
+import android.graphics.drawable.Drawable;
 
 import static java.util.Map.entry;
 import java.util.Map;
@@ -255,6 +256,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             ATRO_TEST_NUM += 1;
                         }
                     }
+                    if(event.equals("MANA") || event.equals("ATRO")){
+                        called_by_event = false;
+                        return;
+                    }
                     mAdapter.addEvent(event);
                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                     called_by_event = false;
@@ -372,13 +377,23 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course2Code,course2mark);
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course3Code,course3mark);
                 courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course4Code,course4mark);
+
+                PlayerAttribute playerAttribute = mPlayer.getPlayerAttribute();
+                playerAttribute.setIQ(playerAttributeDAO.getIQ1().get(0));
+                playerAttribute.setLuck(playerAttributeDAO.getLuck1().get(0));
+                playerAttribute.setHealth(playerAttributeDAO.getHealth1().get(0));
+                playerAttribute.setWealth(playerAttributeDAO.getWealth1().get(0));
+
+                mPlayer.setPlayerAttribute(playerAttribute);
+
+
                 playerAttributeDAO.deleteAll();
                 playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
 
                 AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
                         .setMessage(R.string.proceed_to_summary)
                         .setCancelable(true)
-                        .setTitle("END OF TERM")
+                        .setTitle("    END OF TERM")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Send the TryAgain button event back to the host fragment
@@ -392,6 +407,9 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                         })
                         .show();
+                Drawable drawable = getResources().getDrawable(R.drawable.panel);
+                alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, 550);
+                alertDialog.getWindow().setBackgroundDrawable(drawable);
 
             }
             else{
@@ -410,10 +428,13 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 //
                 return_last_event = mNewEvent.isFinished();
 
+
                 //pop up window dialog
                 AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                //AlertDialog alertDialog = new AlertDialog.Builder(this,R.style.AlertDialogCustom)
                         .setMessage(event_description)
-                        .setTitle("You encountered a new event!")
+                        .setTitle("    New Event!")
+                        .setCancelable(false)
                         .setPositiveButton(event_choice1, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Send the TryAgain button event back to the host fragment
@@ -428,6 +449,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     String event = "You started the HIST test";
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
+                                    // Wealth
+                                    tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
+                                    // GPA
+                                    tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
 
                                 }
                                 else if(game_type.equals("MANA")){
@@ -439,6 +465,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     String event = "You started the MANA test";
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
+                                    // Wealth
+                                    tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
+                                    // GPA
+                                    tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
                                 }
                                 else if (game_type.equals("")){
                                     String event = mNewEvent.generateNewEvent(mPlayer,true);
@@ -462,6 +493,11 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     }*/
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
+                                    // Wealth
+                                    tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
+                                    // GPA
+                                    tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
                                 }
 
 
@@ -516,13 +552,46 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     }*/
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
+                                    // Wealth
+                                    tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
+                                    // GPA
+                                    tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
                                 }
                             }
                         })
                         .show();
 
 
+                //Alert Dialog Theme
+                int stringSize = event_description.length() + event_choice1.length() + event_choice2.length();
+                int buttonSize = event_choice1.length() + event_choice2.length();
+                int alertHeight = 650;
+                if(stringSize < 200){
+                    alertHeight = 450;
+                }
 
+                if(buttonSize > 52){
+                    alertHeight = 650;
+                }
+
+                if(stringSize > 290){
+                    alertHeight = 750;
+                }
+
+                if(event_choice1.equals("Good luck for me") || event_choice2.equals("Good luck for me")){
+                    alertHeight = 400;
+                }
+
+                Drawable drawable = getResources().getDrawable(R.drawable.panel);
+                alertDialog.getWindow().setBackgroundDrawable(drawable);
+                alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, alertHeight);
+
+
+
+                //alertDialog.getWindow().setLayout(800, 400);
+
+                //END Alert Dialog Theme
                 //set player attribute after every newly generated event
                 // Pressure
                 tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
@@ -530,11 +599,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 tv2.setText(String.valueOf(mPlayer.getPlayerAttribute().getMoney()));
                 // GPA
                 tv3.setText(String.valueOf(mPlayer.getPlayerAttribute().getGPA()));
-                if(mAdapter.getItemCount() % 3 == 0){
-                    TextView BroadastText = findViewById(R.id.BroadCastText);
-                    String text = "        " + event;
-                    BroadastText.setText(text);
-                }
+
 
             }
         });
@@ -545,6 +610,16 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course2Code,course2mark);
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course3Code,course3mark);
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course4Code,course4mark);
+
+            PlayerAttribute playerAttribute = mPlayer.getPlayerAttribute();
+            playerAttribute.setIQ(playerAttributeDAO.getIQ1().get(0));
+            playerAttribute.setLuck(playerAttributeDAO.getLuck1().get(0));
+            playerAttribute.setHealth(playerAttributeDAO.getHealth1().get(0));
+            playerAttribute.setWealth(playerAttributeDAO.getWealth1().get(0));
+
+            mPlayer.setPlayerAttribute(playerAttribute);
+
+
             playerAttributeDAO.deleteAll();
             playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
             //update grade
@@ -558,10 +633,22 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course2Code,course2mark);
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course3Code,course3mark);
             courseSelectionRecordDAO.updateGradeByCourseCode(curPlayer.course4Code,course4mark);
+
+
+            PlayerAttribute playerAttribute = mPlayer.getPlayerAttribute();
+            playerAttribute.setIQ(playerAttributeDAO.getIQ1().get(0));
+            playerAttribute.setLuck(playerAttributeDAO.getLuck1().get(0));
+            playerAttribute.setHealth(playerAttributeDAO.getHealth1().get(0));
+            playerAttribute.setWealth(playerAttributeDAO.getWealth1().get(0));
+
+            mPlayer.setPlayerAttribute(playerAttribute);
+
+
             playerAttributeDAO.deleteAll();
             playerAttributeDAO.insertAll(mPlayer.getPlayerAttribute());
-            Intent intent = new Intent(EventActivity.this, MainActivity.class);
-            startActivity(intent);
+            /*Intent intent = new Intent(EventActivity.this, MainActivity.class);
+            startActivity(intent);*/
+            finish();
         });
         Button mProfileButton = findViewById(R.id.ProfileButton);
         mProfileButton.setOnClickListener((v) -> {
@@ -587,6 +674,9 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                         }
                     })
                     .show();
+            Drawable drawable = getResources().getDrawable(R.drawable.panel);
+            alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, 450);
+            alertDialog.getWindow().setBackgroundDrawable(drawable);
         });
 
 
@@ -676,23 +766,45 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     }
 
     public String toProfileString(PlayerAttribute p) {
-        return "playerID = " + p.playerID + '\n' +
-                "playerName = " + p.playerName + '\n' +
-                "programID = " + p.programID + '\n' +
-                "numTerm = " + p.numTerm + '\n' +
+        return "Term = " + p.numTerm + '\n' +
                 "IQ = " + p.IQ + '\n' +
                 "luck = " + p.luck + '\n' +
-                "wealth = " + p.wealth + '\n' +
+                "wealth = " + p.money + '\n' +
                 "health = " + p.health + '\n' +
                 "pressure = " + p.pressure + '\n' +
                 "GPA = " + p.GPA + '\n' +
-                "employed = " + p.employed + '\n'
-                + "event_count = "+ Event_Count;
+                "MANA skill = " + p.ManaSkill + '\n' +
+                "SPELL skill = " + p.SpelSkill + '\n' +
+                "HERBOLOGY skill = " + p.getHerbSkill() + '\n' +
+                "HISTORY skill = " + p.getHistSkill() + '\n' +
+                "POTION skill = " + p.MediSkill + '\n' +
+                "ASTROLOGY skill = " + p.getAtroSkill();
     }
 
     public void useSpellCard(View view){
         Intent intent = new Intent(EventActivity.this, SwipeSpellCardActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                .setMessage(R.string.proceed_to_summary)
+                .setCancelable(true)
+                .setTitle("Quit Game?")
+                .setPositiveButton("Quit", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        System.exit(0);
+                    }
+                })
+                .setNegativeButton("Continue game", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) { }
+                })
+                .show();
+        Drawable drawable = getResources().getDrawable(R.drawable.panel);
+        alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, 600);
+        alertDialog.getWindow().setBackgroundDrawable(drawable);
     }
 
 }

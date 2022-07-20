@@ -17,6 +17,9 @@ public interface SpellCardDAO {
     @Insert
     void insertAll(SpellCard spellCard);
 
+    @Query("UPDATE spellcard SET name = :name WHERE address =:addr")
+    void updateNameByAddress(String name, int addr);
+
     // clear the table
     @Query("DELETE FROM spellcard")
     void deleteAll();
@@ -42,6 +45,9 @@ public interface SpellCardDAO {
 
     @Query("SELECT * FROM spellcard WHERE selected = 1")
     List<SpellCard> getSelectedSpellCard();
+
+    @Query("SELECT * FROM spellcard WHERE selected = 1 AND used = 0")
+    List<SpellCard> getSelectedNotUsedSpellCard();
 
     @Query("SELECT * FROM spellcard WHERE used = 1")
     List<SpellCard> getUsedSpellCard();

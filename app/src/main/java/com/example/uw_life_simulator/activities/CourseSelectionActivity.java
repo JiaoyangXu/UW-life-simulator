@@ -69,6 +69,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
 
         Intent intent = new Intent(CourseSelectionActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
 
@@ -84,6 +85,7 @@ public class CourseSelectionActivity extends AppCompatActivity {
         // pass intent to Event Activity
         Intent intent = new Intent(CourseSelectionActivity.this, EventActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void uncheckAll() {

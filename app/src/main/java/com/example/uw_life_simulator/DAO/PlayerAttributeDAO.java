@@ -16,6 +16,21 @@ public interface PlayerAttributeDAO {
     @Insert
     void insertAll(PlayerAttribute playerAttribute);
 
+    @Query("UPDATE PlayerAttribute SET IQ = IQ + :num")
+    void increaseIQ(Integer num);
+
+    @Query("UPDATE PLAYERATTRIBUTE SET luck = luck + :num")
+    void increaseLuck(Integer num);
+
+    @Query("UPDATE PLAYERATTRIBUTE SET wealth = wealth + :num")
+    void increaseWealth(Integer num);
+
+    @Query("UPDATE PLAYERATTRIBUTE SET health = health + :num")
+    void increaseHealth(Integer num);
+
+
+
+
     @Query("DELETE FROM PlayerAttribute")
     void deleteAll();
 
@@ -46,7 +61,19 @@ public interface PlayerAttributeDAO {
     @Query("SELECT course4Code FROM PLAYERATTRIBUTE")
     List<String> getCourse4();
 
-    @Query("UPDATE PLAYERATTRIBUTE SET pressure = pressure + :value")
+    @Query("SELECT iq FROM PlayerAttribute")
+    List<Integer> getIQ1();
 
+    @Query("SELECT luck FROM PlayerAttribute")
+    List<Integer> getLuck1();
+
+    @Query("SELECT wealth FROM PlayerAttribute")
+    List<Integer> getWealth1();
+
+    @Query("SELECT Health FROM PlayerAttribute")
+    List<Integer> getHealth1();
+
+    @Query("UPDATE PLAYERATTRIBUTE SET pressure = pressure + :value")
     void increasePressure(int value);
+
 }

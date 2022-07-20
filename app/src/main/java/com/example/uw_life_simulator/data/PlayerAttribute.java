@@ -22,6 +22,22 @@ public class PlayerAttribute implements Subject {
     @ColumnInfo
     public int programID;
 
+    public void setIQ(int IQ) {
+        this.IQ = IQ;
+    }
+
+    public void setLuck(int luck) {
+        this.luck = luck;
+    }
+
+    public void setWealth(int wealth) {
+        this.wealth = wealth;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     @ColumnInfo
     public int numTerm;
 

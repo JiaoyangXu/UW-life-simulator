@@ -86,6 +86,16 @@ public class DrawSpellCardActivity extends AppCompatActivity {
                 spellCards.add(spellCard);
             }
         }
+        spellCardDAO.updateNameByAddress("health_card",card_list.get(0));
+        spellCardDAO.updateNameByAddress("iq_card",card_list.get(1));
+        spellCardDAO.updateNameByAddress("wealth_card",card_list.get(2));
+        spellCardDAO.updateNameByAddress("luck_card",card_list.get(3));
+
+
+
+
+
+
     }
 
     private void initializeCardStack() {
@@ -145,6 +155,9 @@ public class DrawSpellCardActivity extends AppCompatActivity {
                     generateSnackBar(view, "Not ready yet, please let the animation finish");
                     return;
                 }
+
+                if (card_list.size() == 0) return;
+
                 updateSelected(picCounter);
                 card_list.remove(picCounter);
                 cardStack.setAdapter(cardAdapter);
@@ -160,12 +173,16 @@ public class DrawSpellCardActivity extends AppCompatActivity {
                 // pass intent to Event Activity
                 Intent intent = new Intent(DrawSpellCardActivity.this, CourseSelectionActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
 
     private void updateSelected(int index) {
-        System.out.println("card_list.size()" + index);
+        if (card_list.size() == 0) {
+            return;
+        }
+
         int addr = card_list.get(index);
         SpellCard spellCard = spellCardDAO.getSpellCard(addr);
         System.out.println("updateSelected: " + addr);
