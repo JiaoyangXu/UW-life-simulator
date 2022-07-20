@@ -46,5 +46,7 @@ public interface PlayerAttributeDAO {
     @Query("SELECT course4Code FROM PLAYERATTRIBUTE")
     List<String> getCourse4();
 
+    @Query("UPDATE PLAYERATTRIBUTE SET pressure = pressure + :value")
 
+    void increasePressure(int value);
 }

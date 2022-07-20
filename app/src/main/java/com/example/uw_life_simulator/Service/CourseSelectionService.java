@@ -27,6 +27,7 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CourseSelectionService {
     private PlayerAttributeDatabase playerAttributeDatabase;
@@ -40,6 +41,33 @@ public class CourseSelectionService {
     private Context context;
 
     private List<String> courseCode;
+
+    Map<String, Integer> myMap = new HashMap<String, Integer>() {{
+        put("MANA 100", 20);
+        put("HERB 100", 50);
+        put("HIST 100", 20);
+        put("MEDI 100", 70);
+        put("SPEL 100", 80);
+        put("ATRO 100", 60);
+        put("HERB 200", 30);
+        put("MANA 200", 70);
+        put("SPEL 200", 90);
+        put("HIST 200", 50);
+        put("MEDI 200", 70);
+        put("ATRO 200", 60);
+        put("HERB 300", 30);
+        put("MANA 300", 70);
+        put("SPEL 300", 90);
+        put("HIST 300", 50);
+        put("MEDI 300", 70);
+        put("ATRO 300", 60);
+        put("HERB 400", 30);
+        put("MANA 400", 70);
+        put("SPEL 400", 90);
+        put("HIST 400", 50);
+        put("MEDI 400", 70);
+        put("ATRO 400", 60);
+    }};
 
 
     public CourseSelectionService(CourseDatabase db, CourseSelectionComponent component,Context context) {
@@ -132,10 +160,25 @@ public class CourseSelectionService {
 
         playerAttributeDAO.updateCourse1(courseCode.get(0));
         playerAttributeDAO.updateCourse2(courseCode.get(1));
-
         playerAttributeDAO.updateCourse3(courseCode.get(2));
-
         playerAttributeDAO.updateCourse4(courseCode.get(3));
+
+        playerAttributeDAO.increasePressure(myMap.get(courseCode.get(0))/10);
+        playerAttributeDAO.increasePressure(myMap.get(courseCode.get(1))/10);
+        playerAttributeDAO.increasePressure(myMap.get(courseCode.get(2))/10);
+        playerAttributeDAO.increasePressure(myMap.get(courseCode.get(3))/10);
+        /*if (courseCode.size() != 4) {
+            int diff1 = courseDao.selectDiffByID(courseCode.get(0)).get(0);
+            int diff2 = courseDao.selectDiffByID(courseCode.get(1)).get(0);
+            int diff3 = courseDao.selectDiffByID(courseCode.get(2)).get(0);
+            int diff4 = courseDao.selectDiffByID(courseCode.get(3)).get(0);
+
+        playerAttributeDAO.increasePressure(diff1%25);
+        playerAttributeDAO.increasePressure(diff2%25);
+        playerAttributeDAO.increasePressure(diff3%25);
+        playerAttributeDAO.increasePressure(diff4%25);
+
+         */
     }
 
 

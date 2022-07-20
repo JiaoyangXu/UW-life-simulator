@@ -44,6 +44,8 @@ import com.example.uw_life_simulator.Database.PlayerAttributeDatabase;
 
 import com.example.uw_life_simulator.DAO.CourseSelectionRecordDAO;
 import com.example.uw_life_simulator.data.CourseSelectionRecord;
+import com.example.uw_life_simulator.DAO.CourseDao;
+import com.example.uw_life_simulator.data.Course;
 import com.example.uw_life_simulator.Database.CourseDatabase;
 import com.example.uw_life_simulator.MiniGame.CardGameActivity;
 import com.example.uw_life_simulator.MiniGame.ManaInstructionPg;
@@ -52,6 +54,11 @@ import android.app.AlertDialog;
 
 import android.app.Dialog;
 import com.example.uw_life_simulator.R;
+
+import static java.util.Map.entry;
+import java.util.Map;
+import java.util.HashMap;
+
 
 public class EventActivity extends AppCompatActivity implements event_list_adapter.ItemClickListener,AlertDialogFragment.AlertDialogListener {
 
@@ -76,6 +83,35 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     int ATRO_mark = 0;
     int MANA_TEST_NUM = 80;
     int ATRO_TEST_NUM = 80;
+
+    //tmp map to store all course difficulty:
+
+    Map<String, Integer> myMap = new HashMap<String, Integer>() {{
+        put("MANA 100", 20);
+        put("HERB 100", 50);
+        put("HIST 100", 20);
+        put("MEDI 100", 70);
+        put("SPEL 100", 80);
+        put("ATRO 100", 60);
+        put("HERB 200", 30);
+        put("MANA 200", 70);
+        put("SPEL 200", 90);
+        put("HIST 200", 50);
+        put("MEDI 200", 70);
+        put("ATRO 200", 60);
+        put("HERB 300", 30);
+        put("MANA 300", 70);
+        put("SPEL 300", 90);
+        put("HIST 300", 50);
+        put("MEDI 300", 70);
+        put("ATRO 300", 60);
+        put("HERB 400", 30);
+        put("MANA 400", 70);
+        put("SPEL 400", 90);
+        put("HIST 400", 50);
+        put("MEDI 400", 70);
+        put("ATRO 400", 60);
+    }};
 
     private enum LayoutManagerType {
         LINEAR_LAYOUT_MANAGER
@@ -260,6 +296,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         CourseDatabase db2 = Room.databaseBuilder(getApplicationContext(),
                 CourseDatabase.class, "Courses").allowMainThreadQueries().build();
         CourseSelectionRecordDAO courseSelectionRecordDAO = db2.courseSelectionRecordDAO();
+        CourseDao courseDao = db2.courseDao();
 
         // Get a player instance (a line of data) from Room database.
         List<PlayerAttribute> tmpList = playerAttributeDAO.loadSingle();
@@ -324,11 +361,6 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         String course2type = curPlayer.course2Code.substring(0,4);
         String course3type = curPlayer.course3Code.substring(0,4);
         String course4type = curPlayer.course4Code.substring(0,4);
-
-
-
-
-
 
         mPlayer.setPlayerAttribute(curPlayer);
         Button mNewEventButton = findViewById(R.id.Eventbutton);

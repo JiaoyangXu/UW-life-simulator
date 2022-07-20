@@ -43,7 +43,6 @@ public class PlayerAttribute implements Subject {
     @ColumnInfo
     public int GPA;
 
-
     @ColumnInfo
     public int numFailedCourses;
 

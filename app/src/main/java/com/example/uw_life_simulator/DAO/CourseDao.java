@@ -53,4 +53,7 @@ public interface CourseDao {
     @Query("SELECT * FROM course WHERE courseID =:givenID")
     Course selectCourseFromUUID(Integer givenID);
 
+    @Query("SELECT difficulty FROM course WHERE courseID =:givenID")
+    List<Integer> selectDiffByID(String givenID);
+
 }
