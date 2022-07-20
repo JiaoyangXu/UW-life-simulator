@@ -33,9 +33,12 @@ public class CardGameActivity extends AppCompatActivity {
         Intent intent = getIntent();
         difficulty = intent.getIntExtra("Diff", 1);
 
-        if(difficulty == 1 || difficulty == 2) {
+        if(difficulty > 0) {
             if(difficulty == 2){
                 timeleft = 40000;
+            }
+            if(difficulty > 2){
+                timeleft = 30000;
             }
             setContentView(R.layout.card_game1);
             countdowntext = findViewById(R.id.countdown);

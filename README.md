@@ -1,5 +1,9 @@
 # UW-life-simulator
 
+Member ID <==> Name:
+
+KDAsona = Mingzhou Yue = m9yue
+
 ## Finished
 - [X] Talent Selection - Conrad, Jason
 - [X] Vistor and Factory Design Pattern - Hunter

@@ -249,7 +249,7 @@ class GameChoiceTest extends GameChoiceEvent{
 
     private GameEvent returnTests(String classCode)
     {
-        this.description = "It is till test day...";
+        this.description = "It is still test day...";
         classCode = classCode.split(" ")[0];
         switch (classCode) {
             case "MANA":
@@ -542,7 +542,7 @@ class GameEventNull extends GameEvent{
 class GameEventMoney extends GameEvent{
     public GameEventMoney(){
         this.Id = 1;
-        this.description = "You got 10 dollars!\n";
+        this.description = "You got 10 dollars!";
     }
 
     /**
@@ -586,7 +586,7 @@ class GameEventMoneyNo extends GameEvent{
 class GameEventMoneyLose extends GameEvent{
     public GameEventMoneyLose(){
         this.Id = 3;
-        this.description = "You lost 10 dollars!\n";
+        this.description = "You lost 10 dollars!";
     }
 
     /**

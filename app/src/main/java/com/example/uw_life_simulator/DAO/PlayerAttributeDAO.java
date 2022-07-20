@@ -73,5 +73,7 @@ public interface PlayerAttributeDAO {
     @Query("SELECT Health FROM PlayerAttribute")
     List<Integer> getHealth1();
 
+    @Query("UPDATE PLAYERATTRIBUTE SET pressure = pressure + :value")
+    void increasePressure(int value);
 
 }
