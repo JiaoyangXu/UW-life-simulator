@@ -112,7 +112,7 @@ class GameChoiceGoose extends GameChoiceEvent{
         this.description = "There are goose on your way, do you want to go away or attack them?\n";
         this.Id = 2;
         this.choice1_description = "I will go away";
-        this.choice2_description = "Attack them before they attack me!";
+        this.choice2_description = "Attack before they attack me!";
     }
     @Override
     public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
@@ -418,7 +418,7 @@ class GameChoiceIcecream extends GameChoiceEvent {
  **/
 class GameChoiceNovel extends GameChoiceEvent {
     GameChoiceNovel() {
-        this.description = "You found Fischer’s lost novel.";
+        this.description = "You found your classmate Fischer’s lost novel.";
         this.choice1_description = "Return to Lost and Found.";
         this.choice2_description = "Read and discuss with Fisher.";
         this.Id = 16;
@@ -630,7 +630,7 @@ class GameEventGoose extends GameEvent{
 class GameEventGoose2 extends GameEvent{
     public GameEventGoose2(){
         this.Id = 5;
-        this.description = "You attacked goose!";
+        this.description = "You attacked goose, that was refreshing! But you are punished for that.";
     }
 
     /**
@@ -642,6 +642,7 @@ class GameEventGoose2 extends GameEvent{
     @Override
     public void visit(PlayerAttribute attribute) {
         attribute.pressure -= 10.0;
+        attribute.money -= 100.0;
     }
 }
 
@@ -1253,7 +1254,7 @@ class GameEventNovelYes extends GameEvent{
 class GameEventNovelNo extends GameEvent{
     public GameEventNovelNo(){
         this.Id = 31;
-        this.description = "Fisher became angry from embarrassment and you are beaten up by Auz.";
+        this.description = "Fisher became angry from embarrassment and you are beaten up by her summon Auz.";
     }
 
     /**
