@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/wallpap1"
+    android:background="@drawable/wallpap5"
     tools:context=".activities.SwipeSpellCardActivity"
     android:id="@+id/swipe_card_view">
     <LinearLayout
