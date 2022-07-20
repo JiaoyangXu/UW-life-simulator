@@ -1044,23 +1044,24 @@ class GameEventHairNo extends GameEvent{
 
 /**
  * EventID: 22
- * Effect: Money - 1000
+ * Effect: Money - 300
  */
 class GameEventUnicornYes extends GameEvent{
     public GameEventUnicornYes(){
         this.Id = 22;
-        this.description = "You are a warrior.";
+        this.description = "You are brave, but unicorn seems angry.";
     }
 
     /**
-     * Event's effect on the player(Money - 1000)
+     * Event's effect on the player(Money - 300)
      *
      * Input: UserAttribute : attribute
      * Output: void
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
-        attribute.money -= 1000;
+        attribute.money -= 300;
+        attribute.health += 1;
     }
 }
 
