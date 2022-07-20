@@ -810,9 +810,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 "HERBOLOGY skill = " + p.getHerbSkill() + '\n' +
                 "HISTORY skill = " + p.getHistSkill() + '\n' +
                 "POTION skill = " + p.MediSkill + '\n' +
-                "ASTROLOGY skill = " + p.getAtroSkill()+
-                "MANA test num = " + MANA_TEST_NUM + '\n' +
-                "ATRO test num = " + ATRO_TEST_NUM;
+                "ASTROLOGY skill = " + p.getAtroSkill();
     }
 
     public void useSpellCard(View view){
