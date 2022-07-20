@@ -454,7 +454,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     intent.putExtra("Diff", 2);
                                     startActivityForResult(intent, 0);
                                     double score = intent.getDoubleExtra("Result",0.0);
-                                    String event = "You started the HIST test";
+                                    String event = "You started the test";
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                                     tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
@@ -470,7 +470,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     intent.putExtra("Diff", 2);
                                     startActivityForResult(intent, 0);
                                     double score = intent.getDoubleExtra("Result",0.0);
-                                    String event = "You started the MANA test";
+                                    String event = "You started the test";
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                                     tv1.setText(String.valueOf(mPlayer.getPlayerAttribute().getPressure()));
@@ -523,7 +523,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     intent.putExtra("Diff", 2);
                                     startActivityForResult(intent, 0);
                                     double score = intent.getDoubleExtra("Result",0.0);
-                                    String event = "You started the HIST test";
+                                    String event = "You started the test";
                                     mAdapter.addEvent(event);
                                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
 
@@ -534,9 +534,9 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                     intent.putExtra("Diff", 2);
                                     startActivityForResult(intent, 0);
                                     double score = intent.getDoubleExtra("Result",0.0);
-                                    //String event = "You started the MANA test";
-                                    //mAdapter.addEvent(event);
-                                    //mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                                    String event = "You started the test";
+                                    mAdapter.addEvent(event);
+                                    mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                                 }
                                 else if (game_type.equals("")){
                                     String event = mNewEvent.generateNewEvent(mPlayer,false);
