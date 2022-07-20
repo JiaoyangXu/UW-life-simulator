@@ -511,7 +511,12 @@ class GameChoiceDrug extends GameChoiceEvent {
     @Override
     public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
         if (playerResponse) {
-            return new GameEventDrugYes();
+            Random rand = new Random();
+            if (playerAttribute.MediSkill >= 8 || rand.nextBoolean())
+            {
+                return new GameEventDrugYesGood();
+            }
+            return new GameEventDrugYesBad();
         }
         return new GameEventDrugNo();
     }
@@ -734,6 +739,49 @@ class GameEventInspireYesBad extends GameEvent{
     @Override
     public void visit(PlayerAttribute attribute) {
         attribute.pressure += 5;
+        List<String> takenCouses = new ArrayList<>();
+        if (!attribute.course1Code.equals(""))
+        {
+            takenCouses.add(attribute.course1Code.split(" ")[0]);
+        }
+        if (!attribute.course2Code.equals(""))
+        {
+            takenCouses.add(attribute.course2Code.split(" ")[0]);
+        }
+        if (!attribute.course3Code.equals(""))
+        {
+            takenCouses.add(attribute.course3Code.split(" ")[0]);
+        }
+        if (!attribute.course4Code.equals(""))
+        {
+            takenCouses.add(attribute.course4Code.split(" ")[0]);
+        }
+
+        for (String course : takenCouses)
+        {
+            switch (course) {
+                case "MANA":
+                    attribute.ManaSkill --;
+                    break;
+                case "HERB":
+                    attribute.HerbSkill--;
+                    break;
+                case "SPEL":
+                    attribute.SpelSkill--;
+                    break;
+                case "ATRO":
+                    attribute.AtroSkill--;
+                    break;
+                case "MEDI":
+                    attribute.MediSkill--;
+                    break;
+                case "HIST":
+                    attribute.HistSkill--;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
 
@@ -1116,7 +1164,7 @@ class GameEventUnicornNo extends GameEvent{
 
 /**
  * EventID: 24
- * Effect: SpelSkill + 20
+ * Effect: SpelSkill + 2, pressure + 7
  */
 class GameEventSpellYes extends GameEvent{
     public GameEventSpellYes(){
@@ -1125,20 +1173,21 @@ class GameEventSpellYes extends GameEvent{
     }
 
     /**
-     * Event's effect on the player(SpelSkill + 20)
+     * Event's effect on the player(SpelSkill + 2, pressure + 7)
      *
      * Input: UserAttribute : attribute
      * Output: void
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
-        attribute.SpelSkill += 20;
+        attribute.SpelSkill += 2;
+        attribute.pressure += 7;
     }
 }
 
 /**
  * EventID: 25
- * Effect: Health + 10, SpelSkill - 5
+ * Effect: Health + 1, SpelSkill - 1, pressure - 10, gpa - 2
  */
 class GameEventSpellNo extends GameEvent{
     public GameEventSpellNo(){
@@ -1147,22 +1196,24 @@ class GameEventSpellNo extends GameEvent{
     }
 
     /**
-     * Event's effect on the player(Health + 10, SpelSkill - 5)
+     * Event's effect on the player(Health + 1, SpelSkill - 1, pressure - 10, gpa - 2)
      *
      * Input: UserAttribute : attribute
      * Output: void
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
-        attribute.health += 10;
-        attribute.SpelSkill -= 5;
+        attribute.health += 1;
+        attribute.pressure -= 10;
+        attribute.SpelSkill -= 1;
+        attribute.GPA -= 2;
     }
 }
 
 
 /**
  * EventID: 26
- * Effect: Money - 500
+ * Effect: Money - 200
  */
 class GameEventFightYes extends GameEvent{
     public GameEventFightYes(){
@@ -1171,20 +1222,20 @@ class GameEventFightYes extends GameEvent{
     }
 
     /**
-     * Event's effect on the player(Money - 500)
+     * Event's effect on the player(Money - 200)
      *
      * Input: UserAttribute : attribute
      * Output: void
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
-        attribute.money -= 500;
+        attribute.money -= 200;
     }
 }
 
 /**
  * EventID: 27
- * Effect: IQ - 5, Money + 500
+ * Effect: IQ - 1, Money + 300
  */
 class GameEventFightNo extends GameEvent{
     public GameEventFightNo(){
@@ -1193,15 +1244,15 @@ class GameEventFightNo extends GameEvent{
     }
 
     /**
-     * Event's effect on the player(IQ - 5, Money + 500)
+     * Event's effect on the player(IQ - 1, Money + 300)
      *
      * Input: UserAttribute : attribute
      * Output: void
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
-        attribute.IQ -= 5;
-        attribute.money += 500;
+        attribute.IQ -= 1;
+        attribute.money += 300;
     }
 }
 
@@ -1254,7 +1305,7 @@ class GameEventIcecreamNo extends GameEvent{
 
 /**
  * EventID: 30
- * Effect: Luck + 5
+ * Effect: Luck + 1
  */
 class GameEventNovelYes extends GameEvent{
     public GameEventNovelYes(){
@@ -1263,29 +1314,29 @@ class GameEventNovelYes extends GameEvent{
     }
 
     /**
-     * Event's effect on the player(Luck + 5)
+     * Event's effect on the player(Luck + 1)
      *
      * Input: UserAttribute : attribute
      * Output: void
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
-        attribute.luck += 5;
+        attribute.luck += 1;
     }
 }
 
 /**
  * EventID: 31
- * Effect: Pressure + 5, Health - 5
+ * Effect: Pressure + 5
  */
 class GameEventNovelNo extends GameEvent{
     public GameEventNovelNo(){
         this.Id = 31;
-        this.description = "Fisher became angry from embarrassment and you are beaten up by her summon Auz.";
+        this.description = "Fisher became embarrassed and you are beaten up by her summon Auz.";
     }
 
     /**
-     * Event's effect on the player(Pressure + 5, Health - 5)
+     * Event's effect on the player(Pressure + 5)
      *
      * Input: UserAttribute : attribute
      * Output: void
@@ -1293,7 +1344,6 @@ class GameEventNovelNo extends GameEvent{
     @Override
     public void visit(PlayerAttribute attribute) {
         attribute.pressure += 5;
-        attribute.health -= 5;
     }
 }
 
@@ -1388,7 +1438,7 @@ class GameEventJobNo extends GameEvent{
 
 /**
  * EventID: 36
- * Effect: Health + 5
+ * Effect: pressure - 10
  */
 class GameEventCleanYes extends GameEvent{
     public GameEventCleanYes(){
@@ -1397,20 +1447,20 @@ class GameEventCleanYes extends GameEvent{
     }
 
     /**
-     * Event's effect on the player(Health + 5)
+     * Event's effect on the player(pressure - 10)
      *
      * Input: UserAttribute : attribute
      * Output: void
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
-        attribute.health += 5;
+        attribute.pressure -= 10;
     }
 }
 
 /**
  * EventID: 37
- * Effect: Health - 5
+ * Effect:  pressure + 15, spellskill + 1
  */
 class GameEventCleanNo extends GameEvent{
     public GameEventCleanNo(){
@@ -1419,29 +1469,30 @@ class GameEventCleanNo extends GameEvent{
     }
 
     /**
-     * Event's effect on the player(Health - 5)
+     * Event's effect on the player(pressure + 15, spellskill + 1)
      *
      * Input: UserAttribute : attribute
      * Output: void
      **/
     @Override
     public void visit(PlayerAttribute attribute) {
-        attribute.health -= 5;
+        attribute.pressure += 15;
+        attribute.SpelSkill += 1;
     }
 }
 
 /**
  * EventID: 38
- * Effect: Money - 500, IQ - 5
+ * Effect: Money - 500, Medi + 1
  */
-class GameEventDrugYes extends GameEvent{
-    public GameEventDrugYes(){
+class GameEventDrugYesGood extends GameEvent{
+    public GameEventDrugYesGood(){
         this.Id = 38;
-        this.description = "You have a splitting headache and found at the bottom of the drug which showed it had passed expiry date.";
+        this.description = "You found smell of the potion is strange. Fortunately you didn't drink it";
     }
 
     /**
-     * Event's effect on the player(Money - 500, IQ - 5)
+     * Event's effect on the player(Money - 500, Medi + 1)
      *
      * Input: UserAttribute : attribute
      * Output: void
@@ -1449,7 +1500,31 @@ class GameEventDrugYes extends GameEvent{
     @Override
     public void visit(PlayerAttribute attribute) {
         attribute.money -= 500;
-        attribute.IQ -= 5;
+        attribute.MediSkill += 1;
+
+    }
+}
+
+/**
+ * EventID: 38
+ * Effect: Money - 500, IQ - 1
+ */
+class GameEventDrugYesBad extends GameEvent{
+    public GameEventDrugYesBad(){
+        this.Id = 38;
+        this.description = "You have a splitting headache and you found the drug had passed expiry date.";
+    }
+
+    /**
+     * Event's effect on the player(Money - 500, IQ - 1)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.money -= 500;
+        attribute.IQ -= 1;
 
     }
 }

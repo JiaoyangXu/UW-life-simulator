@@ -78,7 +78,10 @@ public class Factory {
             health = 0;
         }
 
-        int rand = random.nextInt((iq + wealth + luck + health) + eventListCommon.GeneralList.size());
+        int total_att = (iq + wealth + luck + health);
+        int rand = random.nextInt(total_att + eventListCommon.GeneralList.size());
+        /*System.out.println("IQ: "+iq + ", wealth: " + wealth + ", luck: " + luck + ", health: " + health + ", total: " + total_att);
+        System.out.println("Rand: ");*/
         if (rand < iq)
         {
             rand = random.nextInt(eventListCommon.IqList.size());
