@@ -630,7 +630,7 @@ class GameEventGoose extends GameEvent{
 class GameEventGoose2 extends GameEvent{
     public GameEventGoose2(){
         this.Id = 5;
-        this.description = "You attacked goose!\n";
+        this.description = "You attacked goose!";
     }
 
     /**

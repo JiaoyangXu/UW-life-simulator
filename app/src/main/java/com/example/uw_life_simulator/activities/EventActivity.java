@@ -376,7 +376,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                         })
                         .show();
                 Drawable drawable = getResources().getDrawable(R.drawable.panel);
-                alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, 450);
+                alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, 600);
                 alertDialog.getWindow().setBackgroundDrawable(drawable);
 
             }
@@ -530,9 +530,14 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
 
                 //Alert Dialog Theme
                 int stringSize = event_description.length() + event_choice1.length() + event_choice2.length();
+                int buttonSize = event_choice1.length() + event_choice2.length();
                 int alertHeight = 650;
                 if(stringSize < 150){
                     alertHeight = 450;
+                }
+
+                if(buttonSize > 80){
+                    alertHeight = 650;
                 }
 
                 if(stringSize > 290){
@@ -630,6 +635,9 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                         }
                     })
                     .show();
+            Drawable drawable = getResources().getDrawable(R.drawable.panel);
+            alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, 450);
+            alertDialog.getWindow().setBackgroundDrawable(drawable);
         });
 
 
@@ -725,12 +733,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 "numTerm = " + p.numTerm + '\n' +
                 "IQ = " + p.IQ + '\n' +
                 "luck = " + p.luck + '\n' +
-                "wealth = " + p.wealth + '\n' +
+                "wealth = " + p.money + '\n' +
                 "health = " + p.health + '\n' +
                 "pressure = " + p.pressure + '\n' +
-                "GPA = " + p.GPA + '\n' +
-                "employed = " + p.employed + '\n'
-                + "event_count = "+ Event_Count;
+                "GPA = " + p.GPA + '\n';
     }
 
     public void useSpellCard(View view){
