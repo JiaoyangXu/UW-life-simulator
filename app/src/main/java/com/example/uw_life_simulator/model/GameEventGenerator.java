@@ -85,7 +85,7 @@ class GameChoiceNull extends GameChoiceEvent{
 class GameChoiceMoney extends GameChoiceEvent{
     GameChoiceMoney()
     {
-        this.description = "There are 10 dollars on the ground! Do you want to pick it up?\n";
+        this.description = "There are 10 dollars on the ground! Do you want to pick it up?";
         this.Id = 1;
         this.choice1_description = "OK, I will get it";
         this.choice2_description = "No, it's not my money!";
@@ -109,7 +109,7 @@ class GameChoiceMoney extends GameChoiceEvent{
 class GameChoiceGoose extends GameChoiceEvent{
     GameChoiceGoose()
     {
-        this.description = "There are goose on your way, do you want to go away or attack them?\n";
+        this.description = "There are goose on your way, do you want to go away or attack them?";
         this.Id = 2;
         this.choice1_description = "I will go away";
         this.choice2_description = "Attack before they attack me!";
@@ -144,7 +144,7 @@ class GameChoiceInspire extends GameChoiceEvent{
     public GameEvent generateEvent(boolean playerResponse, PlayerAttribute playerAttribute) {
         if (playerResponse)
         {
-            if (playerAttribute.getIQ() > 8)
+            if (playerAttribute.getIQ() < 8)
             {
                 return new GameEventInspireYesBad();
             }
@@ -177,7 +177,11 @@ class GameChoiceHotDay extends GameChoiceEvent{
         }
         else
         {
-            return new GameEventHotDayNo();
+            if (playerAttribute.health >= 8)
+            {
+                return new GameEventHotDayNoGood();
+            }
+            return new GameEventHotDayNoBad();
         }
     }
 }
@@ -779,10 +783,32 @@ class GameEventHotDayYes extends GameEvent{
  * EventID: 10
  * Effect: Health -= 5, Pressure += 5
  */
-class GameEventHotDayNo extends GameEvent{
-    public GameEventHotDayNo(){
+class GameEventHotDayNoBad extends GameEvent{
+    public GameEventHotDayNoBad(){
         this.Id = 10;
-        this.description = "You decided to walk to school, but it's too hot and you got heat stroke\n";
+        this.description = "You decided to walk to school, but it's too hot and you got heat stroke";
+    }
+
+    /**
+     * Event's effect on the player(Health -= 5, Pressure += 5)
+     *
+     * Input: UserAttribute : attribute
+     * Output: void
+     **/
+    @Override
+    public void visit(PlayerAttribute attribute) {
+        attribute.pressure += 5;
+    }
+}
+
+/**
+ * EventID: 10
+ * Effect: Health += 1, Pressure -= 5
+ */
+class GameEventHotDayNoGood extends GameEvent{
+    public GameEventHotDayNoGood(){
+        this.Id = 10;
+        this.description = "You walked to school as a morning workout and feel released";
     }
 
     /**
