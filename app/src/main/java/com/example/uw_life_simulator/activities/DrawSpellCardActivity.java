@@ -3,6 +3,8 @@ package com.example.uw_life_simulator.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -41,6 +43,7 @@ public class DrawSpellCardActivity extends AppCompatActivity {
     List<Integer> card_list = new ArrayList<>();
     List<SpellCard> spellCards;
     SpellCardDAO spellCardDAO;
+    int cardLeft = 3;
 
 
 
@@ -156,6 +159,11 @@ public class DrawSpellCardActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (--cardLeft == 0) {
+                    showFinishMessage();
+                }
+                updateCardLeftMessage();
+
                 if (card_list.size() == 0) return;
 
                 updateSelected(picCounter);
@@ -208,6 +216,28 @@ public class DrawSpellCardActivity extends AppCompatActivity {
         mySnackbar.show();
     }
 
+    private void showFinishMessage() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                .setMessage("You Have Purchased 3 Cards, Now You Can Begin Your Adventure!")
+                .setCancelable(true)
+                .setTitle("END OF PURCHASE")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Send the TryAgain button event back to the host fragment
+                        dialog.dismiss();
+                        Intent intent = new Intent(DrawSpellCardActivity.this, CourseSelectionActivity.class);
+                        startActivity(intent);
+                        finish();
+                        return;
+                    }
+                })
+                .show();
+    }
+
+    private void updateCardLeftMessage() {
+        TextView textView = findViewById(R.id.tvCardLeft);
+        textView.setText("You Can Buy " + cardLeft + " More Card");
+    }
     
 
 }
