@@ -84,6 +84,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
     int ATRO_mark = 0;
     int MANA_TEST_NUM = 80;
     int ATRO_TEST_NUM = 80;
+    int mini_game_difficulty = 1;
 
     //tmp map to store all course difficulty:
 
@@ -428,6 +429,17 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 //event= mNewEvent.generateNewEvent(mPlayer,mAdapter.getItemCount());
                 boolean return_last_event = false;
                 event_list = mNewEvent.generateNewChoice(mPlayer,Event_Count);
+
+                //Set test difficulty
+                if (Event_Count >= 11)
+                {
+                    mini_game_difficulty = 2;
+                }
+                else
+                {
+                    mini_game_difficulty = 1;
+                }
+
                 //2022 0713
                 String event_description = event_list.get(0);
                 String event_choice1 = event_list.get(1);
@@ -451,7 +463,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                 if(game_type.equals("HIST")){
                                     called_by_event = true;
                                     Intent intent = new Intent(EventActivity.this, CardGameActivity.class);
-                                    intent.putExtra("Diff", 2);
+                                    intent.putExtra("Diff", mini_game_difficulty);
                                     startActivityForResult(intent, 0);
                                     double score = intent.getDoubleExtra("Result",0.0);
                                     String event = "You started the test";
@@ -467,7 +479,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                 else if(game_type.equals("MANA")){
                                     called_by_event = true;
                                     Intent intent = new Intent(EventActivity.this, ManaTestMainAct.class);
-                                    intent.putExtra("Diff", 2);
+                                    intent.putExtra("Diff", mini_game_difficulty);
                                     startActivityForResult(intent, 0);
                                     double score = intent.getDoubleExtra("Result",0.0);
                                     String event = "You started the test";
@@ -520,7 +532,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                 if(game_type.equals("HIST")){
                                     called_by_event = true;
                                     Intent intent = new Intent(EventActivity.this, CardGameActivity.class);
-                                    intent.putExtra("Diff", 2);
+                                    intent.putExtra("Diff", mini_game_difficulty);
                                     startActivityForResult(intent, 0);
                                     double score = intent.getDoubleExtra("Result",0.0);
                                     String event = "You started the test";
@@ -531,7 +543,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                                 else if(game_type.equals("MANA")){
                                     called_by_event = true;
                                     Intent intent = new Intent(EventActivity.this, ManaTestMainAct.class);
-                                    intent.putExtra("Diff", 2);
+                                    intent.putExtra("Diff", mini_game_difficulty);
                                     startActivityForResult(intent, 0);
                                     double score = intent.getDoubleExtra("Result",0.0);
                                     String event = "You started the test";
