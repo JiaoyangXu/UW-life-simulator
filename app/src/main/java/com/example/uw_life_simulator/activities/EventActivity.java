@@ -166,7 +166,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                     mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
                     event = mNewEvent.generateNewEvent(mPlayer,true);
                     if(event.equals("MANA")){
-                        if (course1type.equals("MANA") || course1type.equals("HERB") || course1type.equals("MEDI")){
+                        if (course1type.equals("MANA")){
                             if(MANA_TEST_NUM == 0){
                                 course1mark = result;
                                 MANA_mark = course1mark;
@@ -177,7 +177,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                             MANA_TEST_NUM += 1;
                         }
-                        if (course2type.equals("MANA")|| course2type.equals("HERB") || course2type.equals("MEDI")){
+                        if (course2type.equals("MANA")){
                             if(MANA_TEST_NUM == 0){
                                 course2mark = result;
                                 MANA_mark = course2mark;
@@ -188,7 +188,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                             MANA_TEST_NUM += 1;
                         }
-                        if (course3type.equals("MANA")|| course3type.equals("HERB") || course3type.equals("MEDI")){
+                        if (course3type.equals("MANA")){
                             if(MANA_TEST_NUM == 0){
                                 course3mark = result;
                                 MANA_mark = course3mark;
@@ -199,7 +199,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                             MANA_TEST_NUM += 1;
                         }
-                        if (course4type.equals("MANA")|| course4type.equals("HERB") || course4type.equals("MEDI")){
+                        if (course4type.equals("MANA")){
                             if(MANA_TEST_NUM == 0){
                                 course4mark = result;
                                 MANA_mark = course4mark;
@@ -212,7 +212,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                         }
                     }
                     if(event.equals("ATRO")){
-                        if (course1type.equals("ATRO") || course1type.equals("HIST")|| course1type.equals("SPEL")){
+                        if (course1type.equals("ATRO")){
                             if(ATRO_TEST_NUM == 0){
                                 course1mark = result;
                                 ATRO_mark = course1mark;
@@ -223,7 +223,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                             ATRO_TEST_NUM += 1;
                         }
-                        if (course2type.equals("ATRO") || course2type.equals("HIST")|| course2type.equals("SPEL")){
+                        if (course2type.equals("ATRO")){
                             if(ATRO_TEST_NUM == 0){
                                 course2mark = result;
                                 ATRO_mark = course2mark;
@@ -234,7 +234,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                             ATRO_TEST_NUM += 1;
                         }
-                        if (course3type.equals("ATRO") || course3type.equals("HIST")|| course3type.equals("SPEL")){
+                        if (course3type.equals("ATRO")){
                             if(ATRO_TEST_NUM == 0){
                                 course3mark = result;
                                 ATRO_mark = course3mark;
@@ -245,7 +245,7 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                             }
                             ATRO_TEST_NUM += 1;
                         }
-                        if (course4type.equals("ATRO")|| course4type.equals("HIST")|| course4type.equals("SPEL")){
+                        if (course4type.equals("ATRO")){
                             if(ATRO_TEST_NUM == 0){
                                 course4mark = result;
                                 ATRO_mark = course4mark;
@@ -588,10 +588,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
                 int buttonSize = event_choice1.length() + event_choice2.length();
                 int alertHeight = 650;
                 if(stringSize < 200){
-                    alertHeight = 450;
+                    alertHeight = 500;
                 }
 
-                if(buttonSize > 52){
+                if(buttonSize > 45){
                     alertHeight = 650;
                 }
 
