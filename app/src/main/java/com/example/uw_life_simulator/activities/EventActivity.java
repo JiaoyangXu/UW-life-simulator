@@ -753,5 +753,26 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        AlertDialog alertDialog = new AlertDialog.Builder(this,AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                .setMessage(R.string.proceed_to_summary)
+                .setCancelable(true)
+                .setTitle("Quit Game?")
+                .setPositiveButton("Quit", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        System.exit(0);
+                    }
+                })
+                .setNegativeButton("Continue game", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) { }
+                })
+                .show();
+        Drawable drawable = getResources().getDrawable(R.drawable.panel);
+        alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, 600);
+        alertDialog.getWindow().setBackgroundDrawable(drawable);
+    }
+
 }
 

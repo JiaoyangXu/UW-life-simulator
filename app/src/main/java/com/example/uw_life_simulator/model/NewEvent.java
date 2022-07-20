@@ -8,6 +8,7 @@ import java.util.List;
 
 public class NewEvent {
     static GameChoiceEvent gce = null;
+    static int prev_event_num = -1;
     public static List<String> generateNewChoice(Player player, int totalnum)
     {
         PlayerAttribute pa = player.getPlayerAttribute();
@@ -22,6 +23,10 @@ public class NewEvent {
                 else
                 {
                     gce = Factory.generateRandomChoiceEvent(pa);
+                    while (gce.Id == prev_event_num)
+                    {
+                        gce = Factory.generateRandomChoiceEvent(pa);
+                    }
                 }
             }
         }
@@ -34,12 +39,17 @@ public class NewEvent {
             else
             {
                 gce = Factory.generateRandomChoiceEvent(pa);
+                while (gce.Id == prev_event_num)
+                {
+                    gce = Factory.generateRandomChoiceEvent(pa);
+                }
             }
         }
         List<String> ret = new ArrayList<>();
         ret.add(gce.description);
         ret.add(gce.choice1_description);
         ret.add(gce.choice2_description);
+        prev_event_num = gce.Id;
         return ret;
     }
 

@@ -90,17 +90,17 @@ public class Factory {
             }
             return generateChoiceEvent(id);
         }
-        else if (rand < iq + wealth)
+        else if (rand < (iq + wealth))
         {
             rand = random.nextInt(eventListCommon.WealthList.size());
             return generateChoiceEvent(eventListCommon.WealthList.get(rand));
         }
-        else if (rand < iq + wealth + luck)
+        else if (rand < (iq + wealth + luck))
         {
             rand = random.nextInt(eventListCommon.LuckList.size());
             return generateChoiceEvent(eventListCommon.LuckList.get(rand));
         }
-        else if (rand < iq + wealth + luck + health)
+        else if (rand < (iq + wealth + luck + health))
         {
             rand = random.nextInt(eventListCommon.HealthList.size());
             return generateChoiceEvent(eventListCommon.HealthList.get(rand));
