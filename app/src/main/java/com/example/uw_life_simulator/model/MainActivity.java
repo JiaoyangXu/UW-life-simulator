@@ -20,6 +20,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.uw_life_simulator.activities.HelpActivity;
 import com.example.uw_life_simulator.activities.SwipeSpellCardActivity;
 import com.example.uw_life_simulator.databinding.ActivityMainBinding;
 
@@ -97,6 +98,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void selectCourse(View view) {
         Intent intent = new Intent(MainActivity.this, CourseSelectionActivity.class);
+        startActivity(intent);
+    }
+
+    public void goHelpPage(View view) {
+        Intent intent = new Intent(MainActivity.this, HelpActivity.class);
         startActivity(intent);
     }
 
