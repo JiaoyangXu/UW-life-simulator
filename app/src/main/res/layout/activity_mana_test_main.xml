@@ -17,6 +17,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\n\n\n\nTry catch the dropping mana with the crystal ball!"
+        android:textColor="@color/white"
+        android:fontFamily="@font/almendra_sc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/ball"
         android:layout_width="100dp"
@@ -80,13 +91,5 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="1dp"
         tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/Score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

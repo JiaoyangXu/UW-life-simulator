@@ -504,7 +504,7 @@ class GameChoiceDrug extends GameChoiceEvent {
     GameChoiceDrug() {
         this.description = "Smart drugs are selling in a secluded store.";
         this.choice1_description = "You bought some and used one for Herb test.";
-        this.choice2_description = "You passed away because you cannot believe its effect.";
+        this.choice2_description = "You ignored them since you don't believe the effect.";
         this.Id = 20;
     }
 
@@ -1075,7 +1075,7 @@ class GameEventHairNo extends GameEvent{
 class GameEventUnicornYes extends GameEvent{
     public GameEventUnicornYes(){
         this.Id = 22;
-        this.description = "You are brave, but unicorn seems angry.";
+        this.description = "You are brave, but unicorn and the school guard seems angry.";
     }
 
     /**
