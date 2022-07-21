@@ -363,10 +363,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
         String term = "Current Term :\n" + String.valueOf(curPlayer.getNumTerm());
         curTerm.setText(term);
 
-        String course1type = curPlayer.course1Code.substring(0,4);
-        String course2type = curPlayer.course2Code.substring(0,4);
-        String course3type = curPlayer.course3Code.substring(0,4);
-        String course4type = curPlayer.course4Code.substring(0,4);
+        course1type = curPlayer.course1Code.substring(0,4);
+        course2type = curPlayer.course2Code.substring(0,4);
+        course3type = curPlayer.course3Code.substring(0,4);
+        course4type = curPlayer.course4Code.substring(0,4);
 
         mPlayer.setPlayerAttribute(curPlayer);
         Button mNewEventButton = findViewById(R.id.Eventbutton);
@@ -601,6 +601,10 @@ public class EventActivity extends AppCompatActivity implements event_list_adapt
 
                 if(event_choice1.equals("Good luck for me") || event_choice2.equals("Good luck for me")){
                     alertHeight = 400;
+                }
+
+                if (event_description.equals("You want to get a part time job, which job would you like?")){
+                    alertHeight = 450;
                 }
 
                 Drawable drawable = getResources().getDrawable(R.drawable.panel);
