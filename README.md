@@ -3,6 +3,7 @@
 Member ID <==> Name:
 
 KDAsona = Mingzhou Yue = m9yue
+JiaoyangXu = Jiaoyang (Jason) Xu  = j473xu
 
 ## Finished
 - [X] Talent Selection - Conrad, Jason
