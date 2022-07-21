@@ -2,6 +2,8 @@
 
 Member ID <==> Name:
 
+h48yin = Haoyu (Hunter) Yin = h48yin
+
 KDAsona = Mingzhou (Conrad) Yue = m9yue
 
 JiaoyangXu = Jiaoyang (Jason) Xu  = j473xu
@@ -24,6 +26,9 @@ JiayiCai152k = Jiayi Cai = Karen = j85cai
 - [X] Swipe Spell Card to use the card - Jason
 - [X] Talent selection page, entrance page UI rework - Conrad
 - [X] Random Event Page connects frontend and backend - Echo
+- [X] Event generators - Hunter
+- [X] Special events(Tests, Event Chains) - Hunter
+- [X] Random event generate logics - Hunter
 - [X] Main UI (event list page)  - Jiayi
 - [X] Summary Page - Robert
 - [X] Player Info Database - Conrad	
@@ -31,7 +36,7 @@ JiayiCai152k = Jiayi Cai = Karen = j85cai
 - [X] Mini Games - Hunter, Robert
 - [X] Art Design - Jiayi
 - [X] Transition between Event page and Game Page - Jiayi
-- [X] Create more event cases - Echo
+- [X] Create more event cases - Echo, Hunter
 
 
 Reference:
