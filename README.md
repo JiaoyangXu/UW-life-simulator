@@ -14,7 +14,8 @@ h48yin = Haoyu (Hunter) Yin = h48yin
 - [X] Backend Code main structure - Hunter
 - [X] Course Selection  - database: Jason, Conrad; interaction: Jason
 - [X] Use Room database as mean of inter-activity communication - Conrad, Jason
-- [X] Clean database when game terminated (press quit button for now) - Jason
+- [X] Clean database when game terminated - Jason
+- [X] Initialize all database when game start - Jason
 - [X] Entrance Page (New/Load) - Karen, Conrad
 - [X] Collect and crop UI and other graphic materials - Conrad
 - [X] Summary Page, Course Selection Page, Event List Page UI rework - Conrad
