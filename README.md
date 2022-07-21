@@ -8,14 +8,15 @@ JiaoyangXu = Jiaoyang (Jason) Xu  = j473xu
 
 h48yin = Haoyu (Hunter) Yin = h48yin
 
+EchoLXY = Echo Liu = x263yu
+
 ## Finished
 - [X] Talent Selection - Conrad, Jason
 - [X] Vistor and Factory Design Pattern - Hunter
 - [X] Backend Code main structure - Hunter
 - [X] Course Selection  - database: Jason, Conrad; interaction: Jason
 - [X] Use Room database as mean of inter-activity communication - Conrad, Jason
-- [X] Clean database when game terminated - Jason
-- [X] Initialize all database when game start - Jason
+- [X] Clean database when game terminated (press quit button for now) - Jason
 - [X] Entrance Page (New/Load) - Karen, Conrad
 - [X] Collect and crop UI and other graphic materials - Conrad
 - [X] Summary Page, Course Selection Page, Event List Page UI rework - Conrad
@@ -23,6 +24,7 @@ h48yin = Haoyu (Hunter) Yin = h48yin
 - [X] Swipe Spell Card to use the card - Jason
 - [X] Talent selection page, entrance page UI rework - Conrad
 - [X] Random Event Page connects frontend and backend - Echo
+- [X] Create more event cases - Echo
 
 ## TO-DO For Demo
 - [ ] Main UI (event list page)  - Karen
@@ -37,7 +39,6 @@ h48yin = Haoyu (Hunter) Yin = h48yin
 - [ ] Work Term Event Set (Backend Code)
 - [ ] Mini Games - Hunter, Robert
 - [ ] Art Design - Karen
-- [ ] Create more event cases - Echo
 
 Reference:
 Background Picture:  zeefumdajma on https://www.reddit.com/r/uwaterloo/comments/83rs5w/mr_goose_on_snapchat/
