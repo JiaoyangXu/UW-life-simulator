@@ -6,6 +6,8 @@ KDAsona = Mingzhou (Conrad) Yue = m9yue
 
 JiaoyangXu = Jiaoyang (Jason) Xu  = j473xu
 
+h48yin = Haoyu (Hunter) Yin = h48yin
+
 ## Finished
 - [X] Talent Selection - Conrad, Jason
 - [X] Vistor and Factory Design Pattern - Hunter
