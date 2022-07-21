@@ -2,7 +2,7 @@
 
 Member ID <==> Name:
 
-KDAsona = Mingzhou Yue = m9yue
+KDAsona = Mingzhou (Conrad) Yue = m9yue
 
 JiaoyangXu = Jiaoyang (Jason) Xu  = j473xu
 
