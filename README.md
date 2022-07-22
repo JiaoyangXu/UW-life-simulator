@@ -8,7 +8,7 @@ KDAsona = Mingzhou (Conrad) Yue = m9yue
 
 JiaoyangXu = Jiaoyang (Jason) Xu  = j473xu
 
-EchoLXY = EchoLiu = x263yu
+EchoLXY = Echo Liu = x263yu
 
 JiayiCai152k = Jiayi Cai = Karen = j85cai
 
