@@ -34,6 +34,7 @@ HaiyaoChen = Haiyao(Robert) Chen = chy-whatever= h574chen
 - [X] Special events(Tests, Event Chains) - Hunter
 - [X] Random event generate logics - Hunter
 - [X] Main UI (event list page)  - Jiayi
+- [X] Courses score generation logic  - Jiayi
 - [X] Summary Page - Robert
 - [X] Player Info Database - Conrad	
 - [X] Work Term Event Set (Backend Code) - Jiayi Robert
