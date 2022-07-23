@@ -12,7 +12,7 @@ EchoLXY = Echo Liu = x263yu
 
 JiayiCai152k = Jiayi Cai = Karen = j85cai
 
-HaiyaoChen= Haiyao(Robert) Chen = h574chen
+HaiyaoChen = Haiyao(Robert) Chen = chy-whatever= h574chen
 
 ## Finished
 - [X] Talent Selection - Conrad, Jason
