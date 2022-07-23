@@ -12,6 +12,8 @@ EchoLXY = Echo Liu = x263yu
 
 JiayiCai152k = Jiayi Cai = Karen = j85cai
 
+HaiyaoChen= Haiyao(Robert) Chen = h574chen
+
 ## Finished
 - [X] Talent Selection - Conrad, Jason
 - [X] Vistor and Factory Design Pattern - Hunter
@@ -22,7 +24,7 @@ JiayiCai152k = Jiayi Cai = Karen = j85cai
 - [X] Entrance Page (New/Load) - Jiayi, Conrad
 - [X] Event page scrolling logic - Jiayi
 - [X] Collect and crop UI and other graphic materials - Conrad
-- [X] Summary Page, Course Selection Page, Event List Page UI rework - Conrad
+- [X] Summary Page, Course Selection Page, Event List Page UI rework - Conrad, Robert
 - [X] Buy Spell Card - Conrad, Jason
 - [X] Swipe Spell Card to use the card - Jason
 - [X] Talent selection page, entrance page UI rework - Conrad
