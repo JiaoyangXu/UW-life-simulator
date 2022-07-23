@@ -20,11 +20,13 @@ JiayiCai152k = Jiayi Cai = Karen = j85cai
 - [X] Use Room database as mean of inter-activity communication - Conrad, Jason
 - [X] Clean database when game terminated (press quit button for now) - Jason
 - [X] Entrance Page (New/Load) - Jiayi, Conrad
+- [X] Event page scrolling logic - Jiayi
 - [X] Collect and crop UI and other graphic materials - Conrad
 - [X] Summary Page, Course Selection Page, Event List Page UI rework - Conrad
 - [X] Buy Spell Card - Conrad, Jason
 - [X] Swipe Spell Card to use the card - Jason
 - [X] Talent selection page, entrance page UI rework - Conrad
+- [X] Event page Event generation calling logic - Jiayi
 - [X] Random Event Page connects frontend and backend - Echo
 - [X] Event generators - Hunter
 - [X] Special events(Tests, Event Chains) - Hunter
